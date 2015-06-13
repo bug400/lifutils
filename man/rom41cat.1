@@ -1,0 +1,82 @@
+.TH rom41cat 1 29-Dec-2001 "LIF Utilities" "LIF Utilities"
+.SH NAME
+rom41cat \- a filter to display the function names in an HP41 ROM image
+.SH SYNOPSIS
+.B rom41cat
+[\-x]
+.B <
+.I rom_file
+.B > 
+.I output_file
+.PP
+.B rom41cat \-?
+.SH DESCRIPTION
+.B rom41cat
+reads the Function Address Table (FAT) at the start of an unscrambled 
+HP41 ROM image and displays the names of the functions (both Mcode and 
+user language (Focal)) contained in that ROM.
+.PP
+If the 
+.B \-x
+option is not given then the XROM numbers, entry address of the function, 
+language and name are displayed on standard output. 
+.PP
+If the 
+.B \-x
+option is given, then the XROM numbers and function name are displayed on 
+standard output in a format that can be stored in a file and read into 
+.B prog41
+as an xrom definition file. Then 
+.B prog41
+can give the correct names to functions in this rom. In this case, the 
+names of user language functions are displayed in the form
+.I XROM'name'
+.PP
+Use 
+.B rom41
+to unscramble Eramco rom image files before using
+.B rom41cat
+to display the function names contained therein.
+.SH OPTIONS
+.TP
+.I \-x
+Produce a
+.B prog41
+xrom definition file
+.TP 
+.I \-?
+Print a message giving program usage to standard error.
+.SH REFERENCES
+The format of the FAT and names for Mcode functions is given in 
+.I HP\-41 Mcode for Beginners (Ken Emery)
+The format of names for user language functions does not appear to be 
+documented and was discovered by experiment.
+.SH EXAMPLES
+If 
+.I myrom.rom
+is an Eramco rom image file then
+.PP
+.B rom41 < myrom.rom | rom41cat
+.PP
+will display the function names, entry points and language to standard 
+output, while
+.PP
+.B rom41 < myrom.rom | rom41cat -x > myrom.xrom
+.PP
+will produce an xrom definition file for
+.B prog41
+containing the function names in 
+.I myrom.rom
+.SH SEE ALSO
+.B rom41(1)
+.SH BUGS
+Some commonly used HP41 characters have no Ascii equivalents and are 
+therefore displayed as \\nnn octal escape sequences. Spaces in function 
+names are replaced by underscores since 
+.B prog41
+can't handle spaces in function names in xrom definition files.  
+The 'geese' are displayed as the corresponding punctuation characters.
+.SH AUTHOR
+.B rom41cat
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

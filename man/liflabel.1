@@ -1,0 +1,48 @@
+.TH liflabel 1 13-October-2014 "LIF Utilities" "LIF Utilities"
+.SH NAME
+liflabel \- label a lif image file
+.SH SYNOPSIS
+.B liflabel
+[\-c] 
+.I <LIF image file> <Label name>
+.PP
+.B liflabel \-?
+.SH DESCRIPTION
+.B liflabel
+sets the label the lif image file specified by
+.I LIF image file
+to the label specified by
+.I Label name
+.SH OPTIONS
+.TP
+.I \-c
+Clears an existing label
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
+.SH EXAMPLES
+If 
+.I disk1.lif
+is a LIF image file then
+.PP
+.B liflabel disk1.lif TEST1
+.PP
+will set the label of the lif image file
+.I disk1.lif
+to
+.I TEST1
+.PP
+.B liflabel -c disk1.lif
+.PP
+will clear an existing label on the LIF image file 
+.I disk1.lif
+.SH REFERENCES
+The LIF disk format is documented in the
+.I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
+with further details (particularly HP41 and HP75 file types) in the 
+.I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith)
+.SH AUTHOR
+.B liflabel
+was written by Joachim Siebold, bug400@gmx.de  using code from Tony Duell, 
+ard@p850ug1.demon.co.uk and has been placed under the GNU Public 
+License version 2.0

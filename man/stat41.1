@@ -1,0 +1,44 @@
+.TH stat41 1 2-Oct-2000 "LIF Utilities" "LIF Utilities"
+.SH NAME
+stat41 \- a filter to display an HP41 status file
+.SH SYNOPSIS
+.B stat41
+[\-b] [\-f] [\-v]
+.B <
+.I Input file
+.PP
+.B stat41 \-?
+.SH DESCRIPTION
+.B stat41
+is a filter which displays the information in an HP41C status file. This 
+file contains the user RPN stack, the alpha register, the status of the 
+first 44 flags, the current SIZE and number of the first statistics 
+register. The status file is read from standard input and the values 
+displayed in human-readable form on standard output.
+.SH OPTIONS
+.TP
+.I \-b
+Display strings in stack registers as BLDSPEC values.
+.TP
+.I \-f
+Display strings in stack registers as RCLFLAG settings if appropriate.
+.TP
+.I \-v
+Display user flags verbosely, rather than as a binary number.
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
+.SH EXAMPLES
+If
+.I disk1.lif
+is a LIF disk image containing an HP41 status file called
+.I STAT
+then
+.PP
+.B lifget \-f disk1.lif STAT | stat41
+.PP
+will display the contents of this status file on standard output
+.SH AUTHOR
+.B stat41
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

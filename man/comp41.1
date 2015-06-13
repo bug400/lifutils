@@ -1,0 +1,93 @@
+.TH comp41 1 12-June-2000 "LIF Utilitites" "LIF Utilities"
+.SH NAME
+comp41 \- a filter to compile a HP41C user\-language program
+.SH SYNOPSIS
+.B comp41
+[\-g] [\-l] [\-x
+.I xrom_file
+] [\-x
+.I xrom_file
+] ...
+.I
+<input file>
+.PP
+.B comp41
+[\-g] [\-l] [\-x
+.I xrom_file
+] [\-x
+.I xrom_file
+] ...
+.PP
+(last form reads source file from standard input)
+.PP
+.B comp41 \-?
+.SH DESCRIPTION
+.B comp41
+is a filter which compiles a textfile containing a HP-41 User program (FOCAL)
+and translates it to a binary raw file.
+.PP
+An 
+.I xrom_file
+consists of a number of lines, each consisting of 2 decimal numbers and a 
+string (containing no whitespace), in that order, separated by whitespace. 
+The string gives a name to the function specified by the first number as 
+.I rr
+and the second number as
+.I nn.
+A
+.I xrom_file
+is necessary to compile commands of module or peripheral functions.
+.SH OPTIONS
+.TP
+.I \-g
+Force global for[ "A..J", "a..e" ] with quotes: [ lbl "A" ]
+.TP
+.I \-l
+Skip line numbers
+.TP
+.I \-x xrom_file
+Use
+.I xrom_file
+to define names for functions in plug-in modules. This option may be 
+repeated to load multiple
+.I xrom_files.
+The file name has to be specified either as a full pathname or as
+the filename without the extension .xrom in the default location
+that is specified with the environment variable LIFUTILSXROMDIR (see below).
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
+.SH FILES
+.TP
+.I xroms/*
+xrom function definition files. Use the environment variable LIFUTILSXROMDIR to point to the localtion of this
+directory. On Linux the default localtion is /usr/share/lifutuls/xroms, if the variable is not specified.
+.SH REFERENCES
+The format of an HP41C program is documented in many books. Amongst the 
+most useful references are
+.I Extend Your HP41 (W. A. C. Mier-Jedrzejowicz)
+and
+.I The HP41 Synthetic Programming Quick Reference Guide (Jeremy Smith)
+.SH EXAMPLES
+If
+.I prog1.txt
+is a text file with a FOCAL program that uses functions of the HP-IL and Time-module and
+.I
+hp41prog.dat
+is a lif image file
+then
+.PP
+.B cat prog1.txt | comp41 \-x hpil \-x time | prog41hp PROG1 | lifput hp41prog.dat 
+.PP 
+will compile the file
+.I prog1.txt
+to a raw file that is transformed to a LIF file named
+.I PROG1
+that is stored in the LIF image file
+.I hp41prog.dat
+.SH BUGS
+Unknown.
+.SH AUTHOR
+.B comp41
+was written using code of the User-Code File Converter/Compiler/De-compiler/Bar-Code Generator  Version 1.31
+Copyright (c) Leo Duran, 2000-2007 and has been placed under the GNU Public License version 2.0

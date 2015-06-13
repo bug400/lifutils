@@ -1,0 +1,21 @@
+Source: lifutils
+Section: misc
+Priority: optional
+Maintainer: Tony Duell <ard@p850ug1.demon.co.uk>
+Build-Depends: binutils,
+Standards-Version: 0.9
+
+Package: lifutils
+Architecture: any
+Depends: debianutils (>= 1.6), 
+	 ${shlibs:Depends}, 
+	 ${misc:Depends},
+Recommends: 
+Suggests: 
+Conflicts: 
+Replaces: 
+Provides: 
+Section: misc
+HomePage: http://www.hpcc.org
+Description: Utilities to manage lif files and disk images
+ .

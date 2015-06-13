@@ -1,0 +1,38 @@
+.TH lifpurge 1 30-Sept-2014 "LIF Utilities" "LIF Utilities"
+.SH NAME
+lifpurge \- purge a file from a LIF image file
+.SH SYNOPSIS
+.B lifpurge 
+.I <image file> <filename> 
+.PP
+.B lifpurge \-?
+.SH DESCRIPTION
+.B lifpurge
+purges a single file, specified by 
+.I filename
+from a LIF image file.
+.I filename
+is case\-sensitive and should normally be given in upper case. 
+.SH OPTIONS
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
+.SH EXAMPLES
+If 
+.I disk1.lif
+is a LIF image file containing a file called 
+.I TEST1
+then 
+.PP
+.B lifpurge disk1.lif TEST1 
+.PP
+will purge the file TEST1 from the LIF disk image 
+.SH REFERENCES
+The LIF disk directory format is documented in the
+.I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
+with further details (particularly HP41 and HP75 file types) in the 
+.I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith)
+.SH AUTHOR
+.B lifpurge
+was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

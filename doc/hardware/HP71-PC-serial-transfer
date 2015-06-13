@@ -1,0 +1,140 @@
+Transferring programs between an HP71 and a PC using a serial interface
+----------------------------------------------------------------------
+
+This document describes how to use the HP82164 HPIL-RS232 interface to
+connect an HP71B calculator (fitted with the HPIL interface module) to a
+Linux PC, and to transfer files in both directions between them. 
+
+Throughout this document, the PC's serial port will be named /dev/cua0 . 
+Change this as appropriate, of course.
+
+Hardware connections : 
+----------------------
+Connect the HPIL side of the HP82164 to the HP71's IL module in the usual 
+way. 
+
+The jumper plug inside the HP82164 interface should be set to the DTE 
+position. See the interface's user manaul for more details of this.
+
+Connect the HP82164's RS232 port to the PC using a standard PC modem 
+cable and a special adapter. The latter is needed owing to the rather 
+strange hardware handshaking of the HP82164, and the following diagram 
+gives the necessary wiring : 
+
+   PC                         HP82164
+   (DB25-S)                   (DB25-S)
+
+Prot Gnd 1 )-------------------( 1 Prot Gnd
+ 
+ TxD     2 )-------------------( 3 RxD
+
+ RxD     3 )-------------------( 2 TxD
+
+ RTS     4 )-------------------( 5 CTS
+
+ CTS     5 )-------------------( 20 DTR
+
+ DSR     6 )--+----------------( 4 RTS
+              |
+ CD      8 )--+
+
+ Sig Gnd 7 )-------------------( 7 Sig Gnd
+
+ DTR    20 )----------------+--( 6 DSR
+                            |
+                            +--( 8 CD
+
+
+Configuring the interfaces
+---------------------------
+
+On the PC, turn off buffering and enable hardware handshaking by typing :
+
+stty raw crtscts </dev/cua0
+
+On the HP71, load the SETRS program and run it to set the HP82164
+interface to hardware handshake mode and to make it the primary device. 
+This program is given below and also contained in the
+hardware/setrs_hp71.txt of the lif utilities distribution. 
+
+Transferring a file from the HP71 to the PC
+------------------------------------------
+
+On the PC type : 
+--------------
+
+in711 < /dev/cua0 >output_file
+
+where output_file is the filename that you want the HP71 data  
+stored in. Alternatively you can pipe the output of in71 to a suitable 
+filter to process the data.
+
+
+
+On the HP71 type :
+----------------
+
+COPY filename TO :RS232
+
+where filename is the name of the file to send.
+
+The PC will display a status message giving the size and type of the file
+being transfered. When the transfer is finished, the data will be stored 
+in the specified file.
+
+
+Transferring a program from the PC to the HP71
+---------------------------------------------
+
+On the PC type :
+---------
+
+out71 filetype < filename >/dev/cua0
+
+where filetype is the type of file to be created on the HP71 (for example
+TEXT or BASIC71) and filename is the name of a file containing the data to
+send. 
+
+The input to out71 can be piped from lifget (for example) in the 
+standard way to transfer a file from a lif disk image. For example :
+
+lifget -f disk1 TEXT1 | out71 TEXT > /dev/cua0
+
+will transfer the file TEXT1 from the lif disk image disk1 to a text file 
+on the HP71. Note that no translation is performed, so the input file 
+must contain valid data for the HP71 file type being created.
+
+On the HP71 
+-----------
+
+COPY :RS232 TO filename
+
+where filename is the name of the file to create on the HP71.
+
+Some HP71 files may be an odd number of nybbles long. The out71 program 
+always creates a file containing an integer number of bytes (an even 
+number of nybbles). This may cause problems with listing an HP71 BASIC 
+program that has been transfered, the machine may hang when displaying 
+the last line. INIT 1 will normally recover from this. 
+
+Should this occur, purge the file on the HP71, and send it again, giving the
+-o option to out71 , which decreases the file length (in nybbles) in the 
+file header by 1: 
+
+out71 -o filetype < filename >/dev/cua0
+
+or, for example, 
+
+lifget -f disk1 PROG71 | out71 -o BASIC71  > /dev/cua0
+
+to send the BASIC71 program PROG71 (which is an odd number of nybbles long) 
+from the disk image disk1. 
+
+TEXT files, which are always an even number of nybbles long are the safest
+type to transfer with this program. 
+
+----------------------------------------------
+A. R. Duell, 19-Dec-2000. 
+This file is part of the LIF Utilities distribution and has been placed
+under the GNU Public License version 2.0
+

@@ -1,0 +1,133 @@
+Centronics to HP41 barcode wand interface schematic
+---------------------------------------------------
+
+Centronics 
+
+            74LS574                         PIC16C84
+           ---------                       ------------
+D7 o------|D   a   Q|---------------------|RB7      RA0|-
+D6 o------|D   b   Q|---------------------|RB6      RA1|-
+D5 o------|D   c   Q|---------------------|RB5      RA2|----BarDrv
+D4 o------|D   d   Q|---------------------|RB4      RA3|--------------+
+D3 o------|D   e   Q|---------------------|RB3      RA4|------------+ |  
+D2 o------|D   f   Q|---------------------|RA2         |            | |
+D1 o------|D   g   Q|---------------------|RA1     Mclr|---Rst      | |
+D0 o------|D   h   Q|---------------------|RA0         |            | |
+          | /\   OE |                     |            |            | |
+           ---------                      | X1      X2 |            | |
+            |     o                        ------------             | |
+            |     |                          |       |              | |
+            |    ---                         +-|=|---+              | |
+            |    ///                         | 4MHz  |              | |
+            |                                |       |              | |
+            +---------+                33pf ---     --- 33pf        | |
+                      |                     ---     ---             | |
+      +5V             |                      |       |              | |
+      ---             |       +5V           ---     ---             | |
+       |              |       ---           ///     ///             | |
+       \              |        |                                    | |
+       /              |        +-------+                            | |
+    1k \              |        |       o    74LS74(a)               | |
+       /              |        |   ---------                        | | 
+       |              |        +--|D   S   Q|-----------------------+ |
+       +--|\          |           |         |                         | 
+Stb/ o-+  | )o--------+-----------|>   R    |o----|\                  |
+       +--|/          |            ---------      | )o-----+          |
+        74LS00(b)    --- 100pF         o      +---|/       |          |
+                     ---               |      |  74LS00(a) |          |
+                      |                +------+------------)----------+
+                     ---                                   |          |
+                     ///                                   |          |
+                                                           |          |
+Busy o-----------------------------------------------------+          |
+                 /|--+     /|--+                                      | 
+Ack o----------o( |  +---o( |  +--------------------------------------+
+                 \|--+     \|--+
+              74LS00(c)   74LS00(d)
+
+                      +5V
+Sel o----\/\/---+     ---
+          1k    |      |
+PE  o----\/\/---+------+
+          1k
+
+Gnd o---+  
+        |
+       ---
+       ///                         +5V
+                                   ---
+                                    |
+                     +--+-----------+
+                     |  |           |
+                     |  \           |
+                     |  / 6k8       |
+                     |  \           |
+          | o---( o--+  /          /
+        ==|             |        |/< 
+          | o---( o-----+--------|   2N3906 (PNP)
+   Reset                |        |\  
+                        /          \
+                        \ 33k       |
+                        /           +---- Rst (to PIC)
+                        \           | 
+                        |           /
+                        |           \ 10k
+                        |           /
+                        |           \
+                        |           |
+                        +-----------+
+                        |
+                       ---      [Reset Circuit]
+                       ///
+
+                               +5V
+                               ---
+                                |
+                                +-------o )-------( 3 (+5V)
+                                        
+                                +-------o )-------( 1 (LED Drive)
+                               /    
+                  1k         |/         o )-------( 2, Shield (Ground)
+   BarDrv -------/\/\--+-----| 2N3904   |        3 pin 
+   (from PIC)          |     |\>  (NPN) |        DIN socket
+                       /       \        |  
+                   10k \        |       |
+                       /        |       |   
+                       \        |       |  [LED Driver]
+                       |        |       | 
+                       +--------+-------+
+                                |
+                               ---
+                               ///
+                                                   7805             +5V 
+             4 off                              ------------       ----- 
+             1N4007                             |          |         |
+    +--+-------->|---+----------+---------+-----| In   Out |----+----+
+    |  |             |          |         |     |    Com   |    |
+    o  |   +---->|---+          |         |     ------------    |
+       |   |                    |   0.1uF |           |         |
+   9V  |   |                    |       -----         |   0.1uF | 
+   AC  |   |                    |       -----         |       -----     
+       |   |           1000uF =====       |           |       -----
+    o  |   |            25V   -----       |           |         |
+    |  |   |                    |         |           |         |
+    +--)---+----|<---+          |         |           |         |
+       |             |          |         |           |         |
+       +--------|<---+----------+---------+-----------+---------+
+                                                                |
+                  [PSU]                                        ---
+                                                               ///
+
+9V AC input from 6VA (or similar) transformer. Primary connected to mains via
+single-pole switch and 250mA fuse (both in live wire).
+
+Decouple every IC (+5V to ground) with 0.1uF ceramic capacitor
+Keep tracks short between PIC, Xtal and associated capacitors.
+The source of the PIC program code is given in the file 'barcode.asm' in 
+this directory. An IHX8M hex file (suitable for sending to a PIC 
+programmer) is given in 'barcode.hex'.
+
+--------------------
+A. R. Duell, 21-June-2001
+This file is part of the LIF Utilites distribution and has been placed 
+under the GNU Public License version 2.0

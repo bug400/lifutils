@@ -1,0 +1,62 @@
+.TH lifget 1 11-June-2000 "LIF Utilities" "LIF Utilities"
+.SH NAME
+lifget \- extract a file from a LIF image file
+.SH SYNOPSIS
+.B lifget 
+[\-r] [\-b]
+.I <image file> <filename> <output file>
+.PP
+.B lifget 
+[\-r] [\-b]
+.I <image file> <filename>
+.PP
+(last form send the extracted file to standard output)
+.PP
+.B lifget \-?
+.SH DESCRIPTION
+.B lifget
+extracts a single file, specified by 
+.I filename
+from a LIF disk image.
+.I filename
+is case\-sensitive and should normally be given in upper case. If 
+.B lifget
+is executed with 3 arguments after the options then the third argument is 
+used as the name of the linux file that the LIF file is copied to. If 
+only 2 arguments are given then the file is copied to standard output.
+.SH OPTIONS
+.TP
+.I \-r
+Remove the  32\-byte header consisting of the directory 
+record from the LIF disk directory from the beginning of the output file.
+.TP
+.I \-b
+Copy the blocks occupied by the file (including the entire last block) 
+rather then the number of bytes given by the file length. This option has 
+no meaning for file types where the file is always assumed to occupy 
+complete blocks.
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
+.SH EXAMPLES
+If 
+.I disk1.lif
+is a LIF disk image containing a file called 
+.I TEST1
+then 
+.PP
+.B lifget disk1.lif TEST1 lif_test_file
+.PP
+will copy the file TEST1 from the LIF disk image to the linux file
+.I lif_test_file.
+.SH REFERENCES
+The LIF disk directory format is documented in the
+.I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
+with further details (particularly HP41 and HP75 file types) in the 
+.I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith)
+.SH BUGS
+Not all file types have been tested.
+.SH AUTHOR
+.B lifget
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

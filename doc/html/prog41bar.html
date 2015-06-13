@@ -1,0 +1,105 @@
+<!-- Creator     : groff version 1.22.2 -->
+<!-- CreationDate: Mon Apr 13 20:02:04 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>prog41bar</title>
+
+</head>
+<body>
+
+<h1 align="center">prog41bar</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#REFERENCES">REFERENCES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">prog41bar
+&minus; Convert a PROG41 file into HP41 barcode</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>prog41bar
+&lt;</b> <i>input_file</i> <b>&gt;</b>
+<i>barcode_file</i></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i><b>prog41bar</b></i>
+is a program that reads a PROG41 file from standard input
+and writes the corresponding HP41 barcode file to standard
+output.</p>
+
+<p style="margin-left:11%; margin-top: 1em">The output of
+<b>prog41bar</b> can be piped to a suitable barcode printing
+program such as <b>barps</b></p>
+
+<h2>REFERENCES
+<a name="REFERENCES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The format of
+HP41 barcode is given in the book <i>Creating your own HP41
+Barcode (Hewlett&minus;Packard)</i></p>
+
+<p style="margin-left:11%; margin-top: 1em">The format of
+the barcode file written by sdatabar is given in
+<i>barcode(5)</i></p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If <i>prog1</i>
+is an hp41 binary program file (PROG41 file), and
+<i>postscript</i> is a postscript printer then</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>prog41bar
+&lt; prog1 | barps &rsquo;Data File 1&rsquo; | lpr -P
+postscript</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will print that
+file as HP41 barcode on the postscript printer.</p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>prog41bar</b>
+was written by Tony Duell, ard@p850ug1.demon.co.uk, and has
+been placed under the GNU Public License version 2.0</p>
+<hr>
+</body>
+</html>

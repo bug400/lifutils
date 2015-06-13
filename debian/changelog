@@ -1,0 +1,107 @@
+lifutils (1.7.2-ubuntu1) trusty; urgency=medium
+
+  * reimplmented pyhsical media access
+  * code refactoring (lib/lif_block.c, lib/lif_block.h,
+    lib/lif_img.c, lib/lif_img.h, lib/lif_phy.h, 
+    lib/lif_phy_linux.c, lib/lib_phy_dummy.c
+  * fix lifput: directory full message if duplicate file
+  * fix lifput: last medium block was not used
+
+ -- trusty <trusty@localhost>  Sat, 02 May 2015 07:36:46 +0200
+
+lifutils (1.7.1-ubuntu1) trusty; urgency=medium
+
+  * new build system
+  * added progs/lifmod.c, lib/modfile.c, lib/modfile.h, lifmod.1
+  * moved xrom code to lib/xrom.c and lib/xrom.h
+  * much code refactoring and compiler warning fixes
+
+ -- trusty <trusty@localhost>  Mon, 13 Apr 2015 19:43:08 +0200
+
+lifutils (1.7.1ubuntu0) trusty; urgency=medium
+
+  * new major release
+    added Makefile.mingw
+    changed mode of files to binary for mings32 compilation
+    lifdir.c, lifget.c, lifput.c, lifinit.c, liflabel.c 
+    lifpack.c, lifpurge.c, lifrename.c, lifstat.c
+    hptext.c, barprt.c, barps.c, in71.c, wall41.c
+    rawlif.c, sdata.c, wcat41.c, regs41.c, stat41.c
+    out71.c, rom41cat.c, lifstrip, inp41.c, outp41.c
+    rom41.c, text75.c, key41.c, rom41hx.c, texthp.c
+
+    new manpage file manpages/lifrename.1
+    manpages as pdf files
+
+    added output of label and medium layout in lifstat.c, lifdir.c
+    partially rewritten: lifinit.c, lifinit.1
+    removed -c flage: lifput.c lifput.1
+    new file: liffix.c, liffix.1
+    added ROM71, GRA71 file type lif_dir_utils.c
+    correct error in lifput.c
+  
+    changed behaviour of lifget.c, default is to keep the
+    directory header
+
+    fixes in texthp.c
+    renamed prog41.c to decomp41.c
+    new file comp41.c, comp41.h, manfiles/comp41.1
+
+ -- trusty <trusty@localhost>  Mon, 02 Mar 2015 17:32:48 +0100
+
+lifutils (1.6.1ubuntu0) trusty; urgency=medium
+
+  * new major release
+    removed files: lifaddhdr.c, lifrmhdr.c
+    removed pyhsical device support:
+    lifdir.c, ifget.c, lifput.c, lifstat.c
+
+    new files rom41hx.c manpages/rom41hx.1
+ -- trusty <trusty@localhost>  Sat, 23 Aug 2014 21:15:15 +0200
+
+lifutils (1.5.1ubuntu2) trusty; urgency=medium
+
+  * corrected syntax of decompile FOCAL programs to
+    match syntax of nutstudio, FocalComp and hp41uc compilers
+    - X!=Y to X#Y
+    - ->DEC to DEC
+    - ->OCT to OCT
+    - -D->R to D-R
+    -  R->D to R-D
+    - ->HMS to HMS
+    - ->HR to HR
+    - always output END instead of .END. 
+    - introduce -l option for optional line numbers
+    - output hex constants for non printable characters
+    - output leading > for append strings
+
+ -- trusty <trusty@localhost>  Sat, 23 Aug 2014 21:15:15 +0200
+
+lifutils (1.510ubuntu1) trusty; urgency=medium
+
+  * corrected entry in xroms/hpil.xrom (PRUGE)
+  * modified syntax of decompiled FOCAL programs to match
+    syntax of nutstudio focal compiler:
+    - P->R and R->P to P-R and R-P (byte_tables.h)
+    - insert space before exponent (prog41.c)
+  * introduce default path for xrom files. If they are located
+    in /usr/share/lifutils/xroms only the file name without
+    extension must be specified in the -x option. Otherwise
+    the full pathname can be specified to preserve the old
+    behaviour (prog41).
+
+ -- trusty <trusty@localhost>  Thu, 21 Aug 2014 09:06:15 +0200
+
+lifutils (1.5.0ubuntu1) trusty; urgency=medium
+
+  * added lifput, texthp, lifstrip, rawlif
+    corrected file_length of HP41 files in lif_dir_utils.c
+    (checksum byte), install xroms in /usr/share/lifutils
+
+ -- trusty <trusty@localhost>  Sat, 22 Mar 2014 12:17:28 +0100
+
+lifutils (1.4.0) trusty; urgency=low
+
+  * Initial Debian version.
+
+ -- Joachim Siebold <bug400@gmx.de>  Mon, 02 Mar 2014 17:00:00 +0000

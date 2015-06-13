@@ -1,0 +1,68 @@
+.TH lifstat 1 29-Jan-2001 "LIF Utilities" "LIF Utilities"
+.SH NAME
+lifstat \- A program to display statistics for a LIF image file
+.SH SYNOPSIS
+.B lifstat 
+.I <LIF image file>
+.PP 
+.B lifstat
+.I <LIF image file> <block_number>
+.PP
+.B lifstat
+.I <LIF image file> <cylinder> <head> <sector>
+.PP
+.B lifstat \-?
+.SH DESCRIPTION
+.B lifstat
+is a program to display the block usage of a LIF  image file. 
+If 
+.B lifstat
+is run with no arguments other than the name of the LIF file, 
+then 2 lines are printed to standard 
+output giving the starting and ending blocks of the directory and the 
+user file data. The blocks are specified both by their block number and by
+their cylinder/head/sector address.
+.PP
+If 
+.B lifstat
+is run with one additional argument, then that argument is taken as a 
+logical block number. A single line is written to standard output giving 
+that block number, the equivalent cylinder/head/sector address and the 
+file name of the file that contains that block. 
+.PP
+If
+.B lifstat
+is run with 3 additional arguments, then these are taken to be the 
+cylinder, head and sector numbers (in that order) of a block on the disk. 
+The program then behaves as if one argument was given.
+.PP
+If the block number is part of the volume label or directory, or if it is 
+not currently in use, then the 'file name' is reported as 
+.I Volume Label, System 3000 block, directory 
+or
+.I unused
+as appropriate.
+.SH OPTIONS
+.TP
+.I \-?
+Print a message giving program usage to standard error and exit.
+.SH EXAMPLES
+If
+.I disk_image 
+is a disk image file, then
+.PP
+.B lifstat  disk_image
+.PP
+will write a message to standard output giving the start and end blocks of
+the directory and user data. Similarly
+.PP
+.B lifstat  disk_image 37
+.PP
+will output the file name of the file containing block 37
+.SH REFERENCES
+The format of a LIF disk directory is given in the
+.I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett Packard)
+.SH AUTHOR
+.B lifstat
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

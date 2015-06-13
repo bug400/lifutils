@@ -1,0 +1,39 @@
+.TH lifaddhdr 1 11-June-2000 "LIF Utilities" "LIF Utilities"
+.SH NAME
+lifaddhdr \- a filter to add Anadisk\-style headers to a LIF image
+.SH SYNOPSIS
+.B lifaddhdr <
+.I Input file
+.B >
+.I Output file
+.SH DESCRIPTION
+.B lifaddhdr
+is a filter that reads a standard LIF disk image (as produced by
+.B lifimage
+) and adds an 8\-byte header before the data of each sector in the image. 
+This header is identical to the one used by the shareware MS-DOS disk 
+analysis program, 
+.I Anadisk
+.PP
+The original disk image is read from standard input, and the modified 
+disk image is written to standard output
+.PP
+See the
+.B lifaddhdr
+source code for details of the header format.
+.SH REFERENCES
+The header format is also documented in the 
+.I Anadisk 
+documentation produced by 
+.I Sydex
+.SH BUGS
+This program has not been tested against a real
+.I Anadisk
+image, since I have no way to run that program. No attempt has been made
+to handle bad track replacements in the LIF disk image, the image is assumed
+to consist of the first 77 cylinders of the LIF disk.
+.SH AUTHOR
+.B lifaddhdr
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0
+

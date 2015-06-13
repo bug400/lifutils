@@ -1,0 +1,53 @@
+.TH in71 1 23-December-2000 "LIF Utilities" "LIF Utilities"
+.SH NAME
+in71 \- a filter to read a program from an HP71B
+.SH SYNOPSIS
+.B in71 [\-b] <
+.I input_device
+.B >
+.I output_file
+.PP
+.B in71 \-?
+.SH DESCRIPTION
+The HP71B Handheld computer, when fitted with the HP82401A HPIL Interface
+can copy files not only to mass-storage peripherals but also to any other
+HPIL device. The format of data sent in the latter case consists of a 32
+byte header which is identical to a directory entry on a LIF volume
+followed by the file date padded out (with arbitrary characters) to make
+it a multiple of 256 bytes. 
+.PP
+.B in71
+strips off the header (displaying some of its information to standard 
+error), and (by default) truncates the last block of the file, thus 
+recovering the original file data. It can thus be used for the direct 
+transfer of files from an HP71B to a linux system using (e.g.) an HP82164 
+RS232 interface.
+.SH Options
+.TP
+.I \-b
+Pass the all the bytes of the file, do not truncate the last block.
+.TP
+.I \-?
+Print a message giving program usage to standard error and exit
+.SH FILES
+.I hardware/*
+: Information on linking an HP71B to a PC
+.SH EXAMPLES
+If an HP71B is connected to the linux device
+.I /dev/cua0 
+via a suitable interface, then the command
+.PP
+.B in71 < /dev/cua0 | hptext
+.PP
+will read an HP71B text file (sent, e.g. by 
+.B COPY MYTEXT TO :RS232
+on the HP71), decode it, and write the result to standard output.
+.SH REFERENCES
+The data sent by an HP71B when it copies a file to a non-mass-storage device
+is documented in Volume 1 of the HP71 HPIL Internal Design Specification
+.SH SEE ALSO
+.B out71(1)
+.SH AUTHOR
+.B in71
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

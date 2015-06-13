@@ -1,0 +1,187 @@
+<!-- Creator     : groff version 1.22.2 -->
+<!-- CreationDate: Mon Apr 13 20:02:04 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>rom41cat</title>
+
+</head>
+<body>
+
+<h1 align="center">rom41cat</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#REFERENCES">REFERENCES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+<a href="#BUGS">BUGS</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">rom41cat
+&minus; a filter to display the function names in an HP41
+ROM image</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>rom41cat</b>
+[&minus;x] <b>&lt;</b> <i>rom_file</i> <b>&gt;</b>
+<i>output_file</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>rom41cat
+&minus;?</b></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>rom41cat</b>
+reads the Function Address Table (FAT) at the start of an
+unscrambled HP41 ROM image and displays the names of the
+functions (both Mcode and user language (Focal)) contained
+in that ROM.</p>
+
+<p style="margin-left:11%; margin-top: 1em">If the
+<b>&minus;x</b> option is not given then the XROM numbers,
+entry address of the function, language and name are
+displayed on standard output.</p>
+
+<p style="margin-left:11%; margin-top: 1em">If the
+<b>&minus;x</b> option is given, then the XROM numbers and
+function name are displayed on standard output in a format
+that can be stored in a file and read into <b>prog41</b> as
+an xrom definition file. Then <b>prog41</b> can give the
+correct names to functions in this rom. In this case, the
+names of user language functions are displayed in the form
+<i>XROM&rsquo;name&rsquo;</i></p>
+
+<p style="margin-left:11%; margin-top: 1em">Use
+<b>rom41</b> to unscramble Eramco rom image files before
+using <b>rom41cat</b> to display the function names
+contained therein.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>&minus;x</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Produce a <b>prog41</b> xrom
+definition file</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>&minus;?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Print a message giving program usage to standard
+error.</p> </td></tr>
+</table>
+
+<h2>REFERENCES
+<a name="REFERENCES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The format of
+the FAT and names for Mcode functions is given in
+<i>HP&minus;41 Mcode for Beginners (Ken Emery)</i> The
+format of names for user language functions does not appear
+to be documented and was discovered by experiment.</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If
+<i>myrom.rom</i> is an Eramco rom image file then</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>rom41 &lt;
+myrom.rom | rom41cat</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will display
+the function names, entry points and language to standard
+output, while</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>rom41 &lt;
+myrom.rom | rom41cat -x &gt; myrom.xrom</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will produce an
+xrom definition file for <b>prog41</b> containing the
+function names in <i>myrom.rom</i></p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i><b>rom41(1)</b></i></p>
+
+<h2>BUGS
+<a name="BUGS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Some commonly
+used HP41 characters have no Ascii equivalents and are
+therefore displayed as \nnn octal escape sequences. Spaces
+in function names are replaced by underscores since
+<b>prog41</b> can&rsquo;t handle spaces in function names in
+xrom definition files. The &rsquo;geese&rsquo; are displayed
+as the corresponding punctuation characters.</p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>rom41cat</b>
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has
+been placed under the GNU Public License version 2.0</p>
+<hr>
+</body>
+</html>

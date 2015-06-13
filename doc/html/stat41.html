@@ -1,0 +1,148 @@
+<!-- Creator     : groff version 1.22.2 -->
+<!-- CreationDate: Mon Apr 13 20:02:04 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>stat41</title>
+
+</head>
+<body>
+
+<h1 align="center">stat41</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">stat41 &minus;
+a filter to display an HP41 status file</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>stat41</b>
+[&minus;b] [&minus;f] [&minus;v] <b>&lt;</b> <i>Input
+file</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>stat41
+&minus;?</b></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>stat41</b>
+is a filter which displays the information in an HP41C
+status file. This file contains the user RPN stack, the
+alpha register, the status of the first 44 flags, the
+current SIZE and number of the first statistics register.
+The status file is read from standard input and the values
+displayed in human-readable form on standard output.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>&minus;b</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Display strings in stack
+registers as BLDSPEC values.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>&minus;f</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Display strings in stack registers as RCLFLAG settings
+if appropriate.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>&minus;v</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Display user flags verbosely, rather than as a binary
+number.</p> </td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>&minus;?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Print a message giving the program usage to standard
+error.</p> </td></tr>
+</table>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If
+<i>disk1.lif</i> is a LIF disk image containing an HP41
+status file called <i>STAT</i> then</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifget
+&minus;f disk1.lif STAT | stat41</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will display
+the contents of this status file on standard output</p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>stat41</b>
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has
+been placed under the GNU Public License version 2.0</p>
+<hr>
+</body>
+</html>

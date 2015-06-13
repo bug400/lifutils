@@ -1,0 +1,38 @@
+.TH prog41bar 1 05-Jan-2002 "LIF Utilities" "LIF Utilities"
+.SH NAME
+prog41bar \- Convert a PROG41 file into HP41 barcode
+.SH SYNOPSIS
+.B prog41bar <
+.I input_file
+.B >
+.I barcode_file
+.SH DESCRIPTION
+.B prog41bar
+is a program that reads a PROG41 file from standard input and writes the 
+corresponding HP41 barcode file to standard output. 
+.PP
+The output of 
+.B prog41bar
+can be piped to a suitable barcode printing program such as 
+.B barps
+.SH REFERENCES
+The format of HP41 barcode is given in the book
+.I Creating your own HP41 Barcode (Hewlett\-Packard)
+.PP
+The format of the barcode file written by sdatabar is given in 
+.I barcode(5)
+.SH EXAMPLES
+If
+.I prog1
+is an hp41 binary program file (PROG41 file), and 
+.I postscript
+is a postscript printer
+then
+.PP
+.B prog41bar < prog1 | barps 'Data File 1' | lpr -P postscript
+.PP
+will print that file as HP41 barcode on the postscript printer.
+.SH AUTHOR
+.B prog41bar
+was written by Tony Duell, ard@p850ug1.demon.co.uk, and has been placed 
+under the GNU Public License version 2.0

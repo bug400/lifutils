@@ -1,0 +1,63 @@
+.TH lifmod 1 21-April-2015 "LIF Utilities" "LIF Utilities"
+.SH NAME
+lifmod \- reads contents and info of HP-41 module files
+.SH SYNOPSIS
+.B lifmod
+[\-v] [\-f] [\-e] [\-l] 
+.I <Module file>
+.PP
+.B lifmod \-?
+.SH DESCRIPTION
+.B lifmod
+displays and/or extracts information of a 
+.I module file.
+A module file has a special binary format defined for the HP-41  which
+is inspired how actual plug in modules look like. A mod file describes the 
+contents of a physical plug in module. Like real plug in modules, module files
+can contain multiple 4K rom pages.
+.PP
+Without any options specified, lifmod displays the title and the author of
+the module.
+.SH OPTIONS
+.TP
+.I \-v
+Verbose mode. Display detailed information of the content and organisation
+of the module.
+.TP
+.I \-f
+Decode the function address table (if any) of the rom(s) contained in the module
+files. Implies the 
+.I \-f 
+option.
+.TP
+.I \-e
+Extract the rom images (if any) of the modules as .rom files. Note: the
+page name of the image is used as the file name. Characters which are
+not allowed in file names are converted to underscores.
+.TP
+.I \-l
+If specified in addition to the 
+.I \-e
+option  dump(s) of the rom image(s) are created as .lst files for usage with
+the NSIM program.
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
+.SH EXAMPLES
+If 
+.I ADVANTAGE.MOD
+is a module file of the HP-41 Advantage Pac then
+.PP
+.B lifmod -e ADVANTAGE.MOD
+.PP
+will print detailed information of the content of the module and
+extract the three rom images of the module to correspoding .rom files.
+.SH REFERENCES
+Some information can be found in the comments of the modfile.c source file
+(see below).
+.SH BUGS
+Unknown
+.SH AUTHOR
+.B lifmod
+was nearly entirely created with the help of the modfile.c subroutines 
+written by Warren Furlow, warren@furlow.org als public domain software.

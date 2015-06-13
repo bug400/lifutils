@@ -1,0 +1,257 @@
+MPASM 01.11 Released   BARCODE.ASM   1-4-1980  15:50:56                 PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                     0001           ; Barcode Blinker PIC program source 
+                     0002           ; V 1.0 
+                     0003           ; Download programs/data to HP41 calculator without HPIL 
+                     0004           ; Processor 16C84 with 4MHz Xtal 
+                     0005           ; 2001 A. R. Duell, and placed under the GPL  
+                     0006  
+                     0007           ; Pick one of the next 2 lines depending on the assembler used 
+                     0008           ; device pic16c84 
+                     0009           list c=80, n=60, p=16c84 
+                     0010  
+                     0011           ; destination mode bit 
+  0000               0012 W         equ 0 
+  0001               0013 F         equ 1 
+                     0014  
+                     0015           ; Register definitions 
+  0000               0016 ind_data  equ 0 ; Indirect data 
+  0003               0017 status    equ 3 ; Status register 
+  0004               0018 ind_adr   equ 4 ; Indirect address 
+  0005               0019 porta     equ 5 ; Port A (control lines and barcode ou
+
+  0006               0020 portb     equ 6 ; Port B (parallel input data) 
+  0005               0021 trisa     equ 5 ; Port A tristate register (in bank 1)
+
+  000C               0022 incnt     equ 0xC ; Inner loop delay count 
+  000D               0023 outcnt    equ 0xD ; Outer loop delay count 
+  000E               0024 rdcnt     equ 0xE ; Count of characters to read from c
+
+  000F               0025 wrcnt     equ 0xF ; Count of characters to output in b
+
+  0010               0026 bitcnt    equ 0x10 ; Bit counter for barcode character
+
+  0020               0027 first_dat equ 0x20 ; first location in data buffer 
+                     0028  
+                     0029           ; Bit definitions  
+                     0030           ; Status Register 
+  0000               0031 carry     equ 0 ; Carry Flag 
+  0005               0032 rp        equ 5 ; Register page select 
+                     0033  
+                     0034           ; port A 
+  0002               0035 barcode   equ 2 ; Barcode output 
+  0003               0036 DAC       equ 3 ; Data Acknowledge line for parallel i
+
+  0004               0037 DAV       equ 4 ; Data Valid line for parallel input 
+                     0038  
+                     0039           ; Outer loop delay counts  
+  0004               0040 narrow    equ 4 ; Narrow bar or space 
+  0008               0041 wide      equ 8 ; Wide bar 
+                     0042  
+                     0043           org 0 ; Reset enters here 
+0000 1683            0044 Reset     bsf status,rp ; Select tristate register 
+0001 3010            0045           movlw 0x10 ; DAV input, rest outputs 
+0002 0085            0046           movwf trisa ; Set up port A 
+0003 1283            0047           bcf status, rp ; Select ports 
+                     0048           ; Initialise output ports 
+MPASM 01.11 Released   BARCODE.ASM   1-4-1980  15:50:56                 PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0004 1105            0049           bcf porta,barcode ; Turn off output LED 
+0005 1585            0050           bsf porta,DAC ; Set acknowlege output 
+0006 2032            0051           call senddac ; Send DAC pulse to clear busy 
+
+                     0052           ; Main loop - read in barcode row and output
+
+0007 2029            0053 mainlp    call centin ; Read length byte 
+0008 390F            0054           andlw 0x0f ; High nybble is irrelevant 
+0009 3E01            0055           addlw 1 ; Low nybble + 1 is length 
+000A 008E            0056           movwf rdcnt ; Store as count of characters t
+
+000B 008F            0057           movwf wrcnt ; and as count of characters to 
+
+000C 3020            0058           movlw first_dat ; Pointer to first location 
+
+000D 0084            0059           movwf ind_adr ; Set indirect address to poin
+
+000E 2029            0060 rdlp      call centin ; Read next character from centr
+
+000F 0080            0061           movwf ind_data ; Store in buffer 
+0010 0A84            0062           incf ind_adr,F ; Increment address pointer 
+0011 0B8E            0063           decfsz rdcnt,F ; Decrement character counter
+
+0012 280E            0064           goto rdlp ; Round again if more characters t
+
+0013 3020            0065           movlw first_dat ; Reset pointer to start of 
+
+0014 0084            0066           movwf ind_adr 
+0015 2045            0067           call longdly ; Pause at start of line 
+0016 1505            0068           bsf porta,barcode ; Turn on output LED 
+0017 2045            0069           call longdly ; Wait for wand to settle 
+0018 203F            0070           call narbar ; Output row header (2 narrow ba
+
+0019 203F            0071           call narbar  
+001A 3008            0072 wrlp      movlw 8 ; 8 bits/character 
+001B 0090            0073           movwf bitcnt ; Initialize bit counter 
+001C 0D80            0074 bitlp     rlf ind_data,F ; Shift next bit into carry f
+
+001D 203D            0075           call bar ; Output the right type of bar 
+001E 0B90            0076           decfsz bitcnt,F ; Decrement bit counter 
+001F 281C            0077           goto bitlp ; Round again if more bits to sen
+
+0020 0A84            0078           incf ind_adr,F ; Point to next character in 
+
+0021 0B8F            0079           decfsz wrcnt,F ; Decrement output counter 
+0022 281A            0080           goto wrlp ; Round again if more characters t
+
+0023 1403            0081           bsf status,carry ; Send row trailler (wide b
+
+0024 203D            0082           call bar 
+0025 203F            0083           call narbar 
+0026 2045            0084           call longdly ; end of row pause 
+0027 1105            0085           bcf porta,barcode ; turn off output LED 
+0028 2807            0086           goto mainlp ; Round again for next row 
+MPASM 01.11 Released   BARCODE.ASM   1-4-1980  15:50:56                 PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                     0087  
+                     0088           ; Read a character from the Centronics (Para
+
+                     0089           ; Wait for a character to be received and ex
+
+                     0090           ; character in W 
+0029 0000            0091 centin    nop 
+002A 0000            0092           nop 
+002B 0000            0093           nop 
+002C 1E05            0094           btfss porta,DAV ; Is a character available ?
+
+002D 2829            0095           goto centin ; No, loop round again 
+002E 0000            0096           nop 
+002F 0000            0097           nop 
+0030 0000            0098           nop 
+0031 0806            0099           movf portb,W ; Yes, read in character 
+0032 0000            0100 senddac   nop 
+0033 0000            0101           nop 
+0034 0000            0102           nop 
+0035 1185            0103           bcf porta,DAC ; Start acknowledge pulse (and
+
+0036 0000            0104           nop ; A couple of microseconds delay 
+0037 0000            0105           nop 
+0038 1585            0106           bsf porta,DAC ; End acknowledge pulse 
+0039 0000            0107           nop 
+003A 0000            0108           nop 
+003B 0000            0109           nop 
+003C 0008            0110           return ; and exit 
+                     0111  
+                     0112           ; Generate a bar 
+                     0113           ; On entry, carry flag is 1 for wide bar, 0 
+
+003D 3008            0114 bar       movlw wide ; Get wide bar delay count 
+003E 1C03            0115           btfss status,carry ; If not carry (so narrow
+
+003F 3004            0116 narbar    movlw narrow ; Get narrow bar delay count 
+0040 1105            0117           bcf porta,barcode ; Turn off output LED 
+0041 204C            0118           call delay ; Wait for bar width 
+0042 1505            0119           bsf porta,barcode ; Turn LED on again 
+0043 3004            0120           movlw narrow ; Interbar delay  
+0044 284C            0121           goto delay; Wait for interbar delay time and
+
+                     0122  
+                     0123           ; A long delay time for the start and end of
+
+0045 0100            0124 longdly   clrw ; As many outer loops as possible 
+0046 204C            0125           call delay; Wait a bit 
+0047 0100            0126           clrw  
+0048 204C            0127           call delay 
+0049 0100            0128           clrw 
+004A 204C            0129           call delay 
+004B 0100            0130           clrw ; and fall into delay 
+                     0131  
+                     0132           ; Wait for a time set by W 
+MPASM 01.11 Released   BARCODE.ASM   1-4-1980  15:50:56                 PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+004C 008D            0133 delay     movwf outcnt ; Store outer loop count 
+004D 018C            0134 outlp     clrf  incnt ; Clear inner loop count (so it 
+
+004E 0B8C            0135 inlp      decfsz incnt,F ; Decrement inner loop count 
+
+004F 284E            0136           goto inlp ; Round inner loop again 
+0050 0B8D            0137           decfsz outcnt,F ; Decrement outer loop count
+
+0051 284D            0138           goto outlp ; Round outer loop again 
+0052 0008            0139           return ; At end of outer loop, exit  
+                     0140  
+                     0141           end 
+                     0142  
+                     0143  
+MPASM 01.11 Released   BARCODE.ASM   1-4-1980  15:50:56                 PAGE  5
+
+
+SYMBOL TABLE
+
+LABEL                            VALUE
+
+DAC                               0003 
+DAV                               0004 
+F                                 0001 
+Reset                             0000 
+W                                 0000 
+__16C84                           0001 
+bar                               003D 
+barcode                           0002 
+bitcnt                            0010 
+bitlp                             001C 
+carry                             0000 
+centin                            0029 
+delay                             004C 
+first_dat                         0020 
+incnt                             000C 
+ind_adr                           0004 
+ind_data                          0000 
+inlp                              004E 
+longdly                           0045 
+mainlp                            0007 
+narbar                            003F 
+narrow                            0004 
+outcnt                            000D 
+outlp                             004D 
+porta                             0005 
+portb                             0006 
+rdcnt                             000E 
+rdlp                              000E 
+rp                                0005 
+senddac                           0032 
+status                            0003 
+trisa                             0005 
+wide                              0008 
+wrcnt                             000F 
+wrlp                              001A 
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX XXX------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+
+Errors   :    0
+Warnings :    0
+Messages :    0
+
+

@@ -1,0 +1,37 @@
+.TH lifpack 1 13-October-2014 "LIF Utilities" "LIF Utilities"
+.SH NAME
+lifpack \- pack a lif image file
+.SH SYNOPSIS
+.B lifpack
+.I <LIF image file>
+.PP
+.B lifpack \-?
+.SH DESCRIPTION
+.B lifpack
+packs the directory and the file area on the LIF image file file
+.I Lif image file
+.SH OPTIONS
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
+.SH EXAMPLES
+If 
+.I disk1.lif
+is a LIF disk image file then
+.PP
+.B lifpack  disk1.lif
+.PP
+will pack the lif image file
+.I disk1.lif
+Note that the packed LIF image file will be truncated to the
+last sector that ist used by files
+.SH REFERENCES
+The LIF disk format is documented in the
+.I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
+with further details (particularly HP41 and HP75 file types) in the 
+.I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith)
+.SH AUTHOR
+.B lifpack
+was written by Joachim Siebold, bug400@gmx.de  using code from Tony Duell, 
+ard@p850ug1.demon.co.uk and has been placed under the GNU Public 
+License version 2.0

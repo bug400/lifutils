@@ -1,0 +1,108 @@
+<!-- Creator     : groff version 1.22.2 -->
+<!-- CreationDate: Mon Apr 13 20:02:02 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>barps</title>
+
+</head>
+<body>
+
+<h1 align="center">barps</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#REFERENCES">REFERENCES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">barps &minus;
+Print an HP41 barcode file on a postscript printer</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>barps</b>
+<i>[title]</i> <b>&lt;</b> <i>barcode_file</i> <b>&gt;</b>
+<i>postscript_file</i></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i><b>barps</b></i>
+is a filter to print HP41 barcode on a standard Postscript
+printer. The barcode file is read from standard input, and
+the (level 1) postscript file is written to standard output.
+The latter may be piped to <b>lpr</b> in order to directly
+print the barcode, or redirected to a file.</p>
+
+<p style="margin-left:11%; margin-top: 1em">If the optional
+argument is given to <b>barps</b> then it is used as the
+title for each page of printed output. Otherwise the title
+<b>HP41 Barcode</b> is used</p>
+
+<h2>REFERENCES
+<a name="REFERENCES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The format of
+the HP41 barcode file is given in <i>barcode(5)</i></p>
+
+<p style="margin-left:11%; margin-top: 1em">The Postscript
+language is described in <i>PostScript Language Reference
+Manual, Adobe Systems Inc.</i></p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If <i>data1</i>
+is an sdata file, and <i>postscript</i> is a postscript
+printer then</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>sdatabar
+&lt; data1 | barps &rsquo;Data File 1&rsquo; | lpr -P
+postscript</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will print that
+file on the postscript printer with the page title <i>Data
+File 1</i></p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i><b>barps</b></i>
+was written by Tony Duell, ard@p850ug1.demon.co.uk, and has
+been placed under the GNU Public License version 2.0</p>
+<hr>
+</body>
+</html>

@@ -1,0 +1,40 @@
+.TH raw41lif 1 24-March-2014 "LIF Utilitites" "LIF Utilities"
+.SH NAME
+raw41lif \- a filter to convert a HP41C program raw file to a LIF file
+.SH SYNOPSIS
+.B raw41lif
+.I <LIF filename>
+.B <
+.I Input file
+.B >
+.I Output file
+.PP
+.B raw41lif \-?
+.SH DESCRIPTION
+.B raw41lif
+is a filter which generates a LIF file from a HP41 raw file
+(FOCAL bytecode). The filter reads the byte code from standard
+input and writes the LIF file header, the bytecode and the
+checksum byte to standard output.
+.SH REFERENCES
+The format of an HP41C program is documented in many books. Amongst the 
+most useful references are
+.I Extend Your HP41 (W. A. C. Mier-Jedrzejowicz)
+and
+.I The HP41 Synthetic Programming Quick Reference Guide (Jeremy Smith)
+.SH EXAMPLES
+If
+.I zline.raw
+is a raw file containing an HP41 program then
+.PP
+.B cat zline.raw | raw41lif ZLINE \> zline.p41
+.PP 
+will generate a LIF file 
+.B zline.p41
+with the LIF filename
+.B ZLINE
+.SH AUTHOR
+.B raw41lif
+was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, 
+ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

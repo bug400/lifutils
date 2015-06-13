@@ -1,0 +1,137 @@
+Transferring programs between an HP41 and a PC using a serial interface
+----------------------------------------------------------------------
+
+This document describes how to use the HP82164 HPIL-RS232 interface to 
+connect an HP41 calculator (fitted with the HP82160 HPIL interface and 
+the Extended I/O module) to a Linux PC, and to transfer programs in both 
+directions between them.
+
+Throughout this document, the PC's serial port will be named /dev/cua0 . 
+Change this as appropriate, of course.
+
+Hardware connections : 
+----------------------
+Connect the HPIL side of the HP82164 to the HP41's IL module in the usual 
+way. 
+
+The jumper plug inside the HP82164 interface should be set to the DTE 
+position. See the interface's user manaul for more details of this.
+
+Connect the HP82164's RS232 port to the PC using a standard PC modem 
+cable and a special adapter. The latter is needed owing to the rather 
+strange hardware handshaking of the HP82164, and the following diagram 
+gives the necessary wiring : 
+
+   PC                         HP82164
+   (DB25-S)                   (DB25-S)
+
+Prot Gnd 1 )-------------------( 1 Prot Gnd
+ 
+ TxD     2 )-------------------( 3 RxD
+
+ RxD     3 )-------------------( 2 TxD
+
+ RTS     4 )-------------------( 5 CTS
+
+ CTS     5 )-------------------( 20 DTR
+
+ DSR     6 )--+----------------( 4 RTS
+              |
+ CD      8 )--+
+
+ Sig Gnd 7 )-------------------( 7 Sig Gnd
+
+ DTR    20 )----------------+--( 6 DSR
+                            |
+                            +--( 8 CD
+
+
+Configuring the interfaces
+---------------------------
+
+On the PC, turn off buffering and enable hardware handshaking by typing :
+
+stty raw crtscts </dev/cua0
+
+On the HP41, load the SETRS program and run it to set the HP82164 
+interface to hardware handshake mode and to make it the primary device. 
+A binary file of this program is given in hardware/setrs.p41 in the 
+lif_utils distribution, and is given as a listing below : 
+
+0001  LBL "SETRS"
+0002  66
+0003  FINDAID
+0004  SELECT
+0005  CF 17
+0006  REMOTE
+0007  "SL2"
+0008  OUTA
+0009  "LI5"
+0010  OUTA
+0011  "C0"
+0012  OUTA
+0013  NOTREM
+0014  END
+
+Transferring a program from the HP41 to the PC
+---------------------------------------------
+
+On the PC type : 
+---------
+
+inp41 < /dev/cua0 >program_file
+
+where program_file is the filename that you want the binary program 
+stored in. Alternatively you can pipe the output of inp41 to prog41 to get 
+a text listing by typing : 
+
+inp41 < /dev/cua0 | prog41
+
+
+On the HP41
+-----------
+Put the name of the program to send (or more exactly one of the global 
+labels in that program) in the alpha register.
+
+Then execute : OUTP
+
+When the program has transfered, the PC should display 
+
+checksum good
+
+and the program will be stored in the specified file
+
+
+Transferring a program from the PC to the HP41
+---------------------------------------------
+
+On the PC type :
+---------
+
+outp41 < program_file >/dev/cua0
+
+where program_file is the name of a file containing an HP41 program.
+
+The input to outp41 can be piped from lifget (for example) in the 
+standard way to transfer a file from a lif disk image. For example :
+
+lifget -f disk1 PROG | outp41 > /dev/cua0
+
+will transfer the file PROG from the lif disk image disk1.
+
+On the HP41 
+-----------
+
+GTO .. to pack program memory and create a dummy program at the END.
+
+then execute : INP
+
+When the program has transfered, the X-register display will return. CAT 
+1 to check that the program has loaded.
+
+
+----------------------------------------------
+A. R. Duell, 2-Oct-2000. 
+This file is part of the LIF Utilities distribution and has been placed
+under the GNU Public License version 2.0
+

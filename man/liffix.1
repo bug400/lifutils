@@ -1,0 +1,55 @@
+.TH liffix 1 13-October-2014 "LIF Utilities" "LIF Utilities"
+.SH NAME
+liffix \- fixes the medium size information of a lif image file
+.SH SYNOPSIS
+.B liffix
+\-m Mediumtype 
+.I <LIF image file> 
+.PP
+.B liffix \-?
+.SH DESCRIPTION
+.B liffix
+fixes the medium size information of the lif image file
+.I LIF image file
+that was not proper initialized due to bugs of the calculator firmware. 
+The medium size of the lif image file can be checked with the
+.I lifstat
+program.
+.SH OPTIONS
+.TP
+.I \-m
+This mandatory option specifies the medium type. The following medium types
+are supported:
+.TP
+cass:    Initializes a medium with the size of a HP82161A cassette
+.TP
+disk:    Initializes a medium with the size of a HP9114B double sided disk
+.TP
+hdrive1: Initializes a medium with the size of a 640 KB disk
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
+.SH EXAMPLES
+If 
+.I disk1.lif
+is a LIF disk image file with improper medium size information then
+.PP
+.B liffix -m disk disk1.lif 
+.PP
+will fix the medium size information of
+.I disk1.lif
+The header is fixed with the parameters of the HP9114B double sided disk
+medium.
+.TP
+Note: a check is performed if the content of the image file fits to the
+size of the medium.
+.SH REFERENCES
+The LIF disk format is documented in the
+.I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
+with further details (particularly HP41 and HP75 file types) in the 
+.I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith)
+.SH AUTHOR
+.B lifinit
+was written by Joachim Siebold, bug400@gmx.de  using code from Tony Duell, 
+ard@p850ug1.demon.co.uk and has been placed under the GNU Public 
+License version 2.0

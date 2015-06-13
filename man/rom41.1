@@ -1,0 +1,35 @@
+.TH rom41 1 29-Dec-2001 "LIF Utilities" "LIF Utilities"
+.SH NAME
+rom41 \- a filter to unscramble an Eramco ROM image
+.SH SYNOPSIS
+.B rom41 <
+.I rom_file
+.B > 
+.I output_file
+.SH DESCRIPTION
+The Eramco MLDL-OS ROM set can save HP41 ROM images to disk, and the 
+file format used has become a de facto standard for such images. It stores 4 
+10 bit HP41 words in 5 bytes of the file. A 4K ROM dump is thus stored in
+a 5120 byte file.
+.PP
+.B rom41
+unscrambles such an image, storing each HP41 10 bit word in 2 bytes of 
+the output file, and therefore a 4K image takes up 8192 bytes when 
+unscrambled. The resulting output file, although larger, is easier to 
+process with other programs.
+.SH EXAMPLES
+If 
+.I myrom.rom 
+is an HP41 rom image, produced by the Eramco MLDL-OS and stored in a 
+linux file, then
+.PP
+.B rom41 < myrom.rom > myrom.out
+.PP 
+will unscramble the image and store the result in 
+.I myrom.out
+.SH SEE ALSO
+.B rom41cat(1)
+.SH AUTHOR
+.B rom41
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

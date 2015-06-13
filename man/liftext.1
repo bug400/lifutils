@@ -1,0 +1,31 @@
+.TH liftext 1 11-June-2000 "LIF Utilities" "LIF Utilities"
+.SH NAME
+liftext \- a filter to translate an HP text file into a standard text file
+.SH SYNOPSIS
+.B liftext <
+.I Input file
+.B >
+.I Output file
+.SH DESCRIPTION
+.B liftext
+is a filter that reads an HP text file (also known as a LIF1 format file) 
+from standard input and writes the equivalent standard text file to 
+standard output. Each record of the HP text file is assumed to be one 
+line of the output file.
+.SH REFERENCES
+The HP text file format is documented in section 11.2.8.1 of the 
+.I HP71 Software Internal Design Specifications Volume 1 (Hewlett\-Packard)
+.SH EXAMPLES
+If 
+.I disk1.lif
+is a LIF disk image containing an HP text file called 
+.I TEXTA 
+then
+.PP
+.B lifget -f disk1.lif TEXTA | liftext
+.PP 
+will produce a listing of this file to standard output.
+.SH AUTHOR
+.B liftext
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

@@ -1,0 +1,46 @@
+.TH lifrename 1 11-June-2000 "LIF Utilities" "LIF Utilities"
+.SH NAME
+lifrename \- extract a file from a LIF image file
+.SH SYNOPSIS
+.B lifrename 
+[\-d] [\-b]
+.I <image file> <old filename> <new filename>
+.PP
+.B lifrename \-?
+.SH DESCRIPTION
+.B lifrename
+renames single file, specified by 
+.I old filename
+to
+.I new filename.
+.I old filename
+and
+.I new filename
+are case\-sensitive and should normally be given in upper case.
+.SH OPTIONS
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
+.SH EXAMPLES
+If 
+.I disk1.lif
+is a LIF disk image containing a file called 
+.I TEST1
+then 
+.PP
+.B lifrename disk1.lif TEST1 TEST2
+.PP
+will rename the file 
+.I TEST1 
+on the LIF disk image 
+.I TEST2.
+.SH REFERENCES
+The LIF disk directory format is documented in the
+.I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
+with further details (particularly HP41 and HP75 file types) in the 
+.I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith)
+.SH AUTHOR
+.B lifrename
+was written by Joachim Siebold <bug400@gmx.de> using code from  by Tony Duell, 
+ard@p850ug1.demon.co.uk and has been placed under the GNU Public License 
+version 2.0

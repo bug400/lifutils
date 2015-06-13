@@ -1,0 +1,38 @@
+.TH wcat41 1 23-December-2000 "LIF Utilities" "LIF Utilities"
+.SH NAME
+wcat41 \- a filter to list the contents of an HP41 Write All file
+.SH SYNOPSIS
+.B wcat41 <
+.I wall_file
+.SH DESCRIPTION
+.B wcat41
+is a filter which reads an HP41 Write All file from standard input. It 
+then writes to standard output the following information : 
+.PP 
+The SIZE (number of user data registers) and the location of the first
+statistical register.
+.PP
+The number of KARs (Key Assignment Registers) found.
+.PP
+The ID and size of any buffers.
+.PP 
+Global labels (and ENDs) of user programs, in a format similar to
+.I CAT 1
+on the HP41.
+.SH REFERENCES
+The format of an HP41 Write All file is not well documented. However it 
+is simply a dump of all the HP41 user memory (excluding extended memory) 
+in the logical order. The data stored in HP41 User Memory is documented 
+in most books on synthetic programming, for example the  Synthetic 
+Programming Quick Reference Guide by J. Smith.
+.SH EXAMPLES
+To get a catalogue of an HP41 Write All file called 
+.I all1.w41 ,
+type : 
+.B wcat41 < all1.w41
+.SH SEE ALSO
+.B wall41(1)
+.SH AUTHOR
+.B wcat41
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

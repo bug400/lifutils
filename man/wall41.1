@@ -1,0 +1,103 @@
+.TH wall41 1 23-December-2000 "LIF Utilities" "LIF Utilities"
+.SH NAME
+wall41 \- a program to extract information from an HP41 Write All file
+.SH SYNOPSIS
+.B wall41
+[\-k [
+.I key_file
+] ] [\-b
+.I buff#
+[
+.I buffer_file
+] ] [\-r [
+.I register_file
+] ] [\-s [
+status_file
+] ] [\-p
+.I program_name
+] < 
+.I writeall_file
+.PP
+.B wall41
+\-?
+.SH DESCRIPTION
+An HP41 Write All file is a dump of the entire contents of user memory, 
+including user data, user programs, buffers, key assignments and the 
+status registers.
+.B wall41
+reads a Write All file from standard input and extracts one or more of 
+these sections from it. The extracted data is written either to standard 
+output or to the specified file. In turn this information can be decoded 
+by other filters in the LIF Utilities package.
+.SH OPTIONS
+.TP
+.I \-k [key_file]
+Extract the KARs (Key Assignment Registers) in a format suitable for 
+decoding with 
+.B key41.
+If an output file is not given, the data is written to standard output 
+and can be piped directly in to
+.B key41
+.TP 
+.I \-b buff# [buffer_file]
+Extract the contents of the buffer area with id
+.I buff#.
+If 
+.I buffer_file
+is not specified, the data is written to standard output.
+.TP
+.I \-r [register_file]
+Extract the user data registers as an 
+.B sdata file.
+If no output file is specified, write the data to standard output, 
+suitable for piping to the 
+.B sdata
+program.
+.TP 
+.I \-s [status_file]
+Extract the status information (user stack, alpha register, user flags) 
+to the specified file, or, if no file is given, to standard output. The 
+program
+.B stat41
+can be used to decode this information.
+.TP
+.I \-p program_name
+Extract the user programs to files called
+.I program_name.001, program_name.002
+and so on. The 
+.I program_name
+must be specified, this option cannot write data to standard output.
+.TP
+.I \-?
+Print a message giving program usage to standard error and exit.
+.SH REFERENCES
+The format of the HP41 Write All file is undocumented, but as it is simply
+a dump of all user memory registers in the logical order, most books on
+synthetic programming which contain the format of HP41 user memory are a
+good reference on the data contained in a Write All file. Information of
+the format of Key Assignment Registers, HP41 user programs, data
+registers, etc can be found in the same books. 
+.PP 
+Two useful references are :
+.I Extend Your HP41 (W. A. C. Mier-Jedrzejowicz)
+and
+.I The HP41 Synthetic Programming Quick Reference Guide (Jeremy Smith)
+.SH EXAMPLES
+If 
+.I all1.w41
+is an HP41 write-all file, then
+.PP
+.B wall41 -k < all1.w41 | key41
+.PP
+will display the key assignments to standard output. Similarly
+.PP
+.B wall41 -p program <all1.w41
+.PP
+will extract user programs to files called
+.I program.001, program.002, ...
+.SH SEE ALSO
+.B wcat41(1), prog41(1), key41(1), sdata(1), stat41(1), regs41(1)
+.SH AUTHOR
+.B wall41
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

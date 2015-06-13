@@ -1,0 +1,111 @@
+<!-- Creator     : groff version 1.22.2 -->
+<!-- CreationDate: Mon Apr 13 20:02:02 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>barprt</title>
+
+</head>
+<body>
+
+<h1 align="center">barprt</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#REFERENCES">REFERENCES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">barprt &minus;
+Display an HP41 barcode file (diagnostic)</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>barprt</b>
+<i>&lt; barcode_file</i></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i><b>barprt</b></i>
+is a filter which reads an HP41 barcode file from standard
+input. For each logical record in the barcode file, the
+following is printed to standard output : <br>
+The number of bytes in that row of barcode <br>
+The values of those bytes in hexadecimal <br>
+The values of those bytes in decimal</p>
+
+<p style="margin-left:11%; margin-top: 1em">Standard output
+can, of course be redirected in the normal way if it is
+desired to pipe the output of <b>barprt</b> to another
+program or store it in a file.</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>barprt</b>
+is intended as a diagnostic program for debugging barcode
+creation and printing programs. It can be used to ensure
+that the output of a barcode creation program is as
+expected. A barcode printing program can be tested by using
+it to print a barcode file and then comparing the output of
+<b>barprt</b> applied to that file with the result of using
+the HP41 command <b>WNDSCN</b> to read the corresponding row
+of printed barcode.</p>
+
+<h2>REFERENCES
+<a name="REFERENCES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">See
+<i>barcode(5)</i> for details of the barcode file format</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If <i>bar1</i>
+is an HP41 barcode file then the command</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>barprt &lt;
+bar1</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will display
+the contents of that file in human-readable form on the
+user&rsquo;s terminal</p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>barprt</b>
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has
+been placed under the GNU Public License version 2.0</p>
+<hr>
+</body>
+</html>

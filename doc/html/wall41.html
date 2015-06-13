@@ -1,0 +1,196 @@
+<!-- Creator     : groff version 1.22.2 -->
+<!-- CreationDate: Mon Apr 13 20:02:05 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>wall41</title>
+
+</head>
+<body>
+
+<h1 align="center">wall41</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#REFERENCES">REFERENCES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">wall41 &minus;
+a program to extract information from an HP41 Write All
+file</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>wall41</b>
+[&minus;k [ <i>key_file</i> ] ] [&minus;b <i>buff#</i> [
+<i>buffer_file</i> ] ] [&minus;r [ <i>register_file</i> ] ]
+[&minus;s [ status_file ] ] [&minus;p <i>program_name</i> ]
+&lt; <i>writeall_file</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>wall41</b>
+&minus;?</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">An HP41 Write
+All file is a dump of the entire contents of user memory,
+including user data, user programs, buffers, key assignments
+and the status registers. <b>wall41</b> reads a Write All
+file from standard input and extracts one or more of these
+sections from it. The extracted data is written either to
+standard output or to the specified file. In turn this
+information can be decoded by other filters in the LIF
+Utilities package.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><i>&minus;k
+[key_file]</i></p>
+
+<p style="margin-left:22%;">Extract the KARs (Key
+Assignment Registers) in a format suitable for decoding with
+<b>key41.</b> If an output file is not given, the data is
+written to standard output and can be piped directly in to
+<b>key41</b></p>
+
+<p style="margin-left:11%;"><i>&minus;b buff#
+[buffer_file]</i></p>
+
+<p style="margin-left:22%;">Extract the contents of the
+buffer area with id <i>buff#.</i> If <i>buffer_file</i> is
+not specified, the data is written to standard output.</p>
+
+<p style="margin-left:11%;"><i>&minus;r
+[register_file]</i></p>
+
+<p style="margin-left:22%;">Extract the user data registers
+as an <b>sdata file.</b> If no output file is specified,
+write the data to standard output, suitable for piping to
+the <b>sdata</b> program.</p>
+
+<p style="margin-left:11%;"><i>&minus;s
+[status_file]</i></p>
+
+<p style="margin-left:22%;">Extract the status information
+(user stack, alpha register, user flags) to the specified
+file, or, if no file is given, to standard output. The
+program <b>stat41</b> can be used to decode this
+information.</p>
+
+<p style="margin-left:11%;"><i>&minus;p
+program_name</i></p>
+
+<p style="margin-left:22%;">Extract the user programs to
+files called <i>program_name.001, program_name.002</i> and
+so on. The <i>program_name</i> must be specified, this
+option cannot write data to standard output.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>&minus;?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Print a message giving program usage to standard error
+and exit.</p></td></tr>
+</table>
+
+<h2>REFERENCES
+<a name="REFERENCES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The format of
+the HP41 Write All file is undocumented, but as it is simply
+a dump of all user memory registers in the logical order,
+most books on synthetic programming which contain the format
+of HP41 user memory are a good reference on the data
+contained in a Write All file. Information of the format of
+Key Assignment Registers, HP41 user programs, data
+registers, etc can be found in the same books.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Two useful
+references are : <i>Extend Your HP41 (W. A. C.
+Mier-Jedrzejowicz)</i> and <i>The HP41 Synthetic Programming
+Quick Reference Guide (Jeremy Smith)</i></p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If
+<i>all1.w41</i> is an HP41 write-all file, then</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>wall41 -k
+&lt; all1.w41 | key41</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will display
+the key assignments to standard output. Similarly</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>wall41 -p
+program &lt;all1.w41</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will extract
+user programs to files called <i>program.001, program.002,
+...</i></p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i><b>wcat41(1),
+prog41(1), key41(1), sdata(1), stat41(1),
+regs41(1)</b></i></p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i><b>wall41</b></i>
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has
+been placed under the GNU Public License version 2.0</p>
+<hr>
+</body>
+</html>

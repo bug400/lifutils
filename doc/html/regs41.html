@@ -1,0 +1,110 @@
+<!-- Creator     : groff version 1.22.2 -->
+<!-- CreationDate: Mon Apr 13 20:02:04 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>regs41</title>
+
+</head>
+<body>
+
+<h1 align="center">regs41</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#REFERENCES">REFERENCES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">regs41 &minus;
+a filter to display an HP41 file as
+&rsquo;registers&rsquo;</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>regs41
+&lt;</b> <i>Input file</i> <b>&gt;</b> <i>Output
+file</i></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The memory of
+an HP41 calculator is divided into 14 nybble (7 byte)
+registers. Many HP41 mass&minus;storage files use an 8 byte
+record to store each register, with the nybbles in a
+scrambled order</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>regs41</b>
+undoes this scrambling and displays the 7 bytes of each
+register in hexadecimal, one register to each line of
+output. It is primarily designed as a tool for analysing
+unknown HP41 files. The HP41 data is read from standard
+input, and the hexadecimal dump of the registers is written
+to standard output.</p>
+
+<h2>REFERENCES
+<a name="REFERENCES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The
+<i>sdata</i> manpage gives references to the format of the
+sdata file, which is the most common HP41 file made up of
+registers. The nybble scrambling is the same for all such
+files. <i>Extend Your HP41 (W. A. C.
+Mier&minus;Jedrzejowicz)</i> contains a considerable amount
+of information as to how the HP41 packs data into
+registers</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If
+<i>disk1.lif</i> is a LIF disk image containing some unknown
+type of HP41 data file called <i>ST41</i> then</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifget
+&minus;f disk1.lif ST41 | regs41</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will display
+the data in that file as HP41 registers and will hopefully
+assist in understanding the format of the file</p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>regs41</b>
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has
+been placed under the GNU Public License version 2.0</p>
+<hr>
+</body>
+</html>

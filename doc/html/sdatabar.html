@@ -1,0 +1,168 @@
+<!-- Creator     : groff version 1.22.2 -->
+<!-- CreationDate: Mon Apr 13 20:02:04 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>sdatabar</title>
+
+</head>
+<body>
+
+<h1 align="center">sdatabar</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#REFERENCES">REFERENCES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#BUGS">BUGS</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">sdatabar
+&minus; Convert an SDATA file into HP41 barcode</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>sdatabar</b>
+[-e] <b>&lt;</b> <i>input_file</i> <b>&gt;</b>
+<i>barcode_file</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>sdatabar
+-?</b></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>sdatabar</b>
+is a program that reads an SDATA file from standard input
+and writes the corresponding HP41 barcode file to standard
+output. Records in the SDATA file containing numeric data
+are turned into type 6 barcode rows, while those containing
+alpha data are turned into type 7 rows. Other SDATA records
+cannot be represented by HP41 barcode, and are skipped,
+giving a suitable error message.</p>
+
+<p style="margin-left:11%; margin-top: 1em">The output of
+<b>sdatabar</b> can be piped to a suitable barcode printing
+program such as <b>barps</b></p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><b><i>&minus;e</i></b></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">HP82153 barcode wands with the
+version 1E ROM have a bug which means they cannot read
+numeric data barcode rows containing 10 or more data bytes.
+Unfortunately, some HP41 real numbers require 10 bytes to
+represent them in barcode format. If the <i>&minus;e</i>
+option is given to sdatabar, the program attempts to reduce
+the length of the barcode by omitting the decimal point and
+adjusting the exponent to compensate. This is not always
+possible, in which case, a suitable message is written to
+standard error, and the last mantissa digit is omitted from
+the barcode.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>&minus;?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Print a message giving usage to standard error and
+exit</p> </td></tr>
+</table>
+
+<h2>REFERENCES
+<a name="REFERENCES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The format of
+HP41 barcode is given in the book <i>Creating your own HP41
+Barcode (Hewlett&minus;Packard)</i></p>
+
+<p style="margin-left:11%; margin-top: 1em">The format of
+the barcode file written by sdatabar is given in
+<i>barcode(5)</i></p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If <i>data1</i>
+is an sdata file, and <i>postscript</i> is a postscript
+printer then</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>sdatabar
+&lt; data1 | barps &rsquo;Data File 1&rsquo; | lpr -P
+postscript</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will print that
+file on the postscript printer.</p>
+
+<h2>BUGS
+<a name="BUGS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The HP82153
+wand can&rsquo;t accept data other than standard numeric or
+alpha data, so some sdata files cannot be translated
+correctly. Version 1E wands cannot read some numeric data
+barcode, as described above.</p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>sdatabar</b>
+was written by Tony Duell, ard@p850ug1.demon.co.uk, and has
+been placed under the GNU Public License version 2.0</p>
+<hr>
+</body>
+</html>

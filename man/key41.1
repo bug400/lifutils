@@ -1,0 +1,92 @@
+.TH key41 1 2-Oct-2000 "LIF Utilitites" "LIF Utilities"
+.SH NAME
+key41 \- a filter to list an HP41C key assignment file
+.SH SYNOPSIS
+.B key41
+[\-h] [\-x
+.I xrom_file
+] [\-x
+.I xrom_file
+] ...
+.B <
+.I Input file
+.B >
+.I Output file
+.PP
+.B key41 \-?
+.SH DESCRIPTION
+.B key41
+is a filter which produces a listing of an HP41C key assignment file. The
+key definitions are read from standard input, and a human-readable listing
+is produced on standard output. 
+.PP 
+In general, assignments are displayed based on how they behave when 
+stored in the HP41 program memory (and to a lesser extent when they are 
+executed in RUN mode), rather than how they are previewed on the HP41 
+display. 
+.PP
+By default, functions contained in plug-in modules are displayed as 
+.I XROM rr,nn
+where 
+.I rr
+is the number of the plug-in ROM and 
+.I nn
+is the number of the function within that ROM. This can be overridden by 
+loading 
+.I xrom_files,
+see the 
+.I \-x
+option below.
+.SH OPTIONS
+.TP
+.I \-h
+Display the bytes (in hexadecimal) that comprise the key definition, 
+rather than attempting to decode it.
+.TP
+.I \-x xrom_file
+Use
+.I xrom_file
+to define names for functions in plug-in modules. This option may be 
+repeated to load multiple
+.I xrom_files.
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
+.SH FILES
+.TP
+.I xroms/*
+xrom function definition files. The format of these files is given in the
+prog41(1) manpage. Use  the  environment  variable
+LIFUTILSXROMDIR  to point to the localtion of this directory. On
+Linux the default localtion is /usr/share/lifutuls/xroms, if the
+variable is not specified.
+.SH REFERENCES
+The format of an HP41C key assignment register is documented in many books. 
+Amongst the most useful references are
+.I Extend Your HP41 (W. A. C. Mier-Jedrzejowicz)
+and
+.I The HP41 Synthetic Programming Quick Reference Guide (Jeremy Smith)
+.SH EXAMPLES
+If
+.I disk1.lif
+is a LIF disk image containing an HP41 key assignment file called
+.I KEYS
+then
+.PP
+.B lifget \-f disk1.lif KEYS | key41 \-x hpil  \-x time 
+.PP 
+will produce a listing of the keys to standard output, with the 
+standard names for the functions in the HPIL module and time module.
+.SH BUGS
+Some of the more exotic synthetic assignments may not be displayed 
+correctly, although an attempt has been made to handle synthetic programming. 
+The common synthetic assignments, such as 2-byte standard functions, byte 
+grabbers and 
+.I eG0BEEP
+should be correctly displayed. If in doubt, use the 
+.I \-h
+option to display the assignments in hexadecimal.
+.SH AUTHOR
+.B key41
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

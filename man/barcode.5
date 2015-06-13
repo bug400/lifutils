@@ -1,0 +1,31 @@
+.TH barcode 5 30-June-2001 "LIF Utilities" "LIF Utilities"
+.SH NAME
+barcode \- HP41 barcode file format
+.SH DESCRIPTION
+The HP41 barcode file format was designed to provide a device-independent 
+interface between programs that create HP41 barcode and programs that 
+print it. Generally, the former will write a barcode file to standard 
+output which can be piped to the standard input of the latter.
+.PP
+The file consists of a number of logical records, each corresponding to 
+one line of HP41 barcode. Each record consists of : 
+.TP
+Length \- 1 byte. The low nybble of this byte + 1 is the number of data 
+bytes following, and therefore the number of bytes in that row of 
+barcode. The high nybble is to be ignored by barcode printing programs.
+.TP
+Data \- n bytes. The remaining bytes of the record specify the bytes of 
+the HP41 barcode, in left-to-right order.
+.PP
+Note that the header and trailer bars are not stored in the barcode file, 
+and must be added by the barcode printing program.
+.PP
+The files hardware/barcode* in the LIF Utilities distribution describe an
+interface between a parallel printer port and the HP41 wand hybrid. This
+interface accepts a barcode file (in the format described here) on its
+parallel input and sends it to the wand hybrid as if the wand had been
+scanned over that file printed as physical barcode. 
+.SH AUTHOR
+The 
+.B barcode
+file format was designed by Tony Duell, ard@p850ug1.demon.co.uk.

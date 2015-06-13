@@ -1,0 +1,106 @@
+<!-- Creator     : groff version 1.22.2 -->
+<!-- CreationDate: Mon Apr 13 20:02:04 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>raw41lif</title>
+
+</head>
+<body>
+
+<h1 align="center">raw41lif</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#REFERENCES">REFERENCES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">raw41lif
+&minus; a filter to convert a HP41C program raw file to a
+LIF file</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>raw41lif</b>
+<i>&lt;LIF filename&gt;</i> <b>&lt;</b> <i>Input file</i>
+<b>&gt;</b> <i>Output file</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>raw41lif
+&minus;?</b></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>raw41lif</b>
+is a filter which generates a LIF file from a HP41 raw file
+(FOCAL bytecode). The filter reads the byte code from
+standard input and writes the LIF file header, the bytecode
+and the checksum byte to standard output.</p>
+
+<h2>REFERENCES
+<a name="REFERENCES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The format of
+an HP41C program is documented in many books. Amongst the
+most useful references are <i>Extend Your HP41 (W. A. C.
+Mier-Jedrzejowicz)</i> and <i>The HP41 Synthetic Programming
+Quick Reference Guide (Jeremy Smith)</i></p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If
+<i>zline.raw</i> is a raw file containing an HP41 program
+then</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>cat
+zline.raw | raw41lif ZLINE &gt; zline.p41</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will generate a
+LIF file <b>zline.p41</b> with the LIF filename
+<b>ZLINE</b></p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>raw41lif</b>
+was written by Joachim Siebold, bug400@gmx.de using code
+from Tony Duell, ard@p850ug1.demon.co.uk and has been placed
+under the GNU Public License version 2.0</p>
+<hr>
+</body>
+</html>

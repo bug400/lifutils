@@ -1,0 +1,41 @@
+.TH lifimage 1 11-June-2000 "LIF Utilities" "LIF Utilities"
+.SH NAME
+lifimage \- make an image of an HP LIF disk
+.SH SYNOPSIS
+.B lifimage
+.I <input device> <output file>
+.PP
+.B lifimage
+.I <input device>
+.PP
+(Writes output to standard output)
+.SH DESCRIPTION
+.B lifimage
+reads an HP LIF format 3.5 inch floppy disk and produces an image file. 
+This file can be processed by other 
+.I LIF utilities
+or written back to a physical disk using
+.B lifdump
+If 
+.B lifimage
+is executed with 2 arguments, then the second argument is used as the 
+filename of the image file. If it is executed with one argument then the 
+file is written to standard output.
+.PP
+See comments in the source code for details of the image file format.
+.SH EXAMPLES
+If device
+.I /dev/fd1
+contains an HP LIF disk then
+.PP
+.B lifimage /dev/fd1 disk1.lif
+.PP
+will make an image of that disk in the file 
+.I disk1.lif
+.SH BUGS
+No attempt has been made to handle bad track replacements. The first 77 
+cylinders only of the disk are read.
+.SH AUTHOR
+.B lifimage
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

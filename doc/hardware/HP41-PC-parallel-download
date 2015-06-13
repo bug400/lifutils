@@ -1,0 +1,60 @@
+Downloading programs from a PC to an HP41 using a parallel interface
+--------------------------------------------------------------------
+
+This document describes how to use the HP82165 HPIL-GPIO interface to 
+connect an HP41 calculator (fitted with the HP82160 HPIL interface and 
+the Extended I/O module) to a Linux PC, and to download programs from the 
+PC to the HP41
+
+Throughout this document, the PC's parallel port will be named /dev/lp0 . 
+Change this as appropriate, of course.
+
+Hardware connections : 
+----------------------
+Connect the HPIL side of the HP82165 to the HP41's IL module in the usual 
+way. 
+
+Connect the HP82165's GPIO port to the PC using a standard PC printer 
+cable and a special interface circuit. A schematic for the latter is 
+given in the file hardware/Centronics-to-GPIO in the LIF utilities 
+distribution
+
+
+
+Transferring a program from the PC to the HP41
+---------------------------------------------
+
+Unlike the serial interface, there is no need to configure either the 
+PC's parallel port or the GPIO interface. The default configurations are 
+what is required.
+
+On the PC type :
+---------
+
+outp41 < program_file >/dev/lp0
+
+where program_file is the name of a file containing an HP41 program.
+
+The input to outp41 can be piped from lifget (for example) in the 
+standard way to transfer a file from a lif disk image. For example :
+
+lifget -f disk1 PROG | outp41 > /dev/lp0
+
+will transfer the file PROG from the lif disk image disk1.
+
+On the HP41 
+-----------
+
+GTO .. to pack program memory and create a dummy program at the END.
+
+then execute : INP
+
+When the program has transfered, the X-register display will return. CAT 
+1 to check that the program has loaded.
+
+
+----------------------------------------------
+A. R. Duell, 11-Jan-2001
+This file is part of the LIF Utilities distribution and has been placed
+under the GNU Public License version 2.0
+

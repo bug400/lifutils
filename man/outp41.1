@@ -1,0 +1,32 @@
+.TH outp41 1 2-Oct-2000 "LIF Utilities" "LIF Utilities"
+.SH NAME
+outp41 \- a filter to produce an HP41 hexadecimal program
+.SH SYNOPSIS
+.B outp41 <
+.I input_file
+.B >
+.I output_device_or_file
+.SH DESCRIPTION
+The HP41C Extended I/O Module contains 2 commands,
+.I INP
+and
+.I OUTP
+which translate HP41 programs (stored in the calculator's program memory) 
+into a hexadecimal byte stream for transmission to other computers. 
+.PP
+.B outp41
+reads an HP41 binary program from standard input and writes the 
+hexadecimal byte stream to standard output (which may be 
+redirected to, for example, a serial port connected to the HP41 via an 
+HP82164 RS232 interface).
+.SH FILES
+.I hardware/*
+: Information on linking the HP41 to a PC.
+.SH REFERENCES
+The format of this hexadecimal stream is essentially undocumented and was 
+discovered by experiment. The format is given in the comments at the 
+start of the source file outp41.c
+.SH AUTHOR
+.B outp41
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

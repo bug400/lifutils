@@ -1,0 +1,46 @@
+.TH lifdump 1 11-June-2000 "LIF Utilities" "LIF Utilities"
+.SH NAME
+lifdump \- dump a LIF disk image to a physical LIF disk
+.SH SYNOPSIS
+.B lifdump
+.I <input file> <output device>
+.PP
+.B lifdump
+.I <output device>
+.PP
+(Reads input from standard input)
+.SH DESCRIPTION
+.B lifdump
+reads a LIF disk image file, as produced by 
+.B lifimage
+and writes it to a pre-formatted LIF disk. The original contents of the 
+disk (and the directory) are overwritten by this command and are thus 
+lost. If 
+.B lifdump
+is executed with 2 arguments, then the contents of the file named by the 
+first argument are written to the device specified by the second 
+argument. If it is executed with one argument, then the standard input 
+stream is written to the device specified by that argument.
+.PP
+The disk must have already been formatted as an HP LIF disk, for example 
+using a series 40 or series 70 machine and an HP9114 disk drive.
+.PP
+See comments in the 
+.B lifimage
+source code for details of the image file format.
+.SH EXAMPLES
+If the file
+.I disk1.lif
+contains a LIF disk image then
+.PP
+.B lifdump disk1.lif /dev/fd1
+.PP
+will dump that file to a preformatted disk in device
+.I /dev/fd1
+.SH BUGS
+No attempt has been made to handle bad track replacements. The image is 
+always written to the first 77 cylinders of the disk.
+.SH AUTHOR
+.B lifdump
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

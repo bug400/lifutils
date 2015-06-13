@@ -1,0 +1,42 @@
+.TH lifrmhdr 1 11-June-2000 "LIF Utilities" "LIF Utilities"
+.SH NAME
+lifrmhdr \- a filter to remove Anadisk\-style headers from a LIF image
+.SH SYNOPSIS
+.B lifrmhdr <
+.I Input file
+.B >
+.I Output file
+.SH DESCRIPTION
+.B lifrmhdr
+is a filter which removes the 8\-byte headers used by the MS-DOS 
+shareware program
+.I Anadisk
+and returns a raw disk image that can be written to a physical disk using
+.B lifdump
+or processed by other
+.I LIF Utilities
+.PP 
+The disk image is read from standard input and the raw image is written 
+to standard output.
+.PP
+See the 
+.B lifaddhdr
+source code for details of the header format
+.SH REFERENCES
+The sector header format is also documented in the
+.I Anadisk
+documentation produced by
+.I Sydex
+.SH BUGS
+This programs has only been tested against
+.B lifaddhdr
+since I have no way to run 
+.I Anadisk.
+No attempt has been made to handle bad track replacements in the LIF disk
+image, and the input image must contain all the sectors for the first 77
+cylinders only.
+.SH AUTHOR
+.B lifrmhdr
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0
+

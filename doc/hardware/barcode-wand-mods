@@ -1,0 +1,89 @@
+Modifying the HP81253 Barcode wand for use with the barcode interface
+---------------------------------------------------------------------
+
+Cable from interface to wand optoisolator
+
+          390R
++5V 3 o---\/\/--------------Red------------o A
+
+LED 1 o---------------------Blue-----------o B
+                                       2 pole 1mm
+Gnd 2 o----(Cable screen)                 plug
+
+   3 pin DIN plug
+   (from interface)
+
+
+------------------------------------------------------------------------------
+Wand modification schematic
+
+                                                           82153-60001 
+                                                           Hybrid
+ ----------------------                                     --------
+ |     Wand         V+ |----Red----------------------------|        |
+ |                     |                                   |        |---> 
+ |                 Out |----White-------+------------------|        |  HP41
+ |                     |                |                  |        |  Bus
+ |                 Gnd |----Black-------)------+-----------|        |--->
+  ---------------------                 |      |           |        |
+                                        |      |            --------
+                                        |      |
+                                        |      | 
+Wand optoisolator                       |      |
+                               +--------+      |
+A )-------------------+       /                |
+                      |     |/                 | 
+B )-------------+     V --> |                  |
+2 pole 1mm      |    ---    |\>                |
+socket          |     |       \                |
+                +-----+        +---------------+
+                        4N25 
+                     Optoisolator
+
+-----------------------------------------------------------------------
+
+Modifying the wand 
+------------------
+Make the cable from the interface to the wand as shown above. The 390R 
+(Ohm) resistor can be fitted inside the DIN plug body. Ensure that the 
+resistor leads do not short to the (earthed) casing of the DIN plug. Use 
+2 core screened cable.
+
+Crack open the HP41 module on the end of the wand cable. Inside is an 
+82153-60001 hybrid circuit (contains the Wand interface chip and HP41 
+ROM). The wand is connected to the hybrid by 3 wires :
+
+Red (+6V power to wand)
+White (Signal from wand to HP41, low == wand on and over reflective 
+       surface, high otherwise)
+Black (ground)
+
+Note which way up the hybrid is in the module and remove the parts from 
+the plastic case. Take anti-static precautions (the hybrid is CMOS 
+circuitry).
+
+Wire up the 4N25 (or similar) optoisolator as follows : 
+Cut off pins 3 (not used) and 6 (base).
+Take a 2*2 hole piece of 0.1" stripboard. Place it over pins 1 and 2 
+(LED). Trim off pins close to stripboard surface and solder. Solder a 
+piece of 2 wire ribbon cable (about 4" long) to the stripboard tracks. 
+Keep everthing as thin as possible. Solder other end of ribbon cable to 2 
+pole 1mm socket (observe polarity as in diagram above). 
+
+Bend pins 4 (emitter) and 5 (collector) so that they will connect to the 
+pads on the hybrid carrying the black and white wires respectively. 
+Solder the optoisolator to the hybrid (on the 'component side' of the 
+hybrid).
+
+Reassemble the wand module. File a small notch in the case to allow the 
+ribbon cable to exit. It may be necessary to cut away a rib inside the 
+case to allow the case to close over the optoisolator.
+
+Test the wand (reading barcode). It should function normally. Test the 
+wand modification by connecting it to the interface and downloading data 
+from the PC.
+
+-------------------------------------
+A. R. Duell, 21-June-2001
+This file is part of the LIF Utilities distribution and has been placed 
+under the GNU Public License version 2.0

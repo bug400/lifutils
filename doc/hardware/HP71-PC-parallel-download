@@ -1,0 +1,79 @@
+Downloading files from a PC to an HP71 using a parallel interface
+-----------------------------------------------------------------
+
+This document describes how to use the HP82165 HPIL-GPIO interface to
+connect an HP71B calculator (fitted with the HPIL interface module) to a
+Linux PC, and to download files from the PC to the HP71B
+
+Throughout this document, the PC's serial port will be named /dev/lp0 . 
+Change this as appropriate, of course.
+
+Hardware connections : 
+----------------------
+Connect the HPIL side of the HP82165 to the HP71's IL module in the usual 
+way. 
+
+Connect the HP82165's GPIO port to the PC using a standard PC printer 
+cable and a special interface circuit. A schematic of the latter is given 
+in the file hardware/Centronics-to-GPIO in the LIF utilities distribution
+
+
+Transferring a file from the PC to the HP71
+------------------------------------------
+
+Unlike the serial interface there is no need to configure either the PC's 
+parallel port or the GPIO interface. The default configurations are what 
+is needed.
+
+On the PC type :
+---------
+
+out71 filetype < filename >/dev/lp0
+
+where filetype is the type of file to be created on the HP71 (for example
+TEXT or BASIC71) and filename is the name of a file containing the data to
+send. 
+
+The input to out71 can be piped from lifget (for example) in the 
+standard way to transfer a file from a lif disk image. For example :
+
+lifget -f disk1 TEXT1 | out71 TEXT > /dev/lp0
+
+will transfer the file TEXT1 from the lif disk image disk1 to a text file 
+on the HP71. Note that no translation is performed, so the input file 
+must contain valid data for the HP71 file type being created.
+
+On the HP71 
+-----------
+
+COPY :GPIO TO filename
+
+where filename is the name of the file to create on the HP71.
+
+Some HP71 files may be an odd number of nybbles long. The out71 program 
+always creates a file containing an integer number of bytes (an even 
+number of nybbles). This may cause problems with listing an HP71 BASIC 
+program that has been transfered, the machine may hang when displaying 
+the last line. INIT 1 will normally recover from this. 
+
+Should this occur, purge the file on the HP71, and send it again, giving the
+-o option to out71 , which decreases the file length (in nybbles) in the 
+file header by 1: 
+
+out71 -o filetype < filename >/dev/lp0
+
+or, for example, 
+
+lifget -f disk1 PROG71 | out71 -o BASIC71  > /dev/lp0
+
+to send the BASIC71 program PROG71 (which is an odd number of nybbles long) 
+from the disk image disk1. 
+
+TEXT files, which are always an even number of nybbles long are the safest
+type to transfer with this program. 
+
+----------------------------------------------
+A. R. Duell, 11-Jan-2001
+This file is part of the LIF Utilities distribution and has been placed
+under the GNU Public License version 2.0
+

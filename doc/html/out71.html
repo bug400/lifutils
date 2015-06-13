@@ -1,0 +1,189 @@
+<!-- Creator     : groff version 1.22.2 -->
+<!-- CreationDate: Mon Apr 13 20:02:04 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>out71</title>
+
+</head>
+<body>
+
+<h1 align="center">out71</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#FILES">FILES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#REFERENCES">REFERENCES</a><br>
+<a href="#BUGS">BUGS</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">out71 &minus; a
+filter to send a program to an HP71B</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>out71
+[&minus;o]</b> <i>filetype</i> <b>&lt;</b> <i>input_file</i>
+<b>&gt;</b> <i>output_device</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>out71
+&minus;?</b></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The HP71B
+Handheld Computer fitted with the HP82401A HPIL Interface
+module can read files not only from a mass storage device
+but also from any other HPIL device. In the latter case, the
+HP71B expects to receive a 32 byte header which is identical
+to the file&rsquo;s directory entry on a LIF volume,
+followed by the file data padded (by NULLs in the case of
+<b>out71</b> ) to a multiple of 256 bytes. This program
+always sends a file called <i>PCFILE</i> of the
+user-specified file type.</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>out71</b>
+adds the header and padding, and can therefore be used to
+translate a linux file for direct sending to an HP71B, for
+example via an HP82164 RS232 interface.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>&minus;o</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Some HP71 files have their
+length (in their directory entry, and thus in the header
+added by <b>out71</b> ) given in nybbles. <b>out71</b>
+assumes that all the nybbles in a linux file are part of the
+HP71B file, and thus always sets this nybble length to an
+even number. This can cause problems if the original HP71B
+file had an odd length in nybbles. The <i>&minus;o</i>
+option decreases the nybble count in the header by one,
+effectively truncating the last nybble of the linux
+file.</p> </td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>&minus;?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Print a message giving program usage to standard error
+and exit.</p></td></tr>
+</table>
+
+<p style="margin-left:11%;"><i>filetype</i></p>
+
+<p style="margin-left:22%;">Specify the type of the HP71
+file to be created. A complete list of possible filetypes
+can be found in <b>lif_create_entry.c,</b> but the useful
+ones for this program include <i>TEXT, BASIC71, LEX71</i>
+and <i>SDATA.</i> This parameter is case-insensitive.</p>
+
+<h2>FILES
+<a name="FILES"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i>hardware/*</i>
+: Information on connecting an HP71B to a PC</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If an HP71B is
+connected to the linux device <i>/dev/cua0</i> via a
+suitable interface and <i>mytext</i> is an HP text format
+file, then</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>out71 TEXT
+&lt; mytext &gt;/dev/cua0</b> will send the file to the
+HP71B, which should be set to receive it, e.g. by the
+command <b>COPY :RS232 TO MYTEXT</b></p>
+
+<h2>REFERENCES
+<a name="REFERENCES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The data
+expected by an HP71 when reading a file from a
+non-mass-storage device is documented in the HP71 HPIL
+Internal Design Specifications Volume 1.</p>
+
+<h2>BUGS
+<a name="BUGS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The
+<i>&minus;o</i> option is not elegant, but there is no
+automatic way to decide when an HP71 file has an odd length
+in nybbles.</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>in71(1)</b></p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>out71</b>
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has
+been placed under the GNU Public License version 2.0</p>
+<hr>
+</body>
+</html>

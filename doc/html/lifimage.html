@@ -1,0 +1,109 @@
+<!-- Creator     : groff version 1.22.2 -->
+<!-- CreationDate: Mon Apr 13 20:02:03 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>lifimage</title>
+
+</head>
+<body>
+
+<h1 align="center">lifimage</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#BUGS">BUGS</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">lifimage
+&minus; make an image of an HP LIF disk</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifimage</b>
+<i>&lt;input device&gt; &lt;output file&gt;</i></p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifimage</b>
+<i>&lt;input device&gt;</i></p>
+
+<p style="margin-left:11%; margin-top: 1em">(Writes output
+to standard output)</p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifimage</b>
+reads an HP LIF format 3.5 inch floppy disk and produces an
+image file. This file can be processed by other <i>LIF
+utilities</i> or written back to a physical disk using
+<b>lifdump</b> If <b>lifimage</b> is executed with 2
+arguments, then the second argument is used as the filename
+of the image file. If it is executed with one argument then
+the file is written to standard output.</p>
+
+<p style="margin-left:11%; margin-top: 1em">See comments in
+the source code for details of the image file format.</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If device
+<i>/dev/fd1</i> contains an HP LIF disk then</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifimage
+/dev/fd1 disk1.lif</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will make an
+image of that disk in the file <i>disk1.lif</i></p>
+
+<h2>BUGS
+<a name="BUGS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">No attempt has
+been made to handle bad track replacements. The first 77
+cylinders only of the disk are read.</p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifimage</b>
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has
+been placed under the GNU Public License version 2.0</p>
+<hr>
+</body>
+</html>

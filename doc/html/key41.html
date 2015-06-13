@@ -1,0 +1,193 @@
+<!-- Creator     : groff version 1.22.2 -->
+<!-- CreationDate: Mon Apr 27 05:57:07 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>key41</title>
+
+</head>
+<body>
+
+<h1 align="center">key41</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#FILES">FILES</a><br>
+<a href="#REFERENCES">REFERENCES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#BUGS">BUGS</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">key41 &minus; a
+filter to list an HP41C key assignment file</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>key41</b>
+[&minus;h] [&minus;x <i>xrom_file</i> ] [&minus;x
+<i>xrom_file</i> ] ... <b>&lt;</b> <i>Input file</i>
+<b>&gt;</b> <i>Output file</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>key41
+&minus;?</b></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>key41</b> is
+a filter which produces a listing of an HP41C key assignment
+file. The key definitions are read from standard input, and
+a human-readable listing is produced on standard output.</p>
+
+<p style="margin-left:11%; margin-top: 1em">In general,
+assignments are displayed based on how they behave when
+stored in the HP41 program memory (and to a lesser extent
+when they are executed in RUN mode), rather than how they
+are previewed on the HP41 display.</p>
+
+<p style="margin-left:11%; margin-top: 1em">By default,
+functions contained in plug-in modules are displayed as
+<i>XROM rr,nn</i> where <i>rr</i> is the number of the
+plug-in ROM and <i>nn</i> is the number of the function
+within that ROM. This can be overridden by loading
+<i>xrom_files,</i> see the <i>&minus;x</i> option below.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>&minus;h</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Display the bytes (in
+hexadecimal) that comprise the key definition, rather than
+attempting to decode it.</p></td></tr>
+</table>
+
+<p style="margin-left:11%;"><i>&minus;x xrom_file</i></p>
+
+<p style="margin-left:22%;">Use <i>xrom_file</i> to define
+names for functions in plug-in modules. This option may be
+repeated to load multiple <i>xrom_files.</i></p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>&minus;?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Print a message giving the program usage to standard
+error.</p> </td></tr>
+</table>
+
+<h2>FILES
+<a name="FILES"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i>xroms/*</i></p>
+
+<p style="margin-left:22%;">xrom function definition files.
+The format of these files is given in the prog41(1) manpage.
+Use the environment variable LIFUTILSXROMDIR to point to the
+localtion of this directory. On Linux the default localtion
+is /usr/share/lifutuls/xroms, if the variable is not
+specified.</p>
+
+<h2>REFERENCES
+<a name="REFERENCES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The format of
+an HP41C key assignment register is documented in many
+books. Amongst the most useful references are <i>Extend Your
+HP41 (W. A. C. Mier-Jedrzejowicz)</i> and <i>The HP41
+Synthetic Programming Quick Reference Guide (Jeremy
+Smith)</i></p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If
+<i>disk1.lif</i> is a LIF disk image containing an HP41 key
+assignment file called <i>KEYS</i> then</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifget
+&minus;f disk1.lif KEYS | key41 &minus;x hpil &minus;x
+time</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will produce a
+listing of the keys to standard output, with the standard
+names for the functions in the HPIL module and time
+module.</p>
+
+<h2>BUGS
+<a name="BUGS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Some of the
+more exotic synthetic assignments may not be displayed
+correctly, although an attempt has been made to handle
+synthetic programming. The common synthetic assignments,
+such as 2-byte standard functions, byte grabbers and
+<i>eG0BEEP</i> should be correctly displayed. If in doubt,
+use the <i>&minus;h</i> option to display the assignments in
+hexadecimal.</p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>key41</b>
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has
+been placed under the GNU Public License version 2.0</p>
+<hr>
+</body>
+</html>

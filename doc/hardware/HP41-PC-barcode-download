@@ -1,0 +1,129 @@
+Downloading programs and data from a PC to an HP41 using a modified 82153 wand
+------------------------------------------------------------------------------
+
+This file describes a method for downloading programs and data to an HP41 
+without using an 82160 HPIL module or any HPIL interfaces. Instead it 
+uses a modified HP82153 barcode wand. A special interface connects to the 
+wand circuitry and sends signals to the HP41 wand interface chip that are 
+identical to those produced by the wand when it is scanned over a row of 
+barcode. 
+
+It is necessary to first construct the interface, the schematic of which 
+is given in the file 'barcode-schematic' in this directory. This 
+interface uses a programmed PIC microcontroller -- the source code of 
+the program for this is in 'barcode.asm', an IHX8M hex file of the code 
+is in 'barcode.hex'.
+
+It is also necessary to modify the 82153 wand by adding an optoisolator 
+as described in the file 'barcode-wand-mods'. The wand remains fully 
+usable for reading barcode, but it can now also be connected to the 
+interface.
+
+Once all the hardware has been constructed, the interface should be 
+connected to the PC parallel port and powered up. The wand optoisolator 
+input should be connected to the interface as described in 
+'barcode-wand-mods'. Throughout this document, the parallel port will be 
+called /dev/lp0 . This should be changed to the correct name for the port 
+on your machine.
+
+It may be necessary to lengthen the printer strobe pulse, particularly if 
+long, or poor-quality printer cables are used. If you experience Wand 
+Checksum Errors or other similar problems, try 
+
+tunelp /dev/lp0 -w 10
+
+Testing the interface
+--------------------
+A test program, barcode-test.c, in this directory generates a 16 byte 
+'row' of barcode as follows : 
+Row :  1 , 16 bytes
+HEX :  f0  e1  d2  c3  b4  a5  96  87  78  69  5a  4b  3c  2d  1e  0f
+DEC : 240 225 210 195 180 165 150 135 120 105  90  75  60  45  30  15
+
+Compile this program by typing
+
+gcc -o barcode-test barcode-test.c 
+
+(no makefile has been provided). Then connect the interface as described 
+above and on the HP41 set the SIZE to at least 17 and type 
+
+XEQ ~WNDSCN~
+
+Reset the interface (press and release the reset button) and on the PC type
+./barcode-test > /dev/lp0
+
+The HP41 should beep and return 16 (the number of bytes in the row of 
+barcode). Recall the registers 01 to 16 and check they contain the 
+numbers given above in order. Further details of the WNDSCN command are 
+given in the HP82153 Wand Owner's Manual.
+
+Look for the following problems : 
+
+Repeated numbers. This is caused by glitches on the strobe line caused, 
+in turn, by a poor-quality printer cable. Try the tunelp command given above.
+
+Some bits corrupted. Look for shorts on the interface board, check the 
+PIC program
+
+Totally dead. Check the interface power supply. Check that the PIC clock 
+is running. Check interface construction. Check that the PIC is correctly 
+programmed.
+
+
+Downloading programs to the HP41
+--------------------------------
+On the HP41, ensure that there is enough space in program memory for the 
+program you wish to download. Set SIZE appropriately if not.
+
+Connect the wand to the HP41 and to the interface as described above. 
+Reset the interface by pressing and releasing its reset button. Although 
+this is not strictly necessary, it is good practice to do so before every 
+download.
+
+It is not necessary to enter any commands into the HP41. In fact with 
+most wands, it's not even necessary to turn the HP41 on -- the first line 
+of 'barcode' received by the wand will turn the system on.
+
+On the PC, type
+
+prog41bar < hp41-program > /dev/lp0
+
+The HP$1 will beep as each row of barcode is downloaded. When the 
+download finishes, type GTO .. on the HP41 to pack program memory.
+
+The input to prog41bar can be piped from another program. For example type
+
+lifget -f disk1.lif MYPROG | prog41bar > /dev/lp0 
+
+to downloard a program called 'MYPROG' from a lif disk image 'disk1.lif'
+
+
+Downloading data files (SDATA) to the HP41
+------------------------------------------
+
+On the HP41 set the SIZE appropriately, and put a number in x of the 
+following format : bbb.eee , where bbb is the first register to load and 
+eee is the last. Then XEQ WNDDTX. 
+
+Reset the interface by pressing and releasing the reset button. It is 
+good practice to clear the interface's data buffer in this way
+
+On the PC, type
+
+sdatabar < hp41-data > /dev/lp0
+
+to download the sdata file 'hp41-data'. The HP41 will beep as each data
+register is loaded. 
+
+The input to sdatabar can be piped from another program. For example, to 
+download the file DATA1 from the lif disk image disk.lif, type
+
+lifget -f disk.lif DATA1 | sdatabar >/dev/lp0
+
+In both cases it may be necessary to use the -e option to sdatabar if you 
+have a version 1E wand and are getting wand data errors.
+
+----------------------------------------
+A. R. Duell, 21-June-2001
+This file is part of the LIF Utiities distribution and has been placed 
+under the GNU Public License version 2.0

@@ -1,0 +1,46 @@
+.TH barps 1 1-July-2001 "LIF Utilities" "LIF Utilities"
+.SH NAME
+barps \- Print an HP41 barcode file on a postscript printer
+.SH SYNOPSIS
+.B barps
+.I [title] 
+.B < 
+.I barcode_file 
+.B > 
+.I postscript_file
+.SH DESCRIPTION
+.B barps
+is a filter to print HP41 barcode on a standard Postscript printer. The 
+barcode file is read from standard input, and the (level 1) postscript 
+file is written to standard output. The latter may be piped to 
+.B lpr
+in order to directly print the barcode, or redirected to a file.
+.PP
+If the optional argument is given to 
+.B barps
+then it is used as the title for each page of printed output. Otherwise 
+the title 
+.B HP41 Barcode
+is used
+.SH REFERENCES
+The format of the HP41 barcode file is given in 
+.I barcode(5)
+.PP
+The Postscript language is described in 
+.I PostScript Language Reference Manual, Adobe Systems Inc.
+.SH EXAMPLES
+If
+.I data1
+is an sdata file, and 
+.I postscript
+is a postscript printer
+then
+.PP
+.B sdatabar < data1 | barps 'Data File 1' | lpr -P postscript
+.PP
+will print that file on the postscript printer with the page title 
+.I Data File 1
+.SH AUTHOR
+.B barps
+was written by Tony Duell, ard@p850ug1.demon.co.uk, and has been placed 
+under the GNU Public License version 2.0

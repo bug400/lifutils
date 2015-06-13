@@ -1,0 +1,155 @@
+<!-- Creator     : groff version 1.22.2 -->
+<!-- CreationDate: Mon Apr 13 20:02:04 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>lifstat</title>
+
+</head>
+<body>
+
+<h1 align="center">lifstat</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#REFERENCES">REFERENCES</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">lifstat &minus;
+A program to display statistics for a LIF image file</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifstat</b>
+<i>&lt;LIF image file&gt;</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifstat</b>
+<i>&lt;LIF image file&gt; &lt;block_number&gt;</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifstat</b>
+<i>&lt;LIF image file&gt; &lt;cylinder&gt; &lt;head&gt;
+&lt;sector&gt;</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifstat
+&minus;?</b></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifstat</b>
+is a program to display the block usage of a LIF image file.
+If <b>lifstat</b> is run with no arguments other than the
+name of the LIF file, then 2 lines are printed to standard
+output giving the starting and ending blocks of the
+directory and the user file data. The blocks are specified
+both by their block number and by their cylinder/head/sector
+address.</p>
+
+<p style="margin-left:11%; margin-top: 1em">If
+<b>lifstat</b> is run with one additional argument, then
+that argument is taken as a logical block number. A single
+line is written to standard output giving that block number,
+the equivalent cylinder/head/sector address and the file
+name of the file that contains that block.</p>
+
+<p style="margin-left:11%; margin-top: 1em">If
+<b>lifstat</b> is run with 3 additional arguments, then
+these are taken to be the cylinder, head and sector numbers
+(in that order) of a block on the disk. The program then
+behaves as if one argument was given.</p>
+
+<p style="margin-left:11%; margin-top: 1em">If the block
+number is part of the volume label or directory, or if it is
+not currently in use, then the &rsquo;file name&rsquo; is
+reported as <i>Volume Label, System 3000 block,
+directory</i> or <i>unused</i> as appropriate.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>&minus;?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Print a message giving program
+usage to standard error and exit.</p></td></tr>
+</table>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If
+<i>disk_image</i> is a disk image file, then</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifstat
+disk_image</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will write a
+message to standard output giving the start and end blocks
+of the directory and user data. Similarly</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifstat
+disk_image 37</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will output the
+file name of the file containing block 37</p>
+
+<h2>REFERENCES
+<a name="REFERENCES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The format of a
+LIF disk directory is given in the <i>HP&minus;IL Interface
+Owners Manual for the HP&minus;71 (Hewlett Packard)</i></p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i><b>lifstat</b></i>
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has
+been placed under the GNU Public License version 2.0</p>
+<hr>
+</body>
+</html>

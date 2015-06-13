@@ -1,0 +1,168 @@
+<!-- Creator     : groff version 1.22.2 -->
+<!-- CreationDate: Mon Apr 13 20:02:03 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>lifilper</title>
+
+</head>
+<body>
+
+<h1 align="center">lifilper</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#REFERENCES">REFERENCES</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">lifilper
+&minus; emulate HPIL disk drive and display for the
+PIL-Box</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifilper
+[&minus;n] [&minus;s] [&minus;d]</b> <i>&lt;LIF image
+file&gt; &lt;PIL-Box tty&gt; &lt;scope file&gt;</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifilper
+&minus;?</b></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifilper</b>
+emulates a HPIL disk drive and display for the PIL-Box (J-F
+Garnier).</p>
+
+<p style="margin-left:11%; margin-top: 1em">The LIF image
+file is only opened when a mass storage operation is
+performed. Otherwise the LIF image file can be modified
+while lifilper is running.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>&minus;c</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Emulate a HP 82161 cassette
+medium, otherwise a HP 9114A disk medium is emulated.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>&minus;d</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Emulate a HP-IL display device</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>&minus;s</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Output HP-IL mnemonics</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>&minus;?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Print a message giving the program usage to standard
+error.</p> </td></tr>
+</table>
+
+<p style="margin-left:11%; margin-top: 1em">Note: the
+&minus;d and the &minus;s option are mutually exclusive.</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If
+<i>disk1.lif</i> is a LIF disk image file and the PIL-Box is
+connected to <i>/dev/ttyUSB0</i> then</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifilper
+disk1.lif /dev/ttyUSB0</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will emulate
+disk1.lif as a HP8114A disk</p>
+
+<h2>REFERENCES
+<a name="REFERENCES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The LIF disk
+directory format is documented in the <i>HP&minus;IL
+Interface Owners Manual for the HP&minus;71
+(Hewlett&minus;Packard)</i> with further details
+(particularly HP41 and HP75 file types) in the
+<i>HP&minus;41 Synthetic Quick Reference Guide (Jeremy
+Smith)</i></p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i><b>lifilper</b></i>
+uses code of the <i>liftool</i> software writted by
+Christophe Gottheimer, cgh75015@gmail.com and was modified
+by Joachim Siebold, bug400@gmx.de</p>
+<hr>
+</body>
+</html>

@@ -1,0 +1,106 @@
+.TH lifdir 1 11-June-2000 "LIF Utilities" "LIF Utilities"
+.SH NAME
+lifdir \- print a directory of a LIF image file
+.SH SYNOPSIS
+.B lifdir [\-n]
+.I <LIF image file>
+.PP
+.B lifdir \-?
+.SH DESCRIPTION
+.B lifdir
+reads the directory of a LIF image file and prints 
+this directory to standard output.
+.PP
+If the volume label is non\-blank, then this is printed first, followed 
+by the date of formatting if this is valid. Each subsequent line contains 
+the details of a single file, consisting of the file name, file type (see 
+the 
+.B FILE TYPE
+section below), the number of bytes in the file and the total number of 
+bytes occupied by the blocks of that file, and finally the file time and 
+date stamp if this is valid.
+.SH OPTIONS
+.TP
+.I \-n
+Print file names only
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
+.SH FILE TYPES
+The following file types are recognised by this version of 
+.B lifdir
+.TP
+.I TEXT
+A HP Text file (or LIF1 format file).
+.TP
+.I SDATA
+A HP71B SDATA file or HP41C data file.
+.TP
+.I DATA71
+A HP71B data file.
+.TP
+.I BIN71
+A HP71B binary program file.
+.TP
+.I LEX71
+A HP71B language extension file.
+.TP
+.I KEY71
+A HP71B keyboard definition file.
+.TP
+.I BASIC71
+A HP71B tokenised BASIC program.
+.TP
+.I FORTH71
+A HP71B forth dictionary file.
+.TP
+.I WALL41
+A HP41C Write-All file.
+.TP
+.I KEY41
+A HP41C key assignment file.
+.TP
+.I STAT41
+A HP41C status file.
+.TP
+.I PROG41
+A HP41C program.
+.TP
+.I TEXT75
+A HP75 text file.
+.TP
+.I APPT75
+A HP75 appointments file.
+.TP
+.I LEX75
+A HP75 language extension file.
+.TP
+.I BASIC75
+A HP75 tokenised BASIC program.
+.TP
+.I VCALC75
+A HP75 Visicalc worksheet
+.PP
+Unknown file types are printed as a 4\-digit hex number giving the value 
+of the 2 file type bytes from the directory. See
+.B lif_dir_utils.c
+for details of the file types.
+.SH EXAMPLES
+If 
+.I disk1.lif
+is a LIF disk image file then
+.PP
+.B lifdir  disk1.lif
+.PP
+will print a directory listing of that image file.
+.SH REFERENCES
+The LIF disk directory format is documented in the
+.I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
+with further details (particularly HP41 and HP75 file types) in the 
+.I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith)
+.SH BUGS
+Not all file types have been tested.
+.SH AUTHOR
+.B lifdir
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

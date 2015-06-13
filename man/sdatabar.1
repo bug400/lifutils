@@ -1,0 +1,66 @@
+.TH sdatabar 1 30-June-2001 "LIF Utilities" "LIF Utilities"
+.SH NAME
+sdatabar \- Convert an SDATA file into HP41 barcode
+.SH SYNOPSIS
+.B sdatabar
+[-e] 
+.B <
+.I input_file
+.B >
+.I barcode_file
+.PP
+.B sdatabar -?
+.SH DESCRIPTION
+.B sdatabar
+is a program that reads an SDATA file from standard input and writes the 
+corresponding HP41 barcode file to standard output. Records in the SDATA 
+file containing numeric data are turned into type 6 barcode rows, while 
+those containing alpha data are turned into type 7 rows. Other SDATA 
+records cannot be represented by HP41 barcode, and are skipped, giving a 
+suitable error message.
+.PP
+The output of 
+.B sdatabar
+can be piped to a suitable barcode printing program such as 
+.B barps
+.SH OPTIONS
+.TP
+.I \-e
+HP82153 barcode wands with the version 1E ROM have a bug which means they 
+cannot read numeric data barcode rows containing 10 or more data bytes. 
+Unfortunately, some HP41 real numbers require 10 bytes to represent them 
+in barcode format. If the 
+.I \-e
+option is given to sdatabar, the program attempts to reduce the length of 
+the barcode by omitting the decimal point and adjusting the exponent to 
+compensate. This is not always possible, in which case, a suitable 
+message is written to standard error, and the last mantissa digit is 
+omitted from the barcode.
+.TP
+.I \-?
+Print a message giving usage to standard error and exit
+.SH REFERENCES
+The format of HP41 barcode is given in the book
+.I Creating your own HP41 Barcode (Hewlett\-Packard)
+.PP
+The format of the barcode file written by sdatabar is given in 
+.I barcode(5)
+.SH EXAMPLES
+If
+.I data1
+is an sdata file, and 
+.I postscript
+is a postscript printer
+then
+.PP
+.B sdatabar < data1 | barps 'Data File 1' | lpr -P postscript
+.PP
+will print that file on the postscript printer.
+.SH BUGS
+The HP82153 wand can't accept data other than standard numeric or alpha 
+data, so some sdata files cannot be translated correctly. Version 1E 
+wands cannot read some numeric data barcode, as described above.
+.SH AUTHOR
+.B sdatabar
+was written by Tony Duell, ard@p850ug1.demon.co.uk, and has been placed 
+under the GNU Public License version 2.0

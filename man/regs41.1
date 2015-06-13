@@ -1,0 +1,43 @@
+.TH regs41 1 25-June-2000 "LIF Utilities" "LIF Utilities"
+.SH NAME
+regs41 \- a filter to display an HP41 file as 'registers'
+.SH SYNOPSIS
+.B regs41 <
+.I Input file
+.B >
+.I Output file
+.SH DESCRIPTION
+The memory of an HP41 calculator is divided into 14 nybble (7 byte)
+registers. Many HP41 mass\-storage files use an 8 byte record to store
+each register, with the nybbles in a scrambled order
+.PP
+.B regs41
+undoes this scrambling and displays the 7 bytes of each register in 
+hexadecimal, one register to each line of output. It is primarily 
+designed as a tool for analysing unknown HP41 files. The HP41 data is
+read from standard input, and the hexadecimal dump of the registers is 
+written to standard output.
+.SH REFERENCES
+The
+.I sdata
+manpage gives references to the format of the sdata file, which is the
+most common HP41 file made up of registers. The nybble scrambling is the same
+for all such files.
+.I Extend Your HP41 (W. A. C. Mier\-Jedrzejowicz)
+contains a considerable amount of information as to how the HP41 packs 
+data into registers
+.SH EXAMPLES
+If 
+.I disk1.lif
+is a LIF disk image containing some unknown type of HP41 data file called
+.I ST41
+then
+.PP
+.B lifget \-f disk1.lif ST41 | regs41
+.PP 
+will display the data in that file as HP41 registers and will hopefully 
+assist in understanding the format of the file
+.SH AUTHOR
+.B regs41
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

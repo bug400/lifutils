@@ -1,0 +1,50 @@
+.TH lifput 1 23-March-2014 "LIF Utilities" "LIF Utilities"
+.SH NAME
+lifput \- put a file into a LIF image file
+.SH SYNOPSIS
+.B lifput 
+.I <image file> <filename> 
+.PP
+.B lifput 
+.I <image file>
+.PP
+(last form gets the file from standard input)
+.PP
+.B lifput \-?
+.SH DESCRIPTION
+.B lifput
+put a single LIF file, specified by 
+.I filename
+into a LIF image file. The
+.I filename
+must have a valid LIF header. If 
+.B lifput
+is executed with 2 arguments after the options then the last argument is 
+used as the name of the linux file that is copied to the LIF image 
+file. If only 1 arguments are given then the file is copied from standard
+input.
+.SH OPTIONS
+.TP 
+.I \-?
+Print a message giving the program usage to standard error.
+.SH EXAMPLES
+If 
+.I disk1.lif
+is a LIF disk image and 
+.I test1.p41
+is a HP41 LIF program file, then 
+.PP
+.B lifput -c disk1.lif test1.p41
+.PP
+will copy the  HP41 LIF program file test1.p41 to the LIF disk image disk1.lif.
+.PP
+.SH REFERENCES
+The LIF disk directory format is documented in the
+.I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
+with further details (particularly HP41 and HP75 file types) in the 
+.I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith)
+.SH BUGS
+Not all file types have been tested.
+.SH AUTHOR
+.B lifput
+was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, ard@p850ug1.demon.co.uk and has been placed under the GNU Public License version 2.0

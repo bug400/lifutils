@@ -1,0 +1,143 @@
+<!-- Creator     : groff version 1.22.2 -->
+<!-- CreationDate: Mon Apr 13 20:02:03 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>lifput</title>
+
+</head>
+<body>
+
+<h1 align="center">lifput</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#REFERENCES">REFERENCES</a><br>
+<a href="#BUGS">BUGS</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">lifput &minus;
+put a file into a LIF image file</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifput</b>
+<i>&lt;image file&gt; &lt;filename&gt;</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifput</b>
+<i>&lt;image file&gt;</i></p>
+
+<p style="margin-left:11%; margin-top: 1em">(last form gets
+the file from standard input)</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifput
+&minus;?</b></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifput</b>
+put a single LIF file, specified by <i>filename</i> into a
+LIF image file. The <i>filename</i> must have a valid LIF
+header. If <b>lifput</b> is executed with 2 arguments after
+the options then the last argument is used as the name of
+the linux file that is copied to the LIF image file. If only
+1 arguments are given then the file is copied from standard
+input.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>&minus;?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Print a message giving the
+program usage to standard error.</p></td></tr>
+</table>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If
+<i>disk1.lif</i> is a LIF disk image and <i>test1.p41</i> is
+a HP41 LIF program file, then</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifput -c
+disk1.lif test1.p41</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will copy the
+HP41 LIF program file test1.p41 to the LIF disk image
+disk1.lif.</p>
+
+<h2>REFERENCES
+<a name="REFERENCES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The LIF disk
+directory format is documented in the <i>HP&minus;IL
+Interface Owners Manual for the HP&minus;71
+(Hewlett&minus;Packard)</i> with further details
+(particularly HP41 and HP75 file types) in the
+<i>HP&minus;41 Synthetic Quick Reference Guide (Jeremy
+Smith)</i></p>
+
+<h2>BUGS
+<a name="BUGS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Not all file
+types have been tested.</p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifput</b>
+was written by Joachim Siebold, bug400@gmx.de using code
+from Tony Duell, ard@p850ug1.demon.co.uk and has been placed
+under the GNU Public License version 2.0</p>
+<hr>
+</body>
+</html>

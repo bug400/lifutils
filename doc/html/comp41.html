@@ -1,0 +1,204 @@
+<!-- Creator     : groff version 1.22.2 -->
+<!-- CreationDate: Mon Apr 13 20:02:02 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>comp41</title>
+
+</head>
+<body>
+
+<h1 align="center">comp41</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#FILES">FILES</a><br>
+<a href="#REFERENCES">REFERENCES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#BUGS">BUGS</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">comp41 &minus;
+a filter to compile a HP41C user&minus;language program</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>comp41</b>
+[&minus;g] [&minus;l] [&minus;x <i>xrom_file</i> ] [&minus;x
+<i>xrom_file</i> ] ... <i>&lt;input file&gt;</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>comp41</b>
+[&minus;g] [&minus;l] [&minus;x <i>xrom_file</i> ] [&minus;x
+<i>xrom_file</i> ] ...</p>
+
+<p style="margin-left:11%; margin-top: 1em">(last form
+reads source file from standard input)</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>comp41
+&minus;?</b></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>comp41</b>
+is a filter which compiles a textfile containing a HP-41
+User program (FOCAL) and translates it to a binary raw
+file.</p>
+
+<p style="margin-left:11%; margin-top: 1em">An
+<i>xrom_file</i> consists of a number of lines, each
+consisting of 2 decimal numbers and a string (containing no
+whitespace), in that order, separated by whitespace. The
+string gives a name to the function specified by the first
+number as <i>rr</i> and the second number as <i>nn.</i> A
+<i>xrom_file</i> is necessary to compile commands of module
+or peripheral functions.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>&minus;g</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Force global for[
+&quot;A..J&quot;, &quot;a..e&quot; ] with quotes: [ lbl
+&quot;A&quot; ]</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>&minus;l</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Skip line numbers</p></td></tr>
+</table>
+
+<p style="margin-left:11%;"><i>&minus;x xrom_file</i></p>
+
+<p style="margin-left:22%;">Use <i>xrom_file</i> to define
+names for functions in plug-in modules. This option may be
+repeated to load multiple <i>xrom_files.</i> The file name
+has to be specified either as a full pathname or as the
+filename without the extension .xrom in the default location
+that is specified with the environment variable
+LIFUTILSXROMDIR (see below).</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>&minus;?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Print a message giving the program usage to standard
+error.</p> </td></tr>
+</table>
+
+<h2>FILES
+<a name="FILES"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i>xroms/*</i></p>
+
+<p style="margin-left:22%;">xrom function definition files.
+Use the environment variable LIFUTILSXROMDIR to point to the
+localtion of this directory. On Linux the default localtion
+is /usr/share/lifutuls/xroms, if the variable is not
+specified.</p>
+
+<h2>REFERENCES
+<a name="REFERENCES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The format of
+an HP41C program is documented in many books. Amongst the
+most useful references are <i>Extend Your HP41 (W. A. C.
+Mier-Jedrzejowicz)</i> and <i>The HP41 Synthetic Programming
+Quick Reference Guide (Jeremy Smith)</i></p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If
+<i>prog1.txt</i> is a text file with a FOCAL program that
+uses functions of the HP-IL and Time-module and
+<i>hp41prog.dat</i> is a lif image file then</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>cat
+prog1.txt | comp41 &minus;x hpil &minus;x time | prog41hp
+PROG1 | lifput hp41prog.dat</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will compile
+the file <i>prog1.txt</i> to a raw file that is transformed
+to a LIF file named <i>PROG1</i> that is stored in the LIF
+image file <i>hp41prog.dat</i></p>
+
+<h2>BUGS
+<a name="BUGS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Unknown.</p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>comp41</b>
+was written using code of the User-Code File
+Converter/Compiler/De-compiler/Bar-Code Generator Version
+1.31 Copyright (c) Leo Duran, 2000-2007 and has been placed
+under the GNU Public License version 2.0</p>
+<hr>
+</body>
+</html>

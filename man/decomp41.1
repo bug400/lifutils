@@ -1,0 +1,101 @@
+.TH decomp41 1 12-June-2000 "LIF Utilitites" "LIF Utilities"
+.SH NAME
+decomp41 \- a filter to list an HP41C user\-language program
+.SH SYNOPSIS
+.B decomp41
+[\-h] [\-l] [\-x
+.I xrom_file
+] [\-x
+.I xrom_file
+] ...
+.B <
+.I Input file
+.B >
+.I Output file
+.PP
+.B decomp41 \-?
+.SH DESCRIPTION
+.B decomp41
+is a filter which produces a listing of an HP41C user language program. 
+It reads the program as a series of bytes from standard input and prints 
+the listing to standard output (in a similar format to the standard HP41C 
+printer).
+.PP
+By default, functions contained in plug-in modules are displayed as 
+.I XROM rr,nn
+where 
+.I rr
+is the number of the plug-in ROM and 
+.I nn
+is the number of the function within that ROM. This can be overridden by 
+loading 
+.I xrom_files,
+see the 
+.I \-x
+option below. An 
+.I xrom_file
+consists of a number of lines, each consisting of 2 decimal numbers and a 
+string (containing no whitespace), in that order, separated by whitespace. 
+The string gives a name to the function specified by the first number as 
+.I rr
+and the second number as
+.I nn.
+.PP
+The linux command 
+.B pr
+may be useful for formatting the output of 
+.B decomp41
+into multiple columns.
+.SH OPTIONS
+.TP
+.I \-h
+Display the bytes (in hexadecimal) that make up each program instruction 
+immediately preceding the display of that instruction
+.TP
+.I \-l
+Enable line numbers
+.TP
+.I \-x xrom_file
+Use
+.I xrom_file
+to define names for functions in plug-in modules. This option may be 
+repeated to load multiple
+.I xrom_files.
+The file name has to be specified either as a full pathname or as
+the filename without the extension .xrom in the default location
+that is specified with the environment variable LIFUTILSXROMDIR (see below).
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
+.SH FILES
+.TP
+.I xroms/*
+xrom function definition files. Use the environment variable LIFUTILSXROMDIR to point to the localtion of this
+directory. On Linux the default localtion is /usr/share/lifutuls/xroms, if the variable is not specified.
+.SH REFERENCES
+The format of an HP41C program is documented in many books. Amongst the 
+most useful references are
+.I Extend Your HP41 (W. A. C. Mier-Jedrzejowicz)
+and
+.I The HP41 Synthetic Programming Quick Reference Guide (Jeremy Smith)
+.SH EXAMPLES
+If
+.I disk1.lif
+is a LIF disk image containing an HP41 program called
+.I PROG
+then
+.PP
+.B lifget \-f disk1.lif PROG | decomp41 \-x hpil.xrom  \-x time.xrom
+.PP 
+will produce a listing of the program to standard output, with the 
+standard names for the functions in the HPIL module and time module.
+.SH BUGS
+Some synthetic functions may not be displayed correctly, although an 
+attempt has been made to handle synthetic programming. Some common HP41C 
+characters are not printable in ASCII (and are displayed as \\nnn octal 
+display sequences) so the display of strings in programs may be somewhat 
+messy.
+.SH AUTHOR
+.B decomp41
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

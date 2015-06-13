@@ -1,0 +1,181 @@
+<HTML>
+<TITLE>
+lifutils -- LIF Utilities v1.7
+</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+<H1>lifutils -- LIF Utilities </H1>
+
+<p>
+Utilities to handle various LIF file types and images of LIF media:
+</p>
+
+<table border=1 cellspacing=0 cellpadding=2>
+<tr><th>Program</th><th>Description</th><th>Linux</th><th>Windows</th></tr>
+<tr><td><a href="html/lifdir.html">lifdir</a></td><td>Print a directory of a LIF image file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/lifget.html">lifget</a></td><td>Extract a file from a LIF image file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/lifput.html">lifput</a></td><td>Store a file into a LIF image file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/lifstat.html">lifstat</a> </td><td>Display lif image file stats, and file containing a given block</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/liffix.html">liffix</a> </td><td>Fixes the header information of a lif image file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/lifinit.html">lifinit</a> </td><td>Initialize a lif image file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/liflabel.html">liflabel</a> </td><td>Label a lif image file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/lifpurge.html">lifpurge</a> </td><td>Purge a file from a lif image file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/lifrename.html">lifrename</a> </td><td>Rename a file on a lif image file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/lifraw.html">lifraw</a> </td><td>Remove the lif header from a lif file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/lifpack.html">lifpack</a> </td><td>Packs a lif image file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/liftext.html">liftext</a></td><td>Decode a HP text (LIF1) file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/textlif.html">textlif</a></td><td>Encode a HP text (LIF1) file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/raw41lif.html">raw41lif</a></td><td>convert a compiled HP41C program to a lif file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/sdata.html">sdata</a></td><td>Display a SDATA file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/decomp41.html">decomp41</a></td><td>Display a listing of a HP41C program (decompile)</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/comp41.html">comp41</a></td><td>Compile a HP41C program</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/regs41.html">regs41</a></td><td>Display a HP41 file as 'registers' (for analysis of unknown files)</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/stat41.html">stat41</a></td><td>Display a HP41 'status' file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/key41.html">key41</a></td><td>Display a HP41 key definition file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/wall41.html">wall41</a></td><td>Extract information from a HP41 Write-All file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/wcat41.html">wcat41</a></td><td>Display a catalogue of the contents of a HP41 Write-All file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/rom41.html">rom41</a></td ><td>Unscramble a HP41 ROM dump file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/rom41hx.html">rom41hx</a></td ><td>Unscramble a HP41 Hepax ROM dump file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/rom41cat.html">rom41cat</a></td><td>Display list of function names in an unscrambled HP41 ROM dump</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/sdatabar.html">sdatabar</a> </td><td>Convert a SDATA file into a HP41 barcode file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/barprt.html">barprt</a></td> <td>Diagnostic dump of a HP41 barcode file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/prog41bar.html">prog41bar</a> </td><td>Produce HP41 program barcode from a HP41 binary program file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/lifmod.html">lifmod</a> </td><td>Output contents of HP-41 module files</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/text75.html">text75</a></td><td>Decode a HP75 text file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/outp41.html">outp41</a></td><td>Translate a HP41 binary program into hex</td><td>yes</td><td>no</td></tr>
+<tr><td><a href="html/inp41.html">inp41</a></td><td>Translate a HP41 hex program into binary</td><td>yes</td><td>no</td></tr>
+<tr><td><a href="html/in71.html">in71</a></td><td>Read a file from a HP71 via (e.g.) a RS232 interface</td><td>yes</td><td>no</td></tr>
+<tr><td><a href="html/out71.html">out71</a></td><td>Send a file to a HP71 via (e.g.) a RS232 interface</td><td>yes</td><td>no</td></tr>
+<tr><td><a href="html/lifdump.html">lifdump</a></td><td>Dump a LIF disk image to a physical LIF disk</td><td>yes</td><td>no</td></tr>
+<tr><td><a href="html/lifimage.html">lifimage</a></td><td>create a LIF image file froma physical LIF disk</td><td>yes</td><td>no</td></tr>
+<tr><td><a href="html/lifilper.html">lifilper</a></td><td>Emulate HP-IL disk drive and display for the PIL-Box</td><td>yes</td><td>no</td></tr>
+</table>
+</center>
+</p>
+
+<p>
+Manual pages are found in the manpages/ directory. XROM definition files 
+(for prog41 and key41) are found in the xroms/ directory.
+</p>
+
+<p>
+HP calculator enthusiasts may find interesting information in the 
+comments at the start of some program files.
+</p>
+
+<H2>Authors</H2>
+<p>
+The LIF Utilities were originally developped by Tony Duell ard@p850ug1.demon.co.uk and enhanced by Joachim Siebold
+bug400@gmx.de. Code was taken from hp41uc (Leo Duran), modfile (Warren Furlow)  and liftool (Christophe Gottheimer).
+</p>
+
+<p>
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+</p>
+
+<p>
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+<a href="copying.html">GNU General Public License</a> for more details.
+</p>
+
+<H2>Revision History:</H2>
+<p>
+<center>
+<table border=1 cellspacing=0 cellpadding=2>
+<tr><td>v1.0</td><td>Initial Relase</td></tr>
+<tr><td>v1.0.1</td><td>Bug fixes:
+ Directory length bug fixed for TEXT75 and DATA71 files; 
+ lifrmhdr made more tolerant of illegal sectors in the image</td></tr>
+<tr><td>v1.1</td><td>Directory entry types fixed for BASIC75 and added ROM75; 
+ Added text75 program; 
+ Added regs41 program;
+ Split sdata.c into several files so functions can be used elsewhere</td></tr>
+<tr><td>v1.2</td><td>Fixed makefile problems;
+         Added stat41 program;
+         Added Directory entry type for HP75 Visicalc;
+         Added inp41, outp41 programs;
+         Added key41 program;
+         Added hardware/ directory containing information on linking HPIL
+               calculators and the PC.</td></tr>
+<tr><td>v1.3</td><td>Added wall41, wcat41 programs; 
+         Added in71 program; 
+         Added out71 program.</td></tr>
+<tr><td>v1.3.1</td><td>Added information and schematics for downloading files to
+		calculators using a parallel interface
+		Fixed bug in lifrmhdr. Now handles 'extra' sectors correctly.</td></tr>
+<tr><td>v1.4</td><td>Fixed file type for secure TEXT file in lif_dir_utils and
+         lif_create_entry;
+         Added lifstat program; 
+         Another bug in lifrmhdr fixed -- now reports correct sector number
+           for missing sectors; 
+         Added sdatabar, barprt programs; 
+         Corrected typo in name of ADATE function in xroms/time.xrom; 
+         Added barps program; 
+         Added schematics and PIC source for a barcode download interface
+           to the hardware directory; 
+         Added ROM41 filetype to lif_dir_utils; 
+         Added rom41, rom41cat programs; 
+         Elimnated unwanted spaces in octal escape sequence output; 
+         Added prog41bar program.</td></tr>
+<tr><td>v1.5</td><td>
+Added lifput, texthp, lifstrip, rawlif;
+Corrected file_length of HP41 files in lif_dir_utils.c (checksum byte);
+install xroms in /usr/share/lifutils
+</td></tr>
+<tr><td>v1.5.1</td><td>
+Corrected entry in xroms/hpil.xrom (PRUGE); 
+Modified syntax of decompiled FOCAL programs to match syntax of nutstudio focal compiler:
+P-&gt;R and R-&gt;P to P-R and R-P (byte_tables.h), insert space before exponent (prog41.c);
+Introduce default path for xrom files. If they are located in /usr/share/lifutils/xroms only the file name without
+extension must be specified in the -x option. Otherwise the full pathname can be specified to preserve the old
+behaviour (prog41).
+</td></tr>
+<tr><td>v1.5.2</td><td>
+Corrected syntax of decompile FOCAL programs to match syntax of nutstudio, FocalComp and hp41uc compilers
+X!=Y to X#Y,&gt;DEC to DEC, &gt;OCT to OCT,D-&gt;R to D-R, R-&gt;D to R-D,  &gt;HMS to HMS, &gt;HR to HR;
+always output END instead of .END.; introduce -l option for optional line numbers; 
+output hex constants for non printable characters;output leading > for append strings (prog41.c)
+</td></tr>
+<tr><td>v1.6.0</td><td>
+removed files: lifaddhdr.c, lifrmhdr.c; removed pyhsical device support: lifdir.c, ifget.c, lifput.c, lifstat.c;
+new files: lifinit.c lifinit.1, lifpurge.c, lifpurge.1, lifrename.c, lifrename.1, lifpack.c lifpack.1
+rom41hx.c, rom41hx.1, liflabel.c, liflabel.1)
+</td></tr>
+<tr><td>v1.7.0</td><td>
+added Makefile.mingw (Windows), Makefile.macos (Mac OS X); changed mode of files to binary for mings32 compilation:
+(lifdir.c, lifget.c, lifput.c, lifinit.c, liflabel.c, lifpack.c, lifpurge.c, lifrename.c, lifstat.c,
+hptext.c, barprt.c, barps.c, in71.c, wall41.c, rawlif.c, sdata.c, wcat41.c, regs41.c, stat41.c,
+out71.c, rom41cat.c, lifstrip, inp41.c, outp41.c, rom41.c, text75.c, key41.c, rom41hx.c, texthp.c)
+new manpage file manpages/lifrename.1; manpages as html files;
+added output of label and medium layout in lifstat.c, lifdir.c;
+partially rewritten: lifinit.c, lifinit.1; removed -c flage: lifput.c lifput.1;
+new file: liffix.c, liffix.1; added ROM71, GRA71 file type: lif_dir_utils.c;
+correct error in lifput.c; changed behaviour of lifget.c, default is to keep the directory header;
+fixes in texthp.c; renamed prog41.c to decomp41.c; new file comp41.c, comp41.h, manfiles/comp41.1;
+renamed hptext.c to liftext.c
+</td></tr>
+<tr><td>v1.7.1</td><td>
+Moved ROM info to xrom.c and xrom.h. Fixed various compiler warnings. Code refactoring and transition to GNU Build system. New files: lifmod.c, modfile.c, lifmod.1
+</td></tr>
+</table>
+</p>
+<tr><td>v1.7.2</td><td>
+Reimplmented pyhsical media access (LINUX only, experimental!), lifput fixes 
+</td></tr>
+<hr>
+<p>
+<TABLE width="100%" border=0>
+<tr>
+<td><address><I><font size=1><A HREF="mailto:bug400@gmx.de">Joachim Siebold</A></font></I></address></td>
+<td align=right>
+	<font size=1> Page last modified : 11th April 2015</font></td>
+</tr>
+</table>
+</BODY>
+</HTML>

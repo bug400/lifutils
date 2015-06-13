@@ -1,0 +1,85 @@
+.TH sdata 1 12-June-2000 "LIF Utilities" "LIF Utilities"
+.SH NAME
+sdata \- a filter to interpret HP sdata files
+.SH SYNOPSIS
+.B sdata
+[\-n] [\-r] [\-b] [\-f] [\-l]
+.B <
+.I Input file
+.B >
+.I Output file
+.PP
+.B sdata \-?
+.SH DESCRIPTION
+.B sdata
+is a filter which displays the contents of an HP sdata file (also known as
+an HP41C data file) in a human\-readable format. An sdata file consists of
+a sequence of 8\-byte records each of which represents an HP41 storage
+register containing either a real number or a 6\-character text string.
+The sdata file is read from standard input and the output written to
+standard output. 
+.PP
+By default, 
+.B sdata
+displays numbers with a 10 digit mantissa and strings as a sequence of 
+characters surrounded by double quotes. See
+.I OPTIONS
+below for other output formats. Characters in text strings that are printable
+ASCII characters are output as such, non\-printable characters are output as
+\\nnn octal escape sequences.
+.SH OPTIONS
+.TP
+.I \-n
+Print the register number at the start of each output line.
+.TP
+.I \-r 
+Print the register contents as 8 2\-digit hexadecimal numbers without 
+attempting to interpret them
+.TP
+.I \-b
+Print alpha strings as the sequence of 
+.I BLDSPEC
+(an HP41 printer command) values needed to create them.
+.TP
+.I \-f
+If appropriate, display alpha strings as the settings of the first 44 
+HP41 flags. The string is assumed to have been returned by the
+.I RCLFLAG
+command (an extended functions command).
+.TP
+.I \-l
+Display 12 digits in the mantissa, not 10, as used on the HP71B.
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
+.SH REFERENCES
+The sdata file format is documented in sections 11.2.4.2 and 11.2.7 of 
+the 
+.I HP71 Software Internal Design Specifications Volume 1 (Hewlett-Packard).
+More information can be found in the routines
+.I RED41C (0x13F28) 
+and
+.I N\-STR (0x14BFC)
+in the
+.I HP71 Software Internal Design Specifications Volume 3 (Hewlett-Packard).
+(Addresses given are for the 1BBBB version of the ROM).
+.SH EXAMPLES
+If
+.I disk1.lif
+is a LIF disk image containing an sdata file called DATA1 then
+.PP
+.B lifget \-f disk1.lif DATA1 | sdata \-n 
+.PP
+will produce a register\-numbered listing of the data in that file to 
+standard output
+.SH BUGS
+The 
+.I \-f
+flags function has not been fully tested. This program may not display
+non\-normalised numbers correctly. Some commonly\-used HP41C characters are
+non\-printable in ASCII, and thus the display of normal HP41C alpha strings
+may look messy
+.SH AUTHOR
+.B sdata
+was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0
