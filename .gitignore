@@ -5,7 +5,7 @@
 /depcomp
 /install-sh
 /missing
-/config.*
+/config.h
 /libtool
 /ltmain.sh
 /m4/
