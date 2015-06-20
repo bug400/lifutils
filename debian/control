@@ -2,7 +2,7 @@ Source: lifutils
 Section: misc
 Priority: optional
 Maintainer: Tony Duell <ard@p850ug1.demon.co.uk>
-Build-Depends: binutils,
+Build-Depends: debhelper, libtool, autoconf, automake, cdbs
 Standards-Version: 0.9
 
 Package: lifutils
