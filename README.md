@@ -43,3 +43,9 @@ License
 ASM71 is publishd under th GNU General Public License v3.0 License 
 (see LICENSE file).
 
+Acknowledgements
+================
+
+The LIF Utilities were originally developped by Tony Duell and enhanced by 
+Joachim Siebold. Code was taken from hp41uc (Leo Duran), modfile (Warren Furlow)  and liftool (Christophe Gottheimer).
+
