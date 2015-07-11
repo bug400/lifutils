@@ -27,7 +27,7 @@ USB floppy devices.
 Compatibility
 =============
 
-LIFUTILS were tested on LINUX, Windows 7 and Mac OS/X.
+The LIFUTILS were tested on LINUX, Windows 7 and Mac OS/X.
 
 
 INSTALLATION
@@ -40,7 +40,7 @@ The [release](https://github.com/bug400/lifutils/releases) section provides prec
 License
 =======
 
-ASM71 is publishd under th GNU General Public License v3.0 License 
+The LIFUTILS are publishd under th GNU General Public License v3.0 License 
 (see LICENSE file).
 
 Acknowledgements
