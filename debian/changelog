@@ -1,3 +1,10 @@
+lifutils (1.7.3-ubuntu1) wily; urgency=medium
+
+  * lifrename did not check if new filename already exists
+    progs/lifrename.c 
+
+ -- trusty <achim@trillian>  Sun, 13 Dec 2015 14:23:27 +0100
+
 lifutils (1.7.2-ubuntu1) trusty; urgency=medium
 
   * reimplmented pyhsical media access

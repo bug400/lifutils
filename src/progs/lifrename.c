@@ -110,6 +110,44 @@ int main(int argc, char **argv)
     /* Pad the filename with spaces to enable comparison */
     pad_name(argv[optind+1],cmp_name);
 
+    /* Pad the new filename with spaces */
+    pad_name(argv[optind+2],new_name);
+
+    /* Scan the directory to look if new filename already exists */
+    dir_end=0;
+    found_file=0;
+    for(dir_block=0; dir_block<dir_length; dir_block++)
+      {
+        lif_read_block(lif_device,dir_block+dir_start,dir_data);
+        for(dir_entry=0; dir_entry<8; dir_entry++)
+          {
+            file_type=get_lif_int(dir_data+(dir_entry<<5)+10,2);
+            if(file_type==0) { continue; } /* Skip deleted files */ 
+            if(file_type==0xFFFF)
+              {
+                /* End of directory */
+                dir_end=1;
+                break;
+              }
+            if(compare_names((char *)dir_data+(dir_entry<<5),new_name))
+              {
+                /* Found the file */
+                found_file=1;
+                break;
+              }
+          }
+        if(dir_end || found_file) { break; }; /* Quit at end or if file found */
+      }
+
+    if(found_file)
+      {
+        /* Give file already exists error */
+        fprintf(stderr,"File %s already exists\n",argv[optind+1]);
+        exit(2);
+      }
+
+    /* Change file name */
+
     /* Scan the directory */
     dir_end=0;
     found_file=0;
@@ -144,9 +182,6 @@ int main(int argc, char **argv)
         fprintf(stderr,"File %s not found\n",argv[optind+1]);
         exit(2);
       }
-
-    /* Pad the new filename with spaces */
-    pad_name(argv[optind+2],new_name);
 
     /* Change file name */
     for(i=0;i< NAME_LEN; i++) 
