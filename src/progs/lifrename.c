@@ -142,7 +142,7 @@ int main(int argc, char **argv)
     if(found_file)
       {
         /* Give file already exists error */
-        fprintf(stderr,"File %s already exists\n",argv[optind+1]);
+        fprintf(stderr,"File %s already exists\n",argv[optind+2]);
         exit(2);
       }
 
