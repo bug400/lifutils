@@ -70,7 +70,8 @@ int main(int argc, char **argv)
     int option; /* Command line option character */
     int output_device; /* Descriptor of output device */
     FILE *input_file; /* Input file stream */
-    char cmp_name[NAME_LEN]; /* File name to look for */
+    unsigned char cmp_name[NAME_LEN]; /* File name to look for */
+    unsigned char chk_name[NAME_LEN+1]; /* File from input file to check */
     int data_length; /* length of input file in bytes without header */
     int num_blocks; /* size of input file in blocks */
     int physical_flag; /* Option to use a physical device */
@@ -202,6 +203,19 @@ int main(int argc, char **argv)
     /* get file name */
     for (i=0; i<NAME_LEN; i++) 
        cmp_name[i]= new_dir_entry[i];
+
+    /* check the file name */
+    for (i=0; i<NAME_LEN; i++) 
+       if (new_dir_entry[i]==' ') 
+          chk_name[i]= '\0';
+       else
+          chk_name[i]= new_dir_entry[i];
+    chk_name[NAME_LEN]='\0';
+    debug_print("File name to check: %s\n",chk_name);
+    if (check_filename(chk_name)==0) {
+          fprintf(stderr,"illegal file name\n");
+          exit(2);
+    }
      
     debug_print("%s","input file: ");
     for (i=0; i<NAME_LEN; i++) debug_print("%c",cmp_name[i]);
