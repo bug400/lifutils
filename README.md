@@ -40,7 +40,7 @@ The [release](https://github.com/bug400/lifutils/releases) section provides prec
 License
 =======
 
-The LIFUTILS are publishd under th GNU General Public License v3.0 License 
+The LIFUTILS are publishd under th GNU General Public License v2.0 License 
 (see LICENSE file).
 
 Acknowledgements

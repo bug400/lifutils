@@ -46,7 +46,7 @@ The software installed by the port utility requires the following environemnt va
 
 You should appy the setting of the environment variables to your .profile file.
 
-To compile asm71 you must install the autotool, autoconf and automake
+To compile the LIFUTILS you must install the autotool, autoconf and automake
 packages.
 
 Compile and install the software according to the LINUX description (see above).
