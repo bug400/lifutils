@@ -1,4 +1,4 @@
-## LIFUTILS (Utilities to handl LIF files and media images)
+## LIFUTILS (Utilities to handle LIF files and media images)
 
 Index
 -----
@@ -53,13 +53,13 @@ See the [Installation Instructions](https://github.com/bug400/lifutils/blob/mast
 License
 =======
 
-The LIFUTILS are publishd under th GNU General Public License v2.0 License 
+The LIFUTILS are published under th GNU General Public License v2.0 License 
 (see LICENSE file).
 
 
 Acknowledgements
 ================
 
-The LIF Utilities were originally developped by Tony Duell and enhanced by 
+The LIF Utilities were originally developed by Tony Duell and enhanced by 
 Joachim Siebold. Code was taken from hp41uc (Leo Duran), modfile (Warren Furlow)  and liftool (Christophe Gottheimer).
 

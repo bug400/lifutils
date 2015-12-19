@@ -14,7 +14,7 @@ Installation of the precompiled binaries
 LINUX:
 
 There are DEBIAN packages available for download (32-bit and 64-bit).
-Install the pacakge as root.
+Install the package as root.
 
      dpkg -i <package-file-name>
 
@@ -22,18 +22,18 @@ Install the pacakge as root.
 Windows:
 
 There is an installer exe file to safely install the LIFUTILS. Download and
-excute the installer file and follow the instructions. You need admin privileges.
+execute the installer file and follow the instructions. You need admin privileges.
 The software can be safely uninstalled from the control panel. At the moment the
 installer only provides a 32-bit version of the software.
 
 Since the LIFUTILS are command line utilities you invoke then from a console window.
-THe PATH variable is modified by the installation program.
+The PATH variable is modified by the installation program.
 
 
 Mac OS X:
 
-There is a zip file that contails the subdirectories "bin" and "usr". For a
-system wide installation it is recommended to install thes files under
+There is a zip file that contains the subdirectories "bin" and "usr". For a
+system wide installation it is recommended to install these files under
 /usr/local.
 
 Obtain administrative privileges and:
@@ -41,7 +41,7 @@ Obtain administrative privileges and:
      cd /usr/local
      unzip <name-of-zip-file>
 
-There is no installation package avialable at the moment.
+There is no installation package available at the moment.
 
 
 Installation from scratch
@@ -51,7 +51,7 @@ LINUX:
 
 * Install the autotools, automake tool chain
 * Install c development tool chain
-* Download and unpack the LIFUTIS-sources
+* Download and unpack the LIFUTILS-sources
 
 type:
 
@@ -64,7 +64,7 @@ The destination directory is the location of the bin/ and share/ directory
 where the files will be installed (usually /usr/local or /usr).
 Note: to install files in /usr or /usr/local you need root rights.
 
-To invoke the lifutil tools the bin directory of lifutils must be contained in the
+To invoke the lifutil tools the bin directory of LIFUTILS must be contained in the
 PATH environment variable.
 
 
@@ -90,7 +90,7 @@ The software installed by the port utility requires the following environemnt va
      export PATH=/opt/local/bin:/opt/local/sbin:$PATH
      export MANPATH=/opt/local/share/man:$MANPATH
 
-You should appy the setting of the environment variables to your .profile or
+You should apply the setting of the environment variables to your .profile or
 .bash_profile file.
 
 To compile the LIFUTILS you must install the autotool, autoconf and automake
