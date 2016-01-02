@@ -73,12 +73,7 @@ int main(int argc, char **argv)
         usage();
       }
 
-    /* Check file name */
-    if(check_filename(argv[optind+1])==0) 
-      {
-        fprintf(stderr,"Illegal file name\n");
-        exit(1);
-      }
+    /* Check new file name */
     if(check_filename(argv[optind+2])==0) 
       {
         fprintf(stderr,"Illegal file name\n");
