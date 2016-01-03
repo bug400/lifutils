@@ -39,9 +39,11 @@ int main(int argc, char **argv)
     int physical_flag; /* Option to use a physical device */
     int lif_device; /* Descriptor of input device */
     char *medium= (char *) NULL;
-    int dirsize;
-    int totalblocks;
-    int i;
+    int dirsize;    /* number of directory entries */
+    int dirsize_blocks; /* number of blocks for directory */
+    int totalblocks; /* total number of disk blocks */
+    int tracks, heads, sectors; /* medium geometry */
+    int i, temp;
     
     /* LIF disk values */
     unsigned char sector_data[SECTOR_SIZE]; /* sector */
@@ -80,6 +82,67 @@ int main(int argc, char **argv)
       {
         usage();
       }
+    /* size of directory in blocks */
+    temp= dirsize* ENTRY_SIZE;
+    dirsize_blocks= temp/SECTOR_SIZE + (int) ((temp % SECTOR_SIZE) !=0);
+
+    /* Tracks, heads, sectors */
+    totalblocks=0;
+    if(strcmp(medium,"cass")==0) {
+        tracks=2;
+        heads=1;
+        sectors=256;
+        totalblocks= 512;
+    }
+    if(strcmp(medium,"disk")==0) {
+        tracks=77;
+        heads=2;
+        sectors=16;
+        totalblocks=2464; /* 16 spare blocks */
+    }
+    if(strcmp(medium,"hdrive1")==0) {
+        tracks=80;
+        heads=2;
+        sectors=16;
+        totalblocks=2560; 
+    }
+    if(strcmp(medium,"hdrive2")==0) {
+        tracks=125;
+        heads=1;
+        sectors=64;
+        totalblocks=8000; 
+    }
+    if(strcmp(medium,"hdrive4")==0) {
+        tracks=125;
+        heads=2;
+        sectors=64;
+        totalblocks=16000; 
+    }
+    if(strcmp(medium,"hdrive8")==0) {
+        tracks=125;
+        heads=4;
+        sectors=64;
+        totalblocks=32000; 
+    }
+    if(strcmp(medium,"hdrive16")==0) {
+        tracks=125;
+        heads=8;
+        sectors=64;
+        totalblocks=64000; 
+    }
+    if(totalblocks==0) usage();
+
+    /* directory size too large? */
+    if (dirsize_blocks >  totalblocks / 3) {
+       fprintf(stderr,"directory size too large\n");
+       exit(1);
+    }
+    debug_print("Dir size %d\n",dirsize);
+    debug_print("Dir size (blocks) %d\n",dirsize_blocks);
+    debug_print("Tracks %d\n",tracks);
+    debug_print("Heads %d\n",heads);
+    debug_print("Sectors %d\n",sectors);
+    debug_print("Total blocks %d\n",totalblocks);
 
     /* Open lif device */
 #ifdef WIN32
@@ -105,59 +168,15 @@ int main(int argc, char **argv)
     put_lif_int(sector_data+8,4,2);
 
     /* length of directory in blocks */
-    dirsize= dirsize* ENTRY_SIZE;
-    dirsize= dirsize/SECTOR_SIZE + (int) ((dirsize % SECTOR_SIZE) !=0);
-    debug_print("Dir size %d\n",dirsize);
-    put_lif_int(sector_data+16,4,dirsize);
+    put_lif_int(sector_data+16,4,dirsize_blocks);
 
     /* LIF Version number */
     put_lif_int(sector_data+20,2,1);
 
-    /* Tracks, heads, sectors */
-    totalblocks=0;
-    if(strcmp(medium,"cass")==0) {
-        put_lif_int(sector_data+24,4,2);
-        put_lif_int(sector_data+28,4,1);
-        put_lif_int(sector_data+32,4,256);
-        totalblocks= 512;
-    }
-    if(strcmp(medium,"disk")==0) {
-        put_lif_int(sector_data+24,4,77);
-        put_lif_int(sector_data+28,4,2);
-        put_lif_int(sector_data+32,4,16);
-        totalblocks=2464; /* 16 spare blocks */
-    }
-    if(strcmp(medium,"hdrive1")==0) {
-        put_lif_int(sector_data+24,4,80);
-        put_lif_int(sector_data+28,4,2);
-        put_lif_int(sector_data+32,4,16);
-        totalblocks=2560; 
-    }
-    if(strcmp(medium,"hdrive2")==0) {
-        put_lif_int(sector_data+24,4,125);
-        put_lif_int(sector_data+28,4,1);
-        put_lif_int(sector_data+32,4,64);
-        totalblocks=8000; 
-    }
-    if(strcmp(medium,"hdrive4")==0) {
-        put_lif_int(sector_data+24,4,125);
-        put_lif_int(sector_data+28,4,2);
-        put_lif_int(sector_data+32,4,64);
-        totalblocks=16000; 
-    }
-    if(strcmp(medium,"hdrive8")==0) {
-        put_lif_int(sector_data+24,4,125);
-        put_lif_int(sector_data+28,4,4);
-        put_lif_int(sector_data+32,4,64);
-        totalblocks=32000; 
-    }
-    if(strcmp(medium,"hdrive16")==0) {
-        put_lif_int(sector_data+24,4,125);
-        put_lif_int(sector_data+28,4,8);
-        put_lif_int(sector_data+32,4,64);
-        totalblocks=64000; 
-    }
-    if(totalblocks==0) usage();
+    /* write tracks, heads, sectors */
+    put_lif_int(sector_data+24,4,tracks);
+    put_lif_int(sector_data+28,4,heads);
+    put_lif_int(sector_data+32,4,sectors);
 
     /* date and time are createt in an directory entry structure */ 
     put_time(tmp_data);
@@ -170,10 +189,10 @@ int main(int argc, char **argv)
     lif_write_block(lif_device,1,sector_data);
     /* Now write empty directory, all 0xFF */
     for(i=0;i<SECTOR_SIZE;i++) sector_data[i]=0xFF;
-    for(i=2;i<dirsize+2;i++)
+    for(i=2;i<dirsize_blocks+2;i++)
        lif_write_block(lif_device,i,sector_data);
     /* now write one sector of disk data, all 0xFF */
-    lif_write_block(lif_device,dirsize+3,sector_data);
+    lif_write_block(lif_device,dirsize_blocks+3,sector_data);
     /* tidy up and quit */
     lif_close(lif_device);
     exit(0);      
