@@ -57,6 +57,8 @@ int main(int argc, char **argv)
     int new_block_count; /* block numer in new file */
     unsigned int file_type; /* file type word */
     unsigned char dir_data[SECTOR_SIZE]; /* Current directory block data */
+    unsigned int no_tracks, no_surfaces, no_blocks; /* disk geometry */
+    unsigned int medium_size; /* size of disk medium */
  
     /* Initialize block lists */
     for(i=0;i<MAXBLOCKS;i++) {
@@ -110,6 +112,20 @@ int main(int argc, char **argv)
     dir_start=get_lif_int(blocks[0]+8,4);
     dir_length=get_lif_int(blocks[0]+16,4);
 
+    /* get medium information */
+    no_tracks=get_lif_int(blocks[0]+24,4);
+    no_surfaces=get_lif_int(blocks[0]+28,4);
+    no_blocks=get_lif_int(blocks[0]+32,4);
+    medium_size= no_tracks* no_surfaces* no_blocks;
+    if((no_tracks == no_surfaces) && (no_surfaces == no_blocks)) {
+       fprintf(stderr,"Medium was not initialized properly\n");
+       exit(1);
+     }
+    if (medium_size > MAXBLOCKS) {
+       fprintf(stderr,"Medium size too large\n");
+       exit(1);
+    }
+
     /*  block 1 */
     reccount++;
     blocks[reccount]=malloc(sizeof (unsigned char) * SECTOR_SIZE);
@@ -120,6 +136,7 @@ int main(int argc, char **argv)
     for(reccount=dir_start;reccount<dir_start+dir_length;reccount++) {
        blocks[reccount]=malloc(sizeof (unsigned char) * SECTOR_SIZE);
        blockmap[reccount]=reccount;
+       debug_print("directory block %d assigned\n",reccount);
        for(j=0;j<SECTOR_SIZE;j++) *(blocks[reccount]+j)=0xff;
     }
 
@@ -162,6 +179,10 @@ int main(int argc, char **argv)
             for(i=0;i<num_blocks;i++) {
                 blockmap[new_block_count]= start_block;
                 debug_print("block %d mapped to %d\n",start_block,new_block_count);
+                if (allocmap[start_block] == 1) {
+                   fprintf(stderr,"corrupted medium: overlapping files\n");
+                   exit(1);
+                }
                 allocmap[start_block]=1;
                 debug_print("Old block %d allocated\n",start_block);
                 new_block_count++;
