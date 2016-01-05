@@ -3,7 +3,7 @@ bin_PROGRAMS= lifdir lifget lifpurge liflabel lifrename \
      liftext sdata decomp41 text75 regs41 stat41 key41 \
      wall41 wcat41 lifstat sdatabar comp41 \
      barprt barps rom41 rom41cat prog41bar lifput textlif \
-     raw41lif lifraw rom41hx lifinit lifpack liffix lifmod
+     raw41lif lifraw rom41hx lifinit lifpack liffix lifmod lexcat71
 if MACOSX
 bin_PROGRAMS+= in71 out71 lifilper inp41 outp41
 endif
@@ -82,4 +82,6 @@ lifilper_SOURCES= lifilper.c
 lifilper_LDADD= ../lib/liblifutils.a
 lifmod_SOURCES= lifmod.c 
 lifmod_LDADD= ../lib/liblifutils.a
+lexcat71_SOURCES= lexcat71.c 
+lexcat71_LDADD= ../lib/liblifutils.a
 

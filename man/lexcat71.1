@@ -1,0 +1,52 @@
+.TH lexcat71 04-January-2016 "LIF Utilitites" "LIF Utilities"
+.SH NAME
+lexcat71 \- a filter to display information about HP71 LEX files
+.SH SYNOPSIS
+.B lexcat71
+.B <
+.I Input file
+.B >
+.I Output file
+.PP
+.B lexcat71 \-?
+.SH DESCRIPTION
+.B lexcat71
+is a filter which reads al HP-71 lex file from standard input and displays
+the following information on standard output:
+.TP  4 
+LEX file id
+.TP  4 
+for each of exisitng lex tables:
+.PP
+.IP \- 3  
+lowest token ID
+.IP \- 3  
+highest token ID
+.IP \- 3  
+existence of speed table
+.IP \- 3  
+existence of message table
+.IP \- 3  
+existence of poll handler
+.IP \- 3  
+list of keywords with token number and characterization nibble
+.PP
+.B Note: the lex file header must not be present
+
+.SH REFERENCES
+The LEX file format is documented in the 
+.I HP\-71 IDS Volume 1, chapter 6.
+.SH EXAMPLES
+If
+.I mem.lex
+is a lif file containing an HP71 lex file, then
+.PP
+.B cat mem.lex | lifraw | lexcat71
+.PP 
+will display information about the LEX file
+.B mem.lex
+.SH AUTHOR
+.B lexcat71
+was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, 
+ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

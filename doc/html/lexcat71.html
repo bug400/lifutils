@@ -1,0 +1,177 @@
+<!-- Creator     : groff version 1.22.3 -->
+<!-- CreationDate: Tue Jan  5 07:14:33 2016 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>lexcat71</title>
+
+</head>
+<body>
+
+<h1 align="center">lexcat71</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#REFERENCES">REFERENCES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">lexcat71
+&minus; a filter to display information about HP71 LEX
+files</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>lexcat71
+&lt;</b> <i>Input file</i> <b>&gt;</b> <i>Output
+file</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lexcat71
+&minus;?</b></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>lexcat71</b>
+is a filter which reads al HP-71 lex file from standard
+input and displays the following information on standard
+output: <br>
+LEX file id <br>
+for each of exisitng lex tables:</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="1%">
+
+
+<p>&minus;</p></td>
+<td width="3%"></td>
+<td width="85%">
+
+
+<p>lowest token ID</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="1%">
+
+
+<p>&minus;</p></td>
+<td width="3%"></td>
+<td width="85%">
+
+
+<p>highest token ID</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="1%">
+
+
+<p>&minus;</p></td>
+<td width="3%"></td>
+<td width="85%">
+
+
+<p>existence of speed table</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="1%">
+
+
+<p>&minus;</p></td>
+<td width="3%"></td>
+<td width="85%">
+
+
+<p>existence of message table</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="1%">
+
+
+<p>&minus;</p></td>
+<td width="3%"></td>
+<td width="85%">
+
+
+<p>existence of poll handler</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="1%">
+
+
+<p>&minus;</p></td>
+<td width="3%"></td>
+<td width="85%">
+
+
+<p>list of keywords with token number and characterization
+nibble</p> </td></tr>
+</table>
+
+<p style="margin-left:11%; margin-top: 1em"><b>Note: the
+lex file header must not be present</b></p>
+
+<h2>REFERENCES
+<a name="REFERENCES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The LEX file
+format is documented in the <i>HP&minus;71 IDS Volume 1,
+chapter 6.</i></p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">If
+<i>mem.lex</i> is a lif file containing an HP71 lex file,
+then</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>cat mem.lex
+| lifraw | lexcat71</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will display
+information about the LEX file <b>mem.lex</b></p>
+
+<h2>AUTHOR
+<a name="AUTHOR"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>lexcat71</b>
+was written by Joachim Siebold, bug400@gmx.de using code
+from Tony Duell, ard@p850ug1.demon.co.uk and has been placed
+under the GNU Public License version 2.0</p>
+<hr>
+</body>
+</html>
