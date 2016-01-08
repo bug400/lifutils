@@ -64,13 +64,16 @@ int file_length(unsigned char *entry, char *file_type)
           type_string="TEXT";
           length=get_lif_int(entry+16,4) * 256;
           break;
+        case 0x00FF: /* disabled HP-71 LEX file */
+          type_string="D-LEX";
+          length=hp71_length(entry);
         case 0xE0D0 : /* SDATA file */
           type_string="SDATA";
           length=get_lif_int(entry+28,2) * 8;
           break;
         case 0xE0F0 : /* Data file */
         case 0xE0F1 : /* Secure Data file */
-          type_string="DATA71";
+          type_string="DAT71";
           length=((*(entry+28)) + ((*(entry+29))<<8)) /* #records */
                 *((*(entry+30)) + ((*(entry+31))<<8)); /* record length */
           break;
@@ -83,6 +86,8 @@ int file_length(unsigned char *entry, char *file_type)
           break;
         case 0xE208 : /* Lex file */
         case 0xE209 : /* Secure Lex file */
+        case 0xE20A : /* Private Lex file */
+        case 0xE20B : /* Secure Private Lex file */
           type_string="LEX71";
           length=hp71_length(entry);
           break;
@@ -95,14 +100,14 @@ int file_length(unsigned char *entry, char *file_type)
         case 0xE215 : /* Secure BASIC file */
         case 0xE216 : /* Private BASIC file */
         case 0xE217 : /* Secure Private BASIC file */
-          type_string="BASIC71";
+          type_string="BAS71";
           length=hp71_length(entry);
           break;
         case 0xE218 : /* FRAM file */
         case 0xE219 : /* Secure FRAM file */
         case 0xE21A : /* Private FRAM file */
         case 0xE21B : /* Secure Private FRAM file */
-          type_string="FORTH71";
+          type_string="FTH71";
           length=get_lif_int(entry+16,4) * 256;
           break;
         case 0xE21C : /* ROM file */
@@ -110,15 +115,30 @@ int file_length(unsigned char *entry, char *file_type)
           length=hp71_length(entry);
           break;
         case 0xE222 : /* Graphics file */
-          type_string="GRAPH71";
+          type_string="GRA71";
           length=hp71_length(entry);
           break;
+        case 0xE224: /* Address file ?? */
+          type_string="ADR71";
+          length=hp71_length(entry);
+          break;
+        case 0xE22E: /* Symbol file ?? */
+          type_string="SYM71";
+          length=hp71_length(entry);
+          break;
+
         /* HP41 types, from Synthetic Quick Reference Guide */
         /* It's not too clear which are in registers (and need * 8 in the 
            expression for length), and which are in bytes. This can be fixed
            later */
+        case 0xE020 : /* WALL file with X-MEM */
+          type_string="WAXM41";
+          length=(get_lif_int(entry+28,2) * 8)+1;
+        case 0xE030 : /* WALL file with X-MEM */
+          type_string="XM41";
+          length=(get_lif_int(entry+28,2) * 8)+1;
         case 0xE040 : /* WALL file */
-          type_string="WALL41";
+          type_string="ALL41";
           length=(get_lif_int(entry+28,2) * 8)+1;
           break;
         case 0xE050 : /* KEYS file */
@@ -130,21 +150,25 @@ int file_length(unsigned char *entry, char *file_type)
           length=(get_lif_int(entry+28,2) * 8)+1;
           break;
         case 0xE070 : /* HP41 ROM/MLDL dump file, as used by MLDL-OS */
-          type_string="ROM41";
+          type_string="X-M41";
           length=(get_lif_int(entry+28,2) * 8)+1;
           break;
         case 0xE080 : /* Program file */
-          type_string="PROG41";
+          type_string="PGM41";
           length=get_lif_int(entry+28,2)+1;
           break;
         /* HP75 types, from Synthetic Quick Reference Guide */
         /* Little is known about these, so expect bugs! */
         case 0xE052 : /* HP75 Text */
-          type_string="TEXT75";
+          type_string="TXT75";
           length=get_lif_int(entry+16,4) * 256;
           break;
         case 0xE053 : /* HP75 Appointments */
-          type_string="APPT75";
+          type_string="APP75";
+          length=get_lif_int(entry+16,4) * 256;
+          break;
+        case 0xE058 : /* HP75 Data */
+          type_string="DAT75";
           length=get_lif_int(entry+16,4) * 256;
           break;
         case 0xE089 : /* HP75 Lex */
@@ -152,12 +176,12 @@ int file_length(unsigned char *entry, char *file_type)
           length=get_lif_int(entry+16,4) * 256;
           break;
         case 0xE08A : /* HP75 Visicalc */
-          type_string="VCALC75";
+          type_string="WKS75";
           length=get_lif_int(entry+16,4) * 256;
           break;
         case 0xE0FE : /* HP75 BASIC (HP41 SQRG says it is, but never seen) */
         case 0xE088 : /* HP75 BASIC */
-          type_string="BASIC75";
+          type_string="BAS75";
           length=get_lif_int(entry+16,4) * 256;
           break;
         case 0xE08B : /* HP75 ROM-related file ? */
