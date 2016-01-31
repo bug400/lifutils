@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Jan 31 08:34:46 2016 -->
+<!-- CreationDate: Sun Jan 31 08:34:43 2016 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -13,12 +13,12 @@
        table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
        h1      { text-align: center }
 </style>
-<title>rom41hx</title>
+<title>hx41rom</title>
 
 </head>
 <body>
 
-<h1 align="center">rom41hx</h1>
+<h1 align="center">hx41rom</h1>
 
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
@@ -35,20 +35,21 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">rom41hx &minus;
-a filter to convert a HP-41 rom file to a data file that can
-be uploaded to HEPAX RAM with the READROM command</p>
+<p style="margin-left:11%; margin-top: 1em">hx41rom &minus;
+a filter to convert a SDATA file which contains a packed ROM
+image written by the HEPAX WRTROM command to an unpacked
+HP-41 ROM file.</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>rom41hx</b>
-<i>&lt;LIF filename&gt;</i> <b>&lt;</b> <i>Input file</i>
-<b>&gt;</b> <i>Output file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>hx41rom
+&lt;</b> <i>Input file</i> <b>&gt;</b> <i>Output
+file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>rom41hx
+<p style="margin-left:11%; margin-top: 1em"><b>hx41rom
 &minus;?</b></p>
 
 <h2>DESCRIPTION
@@ -56,12 +57,12 @@ be uploaded to HEPAX RAM with the READROM command</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>rom41hx</b>
-is a filter which generates a LIF data file from a HP41 rom
-file. The filter reads the rom data from standard input and
-writes the LIF file header and the rom data in scrambled
-hepax format <br>
-to standard output.</p>
+<p style="margin-left:11%; margin-top: 1em"><b>hx41rom</b>
+is a filter which generates an unpacked HP-41 ROM file from
+an SDATA file that contains a packed ROM image created by
+the HEPAX WRTROM command. The filter reads the SDATA file
+(without header!) from standard input and writes the
+unpacked HP-71 ROM image to standard output.</p>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>
@@ -80,23 +81,21 @@ Quick Reference Guide (Jeremy Smith)</i></p>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>HPILDv1B.ROM</i> is the rom file of the HP-IL development
-module then</p>
+<i>myrom.dat</i> is an SDATA file with the LIF header
+removed that contains the packed ROM image then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>cat
-HPILDv1B.ROM | rom41hx HPILDEV &gt; hpildev.sda</b></p>
+myrom.dat | hx41rom &gt; myrom.rom</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will generate a
-LIF file <i>hpildvev.sda</i> with the LIF filename
-<i>HPILDEV</i></p>
+file <i>myrom.rom</i> with the unpacked HP-41 rom image.</p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>
 </h2>
 
 
-
-<p style="margin-left:11%; margin-top: 1em"><i><b>rom41hx</b></i>
+<p style="margin-left:11%; margin-top: 1em"><b>hx41rom</b>
 was written by Joachim Siebold, bug400@gmx.de using code
 from Tony Duell, ard@p850ug1.demon.co.uk and Christophe
 Gottheimer, cgh750@gmail.com and has been placed under the

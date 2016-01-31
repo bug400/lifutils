@@ -1,0 +1,34 @@
+.TH lifheader 1 29-January-2016 "LIF Utilitites" "LIF Utilities"
+.SH NAME
+lifheader \- show the LIF file header information of a LIF file
+.SH SYNOPSIS
+.B lifheader
+.I <filename>
+.PP
+.B lifheader
+.PP
+(last form gets the file from standard input)
+.PP
+.B lifheader \-?
+.SH DESCRIPTION
+.B lifheader
+is a program which shows the header information of a LIF file: file name, file type, file size, time and date of file creaion.
+.SH REFERENCES
+The LIF disk directory format is documented in the
+.I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
+with further details (particularly HP41 and HP75 file types) in the 
+.I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith)
+.SH EXAMPLES
+If
+.I zline.p41
+is a lif file containing an HP41 program then
+.PP
+.B lifheader zline.p41
+.PP 
+will show the header information of
+.B zline.p41
+.SH AUTHOR
+.B lifheader
+was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, 
+ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

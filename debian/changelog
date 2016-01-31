@@ -1,3 +1,9 @@
+lifutils (1.7.5-ubuntu1) wily; urgency=medium
+
+  * src/prog/hx41rom.c: new file
+
+ -- trusty <achim@trillian>  Fri, 29 Jan 2016 20:42:55 +0100
+
 lifutils (1.7.4-ubuntu1) wily; urgency=medium
 
   * src/prog/lifrename: check only if new filename is valid

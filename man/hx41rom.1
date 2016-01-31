@@ -1,0 +1,39 @@
+.TH hx41rom 1  29-January-2016 "LIF Utilitites" "LIF Utilities"
+.SH NAME
+hx41rom \- a filter to convert a SDATA file which contains a packed ROM image written by the HEPAX WRTROM command to an unpacked HP-41 ROM file.
+.SH SYNOPSIS
+.B hx41rom
+.B <
+.I Input file
+.B >
+.I Output file
+.PP
+.B hx41rom \-?
+.SH DESCRIPTION
+.B hx41rom
+is a filter which generates an unpacked HP-41 ROM file from an SDATA file that
+contains a packed ROM image created by the HEPAX WRTROM command.
+The filter reads the SDATA file (without header!)  from standard input and writes 
+the unpacked HP-71 ROM image to standard output.
+.SH REFERENCES
+The format of an HP41C program is documented in many books. Amongst the 
+most useful references are
+.I Extend Your HP41 (W. A. C. Mier-Jedrzejowicz)
+and
+.I The HP41 Synthetic Programming Quick Reference Guide (Jeremy Smith)
+.SH EXAMPLES
+If
+.I myrom.dat 
+is an SDATA file with the LIF header removed that contains the packed 
+ROM image then
+.PP
+.B cat myrom.dat | hx41rom > myrom.rom
+.PP 
+will generate a file
+.I myrom.rom
+with the unpacked HP-41 rom image.
+.SH AUTHOR
+.B hx41rom
+was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, 
+ard@p850ug1.demon.co.uk and Christophe Gottheimer, cgh750@gmail.com and 
+has been placed under the GNU Public License version 2.0

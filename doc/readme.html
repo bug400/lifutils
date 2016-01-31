@@ -23,6 +23,7 @@ Utilities to handle various LIF file types and images of LIF media:
 <tr><td><a href="html/lifpurge.html">lifpurge</a> </td><td>Purge a file from a LIF image file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/lifrename.html">lifrename</a> </td><td>Rename a file on a LIF image file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/lifraw.html">lifraw</a> </td><td>Remove the LIF header from a LIF file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/lifheader.html">lifheader</a> </td><td>Show the LIF header of a LIF file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/lifpack.html">lifpack</a> </td><td>Packs a LIF image file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/liftext.html">liftext</a></td><td>Decode a HP text (LIF) file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/textlif.html">textlif</a></td><td>Encode a HP text (LIF) file</td><td>yes</td><td>yes</td></tr>
@@ -36,7 +37,8 @@ Utilities to handle various LIF file types and images of LIF media:
 <tr><td><a href="html/wall41.html">wall41</a></td><td>Extract information from a HP41 Write-All file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/wcat41.html">wcat41</a></td><td>Display a catalogue of the contents of a HP41 Write-All file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/rom41.html">rom41</a></td ><td>Unscramble a HP41 ROM dump file</td><td>yes</td><td>yes</td></tr>
-<tr><td><a href="html/rom41hx.html">rom41hx</a></td ><td>convert a HP41 unscrambeled ROM file to a SDATA file for HEPAX upload</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/rom41hx.html">rom41hx</a></td ><td>convert a HP41 unpacked ROM file to a SDATA file for HEPAX upload</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/hx41rom.html">hx41rom</a></td ><td>convert a packed HEPAX ROM SDATA file to an unpacked HP-41 ROM file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/rom41cat.html">rom41cat</a></td><td>Display list of function names in an unscrambled HP41 ROM dump</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/lexcat71.html">lexcat71</a></td><td>Display main and text table information in a HP71-LEX file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/sdatabar.html">sdatabar</a> </td><td>Convert a SDATA file into a HP41 barcode file</td><td>yes</td><td>yes</td></tr>
@@ -172,6 +174,9 @@ Check for already existing filename: lifrename.c , check if the name in the lif 
 </td></tr>
 <tr><td>v1.7.4</td><td>
 Do not check if old filename is valid: lifrename. Check if directory size exceeds 1/3 of the medium size: lifinit.c, New files: lexcat71, lexcat71.1. Filetypes renamed and added: lif_dir_utils.c
+</td></tr>
+<tr><td>v1.7.5</td><td>
+New files: lifheader.c, lifversion.c, hx41rom.c, lifheader.1, hx41rom.1
 </td></tr>
 </table>
 </p>
