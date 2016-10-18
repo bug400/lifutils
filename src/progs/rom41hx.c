@@ -39,30 +39,52 @@ void usage(void)
 int read_rom(unsigned char *memory)
 /* read rom into memory, scramble data */
   {
-    int byte_counter;
-    short rom_data[RECORD_SIZE]; /* Input data words */
+    int byte_counter,j,s,l,t,bytes_read, checksum;
+    unsigned short rom_data0[RECORD_SIZE]; /* Input data words */
+    unsigned short rom_data1[RECORD_SIZE]; /* Input data words, read ahead */
 
     byte_counter=0; /* Start loading at start of memory */
+    s=0;
     /* read in the file data, 1 record at a time */
-    while(fread(rom_data,sizeof(short),RECORD_SIZE,stdin)==
-          RECORD_SIZE) {
+    bytes_read=fread(rom_data1,sizeof(short),RECORD_SIZE,stdin);
+    while(bytes_read== RECORD_SIZE) {
+          memcpy(rom_data0,rom_data1,sizeof(short)* RECORD_SIZE);
+          /* determine checksum */
+          for(j=0;j< RECORD_SIZE;j++) {
+              l=s;
+              t= ((rom_data0[j] & 0xFF) <<8) | ((rom_data0[j] & 0xFF00) >> 8);
+              s+= t;
+              if (s>= 1024) {
+                  s= s & 0x3FF;
+                  s+=1;
+              }
+          }
+       
+          bytes_read=fread(rom_data1,sizeof(short),RECORD_SIZE,stdin);
+
+          /* end of file, then store computed checksum */
+          if(bytes_read != RECORD_SIZE) {
+               checksum= (~l & 0x3FF)+1;
+               rom_data0[RECORD_SIZE-1]= ((checksum &0xFF) <<8) | 
+                   ((checksum &0xFF00) >> 8);
+          }
           /* scramble data */
-          memory[byte_counter]=(((rom_data[0] & 0xFC00) >> 10) | ((rom_data[0] & 0x0003) << 6));
+          memory[byte_counter]=(((rom_data0[0] & 0xFC00) >> 10) | ((rom_data0[0] & 0x0003) << 6));
           byte_counter++;
           if(byte_counter > LIF_ROM41_SIZE) exit(1);
-          memory[byte_counter]=(((rom_data[0] & 0x0300) >> 2) | \
-            ((rom_data[1] & 0xF000) >> 12) | ((rom_data[1] & 0x0003) << 4));
+          memory[byte_counter]=(((rom_data0[0] & 0x0300) >> 2) | \
+            ((rom_data0[1] & 0xF000) >> 12) | ((rom_data0[1] & 0x0003) << 4));
           byte_counter++;
           if(byte_counter > LIF_ROM41_SIZE) exit(1);
-          memory[byte_counter]=(((rom_data[1] & 0x0F00) >> 4) | \
-            ((rom_data[2] & 0xC000) >> 14) | ((rom_data[2] & 0x0003) << 2));
+          memory[byte_counter]=(((rom_data0[1] & 0x0F00) >> 4) | \
+            ((rom_data0[2] & 0xC000) >> 14) | ((rom_data0[2] & 0x0003) << 2));
           byte_counter++;
           if(byte_counter > LIF_ROM41_SIZE) exit(1);
-          memory[byte_counter]=(((rom_data[2] & 0x3F00) >> 6) | \
-            ((rom_data[3] & 0x0003)));
+          memory[byte_counter]=(((rom_data0[2] & 0x3F00) >> 6) | \
+            ((rom_data0[3] & 0x0003)));
           byte_counter++;
           if(byte_counter > LIF_ROM41_SIZE) exit(1);
-          memory[byte_counter]=((rom_data[3] & 0xFF00) >> 8);
+          memory[byte_counter]=((rom_data0[3] & 0xFF00) >> 8);
           byte_counter++;
     }
     return(byte_counter); /* number of bytes read */

@@ -1,1 +1,1 @@
-SUBDIRS=lib progs
+SUBDIRS=lib progs emu7470

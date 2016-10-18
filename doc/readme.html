@@ -69,8 +69,10 @@ comments at the start of some program files.
 
 <H2>Authors</H2>
 <p>
-The LIF Utilities were originally developped by Tony Duell ard@p850ug1.demon.co.uk and enhanced by Joachim Siebold
-bug400@gmx.de. Code was taken from hp41uc (Leo Duran), modfile (Warren Furlow)  and liftool (Christophe Gottheimer).
+The LIF Utilities were originally developed by Tony Duell ard@p850ug1.demon.co.uk 
+and enhanced by Joachim Siebold bug400@gmx.de. Code was taken from hp41uc (Leo Duran), 
+modfile (Warren Furlow)  and liftool (Christophe Gottheimer). The HP7470A plotter emulator
+is based upon the hp2xx software (Heinz W. Werntges, Martin Kroeker).
 </p>
 
 <p>
@@ -177,6 +179,12 @@ Do not check if old filename is valid: lifrename. Check if directory size exceed
 </td></tr>
 <tr><td>v1.7.5</td><td>
 New files: lifheader.c, lifversion.c, hx41rom.c, lifheader.1, hx41rom.1
+</td></tr>
+<tr><td>v1.7.6</td><td>
+comp41 now also accepts ST+, ST-, ST/, ST* command syntax in addition to STO+, STO-, 
+STO/, STO*.  rom41hx now corrects the rom checksum. This avoids a warning message if those files are loaded into HEPAX RAM. The file plotter.xrom was added. The plotter emulator
+engine for the HP7470A plotter was added. This program is used as subprocess by the
+pyILPER application and not intended for stand alone use.
 </td></tr>
 </table>
 </p>

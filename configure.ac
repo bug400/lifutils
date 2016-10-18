@@ -52,5 +52,6 @@ AC_CONFIG_FILES([Makefile
                  doc/hardware/Makefile
                  src/Makefile
                  src/lib/Makefile
+                 src/emu7470/Makefile
                  src/progs/Makefile])
 AC_OUTPUT

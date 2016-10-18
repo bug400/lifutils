@@ -67,9 +67,13 @@ FCN alt_fcn1[] = {
 
 FCN alt_fcn2[] = {
    {"STO+",     0x92},
+   {"ST+",      0x92},
    {"STO-",     0x93},
+   {"ST-",      0x93},
    {"STO*",     0x94},
+   {"ST*",      0x94},
    {"STO/",     0x95},
+   {"ST/",      0x95},
    {"ΣREG",     0x99},
    {"SIGREG",   0x99},
    {"SIGMAREG", 0x99},

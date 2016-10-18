@@ -1,3 +1,12 @@
+lifutils (1.7.6-ubuntu1) xenial; urgency=medium
+
+  * emu7470 plotter emulator engine added (first version)
+  * added plotter.xrom
+  * comp41 now also accepts ST+, ST-, ST/ and ST* syntax
+  * rom41hx now corrects rom checksums
+
+ -- trusty <achim@trillian>  Fri, 30 Sep 2016 19:23:13 +0200
+
 lifutils (1.7.5-ubuntu1) wily; urgency=medium
 
   * src/prog/hx41rom.c: new file
