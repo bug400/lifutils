@@ -50,6 +50,12 @@
    - DIGI_START, DIGI_CLEAR: issue pyILPER to enter and to leave digitizing mode
    - P!P2: send corrdinates of the scaling point to pyILPER
 
+   Changelog
+   23.10.2016 jsi
+   - output version number, supporess output of P1P2 when first initialized
+   - update commanded position, if position overflow in PD;PU;PA;PR
+   25.10.2016 jsi
+   - added debug output (lost mode), corrected debug output
    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  */
 
@@ -133,6 +139,7 @@ static int XMax;
 static int YMin;
 static int YMax;
 static PaperSize psize= A4;
+static int first_init= TRUE;   /* initial init */
 
 static const signed char
 hex_decode_table[0x80] =
@@ -292,7 +299,8 @@ static void init_HPGL(void)
 	maxpens = 2;
 	status=0x08; /* status: initialized */
 	reset_HPGL();
-	printf("%d %d %d %d %d\n", CMD_P1P2, (int)floor(P1.x+0.5), (int) floor(P1.y+0.5), (int)floor(P2.x+0.5), (int) floor(P2.y+0.5));
+        if (! first_init)
+		printf("%d %d %d %d %d\n", CMD_P1P2, (int)floor(P1.x+0.5), (int) floor(P1.y+0.5), (int)floor(P2.x+0.5), (int) floor(P2.y+0.5));
 }
 
 
@@ -351,7 +359,7 @@ void HPGL_Pt_to_tmpfile(const HPGL_Pt * pf)
 		lost_mode= TRUE;
 	}
 	if (lost_mode) {
-		Eprintf("Position overflow %d %d\n",pf->x,pf->y);
+		Eprintf("Position overflow %f %f\n",pf->x,pf->y);
 		set_Error(6,"Position overflow");
 		return;
 	}
@@ -731,6 +739,7 @@ void Pen_action_to_tmpfile(PlotCmd cmd, const HPGL_Pt * p, int scaled)
 
 void Update_commanded_position(const HPGL_Pt *p, int scaled)
 {
+	Eprintf("commanded position %f %f %d \n",p->x, p->y,scaled);
 	if (scaled)
 		Plotter_to_User_coord(p,&Cmd_pos);
         else
@@ -743,6 +752,8 @@ void Update_commanded_position(const HPGL_Pt *p, int scaled)
 		Cmd_pos.x=MAX_INT;
 	if (Cmd_pos.y > MAX_INT)
 		Cmd_pos.y=MAX_INT;
+
+	Eprintf("commanded position %f %f %d \n",Cmd_pos.x, Cmd_pos.y,scaled);
 }
 
 
@@ -938,17 +949,29 @@ static void lines(int relative)
 void line(int relative, HPGL_Pt p)
 {
 	HPGL_Pt porig,pp;
-
+	/*
+		check if the absolute coordinate values are out of range
+	*/
+	Eprintf("%s\n","in line");
+	if (check_value(p.x,(float) MIN_INT, (float) MAX_INT) ||
+		check_value(p.y,(float) MIN_INT, (float) MAX_INT)) {
+                Update_commanded_position(&p,scale_flag);
+		set_Error(3,"coordinate out of range");
+		lost_mode= TRUE;
+		return;
+	}
+	/*
+		check if relative coordinate values out of range
+	*/
 	if (relative) {
 		p.x += p_last.x;
 		p.y += p_last.y;
 	}
-	/*
-		check if the absolute coordinate values are out of range
-	*/
 	if (check_value(p.x,(float) MIN_INT, (float) MAX_INT) ||
 		check_value(p.y,(float) MIN_INT, (float) MAX_INT)) {
-		set_Error(3,"coordinate out of range");
+                Update_commanded_position(&p,scale_flag);
+		set_Error(3,"resulting coordinate out of range");
+		lost_mode= TRUE;
 		return;
 	}
 	if (scale_flag) {
@@ -956,10 +979,13 @@ void line(int relative, HPGL_Pt p)
 		if (check_value(p.x,(float) MIN_INT, (float) MAX_INT) ||
 			check_value(p.y,(float) MIN_INT, (float) MAX_INT)) {
 			set_Error(3,"scaled coordinate out of range");
+                	Update_commanded_position(&p,scale_flag);
+			lost_mode= TRUE;
 			return;
 		}
 	}
-	/* if we are here in lost_mode we can reset that state that state */
+	/* if we are here in lost_mode we can reset that state */
+	Eprintf("%s\n","reset lost mode");
 	lost_mode= FALSE;
 
 	porig.x = p.x;
@@ -2120,8 +2146,14 @@ int main(int argc, char * argv[])
 {
 	char *line= NULL;
 	int i1,i2,c;
+/*
+	output version and initialize
+*/
 
+	printf("%s\n",VERSION);
+	fflush(stdout);
 	init_HPGL();
+	first_init= FALSE;
 	cmdbuf_ptr=0;
 
 	while(1) {
@@ -2194,6 +2226,7 @@ int main(int argc, char * argv[])
 			cmdbuf_ptr++;
 		}
 		Eprintf("%c",'\n');
+		Eprintf("Lost mode: %d\n",lost_mode);
 		cmdbuf[cmdbuf_ptr]=';';
 		cmdbuf_ptr++;
 		check_cmdbuf();

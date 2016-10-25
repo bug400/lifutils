@@ -23,7 +23,9 @@
    along with this program; if not, write to the Free Software
    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-
+   Changelog
+   23.10.2016 jsi:
+   VERSION introduces
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
@@ -44,6 +46,7 @@
 #define MAX(x,y)  ((x)<(y) ? (y) : (x))
 #endif
 
+#define VERSION "00900"
 
 #define	TRUE	1
 #define	FALSE	0
@@ -53,8 +56,6 @@
 
 #define	HYPOT(x,y)	hypot(x,y)
 #define MAXCMDBUF 1024
-
-
 
 /**
  ** Exit codes
