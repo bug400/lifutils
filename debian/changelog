@@ -1,4 +1,4 @@
-lifutils (1.7.6~beta1) xenial; urgency=medium
+lifutils (1.7.6b1) xenial; urgency=medium
 
   * emu7470 plotter emulator engine added (first version)
   * added plotter.xrom
