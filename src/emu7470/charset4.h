@@ -6,17 +6,17 @@
    Copyright (c) 1991 - 1994 Heinz W. Werntges
    Parts Copyright (c) 1999 - 2001 Martin Kroeker
    em7470 (C) 2016 Joachim Siebold
-   
+
    This program is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public License
    as published by the Free Software Foundation; either version 2
    of the License, or (at your option) any later version.
- 
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
- 
+
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
@@ -147,7 +147,8 @@ char *charset4[128] = {
 	"\024\232\312\331\325\304\224",
 	"\124\224\232\332\027\307",
 	"\024\232\332\027\307",
-	"\131\312\252\231\225\244\304\325\327\247",
+	//"\131\312\252\231\225\244\304\325\327\247",
+	"\131\312\252\231\225\244\304\325\327\267",
 	"\024\232\124\332\027\327",
 	"\024\324\064\272\032\332",
 	"\025\244\304\325\332\232",

@@ -1,6 +1,13 @@
+lifutils (1.7.6b2) xenial; urgency=medium
+
+  * emu7470: font improvement (contributed by Christoph Gießelink) 
+  * emu7470 version 0.9.1
+
+ -- trusty <achim@trillian>  Fri, 04 Nov 2016 20:55:34 +0100
+
 lifutils (1.7.6b1) xenial; urgency=medium
 
-  * emu7470 plotter emulator engine added (first version)
+  * emu7470 plotter emulator engine added (first version 0.9.0)
   * added plotter.xrom
   * comp41 now also accepts ST+, ST-, ST/ and ST* syntax
   * rom41hx now corrects rom checksums
