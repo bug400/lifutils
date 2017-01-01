@@ -41,6 +41,12 @@ Obtain administrative privileges and:
      cd /usr/local
      unzip <name-of-zip-file>
 
+In addition you should add the following environment variable to your 
+bash profile (~/.bash_profile) to make comp41 and decomp41 find the
+xrom definition files:
+
+     export LIFUTILSXROMDIR="/usr/local/share/lifutils/xroms/"
+
 There is no installation package available at the moment.
 
 
@@ -65,7 +71,8 @@ where the files will be installed (usually /usr/local or /usr).
 Note: to install files in /usr or /usr/local you need root rights.
 
 To invoke the lifutil tools the bin directory of LIFUTILS must be contained in the
-PATH environment variable.
+PATH environment variable. Please set the environment variable LIFUTILSXROMDIR
+to the path of the xroms subdirectory.
 
 
 Windows:
