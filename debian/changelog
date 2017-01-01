@@ -1,3 +1,10 @@
+lifutils (1.7.6-ubuntu1) xenial; urgency=medium
+
+  * production version 
+  * added xrom files for HP-41CX time- and x-functions (contributed by André)
+
+ -- trusty <achim@trillian>  Sun, 01 Jan 2017 11:13:05 +0100
+
 lifutils (1.7.6b2) xenial; urgency=medium
 
   * emu7470: font improvement (contributed by Christoph Gießelink) 
