@@ -23,11 +23,12 @@ Windows:
 
 There is an installer exe file to safely install the LIFUTILS. Download and
 execute the installer file and follow the instructions. You need admin privileges.
-The software can be safely uninstalled from the control panel. At the moment the
-installer only provides a 32-bit version of the software.
+The software can be safely uninstalled from the control panel.
 
 Since the LIFUTILS are command line utilities you invoke then from a console window.
 The PATH variable is modified by the installation program.
+
+Note: The Windows installer of version 1.7.6 and above provides 32 bit and 64 bit binaries. If you use a 64 bit Windows version please uninstall a lifutils version 1.7.5 and older manually before running the installer.
 
 
 Mac OS X:
@@ -40,12 +41,6 @@ Obtain administrative privileges and:
 
      cd /usr/local
      unzip <name-of-zip-file>
-
-In addition you should add the following environment variable to your 
-bash profile (~/.bash_profile) to make comp41 and decomp41 find the
-xrom definition files:
-
-     export LIFUTILSXROMDIR="/usr/local/share/lifutils/xroms/"
 
 There is no installation package available at the moment.
 
@@ -71,8 +66,7 @@ where the files will be installed (usually /usr/local or /usr).
 Note: to install files in /usr or /usr/local you need root rights.
 
 To invoke the lifutil tools the bin directory of LIFUTILS must be contained in the
-PATH environment variable. Please set the environment variable LIFUTILSXROMDIR
-to the path of the xroms subdirectory.
+PATH environment variable.
 
 
 Windows:
