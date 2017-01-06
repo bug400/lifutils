@@ -39,13 +39,13 @@ USB floppy devices.
 Compatibility
 =============
 
-The LIFUTILS were tested on LINUX, Windows 7 and Mac OS/X.
+The LIFUTILS were tested on LINUX, Windows 10 and Mac OS.
 
 
 INSTALLATION
 ============
 
-The [release](https://github.com/bug400/lifutils/releases) section provides precompiled binaries for LINUX (32 and 64bit), Windows (32 bit) and Mac OS/X.
+The [release](https://github.com/bug400/lifutils/releases) section provides precompiled binaries for LINUX (32 and 64bit), Windows (32 bit) and Mac OS.
 
 See the [Installation Instructions](https://github.com/bug400/lifutils/blob/master/INSTALL.md) how to install.
 

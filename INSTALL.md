@@ -31,7 +31,7 @@ The PATH variable is modified by the installation program.
 Note: The Windows installer of version 1.7.6 and above provides 32 bit and 64 bit binaries. If you use a 64 bit Windows version please uninstall a lifutils version 1.7.5 and older manually before running the installer.
 
 
-Mac OS X:
+Mac OS:
 
 There is a zip file that contains the subdirectories "bin" and "usr". For a
 system wide installation it is recommended to install these files under
@@ -75,7 +75,7 @@ LIFUTILS was cross compiled under LINUX. Building LIFUTILS on Windows should
 be possible with either the Cygwin or MSYS development system.
 
 
-Mac OS X:
+Mac OS:
 
 It is recommended that you use the binaries supplied by the MacPorts Project:
 https://www.macports.org. First install the Xcode Developer Tools. Open a
@@ -83,7 +83,7 @@ terminal window (as superuser) and type:
 
      xcode-select --install
 
-After installation download and install the OS X Package install for your
+After installation download and install the Mac OS Package install for your
 operating system.
 
 The software installed by the port utility requires the following environemnt variables:
