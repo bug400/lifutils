@@ -45,8 +45,8 @@ Obtain administrative privileges and:
 There is no installation package available at the moment.
 
 
-Installation from scratch
--------------------------
+Build from scratch
+------------------
 
 LINUX:
 
