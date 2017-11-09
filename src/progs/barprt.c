@@ -1,9 +1,10 @@
 /* barprt.c -- a diagnostic printing filter for barcode files */
 /* 2001 A. R. Duell, and placed under the GPL */
 
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "config.h"
 
 /* This filter reads a barcode file from standard input and prints an 
    (hopefully) human-readable form of it on standard output. It is 
@@ -20,9 +21,7 @@ int main(int argc, char **argv)
     int i; /* loop counter */
     int row; /* current row number */
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-#endif
+    SETMODE_STDIN_BINARY;
     row=0;
     while((row_length=getchar())!=EOF)
       {

@@ -1,0 +1,39 @@
+.TH rom41er 1 9-Nov-2017 "LIF Utilitites" "LIF Utilities"
+.SH NAME
+rom41er \- a filter to convert a HP-41 rom file to a data file that can be used by the Eramco MLDL-OS
+.SH SYNOPSIS
+.B rom41er
+.I <LIF filename>
+.B <
+.I Input file
+.B >
+.I Output file
+.PP
+.B rom41er \-?
+.SH DESCRIPTION
+The Eramco MLDL-OS ROM set can save HP41 ROM images to disk, and the
+file format used has become a de facto standard for such images. It stores 4
+10 bit HP41 words in 5 bytes of the file. A 4K ROM dump is thus stored in
+a 5120 byte file.
+.PP
+.B rom41er
+is a filter which generates a  LIF file of type X-M41 (E070).
+The filter reads the rom data from standard input and writes the LIF 
+file header and the rom data in scrambled Eramoc MLDL-OS format
+ to standard output. Note: This filter adjusts an incorrect ROM checksum.
+.SH EXAMPLES
+If
+.I HPILDv1B.ROM 
+is the rom file of the HP-IL development module then
+.PP
+.B cat HPILDv1B.ROM | rom41er HPILDEV \> hpildev.xm41
+.PP 
+will generate a LIF file 
+.I hpildvev.xm41
+with the LIF filename
+.I HPILDEV
+.SH AUTHOR
+.B rom41er
+was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, 
+ard@p850ug1.demon.co.uk and has been placed under the GNU Public License 
+version 2.0.

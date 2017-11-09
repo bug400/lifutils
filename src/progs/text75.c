@@ -17,10 +17,10 @@
    This filter reads such a file on standard input and writes the decoded 
    form (as a stream-of-bytes) to stnadard output */
 
-#include<stdio.h>
-#include<unistd.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "config.h"
 
 /* This is a fiddle, but it's what 0xa999 would be decoded into */
 #define END_LINE 10999
@@ -37,7 +37,7 @@ int print_line(int number_flag)
     unsigned char hdr[3]; /* Header bytes */
     unsigned char line[256]; /* characters in the line */
     int line_no; /* Line number from the file */
-    int chars_read; /* Actual number of characters read */
+    size_t chars_read; /* Actual number of characters read */
     size_t i;
 
     i=fread(hdr,sizeof(char),3,stdin);
@@ -89,10 +89,7 @@ int main(int argc, char **argv)
     int number_flag; /* Print line numbers ? */
     int option; /* Command line option character */
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-#endif
-
+    SETMODE_STDIN_BINARY;
 
     number_flag=0;
     optind=1;

@@ -38,11 +38,12 @@
      [Addresses given are for the 1BBBB ROM]
      in volume 3 of the HP71 Software IDS */
 
-#include<stdio.h>
-#include<unistd.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "config.h"
 #include"print_41_data.h"
+
 
 #define RECORD_LENGTH 8
 
@@ -69,9 +70,7 @@ int main(int argc, char **argv)
     int option; /* Current option character */
     unsigned char record[RECORD_LENGTH]; /* current record */
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-#endif
+    SETMODE_STDIN_BINARY;
 
     /* Process command line options */
     optind=1;

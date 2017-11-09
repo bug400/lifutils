@@ -1,20 +1,17 @@
 /* lifinit.c -- Initialize a LIF image file */
 /* 2014 J. Siebold , and placed under the GPL */
 
-#include<stdio.h>
-#include<unistd.h>
-#include<fcntl.h>
+#include <stdio.h>
+#include <fcntl.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include <sys/stat.h>
+#include "config.h"
 #include"lif_block.h"
 #include"lif_dir_utils.h"
 #include "lif_create_entry.h"
 #include "lif_const.h"
-#ifndef _WIN32
-#define O_BINARY 0
-#endif
 
 
 #define DEBUG 0
@@ -145,11 +142,7 @@ int main(int argc, char **argv)
     debug_print("Total blocks %d\n",totalblocks);
 
     /* Open lif device */
-#ifdef WIN32
-    if((lif_device=lif_open(argv[optind],O_CREAT | O_BINARY | O_TRUNC| O_WRONLY,S_IRUSR | S_IWUSR, physical_flag ))==-1)
-#else
     if((lif_device=lif_open(argv[optind],O_CREAT | O_BINARY | O_TRUNC| O_WRONLY,S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH,physical_flag))==-1)
-#endif
       {
         fprintf(stderr,"Error opening %s\n",argv[optind]);
         exit(1);

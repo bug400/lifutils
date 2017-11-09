@@ -18,10 +18,11 @@
    8 byte records so that the programs sdata, key41, regs41 and so on can 
    read it */
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <fcntl.h>
+#include "config.h"
 #include"descramble_41.h"
 #include"scramble_41.h"
 
@@ -418,9 +419,7 @@ int main(int argc, char **argv)
     int sreg; /* register position of 1st statistics register */
     int global_end; /* register postion of .END. */
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-#endif
+    SETMODE_STDIN_BINARY;
 
 
     /* Process command line options */

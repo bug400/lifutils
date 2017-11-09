@@ -3,7 +3,7 @@
 /* 2000 A. R. Duell, and placed under the GPL */
 
 #include <stdio.h>
-#include<string.h>
+#include <string.h>
 #include "lif_const.h"
 
 unsigned int get_lif_int(unsigned char *data,int length)
@@ -11,7 +11,8 @@ unsigned int get_lif_int(unsigned char *data,int length)
     /* Read the next <length> bytes (MSB first) from <data> and turn into an 
        integer */
 
-    unsigned int i,value;
+    unsigned int value;
+    int i;
 
     value=0;    
     for(i=0; i<length; i++)

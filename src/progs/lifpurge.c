@@ -2,18 +2,14 @@
 /* 2014 J. Siebold, and placed under the GPL */
 
 #include<stdio.h>
-#include<unistd.h>
 #include<fcntl.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include "config.h"
 #include"lif_block.h"
 #include"lif_dir_utils.h"
 #include "lif_const.h"
-#ifndef _WIN32
-#define O_BINARY 0
-#endif
-
 
 #define DEBUG 0
 #define debug_print(fmt, ...) \
@@ -42,11 +38,11 @@ int main(int argc, char **argv)
     unsigned int dir_length; /* length of directory in blocks */
 
     /* Directory search values */
-    int dir_end; /* Set at end of directory */
-    int found_file; /* Set when file found */
-    int dir_entry; /* Directory entry within current block */
-    int dir_block; /* Current block offset from start of directory */
-    int abs_entry; /* entry number of file in directory */
+    unsigned int dir_end; /* Set at end of directory */
+    unsigned int found_file; /* Set when file found */
+    unsigned int dir_entry; /* Directory entry within current block */
+    unsigned int dir_block; /* Current block offset from start of directory */
+    unsigned int abs_entry; /* entry number of file in directory */
     unsigned int file_type; /* file type word */
     unsigned char dir_data[SECTOR_SIZE]; /* Current directory block data */
 

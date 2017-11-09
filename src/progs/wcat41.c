@@ -10,10 +10,11 @@
      ID's of buffers
      Labels and ENDs in user programs  */
 
-#include<stdio.h>
-#include<ctype.h>
+#include <stdio.h>
+#include <ctype.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "config.h"
 #include"descramble_41.h"
 
 /* sizes of a file record and HP41 register */
@@ -204,9 +205,7 @@ int main(void)
     int bytes_read; /* length of input file */
     int curtain, sreg, global_end; /* Important pointers in HP41 memory */
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-#endif
+    SETMODE_STDIN_BINARY;
 
     /* Read in the write-all file */
     bytes_read=read_file();

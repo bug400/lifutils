@@ -2,22 +2,18 @@
 /* 2014, J. Siebold, and placed under the GPL */
 
 #include<stdio.h>
-#include<unistd.h>
 #include<fcntl.h>
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
 #include <ctype.h>
+#include "config.h"
 #include"lif_block.h"
 #include "lif_create_entry.h"
 #include"lif_dir_utils.h"
 #include "lif_const.h"
-#ifndef _WIN32
-#define O_BINARY 0
-#endif
 
 
-#define MAXBLOCKS 64000
 #define DEBUG 0
 #define debug_print(fmt, ...) \
    do { if (DEBUG) fprintf(stderr, fmt, __VA_ARGS__); } while (0)
@@ -36,7 +32,7 @@ int main(int argc, char **argv)
     int option; /* Command line option character */
     int physical_flag; /*  Option to use a physical device */
     int lif_device; /* Descriptor of input device */
-    int i,j;
+    unsigned int i,j;
     
     /* LIF disk values */
     unsigned int dir_start; /* first block of the directory */
@@ -48,13 +44,13 @@ int main(int argc, char **argv)
 
 
     /* Directory search values */
-    int dir_end; /* Set at end of directory */
-    int dir_entry; /* Directory entry within current block */
-    int dir_block; /* Current block offset from start of directory */
-    int new_entry; /* entry number of file in directory */
-    int start_block; /* first block of file */
-    int num_blocks; /* number of blocks in file */
-    int new_block_count; /* block numer in new file */
+    unsigned int dir_end; /* Set at end of directory */
+    unsigned int dir_entry; /* Directory entry within current block */
+    unsigned int dir_block; /* Current block offset from start of directory */
+    unsigned int new_entry; /* entry number of file in directory */
+    unsigned int start_block; /* first block of file */
+    unsigned int num_blocks; /* number of blocks in file */
+    unsigned int new_block_count; /* block numer in new file */
     unsigned int file_type; /* file type word */
     unsigned char dir_data[SECTOR_SIZE]; /* Current directory block data */
     unsigned int no_tracks, no_surfaces, no_blocks; /* disk geometry */

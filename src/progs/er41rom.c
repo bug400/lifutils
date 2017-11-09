@@ -1,9 +1,11 @@
-/* rom41.c -- unscramble an HP41 ROM dump file */
+/* er41rom.c -- unscramble an HP41 ROM dump file */
+/* renamed from the previous rom41.c program */
 /* 2001 A. R. Duell, and placed under the GPL */
 
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "config.h"
 
 /* The Eramco MLDL-OS ROM can save HP41 ROM (or MLDL RAM bank) images in 
 a ROM41 file. 4 (10 bit) HP41 words are stored in 5 bytes of the file : 
@@ -25,10 +27,8 @@ int main(int argc, char **argv)
   {
     unsigned char scrambled_data[RECORD_SIZE]; /* Input data words */
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-    setmode(fileno(stdout), O_BINARY);
-#endif
+    SETMODE_STDIN_BINARY;
+    SETMODE_STDOUT_BINARY;
 
     /* read in the file data, 1 record at a time */
     while(fread(scrambled_data,sizeof(unsigned char),RECORD_SIZE,stdin)==

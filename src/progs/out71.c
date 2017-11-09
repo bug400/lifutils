@@ -35,11 +35,11 @@
    Yes, it's a kludge, but there's no other way to do it that works
    for arbitrary PC files. */
 
-#include<stdio.h>
-#include<unistd.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include"lif_create_entry.h"
+#include "config.h"
+#include "lif_create_entry.h"
 #include "lif_const.h"
 
 /* buffer to hold file */
@@ -87,11 +87,8 @@ int main(int argc, char **argv)
     int odd_flag; /* Set if HP71 file contains odd number of nybbles */
     int option;
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-    setmode(fileno(stdout), O_BINARY);
-#endif
-
+    SETMODE_STDIN_BINARY;
+    SETMODE_STDOUT_BINARY;
 
     odd_flag=0;
     /* decode command line flags */

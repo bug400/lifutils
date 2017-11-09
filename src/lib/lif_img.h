@@ -19,3 +19,6 @@ void lif_write_img_block(int output_file, int block, unsigned char *data);
 
 void lif_truncate_img_file(int fileno);
 /* truncate an image file to zero length */
+
+void exit_error(char *msg);
+/* exit and output error message */

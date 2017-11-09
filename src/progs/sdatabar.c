@@ -1,10 +1,10 @@
 /* sdatabar.c -- convert an sdata file into HP41 barcode bytes */
 /* 2001 A. R. Duell, and placed under the GPL */
 
-#include<stdio.h>
-#include<unistd.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "config.h"
 #include"descramble_41.h"
 
 /* This program reads in an sdata file from stadnard input and converts 
@@ -282,11 +282,8 @@ int main(int argc, char **argv)
     int kludge_flag; /* Attempt to get round the bug in 1E wands? */
     int option; /* Command line option character */
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-    setmode(fileno(stdout), O_BINARY);
-#endif
-
+    SETMODE_STDIN_BINARY;
+    SETMODE_STDOUT_BINARY;
 
     row=1;
     kludge_flag=0;

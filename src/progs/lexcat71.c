@@ -17,11 +17,11 @@
   Note: the lex file header must not be present
 */
 
-#include<stdio.h>
-#include<ctype.h>
+#include <stdio.h>
+#include <ctype.h>
 #include <stdlib.h>
 #include <fcntl.h>
-
+#include "config.h"
 
 /* This is therefore larger than any real HP41 */
 #define LEXFILE_SIZE 131072
@@ -231,9 +231,7 @@ char **argv;
   {
     int table_address; /* address of lex table */
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-#endif
+    SETMODE_STDIN_BINARY;
 
     if(argc != 1) {
        usage();

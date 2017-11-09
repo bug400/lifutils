@@ -18,16 +18,16 @@
    Further details on the format of a KAR can be found in 'Extend your 
    HP41' or 'The HP41 Synthetic Quick Reference Guide' */
 
-#include<stdio.h>
-#include<unistd.h>
-#include<string.h>
-#include<ctype.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "config.h"
 #include "xrom.h"
-#include"descramble_41.h"
-#include"byte_tables41.h"
-#include"byte_key_tables41.h"
+#include "descramble_41.h"
+#include "byte_tables41.h"
+#include "byte_key_tables41.h"
 
 void display_hex(unsigned char *key)
 /* Display the function bytes from a key definition in hex */
@@ -566,9 +566,7 @@ int main(int argc, char **argv)
     unsigned char rec[8]; /* One file record */
     unsigned char kar[7]; /* Key assignment register */
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-#endif
+    SETMODE_STDIN_BINARY;
 
     init_xrom(); /* Load initial xrom names */
     optind=1;

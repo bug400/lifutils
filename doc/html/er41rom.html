@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.2 -->
-<!-- CreationDate: Mon Apr 13 20:02:04 2015 -->
+<!-- Creator     : groff version 1.22.3 -->
+<!-- CreationDate: Thu Nov  9 13:33:36 2017 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -13,12 +13,12 @@
        table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
        h1      { text-align: center }
 </style>
-<title>rom41</title>
+<title>er41rom</title>
 
 </head>
 <body>
 
-<h1 align="center">rom41</h1>
+<h1 align="center">er41rom</h1>
 
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
@@ -35,15 +35,15 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">rom41 &minus; a
-filter to unscramble an Eramco ROM image</p>
+<p style="margin-left:11%; margin-top: 1em">er41rom &minus;
+a filter to unscramble an Eramco ROM image</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>rom41
+<p style="margin-left:11%; margin-top: 1em"><b>er41rom
 &lt;</b> <i>rom_file</i> <b>&gt;</b> <i>output_file</i></p>
 
 <h2>DESCRIPTION
@@ -57,7 +57,7 @@ file format used has become a de facto standard for such
 images. It stores 4 10 bit HP41 words in 5 bytes of the
 file. A 4K ROM dump is thus stored in a 5120 byte file.</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>rom41</b>
+<p style="margin-left:11%; margin-top: 1em"><b>er41rom</b>
 unscrambles such an image, storing each HP41 10 bit word in
 2 bytes of the output file, and therefore a 4K image takes
 up 8192 bytes when unscrambled. The resulting output file,
@@ -70,14 +70,14 @@ programs.</p>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>myrom.rom</i> is an HP41 rom image, produced by the
+<i>myrom.xm41</i> is an HP41 rom image, produced by the
 Eramco MLDL-OS and stored in a linux file, then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>rom41 &lt;
-myrom.rom &gt; myrom.out</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>er41rom &lt;
+myrom.xm41 &gt; myrom.rom</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will unscramble
-the image and store the result in <i>myrom.out</i></p>
+the image and store the result in <i>myrom.rom</i></p>
 
 <h2>SEE ALSO
 <a name="SEE ALSO"></a>
@@ -93,7 +93,7 @@ the image and store the result in <i>myrom.out</i></p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><i><b>rom41</b></i>
+<p style="margin-left:11%; margin-top: 1em"><i><b>er41rom</b></i>
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has
 been placed under the GNU Public License version 2.0</p>
 <hr>

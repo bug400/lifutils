@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "config.h"
 
 #define DEBUG 0
 #define debug_print(fmt, ...) \
@@ -91,7 +92,7 @@ void read_xrom(char *name)
        strcpy(filename,path);
        if(path[strlen(path)-1] != '/') strcat(filename,"/");
     } else {
-       strcpy(filename,"/opt/local/share/lifutils/xroms/");
+       strcpy(filename,"/usr/local/share/lifutils/xroms/");
     }
 #endif
 

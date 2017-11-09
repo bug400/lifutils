@@ -15,3 +15,5 @@
 #define MAX_LENGTH 524288
 /* Maximum line length */
 #define LINE_LENGTH 65536
+/* Maximum block size of lif image file */
+#define MAXBLOCKS 65536

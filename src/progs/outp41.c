@@ -29,6 +29,7 @@
 #include<stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "config.h"
 
 /* MEMORY_SIZE is larger than a real HP41's memory, so that any normal
    program can be loaded */
@@ -71,10 +72,8 @@ int main (int argc, char **argv)
     int byte_counter;
     unsigned char memory[MEMORY_SIZE];
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-    setmode(fileno(stdout), O_BINARY);
-#endif
+    SETMODE_STDIN_BINARY;
+    SETMODE_STDOUT_BINARY;
 
     length=read_prog(memory);
     print_hex(length>>8); /* Send high byte of length */

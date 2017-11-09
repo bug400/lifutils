@@ -1,9 +1,10 @@
 /* prog41bar.c -- Produce HP41 program barcode */
 /* 2001 A. R. Duell, and placed under the GPL */
 
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "config.h"
 
 /* This program reads in an HP41 binary program on standard input and 
    writes the corresponding barcode file to standard output. HP41
@@ -35,7 +36,9 @@ unsigned char memory[MEMORY_SIZE+3];
 /* Maximum number of instruction bytes in a row of barcode */
 #define LINE_LENGTH 13
 
+#ifndef min
 #define min(A,B) ((A)<(B) ? (A) : (B))
+#endif
 
 int read_prog(void)
 /* Read in HP41 program from standard input and return length */
@@ -256,10 +259,8 @@ int main(int argc, char **argv)
   {
     int program_length;
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-    setmode(fileno(stdout), O_BINARY);
-#endif
+    SETMODE_STDIN_BINARY;
+    SETMODE_STDOUT_BINARY;
 
     program_length=read_prog(); /* Read in program */
     patch_end(&program_length); /* set END to indicate uncompiled GTOs */

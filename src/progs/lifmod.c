@@ -1,18 +1,14 @@
-/* lifinit.c -- Initialize a LIF image file */
+/* lifmod.c -- Initialize a LIF image file */
 /* 2014 J. Siebold , and placed under the GPL */
 
-#include<stdio.h>
-#include<unistd.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include <sys/stat.h>
 #include <limits.h>
-#include <modfile.h>
-#ifndef _WIN32
-#define O_BINARY 0
-#endif
-
+#include "config.h"
+#include "modfile.h"
 
 #define DEBUG 0
 #define debug_print(fmt, ...) \

@@ -8,6 +8,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <fcntl.h>
+#include "config.h"
 #include "lif_create_entry.h"
 #include "lif_dir_utils.h"
 #include "lif_const.h"
@@ -233,11 +234,9 @@ int main(int argc, char**argv)
     unsigned char memory[MEMORY_SIZE]; /* HP41 program memory */
 
     int i,j;
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-    setmode(fileno(stdout), O_BINARY);
-#endif
 
+    SETMODE_STDIN_BINARY;
+    SETMODE_STDOUT_BINARY;
 
     /* Process LIF-filename from command line */
     if(argc != 2) {

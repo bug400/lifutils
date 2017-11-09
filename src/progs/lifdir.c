@@ -1,16 +1,13 @@
 /* lifdir.c -- Display the directory of a LIF disk */
 /* 2000 A. R. Duell, and placed under the GPL */
 
-#include<stdio.h>
-#include<unistd.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include<fcntl.h>
-#include"lif_block.h"
-#include"lif_dir_utils.h"
+#include <fcntl.h>
+#include "config.h"
+#include "lif_block.h"
+#include "lif_dir_utils.h"
 #include "lif_const.h"
-#ifndef _WIN32
-#define O_BINARY 0
-#endif
 
 /* offsets for the parts of a timestamp */
 #define YEAR_OFF 0
@@ -100,9 +97,9 @@ int main(int argc, char **argv)
 
 
     /* Directory search values */
-    int dir_end; /* Set at end of directory */
-    int dir_entry; /* Directory entry within current block */
-    int dir_block; /* Current block offset from start of directory */
+    unsigned int dir_end; /* Set at end of directory */
+    unsigned int dir_entry; /* Directory entry within current block */
+    unsigned int dir_block; /* Current block offset from start of directory */
     unsigned int file_type; /* File type word */
 
     /* file specific values */

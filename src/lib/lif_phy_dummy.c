@@ -8,7 +8,6 @@
 
 
 #include<stdio.h>
-#include<unistd.h>
 
 int lif_open_phy_device(devicename,mode)
   {

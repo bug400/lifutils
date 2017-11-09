@@ -2,11 +2,11 @@
                  HP41 ROM dump */
 /* 2001 A. R. Duell, and placed under the GPL */
 
-#include<stdio.h>
-#include<ctype.h>
-#include<unistd.h>
+#include <stdio.h>
+#include <ctype.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "config.h"
 
 /* Each 4K block of an HP41 ROM module starts with the FAT (Function Address
    Table). This contains the entry points for the functions in the ROM, 
@@ -167,9 +167,7 @@ int main(int argc, char **argv)
     unsigned char xrom_flag=0; /* output in XROM file format? */
     int option; /* current option character */
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-#endif
+    SETMODE_STDIN_BINARY;
 
     /* Process command line options */
     optind=1;

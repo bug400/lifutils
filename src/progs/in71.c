@@ -9,10 +9,11 @@
    directory entry and truncating the last block appropriately, the
    original file can be recovered. */
 
-#include<stdio.h>
-#include<unistd.h>
+#include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "config.h"
 
 #include"lif_dir_utils.h"
 #include "lif_const.h"
@@ -99,10 +100,9 @@ int main(int argc, char **argv)
     int option; /* command line option character */
     unsigned char block_flag=0; /* Copy entire last block? */
     int length; /* Number of bytes to copy */
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-    setmode(fileno(stdout), O_BINARY);
-#endif
+
+    SETMODE_STDIN_BINARY;
+    SETMODE_STDOUT_BINARY;
 
     optind=1;
     while((option=getopt(argc,argv,"b?"))!=-1)

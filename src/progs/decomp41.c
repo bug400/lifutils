@@ -10,12 +10,12 @@
    on Synthetic Programming, such as 'Extend your HP41' or 'The HP41 
    Synthetic Quick Reference Guide */
 
-#include<stdio.h>
-#include<unistd.h>
-#include<string.h>
-#include<ctype.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "config.h"
 #include"byte_tables41.h"
 #include "xrom.h"
 
@@ -460,9 +460,7 @@ int main(int argc, char **argv)
 
     init_xrom(); /* Initialize xrom */
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-#endif
+    SETMODE_STDIN_BINARY;
 
     optind=1;
     while((option=getopt(argc,argv,"hlx:?"))!=-1)

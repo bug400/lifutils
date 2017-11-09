@@ -82,18 +82,20 @@ their page number hardcoded.
 
 =========================================================================*/
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<memory.h>
-#include<limits.h>
-#include"modfile.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <memory.h>
+#include <limits.h>
+#include "config.h"
+#include "modfile.h"
 
 /******************************/
 word *read_rom_file(char *FullFileName)
   {
   FILE *File;
-  long FileSize,SizeRead;
+  long FileSize;
+  size_t SizeRead;
   word *ROM;
   int i;
 
@@ -137,7 +139,7 @@ word *read_rom_file(char *FullFileName)
 int write_rom_file(char *FullFileName,word *ROM)
   {
   FILE *File;
-  long SizeWritten;
+  size_t SizeWritten;
   word *ROM2;
   int i;
 
@@ -173,7 +175,8 @@ int write_rom_file(char *FullFileName,word *ROM)
 word *read_bin_file(char *FullFileName,int Page)
   {
   FILE *File;
-  long FileSize,SizeRead;
+  long FileSize;
+  size_t SizeRead;
   byte *BIN;
   word *ROM;
 
@@ -223,7 +226,7 @@ word *read_bin_file(char *FullFileName,int Page)
 int write_bin_file(char *FullFileName,word *ROM)
   {
   FILE *File;
-  long SizeWritten;
+  size_t SizeWritten;
   byte *BIN;
 
   if (ROM==NULL)
@@ -378,7 +381,8 @@ int output_mod_info(
   byte **OutputBuff)         /* decode fat if it exists */
   {
   FILE *MODFile;
-  unsigned long FileSize,SizeRead;
+  unsigned long FileSize;
+  size_t SizeRead;
   byte *pBuff;
   ModuleFileHeader *pMFH;
   int i;
@@ -741,7 +745,8 @@ int extract_roms(
   int LstForNSIM)
   {
   FILE *MODFile;
-  unsigned long FileSize,SizeRead;
+  unsigned long FileSize;
+  size_t SizeRead;
   byte *pBuff;
   ModuleFileHeader *pMFH;
   int i,j;

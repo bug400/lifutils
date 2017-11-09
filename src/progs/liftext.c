@@ -19,6 +19,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "config.h"
 
 #define END_LEN 0xFFFF 
 #define NULL_LEN  0xFFFE
@@ -69,9 +70,7 @@ void copy_chars(int length)
 int main(int argc, char**argv)
   {
     int length;
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-#endif
+    SETMODE_STDIN_BINARY;
     while((length=record_length())!=END_LEN)
       {
         if(length!=NULL_LEN)

@@ -15,13 +15,7 @@ rom41hx \- a filter to convert a HP-41 rom file to a data file that can be uploa
 is a filter which generates a  LIF data file from a HP41 rom file.
 The filter reads the rom data from standard input and writes the LIF 
 file header and the rom data in scrambled hepax format 
- to standard output.
-.SH REFERENCES
-The format of an HP41C program is documented in many books. Amongst the 
-most useful references are
-.I Extend Your HP41 (W. A. C. Mier-Jedrzejowicz)
-and
-.I The HP41 Synthetic Programming Quick Reference Guide (Jeremy Smith)
+ to standard output. Note: this filter adjusts an incorrect ROM checksum.
 .SH EXAMPLES
 If
 .I HPILDv1B.ROM 

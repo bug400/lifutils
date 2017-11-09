@@ -1,20 +1,16 @@
 /* lifheader.c -- display header information of a LIF file */
 /* 2016 J. Siebold, and placed under the GPL */
 
-#include<stdio.h>
-#include<unistd.h>
-#include<fcntl.h>
+#include <stdio.h>
+#include <fcntl.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include"lif_block.h"
-#include"lif_dir_utils.h"
+#include "config.h"
+#include "lif_block.h"
+#include "lif_dir_utils.h"
 #include "lif_create_entry.h"
 #include "lif_const.h"
-#ifndef _WIN32
-#define O_BINARY 0
-#endif
-
 
 #define FALSE 0
 #define TRUE 1
@@ -85,9 +81,7 @@ int main(int argc, char **argv)
        }
     }
     else {
-#ifdef _WIN32
-       setmode(fileno(stdin), O_BINARY);
-#endif
+       SETMODE_STDIN_BINARY;
        input_file= stdin;
     }
 

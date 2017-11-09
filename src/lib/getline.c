@@ -3,10 +3,10 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
 #include <assert.h>
+#include "config.h"
 
 /* Read up to (and including) a TERMINATOR from STREAM into *LINEPTR
    + OFFSET (and null-terminate it). *LINEPTR is a pointer returned from
@@ -16,7 +16,7 @@
 
 int getstr (char ** lineptr, size_t *n, FILE * stream, char terminator, int offset)
 {
-  int nchars_avail;             /* Allocated but unused chars in *LINEPTR.  */
+  size_t nchars_avail;          /* Allocated but unused chars in *LINEPTR.  */
   char *read_pos;               /* Where we're reading into *LINEPTR. */
   int ret;
 

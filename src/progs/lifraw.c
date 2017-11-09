@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
+#include "config.h"
 
 #define DEBUG 0
 #define debug_print(fmt, ...) \
@@ -27,11 +28,9 @@ int main(int argc, char**argv)
   {
     int byte_counter;
     int byte;
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-    setmode(fileno(stdout), O_BINARY);
-#endif
 
+    SETMODE_STDIN_BINARY;
+    SETMODE_STDOUT_BINARY;
 
     /* Process LIF-filename from command line */
     if(argc != 1) {

@@ -1,17 +1,13 @@
 /* lifstat.c -- Display status information of a LIF disk */
 /* 2001 A. R. Duell, and placed under the GPL */
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<unistd.h>
-#include<fcntl.h>
-#include"lif_block.h"
-#include"lif_dir_utils.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include "config.h"
+#include "lif_block.h"
+#include "lif_dir_utils.h"
 #include "lif_const.h"
-#ifndef _WIN32
-#define O_BINARY 0
-#endif
-
 
 /* parameters of the LIF disk */
 #define SPT 16
@@ -62,10 +58,10 @@ void lif_status(int input_file, int block_flag, unsigned
   {
     unsigned int dir_start; /* first directory block */
     unsigned int dir_length; /* size of directory */
-    int dir_end; /* Set at end of directory search */
-    int found; /* Set if given block found */
-    int dir_entry; /* directory entry in current block */
-    int dir_block; /* current directory block (offset from dir_start) */
+    unsigned int dir_end; /* Set at end of directory search */
+    unsigned int found; /* Set if given block found */
+    unsigned int dir_entry; /* directory entry in current block */
+    unsigned int dir_block; /* current directory block (offset from dir_start) */
     unsigned int file_type; /* current file type */
     unsigned int file_start; /* start block of current file */
     unsigned int file_length; /* length of current file */

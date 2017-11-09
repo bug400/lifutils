@@ -24,16 +24,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
 #include <string.h>
-#include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
 #include <ctype.h>
 #include <sys/types.h>
-
-#ifdef _WIN32
-#include "getline.h"
-#endif
-
+#include "config.h"
 #include "comp41.h"
 #include "xrom.h"
 
@@ -80,9 +75,8 @@ int main (int argc, char **argv)
    static int byte_counter=0;
    int option;
  
-#ifdef _WIN32
-    setmode(fileno(stdout), O_BINARY);
-#endif
+   SETMODE_STDOUT_BINARY;
+
   optind=1;
   init_xrom();
   while((option=getopt(argc,argv,"glx:?"))!=-1)
@@ -440,7 +434,7 @@ int get_alpha_postfix( char *alpha, char *buffer )
 
 int compile_num( char *code, char *num )
 {
-   int i, count;
+   int i,count;
 
     count = strlen( num );
     for( i = 0; i < count; ++i ) {

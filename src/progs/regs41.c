@@ -7,6 +7,7 @@
 #include<stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "config.h"
 #include"descramble_41.h"
 
 /* Length of a file record */
@@ -32,9 +33,7 @@ int main(int argc, char **argv)
     unsigned char reg[REGISTER_LEN]; /* corresponding HP41 register */
     int reg_number=0; /* register counter */
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-#endif
+    SETMODE_STDIN_BINARY;
  
     /* read in records, translate, print */
     while(fread(record,sizeof(char),RECORD_LEN,stdin)==RECORD_LEN)

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<installer-gui-script minSpecVersion="1">
+    <pkg-ref id="org.bug400.lifutils"/>
+    <options customize="never" require-scripts="false"/>
+    <choices-outline>
+        <line choice="default">
+            <line choice="org.bug400.lifutils"/>
+        </line>
+    </choices-outline>
+    <choice id="default"/>
+    <choice id="org.bug400.lifutils" visible="false">
+        <pkg-ref id="org.bug400.lifutils"/>
+    </choice>
+    <license mime-type="text/plain" file="LICENSE"/>
+    <pkg-ref id="org.bug400.lifutils" version="0" onConclusion="none">lifutils.pkg</pkg-ref>
+</installer-gui-script>

@@ -13,10 +13,10 @@
    Finally, the 10th record contains the settings of the first 44 user
    flags in the first 44 bits. */
 
-#include<stdio.h>
-#include<unistd.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "config.h"
 #include"descramble_41.h"
 #include"print_41_data.h"
 
@@ -132,9 +132,7 @@ int main(int argc, char **argv)
     int flags_flag=0; /* display RCLFLAG values? */
     int verbose=0; /* print user flags one to a line */
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-#endif
+    SETMODE_STDIN_BINARY;
 
     /* Process command line options */
     optind=1;

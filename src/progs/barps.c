@@ -1,12 +1,11 @@
 /* barps.c -- print an HP41 barcode file on a Postscript printer */
 /* 2001 A. R. Duell, and placed under the GPL */
 
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
-
-/* Parameters for postscript page layout */
-#include"ps_const.h"
+#include "config.h"
+#include "ps_const.h"
 
 /* maximum length of barcode row in bytes */
 #define BARCODE_LENGTH 16
@@ -146,9 +145,7 @@ int main(int argc, char **argv)
   {
     char *title; /* title for barcode pages */
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-#endif
+    SETMODE_STDIN_BINARY;
 
     if(argc>2)
       {

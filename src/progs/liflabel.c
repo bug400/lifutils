@@ -1,19 +1,15 @@
 /* liflabel.c -- label a lif image file */
 /* 2014, J. Siebold, and placed under the GPL */
 
-#include<stdio.h>
-#include<unistd.h>
-#include<fcntl.h>
+#include <stdio.h>
+#include <fcntl.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include"lif_block.h"
-#include"lif_dir_utils.h"
+#include "config.h"
+#include "lif_block.h"
+#include "lif_dir_utils.h"
 #include "lif_const.h"
-#ifndef _WIN32
-#define O_BINARY 0
-#endif
-
 
 #define DEBUG 0
 #define debug_print(fmt, ...) \

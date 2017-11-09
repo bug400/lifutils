@@ -9,9 +9,10 @@
  
    See outp41.c for details of the hexadecimal format */
 
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "config.h"
 
 unsigned char read_nybble(void)
 /* Read in characters until a valid hex digit and return its value */
@@ -70,10 +71,8 @@ int main(int argc, char **argv)
     unsigned char lo_length, hi_length, byte;
     unsigned int length, checksum, byte_counter;
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-    setmode(fileno(stdout), O_BINARY);
-#endif
+    SETMODE_STDIN_BINARY;
+    SETMODE_STDOUT_BINARY;
     checksum=0;
     hi_length=read_byte(); /* get high byte of length */
     add_to_checksum(&checksum,hi_length);

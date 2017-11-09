@@ -8,11 +8,11 @@
 #include <string.h>
 #include <ctype.h>
 #include <fcntl.h>
+#include "config.h"
 #include "scramble_41.h"
 #include "lif_create_entry.h"
 #include "lif_dir_utils.h"
 #include "lif_const.h"
-
 
 #define RECORD_SIZE 4 
 #define PAGE_SIZE 4096*4
@@ -39,7 +39,8 @@ void usage(void)
 int read_rom(unsigned char *memory)
 /* read rom into memory, scramble data */
   {
-    int byte_counter,j,s,l,t,bytes_read, checksum;
+    int byte_counter,j,s,l,t,checksum;
+    size_t bytes_read;
     unsigned short rom_data0[RECORD_SIZE]; /* Input data words */
     unsigned short rom_data1[RECORD_SIZE]; /* Input data words, read ahead */
 
@@ -100,10 +101,8 @@ int main(int argc, char**argv)
 
     int i;
 
-#ifdef _WIN32
-    setmode(fileno(stdin), O_BINARY);
-    setmode(fileno(stdout), O_BINARY);
-#endif
+    SETMODE_STDIN_BINARY;
+    SETMODE_STDOUT_BINARY;
 
     for(i=0;i<LIF_ROM41_SIZE;i++) memory[i]=0;
 

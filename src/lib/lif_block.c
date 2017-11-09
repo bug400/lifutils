@@ -2,11 +2,10 @@
 /*  2000, 2015 A. R. Duell, J. Siebold and placed under the GPL */
 
 #include<stdio.h>
-#include<unistd.h>
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
-#include<fcntl.h>
+#include <fcntl.h>
 #include "lif_img.h"
 #include "lif_phy.h"
 #include "lif_const.h"

@@ -16,14 +16,14 @@
    This filter reads a textfile and creates a LIF text files with a 
    directory header */
 
-#include<stdio.h>
+#include <stdio.h>
 #include <ctype.h>
-#include<unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
-#include"lif_create_entry.h"
+#include "config.h"
+#include "lif_create_entry.h"
 #include "lif_dir_utils.h"
 #include "lif_const.h"
 
@@ -87,9 +87,7 @@ int main(int argc, char**argv)
     int c;
     int i,j, buflen;
 
-#ifdef _WIN32
-    setmode(fileno(stdout), O_BINARY);
-#endif
+    SETMODE_STDOUT_BINARY;
 
     lines= length= 0;
 

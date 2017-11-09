@@ -10,13 +10,13 @@
    (1-16), 256 bytes/sector. Double density at the standard (256 kbps) data
    rate */
 
-#include<stdio.h>
-#include<unistd.h>
+#include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include<sys/ioctl.h>
-#include<linux/fd.h>
-#include<linux/fdreg.h>
+#include <sys/ioctl.h>
+#include <linux/fd.h>
+#include <linux/fdreg.h>
 #include "lif_phy.h"
 #include "lif_const.h"
 
