@@ -49,6 +49,7 @@ create an uninstall script:
      bash /usr/local/share/lifutils/create_lifutils_removescript.sh > uninstall.sh
 
 The run the script uninstall.sh as administrator:
+
      sudo bash ./uninstall.sh
 
 Due to security reasons each delete operation requires confirmation.
