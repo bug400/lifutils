@@ -64,7 +64,7 @@ The LIFUTILS were migrated to the CMake build system.
 Download the lifutils source package and follow the instruction in the
 build directories:
 
-* linux: Linux (deb package)
+* linux: Linux (Debian package tools)
 * macos: mac OS (XCode command line tools)
-* mingw (mingw cross compile under Linux and nsis package builder)
-* windows (MSVC 2017 and nsis package builder)
+* mingw (mingw cross compile under Linux and nsis 3.0 package builder)
+* windows (MSVC 2015 and nsis 3.0 package builder)
