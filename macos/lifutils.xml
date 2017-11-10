@@ -12,5 +12,7 @@
         <pkg-ref id="org.bug400.lifutils"/>
     </choice>
     <license mime-type="text/plain" file="LICENSE"/>
+    <welcome mime-type="text/plain" file="welcome.txt"/>
+    <conclusion mime-type="text/plain" file="conclusion.txt"/>
     <pkg-ref id="org.bug400.lifutils" version="0" onConclusion="none">lifutils.pkg</pkg-ref>
 </installer-gui-script>

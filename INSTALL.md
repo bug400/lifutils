@@ -43,6 +43,17 @@ There is a package that installs the package under /usr/local. There is no
 need to set the LIFUTILSXROMDIR environment variable as long as the
 install location is not changed.
 
+To uninstall the LIFUTILS run the script create_lifutils_removescript.sh to 
+create an uninstall script:
+
+     bash /usr/local/share/lifutils/create_lifutils_removescript.sh > uninstall.sh
+
+The run the script uninstall.sh as administrator:
+     sudo bash ./uninstall.sh
+
+Due to security reasons each delete operation requires confirmation.
+
+
 
 Build from scratch
 ------------------
