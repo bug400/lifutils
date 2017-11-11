@@ -2,7 +2,7 @@
 .SH NAME
 lifilper \- emulate HPIL disk drive and display for the PIL-Box
 .SH SYNOPSIS
-.B lifilper [\-n] [\-s] [\-d] 
+.B lifilper [\-n] [\-h] [\-s] [\-d] 
 .I <LIF image file>
 .I <PIL-Box tty>
 .I <scope file>
@@ -18,6 +18,9 @@ The LIF image file is only opened when a mass storage operation is performed. Ot
 .I \-c
 Emulate a HP 82161 cassette medium, otherwise a HP 9114A disk medium is
 emulated.
+.TP
+.I \-h
+Use 230400 baud connection speed instead of 115200 baud.
 .TP
 .I \-d
 Emulate a HP-IL display device

@@ -47,13 +47,13 @@ Utilities to handle various LIF file types and images of LIF media:
 <tr><td><a href="html/prog41bar.html">prog41bar</a> </td><td>Produce HP41 program barcode from a HP41 binary program file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/lifmod.html">lifmod</a> </td><td>Output contents of HP-41 module files</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/text75.html">text75</a></td><td>Decode a HP75 text file</td><td>yes</td><td>yes</td></tr>
-<tr><td><a href="html/outp41.html">outp41</a></td><td>Translate a HP41 binary program into hex</td><td>yes</td><td>no</td></tr>
-<tr><td><a href="html/inp41.html">inp41</a></td><td>Translate a HP41 hex program into binary</td><td>yes</td><td>no</td></tr>
-<tr><td><a href="html/in71.html">in71</a></td><td>Read a file from a HP71 via (e.g.) a RS232 interface</td><td>yes</td><td>no</td></tr>
-<tr><td><a href="html/out71.html">out71</a></td><td>Send a file to a HP71 via (e.g.) a RS232 interface</td><td>yes</td><td>no</td></tr>
+<tr><td><a href="html/outp41.html">outp41</a></td><td>Translate a HP41 binary program into hex</td><td>Linux only</td><td>no</td></tr>
+<tr><td><a href="html/inp41.html">inp41</a></td><td>Translate a HP41 hex program into binary</td><td>Linux only</td><td>no</td></tr>
+<tr><td><a href="html/in71.html">in71</a></td><td>Read a file from a HP71 via (e.g.) a RS232 interface</td><td>Linux only</td><td>no</td></tr>
+<tr><td><a href="html/out71.html">out71</a></td><td>Send a file to a HP71 via (e.g.) a RS232 interface</td><td>Linux only</td><td>no</td></tr>
 <tr><td><a href="html/lifdump.html">lifdump</a></td><td>Dump a LIF disk image to a physical LIF disk</td><td>Linux only</td><td>no</td></tr>
 <tr><td><a href="html/lifimage.html">lifimage</a></td><td>create a LIF image file froma physical LIF disk</td><td>Linux only</td><td>no</td></tr>
-<tr><td><a href="html/lifilper.html">lifilper</a></td><td>Emulate HP-IL disk drive and display for the PIL-Box</td><td>yes</td><td>no</td></tr>
+<tr><td><a href="html/lifilper.html">lifilper</a></td><td>Emulate HP-IL disk drive and display for the PIL-Box</td><td>Linux only (deprecated)</td><td>no</td></tr>
 </table>
 </center>
 </p>
@@ -186,7 +186,7 @@ comp41 now also accepts ST+, ST-, ST/, ST* command syntax in addition to STO+, S
 STO/, STO*.  rom41hx now corrects the rom checksum. This avoids a warning message if those files are loaded into HEPAX RAM. The files plotter.xrom, timecx.xrom, xfncx.xrom were added. The plotter emulator engine for the HP7470A plotter was added. This program is used as subprocess by the pyILPER application and not intended for stand alone use.
 </td></tr>
 <tr><td>v1.7.7</td><td>
-New files: er41rom.c, er41rom.1, rom41er.c (renamed rom41.c), rom41er.1 (renamed rom41.1). New CMake build system. MSVC compatibility.
+New files: er41rom.c, er41rom.1, rom41er.c (renamed rom41.c), rom41er.1 (renamed rom41.1). New CMake build system. MSVC compatibility. Removed lifilper, in71, out71, inp41, outp41 from mac OS distribution. lifiper will be removed in the next LIFUTILS release.
 </td></tr>
 </table>
 </p>

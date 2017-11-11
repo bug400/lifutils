@@ -57,10 +57,11 @@ static int nodisplay;
 void usage(void)
   {
     fprintf(stderr,
-    "Usage:lifilper [-c][-s][-d] lif-image-filename tty-device scope-file\n");
+    "Usage:lifilper [-c][-h][-s][-d] lif-image-filename tty-device scope-file\n");
     fprintf(stderr,"\n");
     fprintf(stderr, "      -c assume HP82161A cassette medum size\n");
     fprintf(stderr, "         if -c is omitted then the size of a HP9114 disk is assumed\n");
+    fprintf(stderr, "      -h use connection speed of 230400 instead of 115200baud\n");
     fprintf(stderr,"      -d emulate display device\n");
     fprintf(stderr,"      -s output HP-IL commands, if scope-file is omitted\n");
     fprintf(stderr,"          output goes to standard output\n");
@@ -343,13 +344,14 @@ int main( int argc, char **argv )
   struct termios tp;
   char           byt;
   int            fdscope = -1;
+  int            highspeed= 0;
   int            option;
   int            noscope=1;
   int            cassette_flag= 0;
 
   optind=1;
   nodisplay=1;
-  while ((option=getopt(argc,argv,"dcs?"))!=-1)
+  while ((option=getopt(argc,argv,"hdcs?"))!=-1)
       {
         switch(option)
           {
@@ -358,6 +360,8 @@ int main( int argc, char **argv )
             case 'c' : cassette_flag=1;
                        break;
             case 'd' : nodisplay=0;
+                       break;
+            case 'h' : highspeed=1;
                        break;
             case '?' : usage();
           }
@@ -369,6 +373,7 @@ int main( int argc, char **argv )
   if(( !nodisplay) && (!noscope)) usage();
   debug_print("LIF image %s\n",argv[optind]);
   debug_print("Serial line %s\n",argv[optind+1]);
+  debug_print("Highspeed flag %d\n",highspeed);
   debug_print("noscope flag %d\n",noscope);
 
   if( 0 > (ilfd = open( argv[optind+1], O_RDWR )) ) {
@@ -378,13 +383,22 @@ int main( int argc, char **argv )
   memset( &tp, 0, sizeof(tp) );
   cfmakeraw(&tp); /* RAW */
 #ifdef __APPLE__
-  cfsetispeed(&tp,B115200);
-  cfsetospeed(&tp,B115200);
+  if(highspeed) {
+    cfsetispeed(&tp,B230400);
+    cfsetospeed(&tp,B230400);
+  } else {
+    cfsetispeed(&tp,B115200);
+    cfsetospeed(&tp,B115200);
+  }
   tp.c_cflag = CS8 | ! ISTRIP | ! PARENB ;
   tp.c_iflag= ! ISTRIP;
 #endif
 #ifdef __linux__
-  tp.c_cflag = B115200 | CS8 | ! ISTRIP | ! PARENB ;
+  if(highspeed) {
+    tp.c_cflag = B230400 | CS8 | ! ISTRIP | ! PARENB ;
+  } else {
+    tp.c_cflag = B115200 | CS8 | ! ISTRIP | ! PARENB ;
+  }
   tp.c_iflag= ! ISTRIP;
 
 #endif
