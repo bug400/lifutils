@@ -35,11 +35,16 @@
 
 void usage(void)
 {
-   fprintf(stderr, "Usage:textlif LIF-filename \n");
+   fprintf(stderr, "Usage:textlif [-r registers] LIF-filename\n");
+   fprintf(stderr, "     -r specifies file size in HP-41 registers.\n");
+   fprintf(stderr, "        If value 0 is specified, the number of registers is\n");
+   fprintf(stderr, "        determined automatically from the input text file\n");
+   fprintf(stderr, "        size. Note: this parameter is only needed if the resulting\n");
+   fprintf(stderr, "        file shall be used on the HP-41!\n\n");
    fprintf(stderr,"      (Input comes from standard input)\n");
    fprintf(stderr,"      (Output goes to standard output)(\n");
    fprintf(stderr,"\n");
-   fprintf(stderr,"      the LIF-filename must not exceed 10 characters");
+   fprintf(stderr,"      the LIF-filename must not exceed 10 characters\n\n");
    exit(1);
 }
 
@@ -75,70 +80,123 @@ void output_line(unsigned char * line, int l)
 
 int main(int argc, char**argv)
 {
-    int length;  /* length of file in bytes without length */
+    int length;  /* length of file in bytes without length fields including 
+                    pad bytes */
     int lines;   /* numver of lines in file */
+    int num_characters; /* number of characters in file */
     int file_length; /* length of LIF text file */
     int leftover_bytes; /* to fill entire block */
+    int num_reg= -1;    /* file length in registers */
+    int min_reg;      /* minimun number of registers needed on the HP-41 */
+    char *snum_reg= (char *) NULL;
     unsigned char dir_entry[ENTRY_SIZE]; /* New directory entry */
     unsigned char line[LINE_LENGTH];     /* line buffer */
     unsigned char filebuffer[MAX_LENGTH]; /* file buffer */
     unsigned char ch,lastchar;
     char lif_filename[NAME_LEN+1];
+    int option;
     int c;
-    int i,j, buflen;
+    int i,j,k, buflen;
 
     SETMODE_STDOUT_BINARY;
 
-    lines= length= 0;
+    lines= length= num_characters=0;
 
-    /* Process LIF-filename from command line */
-    if(argc != 2) {
+    /* command line options */
+    while ((option=getopt(argc,argv,"r:?"))!=-1)
+      {
+        switch(option)
+          {
+            case 'r':  snum_reg=optarg;
+                       break;
+            case '?' : usage();
+                       break;
+          }
+      }
+
+    if(optind != argc -1) {
        usage();
        exit(1);
     }
 
     /* Check file name */
-    if(check_filename(argv[1])==0)
+    if(check_filename(argv[optind])==0)
       {
         fprintf(stderr,"Illegal file name\n");
         exit(1);
       }
     /* Pad the filename with spaces */
-    pad_name(argv[1],lif_filename);
+    pad_name(argv[optind],lif_filename);
 
     debug_print("LIF filename: %s\n", lif_filename);
 
+    /* get number of registers option */
+    if ( snum_reg != (char *) NULL) {
+       if (sscanf(snum_reg,"%d",&num_reg) !=1) {
+          usage();
+       }
+       debug_print("file size of HP-41 registers specified %d\n",num_reg);
+    }
+
     /* copy from stdin to file buffer, count length and lines */
     lastchar= (char) 0x0;
-    i=0;j=0;
+    i=0;j=0;k=0;
     while (i < MAX_LENGTH) {
       c=getchar();
       if (c == EOF) break;
       j++;
+      k++;
       filebuffer[i]= (unsigned char) c;
       i++;
       if (c== (int) '\n') {
          lines++;
          j--;
-         if(j & 1) {
+         k--;
+         if(j & 1) {  /* odd length, add pad byte */
             j++;
          }
          length+=j; 
          j=0;
+         num_characters+=k;
+         k=0;
       }
       lastchar= (unsigned char) c;
     }
     buflen=i;
 
     /* last line without nl */
-    if(lastchar != (int) '\n') length= length+j;
-    debug_print("LIF file lines %d\n",lines);
+    if(lastchar != (int) '\n') {
+       length+=j;
+    } else {
+       num_characters+=k;
+    }
+    debug_print("number of lines in input file %d\n",lines);
+    debug_print("number of characters in input file %d\n",num_characters);
+    debug_print("number of characters including pad bytes %d\n",length);
 
     /* file length is length of all records + size field of all records
        + end of file mark */
     file_length= (length+lines*2)+2;
+    /* register length is number of characters+number of records+1 
+       see HEPAX doc */
+    min_reg=((num_characters+lines+1)+6)/7;
     debug_print("LIF file length %d\n",file_length);
+    debug_print("minimum length in HP 41 registers  %d\n",min_reg);
 
+    if (num_reg != -1) {
+       if (num_reg == 0) {
+          num_reg= min_reg;
+       } else {
+          if (num_reg < min_reg) {
+             fprintf(stderr,"Number of HP-41 registers too small, the minimum is %d\n", min_reg);
+             exit(1);
+          }
+       }
+       if (num_reg > 577) {  /* max file size, see HEPAX documentation */
+          fprintf(stderr,"Number of HP-41 registers too large, maximum is 577 registers\n");
+          exit(1);
+       }
+    }
     /* check total length */
     if (file_length > MAX_LENGTH) {
        fprintf(stderr,"File too large\n");
@@ -147,6 +205,18 @@ int main(int argc, char**argv)
 
     /* create and write directory entry */
     create_entry(dir_entry,lif_filename,1,0,file_length,0);
+
+    /* Store implementation bytes for HP41 text files */
+    if (num_reg != -1) {
+       dir_entry[26]=0x80;
+       dir_entry[27]=0x01;
+       dir_entry[28]=num_reg >> 8;
+       dir_entry[29]=num_reg & 0xff;
+       dir_entry[30]=0x00;
+       dir_entry[31]=0x20;
+       debug_print("file size of HP-41 registers written %d\n",num_reg);
+    }
+
     for(i=0;i< ENTRY_SIZE; i++) {
        putchar((int) dir_entry[i]);
     }

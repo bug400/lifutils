@@ -3,6 +3,7 @@
 textlif \- a filter to convert a text file to a LIF text file
 .SH SYNOPSIS
 .B textlif
+[\-r registers]
 .I <LIF filename>
 .B <
 .I Input file
@@ -15,7 +16,20 @@ textlif \- a filter to convert a text file to a LIF text file
 is a filter which generates a LIF file from a text file
 The filter reads the text from standard
 input and writes the LIF file header and the LIF formatted text to
-standard output.
+standard output. This file type can be used on the HP-71 (TEXT) or
+the HP-41 extended Memory or HEPAX file system (ASCII). If the file
+shall be used on a HP-41 the \-r option is mandatory.
+.SH OPTIONS
+.TP
+.I \-r
+This option specifies the file size in registers which shall be allocated 
+for the resulting file in the HP-41 extended memory or the HEPAX file system. 
+If a value of 0 is specified the number of register is determined from the 
+size of the input text file.  According to the HEPAX documentation the 
+maximum file size is 577 registers.
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
 .SH REFERENCES
 The HP text file format is documented in section 11.2.8.1 of the 
 .I
