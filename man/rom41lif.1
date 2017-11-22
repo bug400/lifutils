@@ -1,0 +1,34 @@
+.TH rom41lif 1 24-March-2014 "LIF Utilitites" "LIF Utilities"
+.SH NAME
+rom41lif \- a filter to convert a HP-41 rom file to a data file that can be used to update the HP-41 CL 
+.SH SYNOPSIS
+.B rom41lif
+.I <LIF filename>
+.B <
+.I Input file
+.B >
+.I Output file
+.PP
+.SH DESCRIPTION
+.B rom41lif
+is a filter which generates a  LIF data file from an HP41 rom file.
+The filter reads the rom data from standard input and writes the LIF 
+file header and the uncompressed rom data to standard output. 
+Note: this filter does not adjust an incorrect ROM checksum.
+
+.SH EXAMPLES
+If
+.I HPILDv1B.ROM 
+is the rom file of the HP-IL development module then
+.PP
+.B cat HPILDv1B.ROM | rom41lif HPILDEV \> hpildev.sda
+.PP 
+will generate a LIF file 
+.I hpildvev.sda
+with the LIF filename
+.I HPILDEV
+.SH AUTHOR
+.B rom41lif
+was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, 
+ard@p850ug1.demon.co.uk and has been placed under the GNU Public License 
+version 2.0.

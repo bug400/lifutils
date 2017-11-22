@@ -39,6 +39,7 @@ Utilities to handle various LIF file types and images of LIF media:
 <tr><td><a href="html/er41rom.html">er41rom</a></td ><td>convert a scrambled Eramco MLDL-OS rom file to an unpacked HP-41 rom file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/rom41er.html">rom41er</a></td ><td>convert an unpacked HP-41 rom file to a scrambled Eramco MLDL-OS rom file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/rom41hx.html">rom41hx</a></td ><td>convert an unpacked HP-41 rom file to a packed HEPAX ROM SDATA file </td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/rom41lif.html">rom41lif</a></td ><td>convert an unpacked HP-41 rom file to an SDATA file that can be used to update the HP-41 CL</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/hx41rom.html">hx41rom</a></td ><td>convert a packed HEPAX ROM SDATA file to an unpacked HP-41 ROM file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/rom41cat.html">rom41cat</a></td><td>Display list of function names in an unscrambled HP41 ROM dump</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/lexcat71.html">lexcat71</a></td><td>Display main and text table information in a HP71-LEX file</td><td>yes</td><td>yes</td></tr>
@@ -186,7 +187,8 @@ comp41 now also accepts ST+, ST-, ST/, ST* command syntax in addition to STO+, S
 STO/, STO*.  rom41hx now corrects the rom checksum. This avoids a warning message if those files are loaded into HEPAX RAM. The files plotter.xrom, timecx.xrom, xfncx.xrom were added. The plotter emulator engine for the HP7470A plotter was added. This program is used as subprocess by the pyILPER application and not intended for stand alone use.
 </td></tr>
 <tr><td>v1.7.7</td><td>
-New files: er41rom.c, er41rom.1, rom41er.c (renamed rom41.c), rom41er.1 (renamed rom41.1). New CMake build system. MSVC compatibility. Removed lifilper, in71, out71, inp41, outp41 from mac OS distribution. lifiper will be removed in the next LIFUTILS release.
+New files: er41rom.c, er41rom.1, rom41er.c (renamed rom41.c), rom41er.1 (renamed rom41.1), rom41lif.c, rom41lif.1. New CMake build system. MSVC compatibility. Removed lifilper, in71, out71, inp41, outp41 from mac OS distribution. lifiper will be removed in the next LIFUTILS release.
+The textlif utility was enhanced to write HP-41 specific implementation bytes.
 </td></tr>
 </table>
 </p>
