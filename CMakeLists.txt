@@ -102,7 +102,7 @@ ENDIF(UNIX)
 # build all other executables
 #
 include_directories ("src/lib" "${CMAKE_CURRENT_BINARY_DIR}")
-set(srclist lifdir.c lifget.c lifpurge.c liflabel.c lifrename.c liftext.c sdata.c decomp41.c text75.c regs41.c stat41.c key41.c wall41.c wcat41.c lifstat.c sdatabar.c comp41.c barprt.c barps.c rom41er.c er41rom.c prog41bar.c lifput.c textlif.c raw41lif.c lifraw.c rom41hx.c lifinit.c lifpack.c liffix.c lifmod.c lexcat71.c hx41rom.c lifheader.c lifversion.c rom41cat.c)
+set(srclist lifdir.c lifget.c lifpurge.c liflabel.c lifrename.c liftext.c sdata.c decomp41.c text75.c regs41.c stat41.c key41.c wall41.c wcat41.c lifstat.c sdatabar.c comp41.c barprt.c barps.c rom41er.c er41rom.c prog41bar.c lifput.c textlif.c raw41lif.c lifraw.c rom41hx.c lifinit.c lifpack.c liffix.c lifmod.c lexcat71.c hx41rom.c lifheader.c lifversion.c rom41cat.c rom41lif.c)
 if(UNIX)
    if(NOT APPLE)
       list(APPEND srclist in71.c out71.c lifilper.c inp41.c outp41.c lifimage.c lifdump.c)
