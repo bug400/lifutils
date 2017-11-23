@@ -2,7 +2,7 @@ Source: lifutils
 Section: misc
 Priority: optional
 Maintainer: Tony Duell <ard@p850ug1.demon.co.uk>
-Build-Depends: debhelper (>=9), cmake
+Build-Depends: build-essential,cdbs,debhelper (>=9), cmake
 Standards-Version: 0.9
 
 Package: lifutils
