@@ -1,12 +1,21 @@
-export version="1.7.7b1"
+#!/bin/bash
+if [ "`dirname $0`" != "." ] ; then
+   echo "script must be called from its subdirectory"
+   exit 1
+fi
+export version=`cat ../version.txt`
+if [ -z "${version}" ] ; then
+   echo "missing or empty version.txt file"
+   exit 1
+fi
 rm -rf lifutils.dst/*
 rm -rf ../cmake-tmp
 mkdir ../cmake-tmp
-pushd ../cmake-tmp
+pushd ../cmake-tmp > /dev/null
 cmake .. 
 make DESTDIR=../macos/lifutils.dst install
 make clean
-popd
+popd > /dev/null
 rm -rf lifutils.resources
 mkdir lifutils.resources
 cp ../LICENSE lifutils.resources
