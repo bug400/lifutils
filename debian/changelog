@@ -1,7 +1,15 @@
+lifutils (1.7.7-ubuntu1) xenial; urgency=medium
+
+  * final release
+  * textlif: add implementation bytes for the HP-41
+  * lifinit: documented additinal medium capacity options
+
+ -- trusty <achim@trillian>  Mon, 27 Nov 2017 09:08:14 +0100
+
 lifutils (1.7.7b1) xenial; urgency=medium
 
   * new build system (CMake)
-  * increased MAX_BLOCKS to 65536 in lifpack.c (hit by cg)
+  * increased MAX_BLOCKS to 65536 in lifpack.c (hint by cg)
   * renamed rom41 to er41rom
   * make LIFUTILS build with MSVC
 
