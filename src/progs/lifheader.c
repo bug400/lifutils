@@ -59,6 +59,7 @@ int main(int argc, char **argv)
     /* file header values */
     unsigned char file_name[NAME_LEN]; /* File name  */
     unsigned char dir_entry[ENTRY_SIZE]; /* Directory Entry of new file */
+    unsigned char implementation_byte; /* Implementation byte */
     int file_type;
     int i;
     char typestring[10];
@@ -96,27 +97,31 @@ int main(int argc, char **argv)
        file_name[i]= dir_entry[i];
 
      
-    printf("File name       : ");
+    printf("File name           : ");
     for (i=0; i<NAME_LEN; i++) printf("%c",file_name[i]);
     printf("%s","\n");
 
-    printf("File type       : %x ",file_type);
+    printf("File type           : %x ",file_type);
     if(typestring[0]== '?') {
           printf("(unknown file type)\n");
     } else {
           printf("(%s) \n",typestring);
     }
-    printf("Data length     : %d\n",data_length);
-    printf("Number of blocks: %d\n",num_blocks);
+    printf("Data length         : %d\n",data_length);
+    printf("Number of blocks    : %d\n",num_blocks);
     if(*(dir_entry+21))
          {
-           printf("Creation date   : ");
+           printf("Creation date       : ");
            /* If the month is not 0, it's a valid date */
            print_date(dir_entry+20);
            printf("\n");
          }
+    printf("Implementation bytes: ");
+    for(i=0; i<6; i++)
+        {
+           implementation_byte=(unsigned char) get_lif_int(dir_entry+26+i,1);
+           printf("%02X",implementation_byte);
+        }
+    printf("\n");
     exit(0);      
   }
-
-
-

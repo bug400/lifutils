@@ -30,7 +30,7 @@ void print_date(unsigned char *date)
          bcd_to_dec(*(date+SECOND_OFF)));
   }
        
-void print_dir_entry(unsigned char *entry, int name_only_opt)
+void print_dir_entry(unsigned char *entry, int verbosity)
   {
     /* Decode and print a directory entry. entry points to a 32 byte 
        directory entry, as described in appendix D of the HP71 HPIL
@@ -38,6 +38,8 @@ void print_dir_entry(unsigned char *entry, int name_only_opt)
     int i; /* general counter */
     int length; /* File length from directory */
     int total_blocks; /* Number of blocks occupied by file */
+    int start_block; /* file start block */
+    unsigned int implementation_byte; /* implementation byte */
 
     char file_type[10]; /* storage for the file type string */
 
@@ -46,7 +48,8 @@ void print_dir_entry(unsigned char *entry, int name_only_opt)
       {
         putchar(*(entry+i));
       }
-    if(! name_only_opt)
+    /* default directory listing */
+    if(verbosity > 0)
       {
        /* find and print the file type */
        length=file_length(entry,file_type);
@@ -54,22 +57,41 @@ void print_dir_entry(unsigned char *entry, int name_only_opt)
        total_blocks=get_lif_int(entry+16,4);
        /* Print the length, both from the directory, and from the number of 
           blocks */
-       printf("%5d/%-5d     ",length,total_blocks*256);
+       printf("%5d/%-5d    ",length,total_blocks*256);
        /* Print the file time and date */
        if(*(entry+21))
          {
            /* If the month is not 0, it's a valid date */
            print_date(entry+20);
          }
+       else printf("                 ");
       }
+    /* output additional information */
+    if (verbosity > 1)
+      {
+       start_block=get_lif_int(entry+12,4);
+       printf("%5d %5d ",start_block, total_blocks);
+       for(i=0; i<6; i++)
+         {
+            implementation_byte=(unsigned char) get_lif_int(entry+26+i,1);
+            printf("%02X",implementation_byte);
+         }
+            
+      }
+    
     printf("\n");
   } 
 
 void usage(void)
   {
-     fprintf(stderr,"Usage:lifdir [-n] <lif-image-file>\n");
+     fprintf(stderr,"Usage:lifdir [-n] [-v l] <lif-image-file>\n");
      fprintf(stderr,"\n");
      fprintf(stderr,"      -n flag to display file names only\n");
+     fprintf(stderr,"      -v l verbosity level\n");
+     fprintf(stderr,"         0: display file names only (same as -n)\n");
+     fprintf(stderr,"         1: default directory listing\n");
+     fprintf(stderr,"         2: add file start block, file length in blocks and \n");
+     fprintf(stderr,"              implementation bytes to directory listing\n");
 
 
      exit(1);
@@ -80,8 +102,9 @@ int main(int argc, char **argv)
     /* system variables */
     int option; /* Command line option character */
     int input_device; /* Input file or device descriptor */
-    int name_only_opt; /* Option show file names only */
-    int physical_flag; /* Option to use a physical device */
+    int verbosity;    /* extent of information */
+    int physical_flag; /* pyhsical disk access flag */
+    char *snum_verbosity= (char *) NULL; /* arg to -v option */
     int i; /* General index counter */
     unsigned char data[SECTOR_SIZE]; /* buffer to hold current block */
 
@@ -108,13 +131,15 @@ int main(int argc, char **argv)
 
     /* process command line options */
     optind=1;
-    name_only_opt=0;
     physical_flag=0;
-    while((option=getopt(argc,argv,"pn?"))!=-1)
+    verbosity=1;
+    while((option=getopt(argc,argv,"v:n?"))!=-1)
       {
         switch(option)
           {
-             case 'n' : name_only_opt=1;
+             case 'n' : verbosity=0;
+                        break;
+             case 'v' : snum_verbosity=optarg;
                         break;
              case 'p' : physical_flag=1;
                         break;
@@ -128,6 +153,14 @@ int main(int argc, char **argv)
         /* if not, give error */
         usage();
       }
+    /* get number of verbosity level */
+    if ( snum_verbosity != (char *) NULL) {
+       if (sscanf(snum_verbosity,"%d",&verbosity) !=1) {
+          printf("Err2");
+          usage();
+       }
+    }
+    if (verbosity < 0 || verbosity > 2) usage();
     
     /* open input device */
     if((input_device=lif_open(argv[argc-1],O_RDONLY | O_BINARY,0,physical_flag))==-1)
@@ -145,7 +178,7 @@ int main(int argc, char **argv)
         fprintf(stderr,"This is not a LIF disk!\n");
         exit(1);
       }
-    if(! name_only_opt) 
+    if(verbosity > 0) 
       {
        printf("Volume : ");
        if((*(data+2))!=' ')
@@ -200,7 +233,7 @@ int main(int argc, char **argv)
                  dir_end=1;
                  break;
                }
-            print_dir_entry(data+(dir_entry<<5),name_only_opt);
+            print_dir_entry(data+(dir_entry<<5),verbosity);
             file_start=get_lif_int(data+(dir_entry<<5)+12,4);
             file_len=get_lif_int(data+(dir_entry<<5)+16,4);
             /* update last used block */
@@ -210,7 +243,7 @@ int main(int argc, char **argv)
          if(dir_end) { break; } /* Quit at end of directory */
       }
     lif_close(input_device);
-    if(! name_only_opt) {
+    if(verbosity > 0) {
        printf("%d files (%d max), ",num_files,dir_length*8);
        printf("last block used: %d of %d\n",last_block,totalsize);
     }

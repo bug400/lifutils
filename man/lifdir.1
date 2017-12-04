@@ -2,7 +2,7 @@
 .SH NAME
 lifdir \- print a directory of a LIF image file
 .SH SYNOPSIS
-.B lifdir [\-n]
+.B lifdir [\-n] [\-v l]
 .I <LIF image file>
 .PP
 .B lifdir \-?
@@ -24,62 +24,20 @@ date stamp if this is valid.
 .I \-n
 Print file names only
 .TP
+.I \-v l
+Verbosity level:
+.TP
+0: display file names only (same as -n)
+.TP
+1: default directory listing
+.TP
+2: extended directory listing including start sector, number of sectors occupied and implementation bytes
+.TP
 .I \-?
 Print a message giving the program usage to standard error.
 .SH FILE TYPES
-The following file types are recognised by this version of 
-.B lifdir
-.TP
-.I TEXT
-A HP Text file (or LIF1 format file).
-.TP
-.I SDATA
-A HP71B SDATA file or HP41C data file.
-.TP
-.I DATA71
-A HP71B data file.
-.TP
-.I BIN71
-A HP71B binary program file.
-.TP
-.I LEX71
-A HP71B language extension file.
-.TP
-.I KEY71
-A HP71B keyboard definition file.
-.TP
-.I BASIC71
-A HP71B tokenised BASIC program.
-.TP
-.I FORTH71
-A HP71B forth dictionary file.
-.TP
-.I WALL41
-A HP41C Write-All file.
-.TP
-.I KEY41
-A HP41C key assignment file.
-.TP
-.I STAT41
-A HP41C status file.
-.TP
-.I PROG41
-A HP41C program.
-.TP
-.I TEXT75
-A HP75 text file.
-.TP
-.I APPT75
-A HP75 appointments file.
-.TP
-.I LEX75
-A HP75 language extension file.
-.TP
-.I BASIC75
-A HP75 tokenised BASIC program.
-.TP
-.I VCALC75
-A HP75 Visicalc worksheet
+.B lifdir 
+should recognise all file types of the Online LIF Disk project.
 .PP
 Unknown file types are printed as a 4\-digit hex number giving the value 
 of the 2 file type bytes from the directory. See

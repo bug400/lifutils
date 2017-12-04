@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.2 -->
-<!-- CreationDate: Mon Apr 13 20:02:03 2015 -->
+<!-- Creator     : groff version 1.22.3 -->
+<!-- CreationDate: Mon Dec  4 18:39:45 2017 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -47,7 +47,8 @@ print a directory of a LIF image file</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifdir
-[&minus;n]</b> <i>&lt;LIF image file&gt;</i></p>
+[&minus;n] [&minus;v l]</b> <i>&lt;LIF image
+file&gt;</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifdir
 &minus;?</b></p>
@@ -80,15 +81,41 @@ valid.</p>
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
 <td width="11%"></td>
-<td width="3%">
+<td width="6%">
 
 
 <p style="margin-top: 1em"><i>&minus;n</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="5%"></td>
+<td width="32%">
 
 
-<p style="margin-top: 1em">Print file names only</p></td></tr>
+<p style="margin-top: 1em">Print file names only</p></td>
+<td width="46%">
+</td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="6%">
+
+
+<p><i>&minus;v l</i></p></td>
+<td width="5%"></td>
+<td width="32%">
+
+
+<p>Verbosity level:</p></td>
+<td width="46%">
+</td></tr>
+</table>
+
+<p style="margin-left:11%;">0: display file names only
+(same as -n) <br>
+1: default directory listing <br>
+2: extended directory listing including start sector, number
+of sectors <br>
+occupied and implementation bytes</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="3%">
@@ -108,206 +135,9 @@ error.</p> </td></tr>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The following
-file types are recognised by this version of
-<b>lifdir</b></p>
-
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="9%">
-
-
-<p style="margin-top: 1em"><i>TEXT</i></p></td>
-<td width="2%"></td>
-<td width="58%">
-
-
-<p style="margin-top: 1em">A HP Text file (or LIF1 format
-file).</p> </td>
-<td width="20%">
-</td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="9%">
-
-
-<p><i>SDATA</i></p></td>
-<td width="2%"></td>
-<td width="58%">
-
-
-<p>A HP71B SDATA file or HP41C data file.</p></td>
-<td width="20%">
-</td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="9%">
-
-
-<p><i>DATA71</i></p></td>
-<td width="2%"></td>
-<td width="58%">
-
-
-<p>A HP71B data file.</p></td>
-<td width="20%">
-</td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="9%">
-
-
-<p><i>BIN71</i></p></td>
-<td width="2%"></td>
-<td width="58%">
-
-
-<p>A HP71B binary program file.</p></td>
-<td width="20%">
-</td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="9%">
-
-
-<p><i>LEX71</i></p></td>
-<td width="2%"></td>
-<td width="58%">
-
-
-<p>A HP71B language extension file.</p></td>
-<td width="20%">
-</td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="9%">
-
-
-<p><i>KEY71</i></p></td>
-<td width="2%"></td>
-<td width="58%">
-
-
-<p>A HP71B keyboard definition file.</p></td>
-<td width="20%">
-</td></tr>
-</table>
-
-<p style="margin-left:11%;"><i>BASIC71</i></p>
-
-<p style="margin-left:22%;">A HP71B tokenised BASIC
-program.</p>
-
-<p style="margin-left:11%;"><i>FORTH71</i></p>
-
-<p style="margin-left:22%;">A HP71B forth dictionary
-file.</p>
-
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="9%">
-
-
-<p><i>WALL41</i></p></td>
-<td width="2%"></td>
-<td width="47%">
-
-
-<p>A HP41C Write-All file.</p></td>
-<td width="31%">
-</td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="9%">
-
-
-<p><i>KEY41</i></p></td>
-<td width="2%"></td>
-<td width="47%">
-
-
-<p>A HP41C key assignment file.</p></td>
-<td width="31%">
-</td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="9%">
-
-
-<p><i>STAT41</i></p></td>
-<td width="2%"></td>
-<td width="47%">
-
-
-<p>A HP41C status file.</p></td>
-<td width="31%">
-</td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="9%">
-
-
-<p><i>PROG41</i></p></td>
-<td width="2%"></td>
-<td width="47%">
-
-
-<p>A HP41C program.</p></td>
-<td width="31%">
-</td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="9%">
-
-
-<p><i>TEXT75</i></p></td>
-<td width="2%"></td>
-<td width="47%">
-
-
-<p>A HP75 text file.</p></td>
-<td width="31%">
-</td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="9%">
-
-
-<p><i>APPT75</i></p></td>
-<td width="2%"></td>
-<td width="47%">
-
-
-<p>A HP75 appointments file.</p></td>
-<td width="31%">
-</td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="9%">
-
-
-<p><i>LEX75</i></p></td>
-<td width="2%"></td>
-<td width="47%">
-
-
-<p>A HP75 language extension file.</p></td>
-<td width="31%">
-</td></tr>
-</table>
-
-<p style="margin-left:11%;"><i>BASIC75</i></p>
-
-<p style="margin-left:22%;">A HP75 tokenised BASIC
-program.</p>
-
-<p style="margin-left:11%;"><i>VCALC75</i></p>
-
-<p style="margin-left:22%;">A HP75 Visicalc worksheet</p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifdir</b>
+should recognise all file types of the Online LIF Disk
+project.</p>
 
 <p style="margin-left:11%; margin-top: 1em">Unknown file
 types are printed as a 4&minus;digit hex number giving the
