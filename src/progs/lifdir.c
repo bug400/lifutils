@@ -133,7 +133,7 @@ int main(int argc, char **argv)
     optind=1;
     physical_flag=0;
     verbosity=1;
-    while((option=getopt(argc,argv,"v:n?"))!=-1)
+    while((option=getopt(argc,argv,"v:np?"))!=-1)
       {
         switch(option)
           {

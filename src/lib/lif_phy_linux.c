@@ -97,7 +97,24 @@ void lif_write_phy_block(int output_device, int block, unsigned char *data)
 void lif_recalibrate_phy_device(int device)
   {
     struct floppy_raw_cmd cmd;
-
+    struct floppy_struct  floppy;
+    /* clear floppy config */
+    if (ioctl(device,FDCLRPRM,NULL)<0)
+      {
+         fprintf(stderr,"Error on resetting floppy parameters\n");
+         exit(1);
+       }
+    /* configure floppy */
+    floppy.size= 2464; /* total number of sectors */
+    floppy.sect= 16;   /* sectors per track */
+    floppy.head=2;     /* nr of heads */
+    floppy.track=77;   /* nr of tracks */
+    floppy.stretch=0;  /* no double track steps, no swap sides, first sect=0 */
+    if (ioctl(device,FDSETPRM,&floppy)<0)
+      {
+         fprintf(stderr,"Error on configuring floppy parameters\n");
+         exit(1);
+       }
     cmd.data=NULL;  /* pointer to data buffer */
     cmd.length=0;   /* length of DMA transfer */
     cmd.rate=RATE250; /* data rate = 250kbps */
@@ -147,7 +164,7 @@ void lif_read_phy_device(int device, int cylinder, int head, int sector,
     cmd.cmd[4]=sector; /* Sector to search for */
     cmd.cmd[5]=1; /* 256 byte MFM sectors */
     cmd.cmd[6]=16; /* last sector number on a track */
-    cmd.cmd[7]=14; /* gap length */
+    cmd.cmd[7]=32; /* gap length */
     cmd.cmd[8]=0xFF; /* 256 bytes, but shouldn't be needed */
     cmd.cmd_count=9;
     if ((ioctl(device,FDRAWCMD,&cmd)<0) || (cmd.reply[0] & 0xC0))
@@ -174,7 +191,7 @@ void lif_write_phy_device(int device, int cylinder, int head, int sector,
     cmd.cmd[4]=sector; /* Sector to search for */
     cmd.cmd[5]=1; /* 256 byte MFM sectors */
     cmd.cmd[6]=16; /* last sector number on a track */
-    cmd.cmd[7]=14; /* gap length */
+    cmd.cmd[7]=32; /* gap length */
     cmd.cmd[8]=0xFF; /* 256 bytes, but shouldn't be needed */
     cmd.cmd_count=9;
     if ((ioctl(device,FDRAWCMD,&cmd)<0) || (cmd.reply[0] & 0xC0))
