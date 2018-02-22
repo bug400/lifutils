@@ -14,6 +14,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include <errno.h>
+#include <string.h>
 #include <sys/ioctl.h>
 #include <linux/fd.h>
 #include <linux/fdreg.h>
@@ -32,11 +34,11 @@
 static int current_cylinder;
 
 
-int lif_open_phy_device(char * devicename, int mode)
+int lif_open_phy_device(char * devicename)
   {
     int device;
 
-    device=open(devicename,mode,0);
+    device=open(devicename,3,0);
     if(device != -1) 
     {
        /* Move the drive head to cylinder 0 and set current_cylinder */
@@ -99,9 +101,11 @@ void lif_recalibrate_phy_device(int device)
     struct floppy_raw_cmd cmd;
     struct floppy_struct  floppy;
     /* clear floppy config */
-    if (ioctl(device,FDCLRPRM,NULL)<0)
+    
+    if(ioctl(device,FDCLRPRM,NULL)<0)
       {
          fprintf(stderr,"Error on resetting floppy parameters\n");
+         fprintf(stderr,"error= %s (%d)\n",strerror(errno),errno);
          exit(1);
        }
     /* configure floppy */
@@ -110,9 +114,10 @@ void lif_recalibrate_phy_device(int device)
     floppy.head=2;     /* nr of heads */
     floppy.track=77;   /* nr of tracks */
     floppy.stretch=0;  /* no double track steps, no swap sides, first sect=0 */
-    if (ioctl(device,FDSETPRM,&floppy)<0)
+    if(ioctl(device,FDSETPRM,&floppy)<0)
       {
          fprintf(stderr,"Error on configuring floppy parameters\n");
+         fprintf(stderr,"error= %s (%d)\n",strerror(errno),errno);
          exit(1);
        }
     cmd.data=NULL;  /* pointer to data buffer */
@@ -122,9 +127,10 @@ void lif_recalibrate_phy_device(int device)
     cmd.cmd[0]=FD_RECALIBRATE; /* position head to track 0 */
     cmd.cmd[1]=0;
     cmd.cmd_count=2;  /* two bytes in the command */
-    if (ioctl(device,FDRAWCMD,&cmd)<0)
+    if(ioctl(device,FDRAWCMD,&cmd)<0)
       {
          fprintf(stderr,"Error on recalibrate\n");
+         fprintf(stderr,"error= %s (%d)\n",strerror(errno),errno);
          exit(1);
        }
   }
@@ -144,6 +150,7 @@ void lif_seek_phy_device(int device, int cylinder)
     if (ioctl(device,FDRAWCMD,&cmd)<0)
       {
          fprintf(stderr,"Error on seek to cylinder %d\n",cylinder);
+         fprintf(stderr,"error= %s (%d)\n",strerror(errno),errno);
          exit(1);
       }
   }
@@ -171,6 +178,7 @@ void lif_read_phy_device(int device, int cylinder, int head, int sector,
       {
         fprintf(stderr,"Error reading cylinder %d, head %d, sector %d\n",
                 cylinder,head,sector);
+         fprintf(stderr,"error= %s (%d)\n",strerror(errno),errno);
         exit(1);
       }
   }
@@ -198,6 +206,7 @@ void lif_write_phy_device(int device, int cylinder, int head, int sector,
       {
         fprintf(stderr,"Error writing cylinder %d, head %d, sector %d\n",
                 cylinder,head,sector);
+        fprintf(stderr,"error= %s (%d)\n",strerror(errno),errno);
         exit(1);
       }
   }

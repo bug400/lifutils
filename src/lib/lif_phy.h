@@ -1,8 +1,8 @@
 /* lif_phy.h -- header file for physical LIF disk functions (LINUX) */
 /* 2000, 2015 A. R. Duell, J. Siebold and placed under the GPL */
 
-int lif_open_phy_device(char * devicename,int flags);
-/* open a physical device in the specified mode */
+int lif_open_phy_device(char * devicename);
+/* open a physical device */
 
 void lif_close_phy_device(int device_id);
 /* close a physical device */

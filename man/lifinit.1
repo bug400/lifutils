@@ -2,7 +2,7 @@
 .SH NAME
 lifinit \- initialize a lif image file
 .SH SYNOPSIS
-.B lifinit
+.B lifinit [\-z]  [\-z] 
 \-m Mediumtype 
 .I <LIF image file> <number of directory entries>
 .PP
@@ -34,6 +34,8 @@ hdrive8: Initializes a medium with the size of a 8 MB disk
 .TP
 hdrive16: Initializes a medium with the size of a 16 MB disk
 .TP
+.I \-z
+Initialize the data area of the image with zeros.
 .I \-?
 Print a message giving the program usage to standard error.
 .SH EXAMPLES

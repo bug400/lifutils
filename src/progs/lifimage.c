@@ -42,7 +42,7 @@ int main(int argc, char **argv)
       }
 
     /* open file descriptor for disk drive */
-    if((input_device=lif_open_phy_device(argv[1],O_RDONLY))==-1)
+    if((input_device=lif_open_phy_device(argv[1]))==-1)
       {
          fprintf(stderr,"Error opening device %s\n",argv[1]);
          exit(1);

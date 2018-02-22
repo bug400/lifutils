@@ -9,7 +9,7 @@
 
 #include<stdio.h>
 
-int lif_open_phy_device(devicename,mode)
+int lif_open_phy_device(devicename)
   {
     int device= -1;
     fprintf(stderr,"Low level floppy disc access is not supported on this platform\n");

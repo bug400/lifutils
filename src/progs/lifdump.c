@@ -34,7 +34,7 @@ int main(int argc, char **argv)
       }
 
     /* open descriptor for output disk drive */
-    if((output_device=lif_open_phy_device(argv[argc-1],O_RDWR))==-1)
+    if((output_device=lif_open_phy_device(argv[argc-1]))==-1)
       {
         fprintf(stderr,"Error opening device %s\n",argv[argc-1]);
         exit(1);

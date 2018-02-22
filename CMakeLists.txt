@@ -2,7 +2,7 @@
 # build file for lifutils
 #
 project(lifutils)
-cmake_minimum_required (VERSION 2.8.11)
+cmake_minimum_required (VERSION 2.8.4)
 #
 # tweaks for Microsoft Visual C: 
 # - link VC runtime statically
@@ -90,8 +90,9 @@ add_library (lifutils ${LIB_SOURCES} ${LIB_HEADERS} )
 #
 # buld emu7470
 #
-file(GLOB LIB_SOURCES src/emu7470src/*.h)
-add_library ("emu7470support" "src/emu7470/lindef.c;src/emu7470/chardraw.c" ${LIB_HEADERS} )
+set( LIB_SOURCES "" )
+list(APPEND LIB_SOURCES src/emu7470/chardraw.c src/emu7470/lindef.c)
+add_library ("emu7470support" ${LIB_SOURCES} ${LIB_HEADERS} )
 include_directories("src/emu7470")
 add_executable( "emu7470" "src/emu7470/emu7470.c")
 target_link_libraries ( "emu7470" "emu7470support")

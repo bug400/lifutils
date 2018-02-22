@@ -24,7 +24,7 @@ int lif_open(char * filename,int flags,int mode, int physical_flag)
    p_flag= physical_flag;
    if (p_flag)
       {
-        fileno=lif_open_phy_device(filename, flags);
+        fileno=lif_open_phy_device(filename);
       }
     else
       {

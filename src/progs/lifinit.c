@@ -23,9 +23,10 @@ void usage(void)
   {
     fprintf(stderr,
     "Usage:lifinit lif-image-filename directorysize\n");
-    fprintf(stderr,"      lifinit -m Mediumtype lif-image-filename directorysize\n");
+    fprintf(stderr,"      lifinit [-z] -m Mediumtype lif-image-filename directorysize\n");
     fprintf(stderr,"\n");
     fprintf(stderr, "      -m Medium type (cass | disk | hdrive1) \n");
+    fprintf(stderr, "      -z Initialize the data are with zeros) \n");
     exit(1);
   }
 
@@ -34,6 +35,7 @@ int main(int argc, char **argv)
     /* System variables */
     int option; /* Command line option character */
     int physical_flag; /* Option to use a physical device */
+    int zero_data; /* Option to fill the data area with zeros */
     int lif_device; /* Descriptor of input device */
     char *medium= (char *) NULL;
     int dirsize;    /* number of directory entries */
@@ -49,14 +51,17 @@ int main(int argc, char **argv)
     /* Process command line options */
     optind=1;
     physical_flag=0;
+    zero_data=0;
 
-    while ((option=getopt(argc,argv,"pm:x?"))!=-1)
+    while ((option=getopt(argc,argv,"pm:xz?"))!=-1)
       {
         switch(option)
           {
             case 'm':  medium=optarg;
                        break;
             case 'p' : physical_flag=1;
+                       break;
+            case 'z' : zero_data=1;
                        break;
             case '?' : usage();
                        break;
@@ -95,7 +100,7 @@ int main(int argc, char **argv)
         tracks=77;
         heads=2;
         sectors=16;
-        totalblocks=2464; /* 16 spare blocks */
+        totalblocks=2464; 
     }
     if(strcmp(medium,"hdrive1")==0) {
         tracks=80;
@@ -186,6 +191,17 @@ int main(int argc, char **argv)
        lif_write_block(lif_device,i,sector_data);
     /* now write one sector of disk data, all 0xFF */
     lif_write_block(lif_device,dirsize_blocks+3,sector_data);
+    /* zero data area if requested */
+    if (zero_data)
+       {
+       for(i=0;i<SECTOR_SIZE;i++) sector_data[i]=0x0;
+       i=dirsize_blocks+2; /* first data block */
+       while(i< totalblocks)
+          {
+          lif_write_block(lif_device,i,sector_data);
+          i+=1;
+          }
+       }
     /* tidy up and quit */
     lif_close(lif_device);
     exit(0);      
