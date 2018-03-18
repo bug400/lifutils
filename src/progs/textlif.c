@@ -192,11 +192,9 @@ int main(int argc, char**argv)
              exit(1);
           }
        }
-    /* if the maximum numbers of registers exceeds 577 (see HEPAX doku) 
-       issue a warning and do not write implementing bytes */
-       if (num_reg > 577) {  
-          fprintf(stderr,"file too large for the HP-41,  maximum size is 577 registers\n");
-          num_reg= -1;
+       if (num_reg > 577) {  /* max file size, see HEPAX documentation */
+          fprintf(stderr,"Number of HP-41 registers too large, maximum is 577 registers\n");
+          exit(1);
        }
     }
     /* check total length */
