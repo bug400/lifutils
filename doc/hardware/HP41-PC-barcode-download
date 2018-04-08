@@ -93,7 +93,7 @@ download finishes, type GTO .. on the HP41 to pack program memory.
 
 The input to prog41bar can be piped from another program. For example type
 
-lifget -f disk1.lif MYPROG | prog41bar > /dev/lp0 
+lifget  disk1.lif MYPROG | prog41bar > /dev/lp0 
 
 to downloard a program called 'MYPROG' from a lif disk image 'disk1.lif'
 
@@ -118,7 +118,7 @@ register is loaded.
 The input to sdatabar can be piped from another program. For example, to 
 download the file DATA1 from the lif disk image disk.lif, type
 
-lifget -f disk.lif DATA1 | sdatabar >/dev/lp0
+lifget  disk.lif DATA1 | sdatabar >/dev/lp0
 
 In both cases it may be necessary to use the -e option to sdatabar if you 
 have a version 1E wand and are getting wand data errors.

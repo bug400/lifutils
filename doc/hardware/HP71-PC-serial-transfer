@@ -98,7 +98,7 @@ send.
 The input to out71 can be piped from lifget (for example) in the 
 standard way to transfer a file from a lif disk image. For example :
 
-lifget -f disk1 TEXT1 | out71 TEXT > /dev/cua0
+lifget  disk1 TEXT1 | out71 TEXT > /dev/cua0
 
 will transfer the file TEXT1 from the lif disk image disk1 to a text file 
 on the HP71. Note that no translation is performed, so the input file 
@@ -125,7 +125,7 @@ out71 -o filetype < filename >/dev/cua0
 
 or, for example, 
 
-lifget -f disk1 PROG71 | out71 -o BASIC71  > /dev/cua0
+lifget  disk1 PROG71 | out71 -o BASIC71  > /dev/cua0
 
 to send the BASIC71 program PROG71 (which is an odd number of nybbles long) 
 from the disk image disk1. 

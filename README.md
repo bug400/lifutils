@@ -31,9 +31,8 @@ See the [doc/readme.html](https://rawgit.com/bug400/lifutils/master/doc/readme.h
 for more information about features and usage.
 
 Note: there is experimental support for the access of floppy devices to
-read and write HP9114 floppy disks under LINUX. Due to lack of hardware this 
-has not been tested up to now. Floppy disk support will n o t work with
-USB floppy devices.
+read and write HP9114 floppy disks under LINUX. Floppy disk support will 
+n o t work with USB floppy devices.
 
 
 Compatibility

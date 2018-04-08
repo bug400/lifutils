@@ -57,6 +57,10 @@ Section "un.Program Files" SectionUninstallProgram
 	!insertmacro un.DeleteRetryAbort "$INSTDIR\textlif.exe"
 	!insertmacro un.DeleteRetryAbort "$INSTDIR\wall41.exe"
 	!insertmacro un.DeleteRetryAbort "$INSTDIR\wcat41.exe"
+	!insertmacro un.DeleteRetryAbort "$INSTDIR\in71.exe"
+	!insertmacro un.DeleteRetryAbort "$INSTDIR\out71.exe"
+	!insertmacro un.DeleteRetryAbort "$INSTDIR\inp41.exe"
+	!insertmacro un.DeleteRetryAbort "$INSTDIR\outp41.exe"
 	!insertmacro un.DeleteRetryAbort "$INSTDIR\activate_lifutils.bat"
 
         !insertmacro un.DeleteRetryAbort "$INSTDIR\xroms\advantage.xrom"
@@ -110,6 +114,10 @@ Section "un.Program Files" SectionUninstallProgram
         !insertmacro un.DeleteRetryAbort "$INSTDIR\doc\html\textlif.html"
         !insertmacro un.DeleteRetryAbort "$INSTDIR\doc\html\wall41.html"
         !insertmacro un.DeleteRetryAbort "$INSTDIR\doc\html\wcat41.html"
+        !insertmacro un.DeleteRetryAbort "$INSTDIR\doc\html\in71.html"
+        !insertmacro un.DeleteRetryAbort "$INSTDIR\doc\html\out71.html"
+        !insertmacro un.DeleteRetryAbort "$INSTDIR\doc\html\inp41.html"
+        !insertmacro un.DeleteRetryAbort "$INSTDIR\doc\html\outp41.html"
 	RMdir "$INSTDIR\doc\html"
 
         !insertmacro un.DeleteRetryAbort "$INSTDIR\doc\hardware\barcode.asm"
@@ -131,6 +139,7 @@ Section "un.Program Files" SectionUninstallProgram
         !insertmacro un.DeleteRetryAbort "$INSTDIR\doc\copying.html"
         !insertmacro un.DeleteRetryAbort "$INSTDIR\doc\GPL-2"
         !insertmacro un.DeleteRetryAbort "$INSTDIR\doc\readme.html"
+        !insertmacro un.DeleteRetryAbort "$INSTDIR\doc\tutorial.html"
 	RMdir "$INSTDIR\doc"
 	
   ; Clean up "Program Group entries" we check that we created Start menu folder

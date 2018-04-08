@@ -38,7 +38,7 @@ where program_file is the name of a file containing an HP41 program.
 The input to outp41 can be piped from lifget (for example) in the 
 standard way to transfer a file from a lif disk image. For example :
 
-lifget -f disk1 PROG | outp41 > /dev/lp0
+lifget  disk1 PROG | outp41 > /dev/lp0
 
 will transfer the file PROG from the lif disk image disk1.
 
