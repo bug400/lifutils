@@ -9,7 +9,7 @@ LIF Utilities v1.7.8 Readme
 <HR SIZE="3">
 <a href="#DOCUMENTATION">Introduction</a><br>
 <a href="#COMMAND_REFERENCE">Command Reference</a><br>
-<a href="#ACKNOWLEDGEMENTS">Acknowledgetments</a><br>
+<a href="#ACKNOWLEDGEMENTS">Acknowledgements</a><br>
 <a href="#LICENSE">License</a><br>
 <a href="#REVISION_HISTORY">Revision History</a><br>
 
@@ -43,7 +43,7 @@ LIF Utilities v1.7.8 Readme
 <tr><td><a href="html/lifget.html">lifget</a></td><td>Extract a file from a LIF image file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/lifheader.html">lifheader</a> </td><td>Show the LIF header of a LIF file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/lifinit.html">lifinit</a> </td><td>Initialize a LIF image file</td><td>yes</td><td>yes</td></tr>
-<tr><td><a href="html/lifimage.html">lifimage</a></td><td>create a LIF image file froma physical LIF disk</td><td>Linux only</td><td>no</td></tr>
+<tr><td><a href="html/lifimage.html">lifimage</a></td><td>create a LIF image file from a physical LIF disk</td><td>Linux only</td><td>no</td></tr>
 <tr><td><a href="html/liflabel.html">liflabel</a> </td><td>Label a LIF image file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/lifmod.html">lifmod</a> </td><td>Output contents of HP-41 module files</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/lifpack.html">lifpack</a> </td><td>Packs a LIF image file</td><td>yes</td><td>yes</td></tr>
@@ -95,7 +95,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 <H3><a name="REVISION_HISTORY"></a>Revision History</H3>
 <p>
 <table border=0 cellspacing=0 cellpadding=2>
-<tr><td>v1.0</td><td>Initial Relase</td></tr>
+<tr><td>v1.0</td><td>Initial Release</td></tr>
 <tr><td>v1.0.1</td><td>Bug fixes:
  Directory length bug fixed for TEXT75 and DATA71 files; 
  lifrmhdr made more tolerant of illegal sectors in the image</td></tr>
@@ -128,7 +128,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
            to the hardware directory; 
          Added ROM41 filetype to lif_dir_utils; 
          Added rom41, rom41cat programs; 
-         Elimnated unwanted spaces in octal escape sequence output; 
+         Eliminated unwanted spaces in octal escape sequence output; 
          Added prog41bar program.</td></tr>
 <tr><td>v1.5</td><td>
 Added lifput, texthp, lifstrip, rawlif;
@@ -171,13 +171,13 @@ renamed hptext.c to liftext.c
 Moved ROM info to xrom.c and xrom.h. Fixed various compiler warnings. Code refactoring and transition to GNU Build system. New files: lifmod.c, modfile.c, lifmod.1
 </td></tr>
 <tr><td>v1.7.2</td><td>
-Reimplmented pyhsical media access (LINUX only, experimental!), lifput fixes 
+Reimplemented physical media access (LINUX only, experimental!), lifput fixes 
 </td></tr>
 <tr><td>v1.7.3</td><td>
-Check for already existing filename: lifrename.c , check if the name in the lif header of the input file is valid: lifget.c
+Check for already existing file name: lifrename.c , check if the name in the lif header of the input file is valid: lifget.c
 </td></tr>
 <tr><td>v1.7.4</td><td>
-Do not check if old filename is valid: lifrename. Check if directory size exceeds 1/3 of the medium size: lifinit.c, New files: lexcat71, lexcat71.1. Filetypes renamed and added: lif_dir_utils.c
+Do not check if old file name is valid: lifrename. Check if directory size exceeds 1/3 of the medium size: lifinit.c, New files: lexcat71, lexcat71.1. File types renamed and added: lif_dir_utils.c
 </td></tr>
 <tr><td>v1.7.5</td><td>
 New files: lifheader.c, lifversion.c, hx41rom.c, lifheader.1, hx41rom.1
@@ -191,7 +191,7 @@ New files: er41rom.c, er41rom.1, rom41er.c (renamed rom41.c), rom41er.1 (renamed
 The textlif utility was enhanced to write HP-41 specific implementation bytes.
 </td></tr>
 <tr><td>v1.7.8</td><td>
-Extended output for lifdir and lifheader. Removed lifilper. Fixes in lif_phy_linux.c. Added switch in lifinit to zero the data area. Added tutorial. inp41, outp41, in71 and out71 are now available on all platforms.
+Extended output for lifdir and lifheader. Removed lifilper. Fixes in lif_phy_linux.c. Better error diagnostics in lif_img.c. Added switch in lifinit to zero the data area. Added tutorial. inp41, outp41, in71 and out71 are now available on all platforms.
 </td></tr>
 </table>
 </p>
@@ -201,7 +201,7 @@ Extended output for lifdir and lifheader. Removed lifilper. Fixes in lif_phy_lin
 <tr>
 <td><address><I><font size=1><A HREF="mailto:bug400@gmx.de">Joachim Siebold</A></font></I></address></td>
 <td align=right>
-	<font size=1> Page last modified : 16th June 2015</font></td>
+	<font size=1> Page last modified : 9th April 2018</font></td>
 </tr>
 </table>
 </BODY>

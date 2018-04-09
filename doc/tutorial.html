@@ -465,19 +465,19 @@ cat/type p41.foc | comp41 -x hpil -x xio &gt; p41.raw
 
 <p>You can use HP-41 program raw files in software emulators for this calculators.</p>
 
-<p>To put the raw file <em>p41.raw</em> into the LIF image file <em>lifimage.dat</em> you must first create a LIF file from the raw file:</p>
+<p>To put the raw file <em>p41.raw</em> into the LIF image file <em>lifimg.dat</em> you must first create a LIF file from the raw file:</p>
 
 <pre>
-cat/type p41.raw | rawlif PROG41 | lifput lifimage.dat
+cat/type p41.raw | rawlif PROG41 | lifput lifimg.dat
 </pre>
 
 <p>Or put everything into one pipe:</p>
 
 <pre>
-cat/type p41.foc | comp41 -x hpil -x xio | rawlif PROG41 | lifput lifimage.dat
+cat/type p41.foc | comp41 -x hpil -x xio | rawlif PROG41 | lifput lifimg.dat
 </pre>
 
-<p>Both example store the compiled program with the file name <em>PROG41</em> into the lifimage file <em>lifimage.dat</em>.</p>
+<p>Both example store the compiled program with the file name <em>PROG41</em> into the lifimage file <em>lifimg.dat</em>.</p>
 
 <p>To get the FOCAL code of a compiled HP-41 program use the <a href="html/decomp41.html">decomp41</a> utility. The following line prints the source of the file <em>PROG41</em> we just stored in the LIF image file <em>lifimg.dat</em>:</p>
 
@@ -510,24 +510,24 @@ A compiled HP-41 focal programs references a call to a rom function with a rom n
 
 <p>For the HP-41 numerous plug in modules exist that extend the functionality of the calculator with additional commands, e.g. the Math module. These modules contain one or more roms with a size of 4 KWords (10bit words). The content of the roms of the HP-41 are available on various sources of the internet. The 10bit words of the rom are stored in two consecutive bytes. This file format is called an uncompressed (or unscrambled) rom image. The size of these files is always 8192 bytes.</p>
 
-<p>With additional hardware (eprom or flash rom extenders) and software (HEPAX or Eramco MLDL) you can load exchange rom images between a HP-IL mass storage and the calculator. To improve efficiency HEPAX and Eramco MLDL use different techniques to compress (or scramle) the rom images to store 4 consecutive 10bit rom words in 5 bytes. These files have a size of 5120 bytes.</p>
+<p>With additional hardware (eprom or flash rom extenders) and software (HEPAX or Eramco MLDL) you can load exchange rom images between a HP-IL mass storage and the calculator. To improve efficiency HEPAX and Eramco MLDL use different techniques to compress (or scramble) the rom images to store 4 consecutive 10bit rom words in 5 bytes. These files have a size of 5120 bytes.</p>
 
-<p>With <a href="html/rom41er.html">rom41er</a> and <a href="html/er41rom.html">er41rom</a> you can convert an unscramled rom image into an Eramco MLDL scrampled LIF file and vice versa. This LIF file has an own file type.</p>
+<p>With <a href="html/rom41er.html">rom41er</a> and <a href="html/er41rom.html">er41rom</a> you can convert an unscrambled rom image into an Eramco MLDL scrambled LIF file and vice versa. This LIF file has an own file type.</p>
 
 <p>The <a href="html/rom41hx.html">rom41hx</a> and <a href="html/hx41rom.html">hx41rom</a> convert between an unscrambled rom image an a HEPAX scrambled LIF file. This LIF file has the file type <em>SDATA</em>.
 
-<p>To load the file <em>Math-1A.rom</em> as a scrambled HEPAX rom file into the LIF image file <em>lifimage.dat</em> do:
+<p>To load the file <em>Math-1A.rom</em> as a scrambled HEPAX rom file into the LIF image file <em>lifimg.dat</em> do:
 
 <pre>
-cat/type Math-1A.rom | rom41hx MATHHXROM | lifput lifimage.dat
+cat/type Math-1A.rom | rom41hx MATHHXROM | lifput lifimg.dat
 </pre>
 
-<p>If you attach <em>lifimage.dat</em> to <a href="http://hp.giesselink.com/hpil.htm">ILPer</a> software suite (Windows) or the <a href="https://github.com/bug400/pyilper">pyILPER</a> and a PIL-Box you can load the rom into the HP-41 with the HEPAX <em>READROM</em> command.</p>
+<p>If you attach <em>lifimg.dat</em> to <a href="http://hp.giesselink.com/hpil.htm">ILPer</a> software suite (Windows) or the <a href="https://github.com/bug400/pyilper">pyILPER</a> and a PIL-Box you can load the rom into the HP-41 with the HEPAX <em>READROM</em> command.</p>
 
-<p>To list the content of the HEPAX scrambled HP-41 rom file <em>MATHHXROM</em> in the LIF image file <em>lifimage.dat</em> use:</p>
+<p>To list the content of the HEPAX scrambled HP-41 rom file <em>MATHHXROM</em> in the LIF image file <em>lifmag.dat</em> use:</p>
 
 <pre>
-lifget -r lifimage.dat MATHHXROM | hx41rom | rom41cat
+lifget -r lifimg.dat MATHHXROM | hx41rom | rom41cat
 </pre>
 
 <p>This displays the function address table of the rom if present.</p>
@@ -632,7 +632,7 @@ for /F %%f in ('lifdir -n %1') do (
 
 <H4>Floppy disks</H4>
 
-<p>You need a HP-41, HP-71B or HP-75 with a HP-IL interface and a HP9114 floppy disk drive. Using floppy disks with the <em>LIFUTILS</em> is <b>only</b> supported on Linux. You need a Linux PC with a non USB floppy disk drive. The success of reading or writing HP9114 compatible floppies is highly dependent on the capabilities of tha floppy disk controller and the floppy disk drive.</p>
+<p>You need a HP-41, HP-71B or HP-75 with a HP-IL interface and a HP9114 floppy disk drive. Using floppy disks with the <em>LIFUTILS</em> is <b>only</b> supported on Linux. You need a Linux PC with a non USB floppy disk drive. The success of reading or writing HP9114 compatible floppies is highly dependent on the capabilities of the floppy disk controller and the floppy disk drive.</p>
 
 <p>On Linux you need read and write access to the floppy disk device /dev/fd0. Write access is even needed if you only intend to read a disk. Use the write protect switch on the disk to shelter your data. If you use a high density floppy then cover the indicator hole at the lower right side of the medium.</p>
 
@@ -642,15 +642,15 @@ for /F %%f in ('lifdir -n %1') do (
 
 <p>All <em>LIFUTIL</em> programs that access LIF image file can access a floppy drive if the <em>-p</em> parameter is specified. This option is only documented here. Because of the time consuming recalibration the preferred way is to exchange whole LIF image files with the floppy disk.</p>
 
-<p>To copy a LIF image file you need a properly formatted floppy disk. The safest way is to format that disk on the HP-9114 drive. To copy the LIF image file <em>lifimage.dat</em> to a floppy disk use:</p>
+<p>To copy a LIF image file you need a properly formatted floppy disk. The safest way is to format that disk on the HP-9114 drive. To copy the LIF image file <em>lifimg.dat</em> to a floppy disk use:</p>
 
 <pre>
-lifdump lifimage.dat /dev/fd0
+lifdump lifimg.dat /dev/fd0
 </pre>
 
 <p>Note: this will overwrite all data on the floppy disk.</p>
 
-<p>To get a lif image file as a copy of a LIF volume floppy disk use:</p>
+<p>To get a LIF image file as a copy of a LIF volume floppy disk use:</p>
 
 <pre>
 lifimage /dev/fd0 lifdiskimage.dat
@@ -670,19 +670,20 @@ lifinit -p -z -m disk /dev/fd0 250
 
 <p>You need a HP-41 or HP-71B with HP-IL interface and a HP 82164A HP-IL/RS-232C Interface and a PC with serial interface. For the HP-41 the Extended I/O module is needed as well.</p>
 
-<p>The <em>LIFUTULS</em> provide tools to process files that shall be transferred to or were transferred from the calculator. The serial communication with the HP 82164A box has to be executed with the operating system. Thus you need sound knwoledget how to configure and operate serial devices on your PC and how to configure and use the HP 82164A box.</p>
+<p>The <em>LIFUTILS</em> provide tools to assist the exchange of files with the calculator. The serial communication with the HP 82164A box has to be configured at operating system level. Thus you need sound knowledge how to configure and operate serial devices on your PC and how to connect, set up and use the HP 82164A box.</p>
 
-<p>The Extended I/O module of the HP-41 allows to send and receive a program in hexadecimal format. The following utilities do encoding and decoding of these files on the PC:
+<p>The Extended I/O module of the HP-41 allows to send (<em>OUTP</em>) and receive (<em>INP</em>)  a program in hexadecimal format. The following utilities do encoding and decoding of these files on the PC:
 <ul>
-<li><a href="html/inp41.html">inp41</a>: utility to decode a hexadecimal coded HP-41 program file sent by the Extended I/O module <em>OUTP</em>.</li>
-<li><a href="html/outp41.html">outp41</a>: utility to encode a HP-41 program into a hexadecimal byte stream that can be read by the Extended I/O module <em>INP</em> command.</li>
+<li><a href="html/inp41.html">inp41</a>: reads and decodes a hexadecimal coded HP-41 program file sent by the Extended I/O module <em>OUTP</em>.</li>
+<li><a href="html/outp41.html">outp41</a>: encodes a HP-41 program into a hexadecimal byte stream that can be sent to the serial device.</li>
 </ul>
-<p>For Linux you find information how to exchange data between the HP-41 in the file <em>HP41-PC-serial-transfer</em>. This file is located in the hardware subdirectory of the <em>LIFUTILS</em> software distribution.</p> 
 
-<p>The HP-71 allows to copy files from and to the HP 82164A serial interface. On the PC you receive respectively send LIF files. The following utilities are available:</p>
+<p>For Linux you find information how to exchange data between the HP-41 in the file <em>HP41-PC-serial-transfer</em> which is located in the hardware subdirectory of the <em>LIFUTILS</em> software distribution.</p> 
+
+<p>The HP-71 allows to copy files from and to the HP 82164A serial interface with the <em>COPY</em> command. The HP-71 always exchanges LIF files (with the 32 byte header) with an HP-IL device of type <em>interface</em>. The following utilities are available:</p>
 <ul>
-<li><a href="html/in71.html">in71</a>: utility to convert a transferred LIF file to a raw file. This is an extended version of the <a href="html/lifraw.html">lifraw</a> command.</li>
-<li><a href="html/out71.html">out71</a>: this utility may be used by very experienced users to convert a raw file to a LIF file. This utility might not add the impementing bytes in a correct way. You are encouraged to use the utilitis documented above to create LIF files from raw files. You were warned!</li>
+<li><a href="html/in71.html">in71</a>: reads and converts a transferred LIF file to a raw file.</li>
+<li><a href="html/out71.html">out71</a>: converts an arbitrary raw file that can be sent to the serial device.  Warning: this utility might not add all necessary implementing bytes. You are strongly encouraged to use the raw to lif converters mentioned above for the supported file types (e.g. text files) and copy the converted files to the serial device.</li>
 </ul>
 <p>For Linux you find information how to exchange data between the HP-71 in the file <em>HP71-PC-serial-transfer</em>. This file is located in the hardware subdirectory of the <em>LIFUTILS</em> software distribution.</p> 
 
@@ -704,7 +705,7 @@ lifinit -p -z -m disk /dev/fd0 250
 <tr><td>E080</td><td>PGM41</td><td>HP-41 program file </td></tr>
 <tr><td>E088</td><td>BAS75</td><td>HP-75 basic file</td></tr>
 <tr><td>E089</td><td>LEX75</td><td>HP-75 lex file</td></tr>
-<tr><td>E08A</td><td>WKS75</td><td>HP-75 visical file</td></tr>
+<tr><td>E08A</td><td>WKS75</td><td>HP-75 visicalc file</td></tr>
 <tr><td>E08B</td><td>ROM75</td><td>HP-75 rom file</td></tr>
 <tr><td>E0D0</td><td>SDATA</td><td>HP 41 data file</td></tr>
 <tr><td>E0D1</td><td>TEXT (S)</td><td>secure text file</td></tr>
