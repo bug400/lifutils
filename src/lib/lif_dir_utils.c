@@ -68,6 +68,7 @@ int file_length(unsigned char *entry, char *file_type)
         case 0x00FF: /* disabled HP-71 LEX file */
           type_string="D-LEX";
           length=hp71_length(entry);
+          break;
         case 0xE0D0 : /* SDATA file */
           type_string="SDATA";
           length=get_lif_int(entry+28,2) * 8;
@@ -135,9 +136,11 @@ int file_length(unsigned char *entry, char *file_type)
         case 0xE020 : /* WALL file with X-MEM */
           type_string="WAXM41";
           length=(get_lif_int(entry+28,2) * 8)+1;
+          break;
         case 0xE030 : /* WALL file with X-MEM */
           type_string="XM41";
           length=(get_lif_int(entry+28,2) * 8)+1;
+          break;
         case 0xE040 : /* WALL file */
           type_string="ALL41";
           length=(get_lif_int(entry+28,2) * 8)+1;
