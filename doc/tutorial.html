@@ -18,6 +18,7 @@ LIFUTILS Tutorial
 <a href="#APPLICATION_EXAMPLES">Application examples</a><br>
 <a href="#EXCHANGE_FILES_WITH_CALCULATORS">Exchange files with calculators</a><br>
 <a href="#APPENDIX_A_KNOWN_FILETYPES">Appendix A: Known filetypes</a><br>
+<a href="#APPENDIX_B_MAPPING_FILE_TYPE_NAMES">Appendix B: Mapping file type names of the Online LIF Disk projekt and the LIFUTILS</a>
 
 <H3><a name="INTRODUCTION"></a>Introduction</H3>
 
@@ -69,7 +70,7 @@ Any access to LIF image files occurs by reading or writing complete blocks.</b>
 
 <p>The file name must apply to the file name rules of the HP-71: capital letters and digits starting with a letter. The maximum size is 10 characters. Note: the HP-41 allows file names which do not match the rules above. These files can not be processed with the <em>LIFUTILS</em>. Hence you can use the <a href="html/lifrename.html">lifrename</a> utility to rename these files.</p> 
 
-<p>The file type is encoded as a numeric value. Most existing LIF file types are known to the <em>LIFUTILS</em> (at least all files types that exist in the <a href="http://www.hpmuseum.org/forum/thread-2520.html">Online LIF Disk Project</a>). File types which are not known to the <em>LIFUTILS</em> are displayed as hex values in the output of the <a href="html/lifdir.html">lifdir</a> or <a href="html/lifheader.html">lifheader</a> command. Unknown file types can not be processed by the <em>LIFUTILS</em>.</p> 
+<p>The file type is encoded as a numeric value. Most existing LIF file types are known to the <em>LIFUTILS</em> (at least all files types that exist in the <a href="http://www.hpmuseum.org/forum/thread-2520.html">Online LIF Disk Project</a>, but see <a href="#APPENDIX_B_MAPPING_FILE_TYPE_NAMES">Appendix B</a>). File types which are not known to the <em>LIFUTILS</em> are displayed as hex values in the output of the <a href="html/lifdir.html">lifdir</a> or <a href="html/lifheader.html">lifheader</a> command. Unknown file types can not be processed by the <em>LIFUTILS</em>. Note: neither <a href="html/lifdir.html">lifdir</a> nor <a href="html/lifheader.html">lifheader</a> print information about the file properties <em>private</em> or <em>secured</em>.</p> 
 
 <p>The file types which are known to the <em>LIFUTILS</em> are listed in <a href="#APPENDIX_A_KNOWN_FILETYPES">Appendix A</a>.
 
@@ -732,5 +733,35 @@ lifinit -p -z -m disk /dev/fd0 250
 <tr><td>E22E</td><td>SYM71</td><td>HP-71 symbol file</td></tr>
 <tr><td>E21C</td><td>ROM71</td><td>HP-71 rom file</td></tr>
 </table>
+<H3><a name="APPENDIX_B_MAPPING_FILE_TYPE_NAMES"></a>Appendix B: Mapping file type names of the Online LIF Disk projekt and the LIFUTILS</H3>
+<p>The <a href="http://www.hpmuseum.org/forum/thread-2520.html">Online LIF Disk Project</a> maintains catalog files of the entire file collection. Hence the file type names used in these catalogs differ from the file type names implemented in the <em>LIFUTILS</em>. See the table below for a mapping.</p>
+<table>
+<tr><th>Online LIF Disk Project</th><th>LIFUTILS</th></tr>
+<tr><td>ADRS   71</td><td>ADR71</td></tr>
+<tr><td>ASSM8  41</td><td>WAXM41</td></tr>
+<tr><td>BASIC  71</td><td>BAS71</td></tr>
+<tr><td>BASIC  75</td><td>BAS75</td></tr>
+<tr><td>BIN    71</td><td>BIN71</td></tr>
+<tr><td>D-LEX  71</td><td>D-LEX71</td></tr>
+<tr><td>DATA   71</td><td>DAT71</td></tr>
+<tr><td>EXTMEM 41</td><td>XM41</td></tr>
+<tr><td>FORTH  71</td><td>FTH71</td></tr>
+<tr><td>GRAPH  71</td><td>GRA71</td></tr>
+<tr><td>KE     41</td><td>KEY41</td></tr>
+<tr><td>KEY    71</td><td>KEY71</td></tr>
+<tr><td>LEX    71</td><td>LEX71</td></tr>
+<tr><td>LEX    75</td><td>LEX75</td></tr>
+<tr><td>LIF1</td><td>TEXT</td></tr>
+<tr><td>ML-41  41</td><td>X-M41</td></tr>
+<tr><td>PR     41</td><td>PGM41</td></tr>
+<tr><td>ROM    71</td><td>ROM71</td></tr>
+<tr><td>ROM    75</td><td>ROM75</td></tr>
+<tr><td>SDATA  71/41</td><td>SDATA</td></tr>
+<tr><td>ST     41</td><td>STAT41</td></tr>
+<tr><td>SYM    71</td><td>SYM71</td></tr>
+<tr><td>TEXT   71   S</td><td>TEXT </td></tr>
+<tr><td>TEXT   75</td><td>TXT75</td></tr>
+<tr><td>WS     75</td><td>WKS75</td></tr>
+</table></td></tr>
 </body>
 </html>
