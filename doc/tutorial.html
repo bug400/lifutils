@@ -686,8 +686,36 @@ lifinit -p -z -m disk /dev/fd0 250
 </ul>
 <p>For Linux you find information how to exchange data with the HP-71 in the file <em>HP71-PC-serial-transfer</em>. This file is located in the hardware subdirectory of the <em>LIFUTILS</em> software distribution.</p> 
 
-<H3><a name="APPENDIX_A_KNOWN_FILETYPES"></a>Appendix A: Known file types</H3>
+<H4>Using Barcodes</H4>
 
+<p>You need a HP-41 with a bar code reader. There are two utilities that
+convert HP-41 raw files to an <a href="html/barcode.html">intermediate barcode format</a>:</p>
+<ul>
+<li><a href="html/prog41bar.html">prog41bar</a>: for HP-41 raw program files</li>
+<li><a href="html/sdatabar.html">sdatabar</a>: for HP-41 raw sdata files</li>
+</ul>
+<p>You can convert the <a href="html/barcode.html">intermediate barcode format</a> into a PostScript file with the <a href="html/barps.html">barps</a> utility. To create a printable barcode file <em>prog41.ps</em> from the HP-41 program <em>PROG41</em> in the LIF image file <em>lifimg.dat</em> type:</p>
+<pre>
+lifget -r lifimg.dat PROG41 | prog41bar | barps &gt; prog41.ps
+</pre>
+
+<p>To print a PostScript file:</p>
+<ul>
+<li>Linux: send the output to the printer with the <em>lpr</em> command. Every Linux printer "knows" PostScript</li>
+<li>Mac OS:  open the document in Preview (found in your Applications folder). Preview will automatically convert your document into PDF format for viewing and printing.</li>
+<li>Windows: If you have a PostScript printer then you can send the file to the printer device with the <em>COPY</em> command. You may use online services that convert PostScript into PDF and send the file to a printer with a PDF viewer. If you need a permanent solution you might consider the Acrobat Distiller or GhostScript.</li>
+</ul>
+
+<H4>Other solutions</H4>
+
+<p>Other solutions which are documented in the <em>hardware</em> subdirectory:</p>
+<ul>
+<li>Transferring files using a parallel printer interface and the HP82165 HPIL-GPIO interface. You need to solder a converter to connect the GPIO interface to the parallel interface of the PC.</li>
+<li>Use a hardware modified HP-41 barcode reader to connect it to a parallel printer interface of the PC (requires more soldering).</li>
+</ul>
+<p>And of course the <a href="https://www.hpmuseum.net/display_item.php?hw=1000">82973 HP-IL ISA interface</a> if you have one.</p>
+
+<H3><a name="APPENDIX_A_KNOWN_FILETYPES"></a>Appendix A: Known file types</H3>
 <table>
 <tr><th>type code</th><th>type string</th><th>description</th></tr>
 <tr><td>0001</td><td>TEXT</td><td>Ascii (HP-41), Text (HP-71), LIF1 (HP-75)</td></tr>
