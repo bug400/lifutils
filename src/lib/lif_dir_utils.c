@@ -66,7 +66,7 @@ int file_length(unsigned char *entry, char *file_type)
           length=get_lif_int(entry+16,4) * 256;
           break;
         case 0x00FF: /* disabled HP-71 LEX file */
-          type_string="D-LEX";
+          type_string="D-LEX71";
           length=hp71_length(entry);
           break;
         case 0xE0D0 : /* SDATA file */
