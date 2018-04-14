@@ -1,4 +1,4 @@
-.TH lexcat71 04-January-2016 "LIF Utilitites" "LIF Utilities"
+.TH lexcat71 13-April-2018 "LIF Utilitites" "LIF Utilities"
 .SH NAME
 lexcat71 \- a filter to display information about HP71 LEX files
 .SH SYNOPSIS
@@ -11,12 +11,12 @@ lexcat71 \- a filter to display information about HP71 LEX files
 .B lexcat71 \-?
 .SH DESCRIPTION
 .B lexcat71
-is a filter which reads al HP-71 lex file from standard input and displays
+is a filter which reads a HP-71 raw lex file from standard input and displays
 the following information on standard output:
 .TP  4 
 LEX file id
 .TP  4 
-for each of exisitng lex tables:
+for each of existing lex tables:
 .PP
 .IP \- 3  
 lowest token ID
@@ -39,9 +39,9 @@ The LEX file format is documented in the
 .SH EXAMPLES
 If
 .I mem.lex
-is a lif file containing an HP71 lex file, then
+is a raw file containing an HP71 lex file, then
 .PP
-.B cat mem.lex | lifraw | lexcat71
+.B cat mem.lex | lexcat71
 .PP 
 will display information about the LEX file
 .B mem.lex

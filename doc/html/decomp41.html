@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.2 -->
-<!-- CreationDate: Mon Apr 13 20:02:02 2015 -->
+<!-- Creator     : groff version 1.22.3 -->
+<!-- CreationDate: Sat Apr 14 13:57:18 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -39,8 +39,7 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">decomp41
-&minus; a filter to list an HP41C user&minus;language
-program</p>
+&minus; a filter to decompile a HP-41 program raw file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
@@ -63,10 +62,10 @@ program</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>decomp41</b>
-is a filter which produces a listing of an HP41C user
+is a filter which produces a listing of an HP-41 user
 language program. It reads the program as a series of bytes
 from standard input and prints the listing to standard
-output (in a similar format to the standard HP41C
+output (in a similar format to the standard HP-41
 printer).</p>
 
 <p style="margin-left:11%; margin-top: 1em">By default,
@@ -81,7 +80,7 @@ whitespace), in that order, separated by whitespace. The
 string gives a name to the function specified by the first
 number as <i>rr</i> and the second number as <i>nn.</i></p>
 
-<p style="margin-left:11%; margin-top: 1em">The linux
+<p style="margin-left:11%; margin-top: 1em">The Linux
 command <b>pr</b> may be useful for formatting the output of
 <b>decomp41</b> into multiple columns.</p>
 
@@ -154,8 +153,8 @@ error.</p> </td></tr>
 
 <p style="margin-left:22%;">xrom function definition files.
 Use the environment variable LIFUTILSXROMDIR to point to the
-localtion of this directory. On Linux the default localtion
-is /usr/share/lifutuls/xroms, if the variable is not
+location of this directory. On Linux the default location is
+/usr/share/lifutils/xroms, if the variable is not
 specified.</p>
 
 <h2>REFERENCES
@@ -164,7 +163,7 @@ specified.</p>
 
 
 <p style="margin-left:11%; margin-top: 1em">The format of
-an HP41C program is documented in many books. Amongst the
+an HP-41 program is documented in many books. Amongst the
 most useful references are <i>Extend Your HP41 (W. A. C.
 Mier-Jedrzejowicz)</i> and <i>The HP41 Synthetic Programming
 Quick Reference Guide (Jeremy Smith)</i></p>
@@ -175,12 +174,12 @@ Quick Reference Guide (Jeremy Smith)</i></p>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.lif</i> is a LIF disk image containing an HP41
+<i>disk1.img</i> is a LIF disk image containing an HP41
 program called <i>PROG</i> then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifget
-&minus;f disk1.lif PROG | decomp41 &minus;x hpil.xrom
-&minus;x time.xrom</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifget -r
+disk1.img PROG | decomp41 &minus;x hpil.xrom &minus;x
+time.xrom</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will produce a
 listing of the program to standard output, with the standard

@@ -1,6 +1,6 @@
-.TH liffix 1 13-October-2014 "LIF Utilities" "LIF Utilities"
+.TH liffix 1 14-April-2018 "LIF Utilities" "LIF Utilities"
 .SH NAME
-liffix \- fixes the medium size information of a lif image file
+liffix \- fixes the medium size information in the volume header of a LIF image file
 .SH SYNOPSIS
 .B liffix
 \-m Mediumtype 
@@ -8,39 +8,52 @@ liffix \- fixes the medium size information of a lif image file
 .PP
 .B liffix \-?
 .SH DESCRIPTION
-.B liffix
-fixes the medium size information of the lif image file
-.I LIF image file
-that was not proper initialized due to bugs of the calculator firmware. 
-The medium size of the lif image file can be checked with the
+The volume header of the LIF file system contains information about the size of the volume specified by the numbers of tracks per surface, number of surfaces and number of blocks per track. Some HP-IL controller do not initialize this values correctly which might worry software that works with LIF image files.  The medium size of the lif image file can be checked with the
 .I lifstat
 program.
+.B liffix
+repairs the volume header of a LIF image file.
 .SH OPTIONS
 .TP
 .I \-m
 This mandatory option specifies the medium type. The following medium types
 are supported:
-.TP
+.RS
 cass:    Initializes a medium with the size of a HP82161A cassette
-.TP
+.RE
+.RS
 disk:    Initializes a medium with the size of a HP9114B double sided disk
-.TP
+.RE
+.RS
 hdrive1: Initializes a medium with the size of a 640 KB disk
+.RE
+.RS
+hdrive2: Initializes a medium with the size of a 2 MB disk
+.RE
+.RS
+hdrive4: Initializes a medium with the size of a 4 MB disk
+.RE
+.RS
+hdrive8: Initializes a medium with the size of a 8 MB disk
+.RE
+.RS
+hdrive16: Initializes a medium with the size of a 16 MB disk
+.RE
 .TP
 .I \-?
 Print a message giving the program usage to standard error.
 .SH EXAMPLES
 If 
-.I disk1.lif
+.I disk1.img
 is a LIF disk image file with improper medium size information then
 .PP
-.B liffix -m disk disk1.lif 
+.B liffix -m disk disk1.img
 .PP
 will fix the medium size information of
-.I disk1.lif
+.I disk1.img
 The header is fixed with the parameters of the HP9114B double sided disk
 medium.
-.TP
+.PP
 Note: a check is performed if the content of the image file fits to the
 size of the medium.
 .SH REFERENCES

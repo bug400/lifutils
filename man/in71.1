@@ -1,4 +1,4 @@
-.TH in71 1 23-December-2000 "LIF Utilities" "LIF Utilities"
+.TH in71 1 13-April-2018 "LIF Utilities" "LIF Utilities"
 .SH NAME
 in71 \- a filter to read a program from an HP71B
 .SH SYNOPSIS
@@ -20,7 +20,7 @@ it a multiple of 256 bytes.
 strips off the header (displaying some of its information to standard 
 error), and (by default) truncates the last block of the file, thus 
 recovering the original file data. It can thus be used for the direct 
-transfer of files from an HP71B to a linux system using (e.g.) an HP82164 
+transfer of files from an HP71B to a Linux system using (e.g.) an HP82164 
 RS232 interface.
 .SH Options
 .TP
@@ -33,11 +33,11 @@ Print a message giving program usage to standard error and exit
 .I hardware/*
 : Information on linking an HP71B to a PC
 .SH EXAMPLES
-If an HP71B is connected to the linux device
+If an HP71B is connected to the Linux device
 .I /dev/cua0 
 via a suitable interface, then the command
 .PP
-.B in71 < /dev/cua0 | hptext
+.B in71 < /dev/cua0 | liftext
 .PP
 will read an HP71B text file (sent, e.g. by 
 .B COPY MYTEXT TO :RS232

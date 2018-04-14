@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.2 -->
-<!-- CreationDate: Mon Apr 13 20:02:02 2015 -->
+<!-- Creator     : groff version 1.22.3 -->
+<!-- CreationDate: Sat Apr 14 13:57:18 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -39,7 +39,8 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">comp41 &minus;
-a filter to compile a HP41C user&minus;language program</p>
+a filter to compile a HP41C user&minus;language (FOCAL)
+program</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
@@ -66,8 +67,8 @@ reads source file from standard input)</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>comp41</b>
-is a filter which compiles a textfile containing a HP-41
-User program (FOCAL) and translates it to a binary raw
+is a filter which compiles a text file containing a HP-41
+user program (FOCAL) and translates it to a binary raw
 file.</p>
 
 <p style="margin-left:11%; margin-top: 1em">An
@@ -148,8 +149,8 @@ error.</p> </td></tr>
 
 <p style="margin-left:22%;">xrom function definition files.
 Use the environment variable LIFUTILSXROMDIR to point to the
-localtion of this directory. On Linux the default localtion
-is /usr/share/lifutuls/xroms, if the variable is not
+location of this directory. On Linux the default location is
+/usr/share/lifutils/xroms, if the variable is not
 specified.</p>
 
 <h2>REFERENCES
@@ -170,17 +171,17 @@ Quick Reference Guide (Jeremy Smith)</i></p>
 
 <p style="margin-left:11%; margin-top: 1em">If
 <i>prog1.txt</i> is a text file with a FOCAL program that
-uses functions of the HP-IL and Time-module and
-<i>hp41prog.dat</i> is a lif image file then</p>
+uses functions of the HP-IL and time module and
+<i>hp41prog.img</i> is a LIF image file then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>cat
 prog1.txt | comp41 &minus;x hpil &minus;x time | prog41hp
-PROG1 | lifput hp41prog.dat</b></p>
+PROG1 | lifput hp41prog.img</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will compile
 the file <i>prog1.txt</i> to a raw file that is transformed
 to a LIF file named <i>PROG1</i> that is stored in the LIF
-image file <i>hp41prog.dat</i></p>
+image file <i>hp41prog.img</i></p>
 
 <h2>BUGS
 <a name="BUGS"></a>

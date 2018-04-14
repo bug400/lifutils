@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Thu Nov 23 08:17:29 2017 -->
+<!-- CreationDate: Sat Apr 14 13:57:20 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -35,8 +35,8 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">rom41lif
-&minus; a filter to convert a HP-41 rom file to a data file
-that can be used to update the HP-41 CL</p>
+&minus; a filter to convert a HP-41 rom file to a LIF file
+of type sdata that can be used to update the HP-41 CL</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
@@ -55,10 +55,10 @@ that can be used to update the HP-41 CL</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><i><b>rom41lif</b></i>
-is a filter which generates a LIF data file from an HP41 rom
-file. The filter reads the rom data from standard input and
-writes the LIF file header and the uncompressed rom data to
-standard output. Note: this filter updates incorrect ROM
+is a filter which generates a LIF sdata file from an HP41
+rom file. The filter reads the rom data from standard input
+and writes the LIF file header and the uncompressed rom data
+to standard output. Note: this filter updates incorrect ROM
 checksums.</p>
 
 <h2>EXAMPLES
@@ -71,11 +71,12 @@ checksums.</p>
 module then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>cat
-HPILDv1B.ROM | rom41lif HPILDEV &gt; hpildev.sda</b></p>
+HPILDv1B.ROM | rom41lif HPILDEV | lifput
+lifimage.img</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will generate a
-LIF file <i>hpildvev.sda</i> with the LIF filename
-<i>HPILDEV</i></p>
+<p style="margin-left:11%; margin-top: 1em">will put the
+sdata rom file with the name <i>HPILDEV</i> into the LIF
+image file <i>lifimage.img</i></p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>

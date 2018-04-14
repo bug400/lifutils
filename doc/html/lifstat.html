@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.2 -->
-<!-- CreationDate: Mon Apr 13 20:02:04 2015 -->
+<!-- Creator     : groff version 1.22.3 -->
+<!-- CreationDate: Sat Apr 14 13:57:20 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -65,8 +65,8 @@ A program to display statistics for a LIF image file</p>
 <p style="margin-left:11%; margin-top: 1em"><b>lifstat</b>
 is a program to display the block usage of a LIF image file.
 If <b>lifstat</b> is run with no arguments other than the
-name of the LIF file, then 2 lines are printed to standard
-output giving the starting and ending blocks of the
+name of the LIF image file, then 2 lines are printed to
+standard output giving the starting and ending blocks of the
 directory and the user file data. The blocks are specified
 both by their block number and by their cylinder/head/sector
 address.</p>
@@ -117,17 +117,17 @@ usage to standard error and exit.</p></td></tr>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk_image</i> is a disk image file, then</p>
+<i>disk.img</i> is a LIF image file, then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifstat
-disk_image</b></p>
+disk.img</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will write a
 message to standard output giving the start and end blocks
 of the directory and user data. Similarly</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifstat
-disk_image 37</b></p>
+disk.img 37</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will output the
 file name of the file containing block 37</p>

@@ -1,4 +1,4 @@
-.TH lifdir 1 11-June-2000 "LIF Utilities" "LIF Utilities"
+.TH lifdir 1 14-April-2018 "LIF Utilities" "LIF Utilities"
 .SH NAME
 lifdir \- print a directory of a LIF image file
 .SH SYNOPSIS
@@ -9,7 +9,7 @@ lifdir \- print a directory of a LIF image file
 .SH DESCRIPTION
 .B lifdir
 reads the directory of a LIF image file and prints 
-this directory to standard output.
+its directory to standard output.
 .PP
 If the volume label is non\-blank, then this is printed first, followed 
 by the date of formatting if this is valid. Each subsequent line contains 
@@ -26,12 +26,15 @@ Print file names only
 .TP
 .I \-v l
 Verbosity level:
-.TP
+.RS
 0: display file names only (same as -n)
-.TP
+.RE
+.RS
 1: default directory listing
-.TP
+.RE
+.RS
 2: extended directory listing including start sector, number of sectors occupied and implementation bytes
+.RE
 .TP
 .I \-?
 Print a message giving the program usage to standard error.
@@ -45,16 +48,16 @@ of the 2 file type bytes from the directory. See
 for details of the file types.
 .SH EXAMPLES
 If 
-.I disk1.lif
+.I disk1.img
 is a LIF disk image file then
 .PP
-.B lifdir  disk1.lif
+.B lifdir  disk1.img
 .PP
 will print a directory listing of that image file.
 .SH REFERENCES
 The LIF disk directory format is documented in the
 .I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
-with further details (particularly HP41 and HP75 file types) in the 
+with further details (particularly HP\-41 and HP\-75 file types) in the 
 .I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith)
 .SH BUGS
 Not all file types have been tested.

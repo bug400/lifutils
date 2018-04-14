@@ -1,10 +1,9 @@
-.TH lifrename 1 11-June-2000 "LIF Utilities" "LIF Utilities"
+.TH lifrename 1 14-April-2018 "LIF Utilities" "LIF Utilities"
 .SH NAME
-lifrename \- extract a file from a LIF image file
+lifrename \- renames a file on a LIF image file
 .SH SYNOPSIS
 .B lifrename 
-[\-d] [\-b]
-.I <image file> <old filename> <new filename>
+.I <LIF image file> <old filename> <new filename>
 .PP
 .B lifrename \-?
 .SH DESCRIPTION
@@ -16,28 +15,41 @@ to
 .I old filename
 and
 .I new filename
-are case\-sensitive and should normally be given in upper case.
+are case\-sensitive. 
+.I new filename
+must be given in upper case.
+.PP
+.B
+Note:
+.I old filename
+has not to comply with the 
+.I
+LIFUTILS
+file name conventions. Thus this command may be used to rename files that can not processed with the 
+.I
+LIFUTILS
+otherwise.
 .SH OPTIONS
 .TP
 .I \-?
 Print a message giving the program usage to standard error.
 .SH EXAMPLES
 If 
-.I disk1.lif
-is a LIF disk image containing a file called 
+.I disk1.img
+is a LIF image file containing a file called 
 .I TEST1
 then 
 .PP
-.B lifrename disk1.lif TEST1 TEST2
+.B lifrename disk1.img TEST1 TEST2
 .PP
 will rename the file 
 .I TEST1 
-on the LIF disk image 
+on the LIF disk image disk1.img to 
 .I TEST2.
 .SH REFERENCES
 The LIF disk directory format is documented in the
 .I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
-with further details (particularly HP41 and HP75 file types) in the 
+with further details (particularly HP-41 and HP-75 file types) in the 
 .I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith)
 .SH AUTHOR
 .B lifrename

@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.2 -->
-<!-- CreationDate: Mon Apr 13 20:02:03 2015 -->
+<!-- Creator     : groff version 1.22.3 -->
+<!-- CreationDate: Sat Apr 14 13:57:19 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -24,7 +24,6 @@
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
 <a href="#EXAMPLES">EXAMPLES</a><br>
-<a href="#BUGS">BUGS</a><br>
 <a href="#AUTHOR">AUTHOR</a><br>
 
 <hr>
@@ -36,7 +35,7 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">lifdump &minus;
-dump a LIF disk image to a physical LIF disk</p>
+dump a LIF image file to a physical LIF disk</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
@@ -58,15 +57,15 @@ from standard input)</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifdump</b>
-reads a LIF disk image file, as produced by <b>lifimage</b>
-and writes it to a pre-formatted LIF disk. The original
-contents of the disk (and the directory) are overwritten by
-this command and are thus lost. If <b>lifdump</b> is
-executed with 2 arguments, then the contents of the file
-named by the first argument are written to the device
-specified by the second argument. If it is executed with one
-argument, then the standard input stream is written to the
-device specified by that argument.</p>
+reads a LIF image file, as produced by <b>lifimage</b> and
+writes it to a pre-formatted LIF disk. The original contents
+of the disk (and the directory) are overwritten by this
+command and are thus lost. If <b>lifdump</b> is executed
+with 2 arguments, then the contents of the file named by the
+first argument are written to the device specified by the
+second argument. If it is executed with one argument, then
+the standard input stream is written to the device specified
+by that argument.</p>
 
 <p style="margin-left:11%; margin-top: 1em">The disk must
 have already been formatted as an HP LIF disk, for example
@@ -77,35 +76,31 @@ drive.</p>
 the <b>lifimage</b> source code for details of the image
 file format.</p>
 
+<p style="margin-left:11%; margin-top: 1em"><b>Note:</b>
+you need read <b>and</b> write access to the floppy disk
+device.</p>
+
 <h2>EXAMPLES
 <a name="EXAMPLES"></a>
 </h2>
 
 
 <p style="margin-left:11%; margin-top: 1em">If the file
-<i>disk1.lif</i> contains a LIF disk image then</p>
+<i>disk1.img</i> contains a LIF disk image then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifdump
-disk1.lif /dev/fd1</b></p>
+disk1.img /dev/fd1</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will dump that
 file to a preformatted disk in device <i>/dev/fd1</i></p>
-
-<h2>BUGS
-<a name="BUGS"></a>
-</h2>
-
-
-<p style="margin-left:11%; margin-top: 1em">No attempt has
-been made to handle bad track replacements. The image is
-always written to the first 77 cylinders of the disk.</p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifdump</b>
+
+<p style="margin-left:11%; margin-top: 1em"><i><b>lifdump</b></i>
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has
 been placed under the GNU Public License version 2.0</p>
 <hr>

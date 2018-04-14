@@ -1,6 +1,6 @@
-.TH sdata 1 12-June-2000 "LIF Utilities" "LIF Utilities"
+.TH sdata 1 14-April-2018 "LIF Utilities" "LIF Utilities"
 .SH NAME
-sdata \- a filter to interpret HP sdata files
+sdata \- a filter to interpret raw HP sdata files
 .SH SYNOPSIS
 .B sdata
 [\-n] [\-r] [\-b] [\-f] [\-l]
@@ -12,7 +12,7 @@ sdata \- a filter to interpret HP sdata files
 .B sdata \-?
 .SH DESCRIPTION
 .B sdata
-is a filter which displays the contents of an HP sdata file (also known as
+is a filter which displays the contents of an raw HP sdata file (also known as
 an HP41C data file) in a human\-readable format. An sdata file consists of
 a sequence of 8\-byte records each of which represents an HP41 storage
 register containing either a real number or a 6\-character text string.
@@ -65,10 +65,10 @@ in the
 (Addresses given are for the 1BBBB version of the ROM).
 .SH EXAMPLES
 If
-.I disk1.lif
+.I disk1.img
 is a LIF disk image containing an sdata file called DATA1 then
 .PP
-.B lifget \-f disk1.lif DATA1 | sdata \-n 
+.B lifget \-r disk1.img DATA1 | sdata \-n 
 .PP
 will produce a register\-numbered listing of the data in that file to 
 standard output

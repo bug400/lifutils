@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Tue Nov 21 15:37:55 2017 -->
+<!-- CreationDate: Sat Apr 14 13:57:20 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,7 +37,7 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">textlif &minus;
-a filter to convert a text file to a LIF text file</p>
+a filter to convert an ASCII file to a LIF text file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
@@ -57,7 +57,7 @@ a filter to convert a text file to a LIF text file</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>textlif</b>
-is a filter which generates a LIF file from a text file The
+is a filter which generates a LIF file from a text file. The
 filter reads the text from standard input and writes the LIF
 file header and the LIF formatted text to standard output.
 This file type can be used on the HP-71 (TEXT) or the HP-41
@@ -119,21 +119,22 @@ Software Internal Design Specifications Volume 1
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>demo.txt</i> is a text file then</p>
+<i>demo.txt</i> is an ASCII text file then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>cat demo.txt
-| textlif DEMO &gt; demo.t71</b></p>
+| textlif DEMO | lifput lifimage.img</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will generate a
-LIF file <i>demo.t71</i> with the LIF filename
-<b>DEMO</b></p>
+<p style="margin-left:11%; margin-top: 1em">will put the
+LIF text file with the name <i>DEMO</i> into the LIF image
+file <i>lifimage.img</i></p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>textlif</b>
+
+<p style="margin-left:11%; margin-top: 1em"><i><b>textlif</b></i>
 was written by Joachim Siebold, bug400@gmx.de using code
 from Tony Duell, ard@p850ug1.demon.co.uk and has been placed
 under the GNU Public License version 2.0</p>

@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.2 -->
-<!-- CreationDate: Mon Apr 13 20:02:03 2015 -->
+<!-- Creator     : groff version 1.22.3 -->
+<!-- CreationDate: Sat Apr 14 13:57:20 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,7 +37,7 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">lifrename
-&minus; extract a file from a LIF image file</p>
+&minus; renames a file on a LIF image file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
@@ -46,8 +46,8 @@
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifrename</b>
-[&minus;d] [&minus;b] <i>&lt;image file&gt; &lt;old
-filename&gt; &lt;new filename&gt;</i></p>
+<i>&lt;LIF image file&gt; &lt;old filename&gt; &lt;new
+filename&gt;</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifrename
 &minus;?</b></p>
@@ -61,8 +61,14 @@ filename&gt; &lt;new filename&gt;</i></p>
 <p style="margin-left:11%; margin-top: 1em"><b>lifrename</b>
 renames single file, specified by <i>old filename</i> to
 <i>new filename. old filename</i> and <i>new filename</i>
-are case&minus;sensitive and should normally be given in
-upper case.</p>
+are case&minus;sensitive. <i>new filename</i> must be given
+in upper case.</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>Note:</b>
+<i>old filename</i> has not to comply with the
+<i>LIFUTILS</i> file name conventions. Thus this command may
+be used to rename files that can not processed with the
+<i>LIFUTILS</i> otherwise.</p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
@@ -91,14 +97,15 @@ program usage to standard error.</p></td></tr>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.lif</i> is a LIF disk image containing a file
+<i>disk1.img</i> is a LIF image file containing a file
 called <i>TEST1</i> then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifrename
-disk1.lif TEST1 TEST2</b></p>
+disk1.img TEST1 TEST2</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will rename the
-file <i>TEST1</i> on the LIF disk image <i>TEST2.</i></p>
+file <i>TEST1</i> on the LIF disk image disk1.img to
+<i>TEST2.</i></p>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>
@@ -109,7 +116,7 @@ file <i>TEST1</i> on the LIF disk image <i>TEST2.</i></p>
 directory format is documented in the <i>HP&minus;IL
 Interface Owners Manual for the HP&minus;71
 (Hewlett&minus;Packard)</i> with further details
-(particularly HP41 and HP75 file types) in the
+(particularly HP-41 and HP-75 file types) in the
 <i>HP&minus;41 Synthetic Quick Reference Guide (Jeremy
 Smith)</i></p>
 

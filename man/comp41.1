@@ -1,6 +1,6 @@
-.TH comp41 1 12-June-2000 "LIF Utilitites" "LIF Utilities"
+.TH comp41 1 13-April-2018 "LIF Utilitites" "LIF Utilities"
 .SH NAME
-comp41 \- a filter to compile a HP41C user\-language program
+comp41 \- a filter to compile a HP41C user\-language (FOCAL) program
 .SH SYNOPSIS
 .B comp41
 [\-g] [\-l] [\-x
@@ -23,7 +23,7 @@ comp41 \- a filter to compile a HP41C user\-language program
 .B comp41 \-?
 .SH DESCRIPTION
 .B comp41
-is a filter which compiles a textfile containing a HP-41 User program (FOCAL)
+is a filter which compiles a text file containing a HP-41 user program (FOCAL)
 and translates it to a binary raw file.
 .PP
 An 
@@ -60,8 +60,8 @@ Print a message giving the program usage to standard error.
 .SH FILES
 .TP
 .I xroms/*
-xrom function definition files. Use the environment variable LIFUTILSXROMDIR to point to the localtion of this
-directory. On Linux the default localtion is /usr/share/lifutuls/xroms, if the variable is not specified.
+xrom function definition files. Use the environment variable LIFUTILSXROMDIR to point to the location of this
+directory. On Linux the default location is /usr/share/lifutils/xroms, if the variable is not specified.
 .SH REFERENCES
 The format of an HP41C program is documented in many books. Amongst the 
 most useful references are
@@ -71,20 +71,20 @@ and
 .SH EXAMPLES
 If
 .I prog1.txt
-is a text file with a FOCAL program that uses functions of the HP-IL and Time-module and
+is a text file with a FOCAL program that uses functions of the HP-IL and time module and
 .I
-hp41prog.dat
-is a lif image file
+hp41prog.img
+is a LIF image file
 then
 .PP
-.B cat prog1.txt | comp41 \-x hpil \-x time | prog41hp PROG1 | lifput hp41prog.dat 
+.B cat prog1.txt | comp41 \-x hpil \-x time | prog41hp PROG1 | lifput hp41prog.img 
 .PP 
 will compile the file
 .I prog1.txt
 to a raw file that is transformed to a LIF file named
 .I PROG1
 that is stored in the LIF image file
-.I hp41prog.dat
+.I hp41prog.img
 .SH BUGS
 Unknown.
 .SH AUTHOR

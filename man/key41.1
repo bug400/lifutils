@@ -1,6 +1,6 @@
-.TH key41 1 2-Oct-2000 "LIF Utilitites" "LIF Utilities"
+.TH key41 1 13-April-2018 "LIF Utilitites" "LIF Utilities"
 .SH NAME
-key41 \- a filter to list an HP41C key assignment file
+key41 \- a filter to list an HP-41 key assignment file
 .SH SYNOPSIS
 .B key41
 [\-h] [\-x
@@ -16,13 +16,13 @@ key41 \- a filter to list an HP41C key assignment file
 .B key41 \-?
 .SH DESCRIPTION
 .B key41
-is a filter which produces a listing of an HP41C key assignment file. The
+is a filter which produces a listing of an HP-41 key assignment file. The
 key definitions are read from standard input, and a human-readable listing
 is produced on standard output. 
 .PP 
 In general, assignments are displayed based on how they behave when 
-stored in the HP41 program memory (and to a lesser extent when they are 
-executed in RUN mode), rather than how they are previewed on the HP41 
+stored in the HP-41 program memory (and to a lesser extent when they are 
+executed in RUN mode), rather than how they are previewed on the HP-41 
 display. 
 .PP
 By default, functions contained in plug-in modules are displayed as 
@@ -57,8 +57,8 @@ Print a message giving the program usage to standard error.
 .I xroms/*
 xrom function definition files. The format of these files is given in the
 prog41(1) manpage. Use  the  environment  variable
-LIFUTILSXROMDIR  to point to the localtion of this directory. On
-Linux the default localtion is /usr/share/lifutuls/xroms, if the
+LIFUTILSXROMDIR  to point to the location of this directory. On
+Linux the default location is /usr/share/lifutils/xroms, if the
 variable is not specified.
 .SH REFERENCES
 The format of an HP41C key assignment register is documented in many books. 
@@ -73,7 +73,7 @@ is a LIF disk image containing an HP41 key assignment file called
 .I KEYS
 then
 .PP
-.B lifget \-f disk1.lif KEYS | key41 \-x hpil  \-x time 
+.B lifget \-r disk1.lif KEYS | key41 \-x hpil  \-x time 
 .PP 
 will produce a listing of the keys to standard output, with the 
 standard names for the functions in the HPIL module and time module.

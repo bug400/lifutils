@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.2 -->
-<!-- CreationDate: Mon Apr 13 20:02:03 2015 -->
+<!-- Creator     : groff version 1.22.3 -->
+<!-- CreationDate: Sat Apr 14 13:57:19 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -24,7 +24,6 @@
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
 <a href="#EXAMPLES">EXAMPLES</a><br>
-<a href="#BUGS">BUGS</a><br>
 <a href="#AUTHOR">AUTHOR</a><br>
 
 <hr>
@@ -36,7 +35,7 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">lifimage
-&minus; make an image of an HP LIF disk</p>
+&minus; make an LIF image file of a HP LIF floppy disk</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
@@ -62,15 +61,20 @@ to standard output)</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifimage</b>
 reads an HP LIF format 3.5 inch floppy disk and produces an
-image file. This file can be processed by other <i>LIF
+LIF image file. This file can be processed by other <i>LIF
 utilities</i> or written back to a physical disk using
 <b>lifdump</b> If <b>lifimage</b> is executed with 2
 arguments, then the second argument is used as the filename
-of the image file. If it is executed with one argument then
-the file is written to standard output.</p>
+of the LIF image file. If it is executed with one argument
+then the file is written to standard output.</p>
 
 <p style="margin-left:11%; margin-top: 1em">See comments in
 the source code for details of the image file format.</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>Note:</b>
+you need read <b>and</b> write access to the floppy disk
+drive. Thus shelter your data with the write protect
+switch.</p>
 
 <h2>EXAMPLES
 <a name="EXAMPLES"></a>
@@ -81,19 +85,10 @@ the source code for details of the image file format.</p>
 <i>/dev/fd1</i> contains an HP LIF disk then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifimage
-/dev/fd1 disk1.lif</b></p>
+/dev/fd1 disk1.img</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will make an
-image of that disk in the file <i>disk1.lif</i></p>
-
-<h2>BUGS
-<a name="BUGS"></a>
-</h2>
-
-
-<p style="margin-left:11%; margin-top: 1em">No attempt has
-been made to handle bad track replacements. The first 77
-cylinders only of the disk are read.</p>
+image of that disk in the file <i>disk1.img</i></p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>
@@ -101,7 +96,7 @@ cylinders only of the disk are read.</p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifimage</b>
+<p style="margin-left:11%; margin-top: 1em"><i><b>lifimage</b></i>
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has
 been placed under the GNU Public License version 2.0</p>
 <hr>

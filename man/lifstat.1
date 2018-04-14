@@ -1,4 +1,4 @@
-.TH lifstat 1 29-Jan-2001 "LIF Utilities" "LIF Utilities"
+.TH lifstat 1 13-April-2018 "LIF Utilities" "LIF Utilities"
 .SH NAME
 lifstat \- A program to display statistics for a LIF image file
 .SH SYNOPSIS
@@ -17,7 +17,7 @@ lifstat \- A program to display statistics for a LIF image file
 is a program to display the block usage of a LIF  image file. 
 If 
 .B lifstat
-is run with no arguments other than the name of the LIF file, 
+is run with no arguments other than the name of the LIF image file, 
 then 2 lines are printed to standard 
 output giving the starting and ending blocks of the directory and the 
 user file data. The blocks are specified both by their block number and by
@@ -48,15 +48,15 @@ as appropriate.
 Print a message giving program usage to standard error and exit.
 .SH EXAMPLES
 If
-.I disk_image 
-is a disk image file, then
+.I disk.img
+is a LIF image file, then
 .PP
-.B lifstat  disk_image
+.B lifstat  disk.img
 .PP
 will write a message to standard output giving the start and end blocks of
 the directory and user data. Similarly
 .PP
-.B lifstat  disk_image 37
+.B lifstat  disk.img 37
 .PP
 will output the file name of the file containing block 37
 .SH REFERENCES

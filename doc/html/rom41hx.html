@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Thu Nov  9 13:33:06 2017 -->
+<!-- CreationDate: Sat Apr 14 13:57:20 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -35,8 +35,9 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">rom41hx &minus;
-a filter to convert a HP-41 rom file to a data file that can
-be uploaded to HEPAX RAM with the READROM command</p>
+a filter to convert a HP-41 rom file to a LIF file of type
+sdata that can be uploaded to HEPAX RAM with the READROM
+command</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
@@ -55,13 +56,21 @@ be uploaded to HEPAX RAM with the READROM command</p>
 </h2>
 
 
+<p style="margin-left:11%; margin-top: 1em">The HEPAX ROM
+set can load HP41 ROM images from disk. The file format is a
+file of type <i>SDATA</i> which stores 4 10 bit HP41 words
+in 5 bytes of the file. A 4K ROM dump is thus stored in a
+5120 byte file.</p>
+
 <p style="margin-left:11%; margin-top: 1em"><b>rom41hx</b>
-is a filter which generates a LIF data file from a HP41 rom
-file. The filter reads the rom data from standard input and
-writes the LIF file header and the rom data in scrambled
-hepax format <br>
-to standard output. Note: this filter adjusts an incorrect
-ROM checksum.</p>
+is a filter which generates a LIF data file of type
+<i>SDATA</i> from a HP41 rom file.</p>
+
+<p style="margin-left:11%; margin-top: 1em">The filter
+reads the rom data from standard input and writes the LIF
+file header and the rom data in scrambled HEPAX format to
+standard output. Note: this filter adjusts an incorrect ROM
+checksum.</p>
 
 <h2>EXAMPLES
 <a name="EXAMPLES"></a>
@@ -73,11 +82,11 @@ ROM checksum.</p>
 module then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>cat
-HPILDv1B.ROM | rom41hx HPILDEV &gt; hpildev.sda</b></p>
+HPILDv1B.ROM | rom41hx HPILDEV | lifput lifimage.img</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will generate a
-LIF file <i>hpildvev.sda</i> with the LIF filename
-<i>HPILDEV</i></p>
+<p style="margin-left:11%; margin-top: 1em">will put the
+scrambled rom file with the name <i>HPILDEV</i> into the LIF
+image file <i>lifimage.img</i></p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>

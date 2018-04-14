@@ -1,6 +1,6 @@
-.TH textlif 1 24-March-2014 "LIF Utilitites" "LIF Utilities"
+.TH textlif 1 14-April-2018 "LIF Utilitites" "LIF Utilities"
 .SH NAME
-textlif \- a filter to convert a text file to a LIF text file
+textlif \- a filter to convert an ASCII file to a LIF text file
 .SH SYNOPSIS
 .B textlif
 [\-r registers]
@@ -13,7 +13,7 @@ textlif \- a filter to convert a text file to a LIF text file
 .B textlif \-?
 .SH DESCRIPTION
 .B textlif
-is a filter which generates a LIF file from a text file
+is a filter which generates a LIF file from a text file.
 The filter reads the text from standard
 input and writes the LIF file header and the LIF formatted text to
 standard output. This file type can be used on the HP-71 (TEXT) or
@@ -37,15 +37,15 @@ HP71 Software Internal Design Specifications Volume 1 (Hewlett-Packard)
 .SH EXAMPLES
 If
 .I demo.txt
-is a text file 
+is an ASCII text file 
 then
 .PP
-.B cat demo.txt | textlif DEMO \> demo.t71
-.PP 
-will generate a LIF file 
-.I demo.t71
-with the LIF filename
-.B DEMO
+.B cat demo.txt | textlif DEMO | lifput lifimage.img
+.PP
+will put the LIF text file with the name
+.I DEMO
+into the LIF image file
+.I lifimage.img
 .SH AUTHOR
 .B textlif
 was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, 

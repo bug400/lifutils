@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.2 -->
-<!-- CreationDate: Mon Apr 13 20:02:03 2015 -->
+<!-- Creator     : groff version 1.22.3 -->
+<!-- CreationDate: Sat Apr 14 13:57:19 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,7 +37,7 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">lifpack &minus;
-pack a lif image file</p>
+pack a LIF image file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
@@ -56,8 +56,11 @@ pack a lif image file</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifpack</b>
-packs the directory and the file area on the LIF image file
-file <i>Lif image file</i></p>
+packs the directory and the file area on a LIF image file.
+After packing all unused sectors of the file area are
+available in one contiguous block. All directory entries are
+allocated at the beginning of the directory area which
+speeds up directory searches.</p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
@@ -86,15 +89,15 @@ program usage to standard error.</p></td></tr>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.lif</i> is a LIF disk image file then</p>
+<i>disk1.img</i> is a LIF disk image file then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifpack
-disk1.lif</b></p>
+disk1.img</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will pack the
-lif image file <i>disk1.lif</i> Note that the packed LIF
-image file will be truncated to the last sector that ist
-used by files</p>
+lif image file <i>disk1.img.</i> <b>Note:</b> the packed LIF
+image file will be truncated to the last sector that is used
+by the packed file area.</p>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>

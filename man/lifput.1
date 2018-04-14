@@ -1,42 +1,59 @@
-.TH lifput 1 23-March-2014 "LIF Utilities" "LIF Utilities"
+.TH lifput 1 14-April-2018 "LIF Utilities" "LIF Utilities"
 .SH NAME
-lifput \- put a file into a LIF image file
+lifput \- put a LIF file into a LIF image file
 .SH SYNOPSIS
 .B lifput 
-.I <image file> <filename> 
+.I <LIF image file> <LIF file> 
 .PP
 .B lifput 
-.I <image file>
+.I <LIF image file>
 .PP
-(last form gets the file from standard input)
+(last form gets the LIF file from standard input)
 .PP
 .B lifput \-?
 .SH DESCRIPTION
 .B lifput
 put a single LIF file, specified by 
-.I filename
+.I LIF file
 into a LIF image file. The
-.I filename
+.I LIF file
 must have a valid LIF header. If 
 .B lifput
 is executed with 2 arguments after the options then the last argument is 
-used as the name of the linux file that is copied to the LIF image 
+used as the name of the file that is copied to the LIF image 
 file. If only 1 arguments are given then the file is copied from standard
 input.
+.PP
+.B
+Note:
+The import of the LIF file into the LIF image file will only be successful if:
+.IP \-
+LIF file has a valid LIF header.
+.IP \-
+The file name in the LIF header of the LIF file is valid (only capital letters and digits starting with a letter, max 10 characters long) and does not exist in the directory of the LIF image file.
+.IP \-
+The file type in the LIF header of the LIF image file is known by the 
+.I
+LIFUTILS.
+.IP \-
+There is at least one free entry in the directory area.
+.IP \-
+There is a sufficient number of contiguous blocks in the file area available to store the file.
+
 .SH OPTIONS
 .TP 
 .I \-?
 Print a message giving the program usage to standard error.
 .SH EXAMPLES
 If 
-.I disk1.lif
-is a LIF disk image and 
+.I disk1.img
+is a LIF image file and 
 .I test1.p41
 is a HP41 LIF program file, then 
 .PP
-.B lifput -c disk1.lif test1.p41
+.B lifput disk1.img test1.p41
 .PP
-will copy the  HP41 LIF program file test1.p41 to the LIF disk image disk1.lif.
+will copy the  HP41 LIF program file test1.p41 to the LIF image file disk1.img.
 .PP
 .SH REFERENCES
 The LIF disk directory format is documented in the

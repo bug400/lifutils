@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Tue Nov 21 15:32:19 2017 -->
+<!-- CreationDate: Sat Apr 14 13:57:20 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,7 +36,7 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">liftext &minus;
-a filter to translate an HP text file into a standard text
+a filter to translate an HP LIF text file into an ASCII text
 file</p>
 
 <h2>SYNOPSIS
@@ -55,12 +55,17 @@ file</i></p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><i><b>liftext</b></i>
-is a filter that reads an HP text file (also known as a LIF1
-format file) from standard input and writes the equivalent
-standard text file to standard output. Each record of the HP
-text file is assumed to be one line of the output file. This
-file type is used on the HP-71 (TEXT) and the extended
-memory or HEPAX file system of the HP-41 (ASCII).</p>
+is a filter that reads an HP LIF text file (also known as a
+LIF1 format file) from standard input and writes the
+equivalent standard text file to standard output. Each
+record of the HP text file is assumed to be one line of the
+output file. This file type is used on the HP-71 (TEXT) and
+the extended memory or HEPAX file system of the HP-41
+(ASCII).</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>Note:</b>
+<i>liftext</i> does not perform any character set
+conversions.</p>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>
@@ -68,8 +73,8 @@ memory or HEPAX file system of the HP-41 (ASCII).</p>
 
 
 <p style="margin-left:11%; margin-top: 1em">The HP text
-file format is documented in section 11.2.8.1 of the <i>HP71
-Software Internal Design Specifications Volume 1
+file format is documented in section 11.2.8.1 of the
+<i>HP-71 Software Internal Design Specifications Volume 1
 (Hewlett&minus;Packard)</i></p>
 
 <h2>EXAMPLES
@@ -78,11 +83,11 @@ Software Internal Design Specifications Volume 1
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.lif</i> is a LIF disk image containing an HP text
+<i>disk1.img</i> is a LIF disk image containing an HP text
 file called <i>TEXTA</i> then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifget -r
-disk1.lif TEXTA | liftext</b></p>
+disk1.img TEXTA | liftext</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will produce a
 listing of this file to standard output.</p>

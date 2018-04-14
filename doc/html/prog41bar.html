@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.2 -->
-<!-- CreationDate: Mon Apr 13 20:02:04 2015 -->
+<!-- Creator     : groff version 1.22.3 -->
+<!-- CreationDate: Sat Apr 14 13:57:20 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,7 +36,8 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">prog41bar
-&minus; Convert a PROG41 file into HP41 barcode</p>
+&minus; Convert a HP-41 program raw file into an
+intermediate barcode file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
@@ -45,7 +46,7 @@
 
 <p style="margin-left:11%; margin-top: 1em"><b>prog41bar
 &lt;</b> <i>input_file</i> <b>&gt;</b>
-<i>barcode_file</i></p>
+<i>intermediate_barcode_file</i></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -54,9 +55,9 @@
 
 
 <p style="margin-left:11%; margin-top: 1em"><i><b>prog41bar</b></i>
-is a program that reads a PROG41 file from standard input
-and writes the corresponding HP41 barcode file to standard
-output.</p>
+is a program that reads a HP-41 program raw file from
+standard input and writes the corresponding intermediate
+barcode file to standard output.</p>
 
 <p style="margin-left:11%; margin-top: 1em">The output of
 <b>prog41bar</b> can be piped to a suitable barcode printing
@@ -72,24 +73,24 @@ HP41 barcode is given in the book <i>Creating your own HP41
 Barcode (Hewlett&minus;Packard)</i></p>
 
 <p style="margin-left:11%; margin-top: 1em">The format of
-the barcode file written by sdatabar is given in
-<i>barcode(5)</i></p>
+the intermediate barcode file written by sdatabar is given
+in <i>barcode(5)</i></p>
 
 <h2>EXAMPLES
 <a name="EXAMPLES"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">If <i>prog1</i>
-is an hp41 binary program file (PROG41 file), and
+<p style="margin-left:11%; margin-top: 1em">If
+<i>prog1.raw</i> is a HP-41 program raw file and
 <i>postscript</i> is a postscript printer then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>prog41bar
-&lt; prog1 | barps &rsquo;Data File 1&rsquo; | lpr -P
+&lt; prog1.raw | barps &rsquo;Program 1&rsquo; | lpr -P
 postscript</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will print that
-file as HP41 barcode on the postscript printer.</p>
+file as HP-41 barcode on the postscript printer.</p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>

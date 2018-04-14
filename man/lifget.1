@@ -1,14 +1,14 @@
-.TH lifget 1 11-June-2000 "LIF Utilities" "LIF Utilities"
+.TH lifget 1 13-April-2018 "LIF Utilities" "LIF Utilities"
 .SH NAME
 lifget \- extract a file from a LIF image file
 .SH SYNOPSIS
 .B lifget 
 [\-r] [\-b]
-.I <image file> <filename> <output file>
+.I <LIF image file> <filename> <output file>
 .PP
 .B lifget 
 [\-r] [\-b]
-.I <image file> <filename>
+.I <LIF image file> <filename>
 .PP
 (last form send the extracted file to standard output)
 .PP
@@ -17,12 +17,12 @@ lifget \- extract a file from a LIF image file
 .B lifget
 extracts a single file, specified by 
 .I filename
-from a LIF disk image.
+from a LIF image file.
 .I filename
-is case\-sensitive and should normally be given in upper case. If 
+is case\-sensitive and must be given in upper case. If 
 .B lifget
 is executed with 3 arguments after the options then the third argument is 
-used as the name of the linux file that the LIF file is copied to. If 
+used as the name of the file that the LIF file is copied to. If 
 only 2 arguments are given then the file is copied to standard output.
 .SH OPTIONS
 .TP
@@ -40,15 +40,15 @@ complete blocks.
 Print a message giving the program usage to standard error.
 .SH EXAMPLES
 If 
-.I disk1.lif
-is a LIF disk image containing a file called 
+.I disk1.img
+is a LIF image file containing a file called 
 .I TEST1
 then 
 .PP
-.B lifget disk1.lif TEST1 lif_test_file
+.B lifget disk1.lif TEST1 lif_test_file.lif
 .PP
-will copy the file TEST1 from the LIF disk image to the linux file
-.I lif_test_file.
+will copy the file TEST1 from the LIF disk image to the file
+.I lif_test_file.lif.
 .SH REFERENCES
 The LIF disk directory format is documented in the
 .I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)

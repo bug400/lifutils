@@ -1,6 +1,6 @@
-.TH text75 1 25-June-2000 "LIF Utilities" "LIF Utilities"
+.TH text75 1 14-April-2018 "LIF Utilities" "LIF Utilities"
 .SH NAME 
-text75 \- a filter to print HP75 text files
+text75 \- a filter to print raw HP75 text files
 .SH SYNOPSIS
 .B text75
 [\-n]
@@ -12,7 +12,7 @@ text75 \- a filter to print HP75 text files
 .B text75 \-?
 .SH DESCRIPTION
 .B text75
-is a filter which translates an HP75 text file into a standard ASCII file.
+is a filter which translates a raw HP75 text file into a standard ASCII file.
 One logical line of the input file is translated to one line of output,
 terminated by a newline.  The HP75 text file is read from standard input
 and the plain ASCII equivalent is written to standard output.
@@ -25,12 +25,12 @@ Print a decimal line number at the start of each output line.
 Print a message giving usage to standard error.
 .SH EXAMPLES
 If
-.I disk1.lif
-is a LIF disk image containing an HP75 text file called 
+.I disk1.img
+is a LIF image file containing an HP75 text file called 
 .I T75
 then
 .PP
-.B lifget \-f disk1.lif T75 | text75
+.B lifget \-r disk1.img T75 | text75
 .PP 
 will list that file to standard output.
 .SH AUTHOR

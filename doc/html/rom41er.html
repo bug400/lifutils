@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Thu Nov  9 14:08:44 2017 -->
+<!-- CreationDate: Sat Apr 14 13:57:20 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -35,8 +35,8 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">rom41er &minus;
-a filter to convert a HP-41 rom file to a data file that can
-be used by the Eramco MLDL-OS</p>
+a filter to convert an unscrambled HP-41 rom file to a LIF
+file that can be used by the Eramco MLDL-OS</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
@@ -56,7 +56,7 @@ be used by the Eramco MLDL-OS</p>
 
 
 <p style="margin-left:11%; margin-top: 1em">The Eramco
-MLDL-OS ROM set can save HP41 ROM images to disk, and the
+MLDL-OS ROM set can load HP41 ROM images from disk, and the
 file format used has become a de facto standard for such
 images. It stores 4 10 bit HP41 words in 5 bytes of the
 file. A 4K ROM dump is thus stored in a 5120 byte file.</p>
@@ -64,10 +64,9 @@ file. A 4K ROM dump is thus stored in a 5120 byte file.</p>
 <p style="margin-left:11%; margin-top: 1em"><b>rom41er</b>
 is a filter which generates a LIF file of type X-M41 (E070).
 The filter reads the rom data from standard input and writes
-the LIF file header and the rom data in scrambled Eramoc
-MLDL-OS format <br>
-to standard output. Note: This filter adjusts an incorrect
-ROM checksum.</p>
+the LIF file header and the rom data in scrambled Eramco
+MLDL-OS format to standard output. Note: This filter adjusts
+an incorrect ROM checksum.</p>
 
 <h2>EXAMPLES
 <a name="EXAMPLES"></a>
@@ -79,11 +78,11 @@ ROM checksum.</p>
 module then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>cat
-HPILDv1B.ROM | rom41er HPILDEV &gt; hpildev.xm41</b></p>
+HPILDv1B.ROM | rom41er HPILDEV | lifput lifimage.img</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will generate a
-LIF file <i>hpildvev.xm41</i> with the LIF filename
-<i>HPILDEV</i></p>
+<p style="margin-left:11%; margin-top: 1em">will put the
+scrambled rom file with the name <i>HPILDEV</i> into the LIF
+image file <i>lifimage.img</i></p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>

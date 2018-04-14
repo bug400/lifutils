@@ -1,6 +1,6 @@
-.TH lifdump 1 11-June-2000 "LIF Utilities" "LIF Utilities"
+.TH lifdump 1 14-April-2018 "LIF Utilities" "LIF Utilities"
 .SH NAME
-lifdump \- dump a LIF disk image to a physical LIF disk
+lifdump \- dump a LIF image file to a physical LIF disk
 .SH SYNOPSIS
 .B lifdump
 .I <input file> <output device>
@@ -11,7 +11,7 @@ lifdump \- dump a LIF disk image to a physical LIF disk
 (Reads input from standard input)
 .SH DESCRIPTION
 .B lifdump
-reads a LIF disk image file, as produced by 
+reads a LIF image file, as produced by 
 .B lifimage
 and writes it to a pre-formatted LIF disk. The original contents of the 
 disk (and the directory) are overwritten by this command and are thus 
@@ -28,18 +28,21 @@ using a series 40 or series 70 machine and an HP9114 disk drive.
 See comments in the 
 .B lifimage
 source code for details of the image file format.
+.PP
+.B Note:
+you need read
+.B
+and
+write access to the floppy disk device.
 .SH EXAMPLES
 If the file
-.I disk1.lif
+.I disk1.img
 contains a LIF disk image then
 .PP
-.B lifdump disk1.lif /dev/fd1
+.B lifdump disk1.img /dev/fd1
 .PP
 will dump that file to a preformatted disk in device
 .I /dev/fd1
-.SH BUGS
-No attempt has been made to handle bad track replacements. The image is 
-always written to the first 77 cylinders of the disk.
 .SH AUTHOR
 .B lifdump
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 

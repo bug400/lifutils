@@ -1,6 +1,6 @@
-.TH lifpack 1 13-October-2014 "LIF Utilities" "LIF Utilities"
+.TH lifpack 1 13-April-2018 "LIF Utilities" "LIF Utilities"
 .SH NAME
-lifpack \- pack a lif image file
+lifpack \- pack a LIF image file
 .SH SYNOPSIS
 .B lifpack
 .I <LIF image file>
@@ -8,23 +8,24 @@ lifpack \- pack a lif image file
 .B lifpack \-?
 .SH DESCRIPTION
 .B lifpack
-packs the directory and the file area on the LIF image file file
-.I Lif image file
+packs the directory and the file area on a LIF image file. After packing all unused sectors of the file area are available in one contiguous block. All directory entries are allocated at the beginning of the directory area which speeds up directory searches.
 .SH OPTIONS
 .TP
 .I \-?
 Print a message giving the program usage to standard error.
 .SH EXAMPLES
 If 
-.I disk1.lif
+.I disk1.img
 is a LIF disk image file then
 .PP
-.B lifpack  disk1.lif
+.B lifpack  disk1.img
 .PP
 will pack the lif image file
-.I disk1.lif
-Note that the packed LIF image file will be truncated to the
-last sector that ist used by files
+.I disk1.img.
+.B
+Note:
+the packed LIF image file will be truncated to the
+last sector that is used by the packed file area.
 .SH REFERENCES
 The LIF disk format is documented in the
 .I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)

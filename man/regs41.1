@@ -1,6 +1,6 @@
-.TH regs41 1 25-June-2000 "LIF Utilities" "LIF Utilities"
+.TH regs41 1 14-Apri-2018 "LIF Utilities" "LIF Utilities"
 .SH NAME
-regs41 \- a filter to display an HP41 file as 'registers'
+regs41 \- a filter to display an HP41 raw file as 'registers'
 .SH SYNOPSIS
 .B regs41 <
 .I Input file
@@ -33,7 +33,7 @@ is a LIF disk image containing some unknown type of HP41 data file called
 .I ST41
 then
 .PP
-.B lifget \-f disk1.lif ST41 | regs41
+.B lifget \-r disk1.lif ST41 | regs41
 .PP 
 will display the data in that file as HP41 registers and will hopefully 
 assist in understanding the format of the file

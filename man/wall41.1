@@ -1,6 +1,6 @@
-.TH wall41 1 23-December-2000 "LIF Utilities" "LIF Utilities"
+.TH wall41 1 14-April-2018 "LIF Utilities" "LIF Utilities"
 .SH NAME
-wall41 \- a program to extract information from an HP41 Write All file
+wall41 \- a program to extract information from a raw HP41 Write All file
 .SH SYNOPSIS
 .B wall41
 [\-k [
@@ -25,7 +25,7 @@ An HP41 Write All file is a dump of the entire contents of user memory,
 including user data, user programs, buffers, key assignments and the 
 status registers.
 .B wall41
-reads a Write All file from standard input and extracts one or more of 
+reads a raw Write All file from standard input and extracts one or more of 
 these sections from it. The extracted data is written either to standard 
 output or to the specified file. In turn this information can be decoded 
 by other filters in the LIF Utilities package.
@@ -85,7 +85,7 @@ and
 .SH EXAMPLES
 If 
 .I all1.w41
-is an HP41 write-all file, then
+is a raw HP41 write-all file, then
 .PP
 .B wall41 -k < all1.w41 | key41
 .PP
@@ -96,7 +96,7 @@ will display the key assignments to standard output. Similarly
 will extract user programs to files called
 .I program.001, program.002, ...
 .SH SEE ALSO
-.B wcat41(1), prog41(1), key41(1), sdata(1), stat41(1), regs41(1)
+.B wcat41(1), decomp41(1), key41(1), sdata(1), stat41(1), regs41(1)
 .SH AUTHOR
 .B wall41
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 

@@ -1,6 +1,6 @@
-.TH stat41 1 2-Oct-2000 "LIF Utilities" "LIF Utilities"
+.TH stat41 1 14-April-2018 "LIF Utilities" "LIF Utilities"
 .SH NAME
-stat41 \- a filter to display an HP41 status file
+stat41 \- a filter to display a raw HP41 status file
 .SH SYNOPSIS
 .B stat41
 [\-b] [\-f] [\-v]
@@ -30,12 +30,12 @@ Display user flags verbosely, rather than as a binary number.
 Print a message giving the program usage to standard error.
 .SH EXAMPLES
 If
-.I disk1.lif
-is a LIF disk image containing an HP41 status file called
+.I disk1.img
+is a LIF image file containing an HP41 status file called
 .I STAT
 then
 .PP
-.B lifget \-f disk1.lif STAT | stat41
+.B lifget \-r disk1.lif STAT | stat41
 .PP
 will display the contents of this status file on standard output
 .SH AUTHOR

@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.2 -->
-<!-- CreationDate: Mon Apr 13 20:02:04 2015 -->
+<!-- Creator     : groff version 1.22.3 -->
+<!-- CreationDate: Sat Apr 14 13:57:20 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,7 +38,7 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">sdata &minus; a
-filter to interpret HP sdata files</p>
+filter to interpret raw HP sdata files</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
@@ -59,7 +59,7 @@ file</i></p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>sdata</b> is
-a filter which displays the contents of an HP sdata file
+a filter which displays the contents of an raw HP sdata file
 (also known as an HP41C data file) in a human&minus;readable
 format. An sdata file consists of a sequence of 8&minus;byte
 records each of which represents an HP41 storage register
@@ -178,11 +178,11 @@ given are for the 1BBBB version of the ROM).</p>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.lif</i> is a LIF disk image containing an sdata
+<i>disk1.img</i> is a LIF disk image containing an sdata
 file called DATA1 then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifget
-&minus;f disk1.lif DATA1 | sdata &minus;n</b></p>
+&minus;r disk1.img DATA1 | sdata &minus;n</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will produce a
 register&minus;numbered listing of the data in that file to

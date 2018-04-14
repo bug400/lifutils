@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Jan 31 08:34:46 2016 -->
+<!-- CreationDate: Sat Apr 14 13:57:20 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -13,20 +13,16 @@
        table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
        h1      { text-align: center }
 </style>
-<title>wcat41</title>
+<title>lifversion</title>
 
 </head>
 <body>
 
-<h1 align="center">wcat41</h1>
+<h1 align="center">lifversion</h1>
 
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
-<a href="#REFERENCES">REFERENCES</a><br>
-<a href="#EXAMPLES">EXAMPLES</a><br>
-<a href="#SEE ALSO">SEE ALSO</a><br>
-<a href="#AUTHOR">AUTHOR</a><br>
 
 <hr>
 
@@ -36,16 +32,16 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">wcat41 &minus;
-a filter to list the contents of an HP41 Write All file</p>
+<p style="margin-left:11%; margin-top: 1em">lifversion
+&minus; display the version of the LIF Utilities</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>wcat41
-&lt;</b> <i>wall_file</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifversion</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -53,63 +49,11 @@ a filter to list the contents of an HP41 Write All file</p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><i><b>wcat41</b></i>
-is a filter which reads an HP41 Write All file from standard
-input. It then writes to standard output the following
-information :</p>
-
-<p style="margin-left:11%; margin-top: 1em">The SIZE
-(number of user data registers) and the location of the
-first statistical register.</p>
-
-<p style="margin-left:11%; margin-top: 1em">The number of
-KARs (Key Assignment Registers) found.</p>
-
-<p style="margin-left:11%; margin-top: 1em">The ID and size
-of any buffers.</p>
-
-<p style="margin-left:11%; margin-top: 1em">Global labels
-(and ENDs) of user programs, in a format similar to <i>CAT
-1</i> on the HP41.</p>
-
-<h2>REFERENCES
-<a name="REFERENCES"></a>
-</h2>
-
-
-<p style="margin-left:11%; margin-top: 1em">The format of
-an HP41 Write All file is not well documented. However it is
-simply a dump of all the HP41 user memory (excluding
-extended memory) in the logical order. The data stored in
-HP41 User Memory is documented in most books on synthetic
-programming, for example the Synthetic Programming Quick
-Reference Guide by J. Smith.</p>
-
-<h2>EXAMPLES
-<a name="EXAMPLES"></a>
-</h2>
-
-
-<p style="margin-left:11%; margin-top: 1em">To get a
-catalogue of an HP41 Write All file called <i>all1.w41 ,</i>
-type : <b>wcat41 &lt; all1.w41</b></p>
-
-<h2>SEE ALSO
-<a name="SEE ALSO"></a>
-</h2>
-
-
-
-<p style="margin-left:11%; margin-top: 1em"><b>wall41(1)</b></p>
-
-<h2>AUTHOR
-<a name="AUTHOR"></a>
-</h2>
-
-
-<p style="margin-left:11%; margin-top: 1em"><b>wcat41</b>
-was written by Tony Duell, ard@p850ug1.demon.co.uk and has
-been placed under the GNU Public License version 2.0</p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifversion</b>
+writes the version number of the LIF Utilities to standard
+output. <b>lifversion</b> was written by Joachim Siebold,
+bug400@gmx.de and has been placed under the GNU Public
+License version 2.0</p>
 <hr>
 </body>
 </html>

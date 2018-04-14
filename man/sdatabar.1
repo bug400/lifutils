@@ -1,20 +1,19 @@
-.TH sdatabar 1 30-June-2001 "LIF Utilities" "LIF Utilities"
+.TH sdatabar 1 14-April-2018 "LIF Utilities" "LIF Utilities"
 .SH NAME
-sdatabar \- Convert an SDATA file into HP41 barcode
+sdatabar \- Convert a raw SDATA file into an intermediate barcode file
 .SH SYNOPSIS
 .B sdatabar
 [-e] 
 .B <
 .I input_file
 .B >
-.I barcode_file
+.I intermediate_barcode_file
 .PP
 .B sdatabar -?
 .SH DESCRIPTION
 .B sdatabar
-is a program that reads an SDATA file from standard input and writes the 
-corresponding HP41 barcode file to standard output. Records in the SDATA 
-file containing numeric data are turned into type 6 barcode rows, while 
+is a program that reads a raw SDATA file from standard input and writes the 
+corresponding intermediate barcode file to standard output. Records in the SDATA file containing numeric data are turned into type 6 barcode rows, while 
 those containing alpha data are turned into type 7 rows. Other SDATA 
 records cannot be represented by HP41 barcode, and are skipped, giving a 
 suitable error message.
@@ -47,13 +46,13 @@ The format of the barcode file written by sdatabar is given in
 .I barcode(5)
 .SH EXAMPLES
 If
-.I data1
-is an sdata file, and 
+.I data1.sda
+is a raw sdata file, and 
 .I postscript
 is a postscript printer
 then
 .PP
-.B sdatabar < data1 | barps 'Data File 1' | lpr -P postscript
+.B sdatabar < data1.sda | barps 'Data File 1' | lpr -P postscript
 .PP
 will print that file on the postscript printer.
 .SH BUGS

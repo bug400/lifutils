@@ -1,47 +1,55 @@
-.TH lifinit 1 13-October-2014 "LIF Utilities" "LIF Utilities"
+.TH lifinit 1 14-April-2018 "LIF Utilities" "LIF Utilities"
 .SH NAME
 lifinit \- initialize a lif image file
 .SH SYNOPSIS
-.B lifinit [\-z]  [\-z] 
+.B lifinit [\-z] 
 \-m Mediumtype 
 .I <LIF image file> <number of directory entries>
 .PP
 .B lifinit \-?
 .SH DESCRIPTION
 .B lifinit
-initializes the lif image file specified by
+initializes the LIF image file specified by
 .I LIF image file
 with
-.I number of diretory
+.I number of directory
 entries
 .SH OPTIONS
 .TP
 .I \-m
 This mandatory option specifies the medium type. The following medium types
 are supported:
-.TP
+.RS
 cass:    Initializes a medium with the size of a HP82161A cassette
-.TP
+.RE
+.RS
 disk:    Initializes a medium with the size of a HP9114B double sided disk
-.TP
+.RE
+.RS
 hdrive1: Initializes a medium with the size of a 640 KB disk
-.TP
+.RE
+.RS
 hdrive2: Initializes a medium with the size of a 2 MB disk
-.TP
+.RE
+.RS
 hdrive4: Initializes a medium with the size of a 4 MB disk
-.TP
+.RE
+.RS
 hdrive8: Initializes a medium with the size of a 8 MB disk
-.TP
+.RE
+.RS
 hdrive16: Initializes a medium with the size of a 16 MB disk
+.RE
 .TP
 .I \-z
 Initialize the data area of the image with zeros.
+.TP
 .I \-?
 Print a message giving the program usage to standard error.
 .SH EXAMPLES
 If 
-.I disk1.lif
-is a LIF disk image file then
+.I disk1.img
+shall be created as LIF disk image file then
 .PP
 .B lifinit -m disk disk1.lif 160
 .PP

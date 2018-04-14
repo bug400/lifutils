@@ -1,6 +1,6 @@
-.TH decomp41 1 12-June-2000 "LIF Utilitites" "LIF Utilities"
+.TH decomp41 1 13-April-2018 "LIF Utilitites" "LIF Utilities"
 .SH NAME
-decomp41 \- a filter to list an HP41C user\-language program
+decomp41 \- a filter to decompile a HP-41 program raw file
 .SH SYNOPSIS
 .B decomp41
 [\-h] [\-l] [\-x
@@ -16,9 +16,9 @@ decomp41 \- a filter to list an HP41C user\-language program
 .B decomp41 \-?
 .SH DESCRIPTION
 .B decomp41
-is a filter which produces a listing of an HP41C user language program. 
+is a filter which produces a listing of an HP-41 user language program. 
 It reads the program as a series of bytes from standard input and prints 
-the listing to standard output (in a similar format to the standard HP41C 
+the listing to standard output (in a similar format to the standard HP-41 
 printer).
 .PP
 By default, functions contained in plug-in modules are displayed as 
@@ -41,7 +41,7 @@ The string gives a name to the function specified by the first number as
 and the second number as
 .I nn.
 .PP
-The linux command 
+The Linux command 
 .B pr
 may be useful for formatting the output of 
 .B decomp41
@@ -70,22 +70,22 @@ Print a message giving the program usage to standard error.
 .SH FILES
 .TP
 .I xroms/*
-xrom function definition files. Use the environment variable LIFUTILSXROMDIR to point to the localtion of this
-directory. On Linux the default localtion is /usr/share/lifutuls/xroms, if the variable is not specified.
+xrom function definition files. Use the environment variable LIFUTILSXROMDIR to point to the location of this
+directory. On Linux the default location is /usr/share/lifutils/xroms, if the variable is not specified.
 .SH REFERENCES
-The format of an HP41C program is documented in many books. Amongst the 
+The format of an HP-41 program is documented in many books. Amongst the 
 most useful references are
 .I Extend Your HP41 (W. A. C. Mier-Jedrzejowicz)
 and
 .I The HP41 Synthetic Programming Quick Reference Guide (Jeremy Smith)
 .SH EXAMPLES
 If
-.I disk1.lif
+.I disk1.img
 is a LIF disk image containing an HP41 program called
 .I PROG
 then
 .PP
-.B lifget \-f disk1.lif PROG | decomp41 \-x hpil.xrom  \-x time.xrom
+.B lifget -r  disk1.img PROG | decomp41 \-x hpil.xrom  \-x time.xrom
 .PP 
 will produce a listing of the program to standard output, with the 
 standard names for the functions in the HPIL module and time module.
