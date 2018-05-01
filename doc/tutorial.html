@@ -44,7 +44,7 @@ on a HP calculator is needed as well.</p>
 
 <H4>LIF Image File</H4>
 
-A LIF Image File is a logical copy of a LIF Volume stored in a single file. 
+A LIF image file is a logical copy of a LIF Volume stored in a single file. 
 It consists of a contiguous sequence of blocks of fixed 256 byte size. 
 Any access to LIF image files occurs by reading or writing complete blocks.</b>
 
@@ -247,9 +247,28 @@ of rom modules correctly their xrom mapping files must be specified on the comma
 
 <H4>Using the LIFUTILS from the command line</H4>
 
-<p>To use the <em>LIFUTILS</em> you must be familiar with the "command line". Either the shell (Unix or MacOS) or the command interpreter (CMD or PowerShell) on Windows. To get most benefit of the <em>LIFUTILS</em> you have to know the <a href="https://en.wikipedia.org/wiki/Redirection_(computing)">concept of pipelines and input/output redirection</a>.</p>
+<p>To use the <em>LIFUTILS</em> you must be familiar with the "command line". Either the shell on Unix or macOS or the command interpreter (CMD or PowerShell) on Windows. To get most benefit of the <em>LIFUTILS</em> you have to know the <a href="https://en.wikipedia.org/wiki/Redirection_(computing)">concept of pipelines and input/output redirection</a>.</p>
 
-<p>Both concepts are implemented in Unix, Mac OS and Windows. The examples below work on all three operating systems. For the begin of pipe the command "cat" is used for Unix and MacOS and "type" for Windows.</p>
+<p>Both concepts are implemented in Unix, macOS and Windows. The examples below work on all three operating systems. For the begin of pipe the command "cat" is used for Unix and macOS and "type" for Windows. You may also use &lt; for input redirection which works both on Unix/macOS and Windows but tends to make examples more confusing.</p>
+
+<p>In most cases the <em>LIFUTILS</em> programs expect the source file on standard input and the destination file on standard output. You cannot specifiy the input or output file with command line parameters. An exception are LIF image files.</p>
+
+<p>If you linke to convert the content of a raw HP-41 program with <a href="html/decomp41.html">decomp41</a> type:</p>
+
+<pre>
+cat/type example.p41 | decomp41 &gt; example.txt
+</pre>
+
+<p>This will <b>not</b> work:</p>
+<pre>
+decomp41 example.p41 example.txt
+</pre>
+
+<p>The <em>LIFUTILS</em> programs are "filters". They take the standard input, do a single conversion task and write the result to standard output. The <a href="https://en.wikipedia.org/wiki/Redirection_(computing)">concept of pipelines and input/output redirection</a> allows to daisy chain different "filters" in one statement to perform complex operations. Here an example to get print the HP-41 program <em>PROG41</em> that is stored into the LIF image file <em>lifimg.dat</em>:</p>
+<pre>
+lifget -r lifimg.dat PROG41 | prog41bar | barps | lpr
+</pre>
+<p>Note: lpr in this example is Linux specific.</p>
 
 <H4>Using the LIFUTILS in scripts or programs</H4>
 
@@ -546,9 +565,9 @@ lifmod -e Math.mod
 
 <H4>Script sample</H4>
 
-<p>Below are sample script files for UNIX/Mac OS and Windows that copy the whole content of a LIF image file to a new LIF image file with a different medium type and directory size.<p>
+<p>Below are sample script files for UNIX/mac OS and Windows that copy the whole content of a LIF image file to a new LIF image file with a different medium type and directory size.<p>
 
-<p>Unix/Mac OS sample script file:</p>
+<p>Unix/mac OS sample script file:</p>
 <pre>
 #!/bin/bash
 # copy files from a LIF image file to another new LIF image file
@@ -624,7 +643,7 @@ for /F %%f in ('lifdir -n %1') do (
 
 <H4>PIL-Box</H4>
 
-<p>You need a HP-41, HP-71B or HP-75 with a HP-IL interface and a <a href="http://www.jeffcalc.hp41.eu/hpil/">PIL-Box</a>. The PIL-Box is a HP-IL/USB translator. On the PC you need software that emulate at least a HP-IL mass storage device. You may try the <a href="http://hp.giesselink.com/hpil.htm">ILPer</a> software suite (Windows) or the <a href="https://github.com/bug400/pyilper">pyILPER</a> program (Linux, Windows, MacOS). Both software emulate various virtual HP-IL devices.</p>
+<p>You need a HP-41, HP-71B or HP-75 with a HP-IL interface and a <a href="http://www.jeffcalc.hp41.eu/hpil/">PIL-Box</a>. The PIL-Box is a HP-IL/USB translator. On the PC you need software that emulate at least a HP-IL mass storage device. You may try the <a href="http://hp.giesselink.com/hpil.htm">ILPer</a> software suite (Windows) or the <a href="https://github.com/bug400/pyilper">pyILPER</a> program (Linux, Windows, macOS). Both software emulate various virtual HP-IL devices.</p>
 
 <p>You can mount a LIF image file that was created or maintained with the <em>LIFUTILS</em> to a virtual drive of <a href="http://hp.giesselink.com/hpil.htm">ILPer</a> or <a href="https://github.com/bug400/pyilper">pyILPER</a> and access the files on it with the file management commands of the calculator.</p>
 
@@ -664,6 +683,7 @@ superformat --noverify /dev/fd0 dd sect=16 head=2 cyl=77 ssize=256
 # high level formatting, use 250 entries in the LIF directory and zero the file area.
 lifinit -p -z -m disk /dev/fd0 250
 </pre>
+<p>The <em>superformat</em> utility is part of the <em>fdutils</em> package in most LINUX distributions.</p>
 
 <H4>Serial Interface</H4>
 
@@ -702,7 +722,7 @@ lifget -r lifimg.dat PROG41 | prog41bar | barps &gt; prog41.ps
 <p>To print a PostScript file:</p>
 <ul>
 <li>Linux: send the output to the printer with the <em>lpr</em> command. Every Linux printer "knows" PostScript</li>
-<li>Mac OS:  open the document in Preview (found in your Applications folder). Preview will automatically convert your document into PDF format for viewing and printing.</li>
+<li>mac OS:  open the document in Preview (found in your Applications folder). Preview will automatically convert your document into PDF format for viewing and printing.</li>
 <li>Windows: If you have a PostScript printer then you can send the file to the printer device with the <em>COPY</em> command. You may use online services that convert PostScript into PDF and send the file to a printer with a PDF viewer. If you need a permanent solution you might consider the Acrobat Distiller or GhostScript.</li>
 </ul>
 

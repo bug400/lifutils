@@ -10,7 +10,6 @@
    original file can be recovered. */
 
 #include <stdio.h>
-#include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
 #include "config.h"
