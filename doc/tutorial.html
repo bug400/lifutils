@@ -44,7 +44,7 @@ on a HP calculator is needed as well.</p>
 
 <H4>LIF Image File</H4>
 
-A LIF image file is a logical copy of a LIF Volume stored in a single file. 
+<p>A LIF image file is a logical copy of a LIF Volume stored in a single file. 
 It consists of a contiguous sequence of blocks of fixed 256 byte size. 
 Any access to LIF image files occurs by reading or writing complete blocks.</b>
 
@@ -126,6 +126,8 @@ can write a LIF image file to a floppy disk. If the floppy disk controller
 is not capable to read or write the HP physical format in a correct way you will generally not get meaningful diagnostics.</p>
 
 <p>There is no driver support for mac OS at all.</p>
+
+<p>See <a href="http://www.hpmuseum.org/cgi-sys/cgiwrap/hpmuseum/articles.cgi?read=260">this document</a> how data blocks of a LIF image file are stored on a HP9114 floppy disk.</p>
 
 <H3><a name="WORKING_WITH_LIF_IMAGE_FILES"></a>Working with LIF Image files</H3>
 
@@ -697,7 +699,7 @@ lifinit -p -z -m disk /dev/fd0 250
 <li><a href="html/outp41.html">outp41</a>: encodes a HP-41 program raw file into a hexadecimal byte stream that can be sent to the serial device and read by the HP-41 with the Extended I/O module <em>INP</em> command.</li>
 </ul>
 
-<p>For Linux you find information how to exchange data with the HP-41 in the file <em>HP41-PC-serial-transfer</em> which is located in the hardware subdirectory of the <em>LIFUTILS</em> software distribution.</p> 
+<p>For Linux you find information how to exchange data with the HP-41 in the file <a href="hardware/HP41-PC-serial-transfer">HP41-PC-serial-transfer</a> which is located in the hardware subdirectory of the <em>LIFUTILS</em> software distribution.</p> 
 
 <p>The HP-71 allows to copy files from and to the HP 82164A serial interface with the <em>COPY</em> command. The HP-71 always exchanges LIF files (with the 32 byte header) with an HP-IL device of type <em>interface</em>. The following utilities are available:</p>
 <ul>
