@@ -706,7 +706,7 @@ lifinit -p -z -m disk /dev/fd0 250
 <li><a href="html/in71.html">in71</a>: reads and converts a transferred LIF file to a raw file.</li>
 <li><a href="html/out71.html">out71</a>: converts an arbitrary raw file that can be sent to the serial device.  Warning: this utility might not add all necessary implementation bytes. You are strongly encouraged to use the raw to lif converters mentioned above for the supported file types (e.g. text files) and copy the converted files to the serial device.</li>
 </ul>
-<p>For Linux you find information how to exchange data with the HP-71 in the file <em>HP71-PC-serial-transfer</em>. This file is located in the hardware subdirectory of the <em>LIFUTILS</em> software distribution.</p> 
+<p>For Linux you find information how to exchange data with the HP-71 in the file <a href="hardware/HP71-PC-serial-transfer">HP71-PC-serial-transfer</a>. This file is located in the hardware subdirectory of the <em>LIFUTILS</em> software distribution.</p> 
 
 <H4>Using Barcodes</H4>
 
@@ -724,7 +724,7 @@ lifget -r lifimg.dat PROG41 | prog41bar | barps &gt; prog41.ps
 <p>To print a PostScript file:</p>
 <ul>
 <li>Linux: send the output to the printer with the <em>lpr</em> command. Every Linux printer "knows" PostScript</li>
-<li>mac OS:  open the document in Preview (found in your Applications folder). Preview will automatically convert your document into PDF format for viewing and printing.</li>
+<li>mac OS:  open the document in Preview (found in your Applications folder). Preview will automatically convert your PostScript file into PDF format for viewing and printing.</li>
 <li>Windows: If you have a PostScript printer then you can send the file to the printer device with the <em>COPY</em> command. You may use online services that convert PostScript into PDF and send the file to a printer with a PDF viewer. If you need a permanent solution you might consider the Acrobat Distiller or GhostScript.</li>
 </ul>
 
@@ -733,7 +733,7 @@ lifget -r lifimg.dat PROG41 | prog41bar | barps &gt; prog41.ps
 <p>Other solutions which are documented in the <em>hardware</em> subdirectory:</p>
 <ul>
 <li>Transferring files using a parallel printer interface and the HP82165 HPIL-GPIO interface. You need to solder a converter to connect the GPIO interface to the parallel interface of the PC.</li>
-<li>Use a hardware modified HP-41 barcode reader to connect it to a parallel printer interface of the PC (requires more soldering).</li>
+<li>Use a hardware modified HP-41 barcode reader to connect it to a parallel printer interface of the PC (requires PIC programming and more soldering).</li>
 </ul>
 <p>And of course the <a href="https://www.hpmuseum.net/display_item.php?hw=1000">82973 HP-IL ISA interface</a> if you have one.</p>
 
