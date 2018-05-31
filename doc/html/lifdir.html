@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sat Apr 14 13:57:19 2018 -->
+<!-- CreationDate: Thu May 31 06:05:50 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,20 +38,19 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">lifdir &minus;
-print a directory of a LIF image file</p>
+<p style="margin-left:11%; margin-top: 1em">lifdir - print
+a directory of a LIF image file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifdir
-[&minus;n] [&minus;v l]</b> <i>&lt;LIF image
-file&gt;</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifdir [-n]
+[-v l]</b> <i>&lt;LIF image file&gt;</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifdir
-&minus;?</b></p>
+-?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -63,14 +62,13 @@ reads the directory of a LIF image file and prints its
 directory to standard output.</p>
 
 <p style="margin-left:11%; margin-top: 1em">If the volume
-label is non&minus;blank, then this is printed first,
-followed by the date of formatting if this is valid. Each
-subsequent line contains the details of a single file,
-consisting of the file name, file type (see the <b>FILE
-TYPE</b> section below), the number of bytes in the file and
-the total number of bytes occupied by the blocks of that
-file, and finally the file time and date stamp if this is
-valid.</p>
+label is non-blank, then this is printed first, followed by
+the date of formatting if this is valid. Each subsequent
+line contains the details of a single file, consisting of
+the file name, file type (see the <b>FILE TYPE</b> section
+below), the number of bytes in the file and the total number
+of bytes occupied by the blocks of that file, and finally
+the file time and date stamp if this is valid.</p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
@@ -84,7 +82,7 @@ valid.</p>
 <td width="6%">
 
 
-<p style="margin-top: 1em"><i>&minus;n</i></p></td>
+<p style="margin-top: 1em"><i>-n</i></p></td>
 <td width="5%"></td>
 <td width="32%">
 
@@ -97,7 +95,7 @@ valid.</p>
 <td width="6%">
 
 
-<p><i>&minus;v l</i></p></td>
+<p><i>-v l</i></p></td>
 <td width="5%"></td>
 <td width="32%">
 
@@ -120,7 +118,37 @@ of sectors occupied and implementation bytes</p>
 <td width="3%">
 
 
-<p style="margin-top: 1em"><i>&minus;?</i></p></td>
+<p style="margin-top: 1em"><i>-c</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">output all directory information
+as csv (comma is delimiter):</p></td></tr>
+</table>
+
+<p style="margin-left:22%;">File name <br>
+File type (alphanumeric) <br>
+File type code (numeric) <br>
+File length <br>
+Start block <br>
+Number of blocks <br>
+Date: year, month, day <br>
+Time: hour, minutes, seconds <br>
+Implementation bytes</p>
+
+<p style="margin-left:22%; margin-top: 1em">Note: verbosity
+level and csv output options are mutually exclusive. All
+numeric information is decimal.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>-?</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -139,8 +167,8 @@ should recognise all file types of the Online LIF Disk
 project.</p>
 
 <p style="margin-left:11%; margin-top: 1em">Unknown file
-types are printed as a 4&minus;digit hex number giving the
-value of the 2 file type bytes from the directory. See
+types are printed as a 4-digit hex number giving the value
+of the 2 file type bytes from the directory. See
 <b>lif_dir_utils.c</b> for details of the file types.</p>
 
 <h2>EXAMPLES
@@ -163,11 +191,10 @@ directory listing of that image file.</p>
 
 
 <p style="margin-left:11%; margin-top: 1em">The LIF disk
-directory format is documented in the <i>HP&minus;IL
-Interface Owners Manual for the HP&minus;71
-(Hewlett&minus;Packard)</i> with further details
-(particularly HP&minus;41 and HP&minus;75 file types) in the
-<i>HP&minus;41 Synthetic Quick Reference Guide (Jeremy
+directory format is documented in the <i>HP-IL Interface
+Owners Manual for the HP-71 (Hewlett-Packard)</i> with
+further details (particularly HP-41 and HP-75 file types) in
+the <i>HP-41 Synthetic Quick Reference Guide (Jeremy
 Smith)</i></p>
 
 <h2>BUGS

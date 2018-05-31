@@ -36,6 +36,41 @@ Verbosity level:
 2: extended directory listing including start sector, number of sectors occupied and implementation bytes
 .RE
 .TP
+.I \-c
+output all directory information as csv (comma is delimiter):
+.RS
+File name
+.RE
+.RS
+File type (alphanumeric)
+.RE
+.RS
+File type code (numeric)
+.RE
+.RS
+File length
+.RE
+.RS
+Start block
+.RE
+.RS
+Number of blocks
+.RE
+.RS
+Date: year, month, day
+.RE
+.RS
+Time: hour, minutes, seconds
+.RE
+.RS
+Implementation bytes 
+.RE
+.PP
+.RS
+Note: verbosity level and csv output options are mutually exclusive.
+All numeric information is decimal.
+.RE
+.TP
 .I \-?
 Print a message giving the program usage to standard error.
 .SH FILE TYPES

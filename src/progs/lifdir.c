@@ -17,6 +17,9 @@
 #define MINUTE_OFF 4
 #define SECOND_OFF 5
 
+/* csv separator */
+#define SEP ','
+
 void print_date(unsigned char *date)
   {
     /* Print an HP-style date and time stamp. On entry, date points to
@@ -82,6 +85,59 @@ void print_dir_entry(unsigned char *entry, int verbosity)
     printf("\n");
   } 
 
+void csv_dir_entry(unsigned char *entry)
+  {
+    /* Decode a directory entry and output it as csv. entry points to a 32 
+       byte directory entry, as described in appendix D of the HP71 HPIL
+       owner's manual */
+    int i; /* general counter */
+    int length; /* File length from directory */
+    char file_type[10]; /* storage for the file type string */
+
+    /* output the filename */
+    for(i=0; i<10; i++)
+      {
+	if( *(entry+i) == ' ') break;
+        putchar(*(entry+i));
+      }
+    printf("%c",SEP);
+
+    /* output the file type */
+    length=file_length(entry,file_type);
+    printf("%s",file_type);
+    printf("%c",SEP);
+
+    /* output the file type in hex */
+    printf("%d", get_lif_int(entry+10,2));
+    printf("%c",SEP);
+
+    /* output the file length */
+    printf("%d",length);
+    printf("%c",SEP);
+
+    /* output the start block */
+    printf("%d",get_lif_int(entry+12,4));
+    printf("%c",SEP);
+
+    /* output the number of blocks */
+    printf("%d",get_lif_int(entry+16,4));
+
+    /* output date and time */
+    for (i=0; i<6; i++) 
+      {
+	 printf("%c",SEP);
+         printf("%d",bcd_to_dec(*(entry+20+i)));
+      }
+
+    /* output the impelentation bytes */
+    for(i=0; i<6; i++)
+      {
+         printf("%c",SEP);
+         printf("%d",get_lif_int(entry+26+i,1));
+      }
+    printf("\n");
+  } 
+
 void usage(void)
   {
      fprintf(stderr,"Usage:lifdir [-n] [-v l] <lif-image-file>\n");
@@ -92,8 +148,11 @@ void usage(void)
      fprintf(stderr,"         1: default directory listing\n");
      fprintf(stderr,"         2: add file start block, file length in blocks and \n");
      fprintf(stderr,"              implementation bytes to directory listing\n");
-
-
+     fprintf(stderr,"      -c output all directory information as csv,\n");
+     fprintf(stderr,"         see program documentation for details.\n");
+     fprintf(stderr,"\n");
+     fprintf(stderr,"         Note: verbosity level and csv output options are\n");
+     fprintf(stderr,"         mutually exclusive.\n");
      exit(1);
   }
 
@@ -103,6 +162,7 @@ int main(int argc, char **argv)
     int option; /* Command line option character */
     int input_device; /* Input file or device descriptor */
     int verbosity;    /* extent of information */
+    int csv_flag;     /* csv output */
     int physical_flag; /* pyhsical disk access flag */
     char *snum_verbosity= (char *) NULL; /* arg to -v option */
     int i; /* General index counter */
@@ -132,8 +192,9 @@ int main(int argc, char **argv)
     /* process command line options */
     optind=1;
     physical_flag=0;
-    verbosity=1;
-    while((option=getopt(argc,argv,"v:np?"))!=-1)
+    verbosity=-1;
+    csv_flag=0;
+    while((option=getopt(argc,argv,"v:npc?"))!=-1)
       {
         switch(option)
           {
@@ -142,6 +203,8 @@ int main(int argc, char **argv)
              case 'v' : snum_verbosity=optarg;
                         break;
              case 'p' : physical_flag=1;
+                        break;
+             case 'c' : csv_flag=1;
                         break;
              case '?' : usage();
            }
@@ -159,8 +222,17 @@ int main(int argc, char **argv)
           printf("Err2");
           usage();
        }
+       if (verbosity < 0 || verbosity > 2) usage();
     }
-    if (verbosity < 0 || verbosity > 2) usage();
+
+    /* error if verbosity and csv specified */
+    if (csv_flag == 1 && verbosity != -1) usage();
+
+    /* set default verbodity level if not specified or csv */
+    if (verbosity == -1) {
+       if (csv_flag == 1) verbosity=0;
+       else verbosity=1;
+    }
     
     /* open input device */
     if((input_device=lif_open(argv[argc-1],O_RDONLY | O_BINARY,0,physical_flag))==-1)
@@ -233,7 +305,14 @@ int main(int argc, char **argv)
                  dir_end=1;
                  break;
                }
-            print_dir_entry(data+(dir_entry<<5),verbosity);
+	    if ( csv_flag) 
+	      {
+                 csv_dir_entry(data+(dir_entry<<5));
+	      }
+	    else
+	      {
+                 print_dir_entry(data+(dir_entry<<5),verbosity);
+	      }
             file_start=get_lif_int(data+(dir_entry<<5)+12,4);
             file_len=get_lif_int(data+(dir_entry<<5)+16,4);
             /* update last used block */

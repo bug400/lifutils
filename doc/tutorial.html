@@ -167,7 +167,7 @@ determined from the implementation bytes.</li>
 <li>Implementation bytes (only at verbosity level 2)
 </ul>
 
-<p>The <em>-v</em> option controls the verbosity level of the directory listing. With verbosity level 0 (same as the <em>-n</em> option) only the file names are displayed. This can be used to create shell scripts or batch files that process multiple files of a LIF image.</p>
+<p>The <em>-v</em> option controls the verbosity level of the directory listing. With verbosity level 0 (same as the <em>-n</em> option) only the file names are displayed. Specifying the <em>-c</em> options outputs all directory informationin csv format. This can be used to create shell scripts or batch files that process multiple files of a LIF image.</p>
 
 <H4>Export single files from a LIF image</H4>
 
@@ -284,7 +284,7 @@ lifget -r lifimg.dat PROG41 | prog41bar | barps | lpr
 
 <H3><a name="APPLICATION_EXAMPLES"></a>Application examples</H3>
 
-<H3>List the content of a LIF image file</H4>
+<H4>List the content of a LIF image file</H4>
 
 <p>To display the directory listing of the LIF image file <em>liftest.dat</em> with the <a href="html/lifdir.html">lifdir</a> command:</p>
 <pre>
@@ -340,6 +340,23 @@ STAT1       STAT41         81/256                          54     1 8001000A0020
 
 </pre>
 
+<p>To get all directory information as csv type:</p>
+
+<pre>
+lifdir -c lifest.dat
+
+AUDI2,PGM41,57472,1972,10,8,0,0,0,0,0,0,128,1,7,179,0,32
+TEST1,PGM41,57472,172,18,1,0,0,0,0,0,0,128,1,0,171,0,32
+TXTB,TEXT,1,256,19,1,15,4,4,15,14,6,128,1,0,0,0,0
+VERMROM,SDATA,57552,5120,20,20,15,4,4,15,14,6,0,0,2,128,0,0
+TXTA,TEXT,1,256,40,1,0,0,0,0,0,0,128,1,0,20,0,32
+DATA1,SDATA,57552,160,41,1,0,0,0,0,0,0,128,1,0,20,0,32
+KEY1,KEY41,57424,9,42,1,0,0,0,0,0,0,128,1,0,1,0,32
+WALL1,ALL41,57408,2689,43,11,0,0,0,0,0,0,128,1,1,80,0,32
+STAT1,STAT41,57440,81,54,1,0,0,0,0,0,0,128,1,0,10,0,32
+</pre>
+
+<p>See the <a href="html/lifdir.html">lifdir documentation</a> for details.</p>
 
 <H4>Get files from a LIF image file</H4>
 
