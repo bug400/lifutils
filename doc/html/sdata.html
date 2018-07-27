@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sat Apr 14 13:57:20 2018 -->
+<!-- CreationDate: Wed Jul 25 12:38:58 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,7 +37,7 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">sdata &minus; a
+<p style="margin-left:11%; margin-top: 1em">sdata - a
 filter to interpret raw HP sdata files</p>
 
 <h2>SYNOPSIS
@@ -46,12 +46,11 @@ filter to interpret raw HP sdata files</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>sdata</b>
-[&minus;n] [&minus;r] [&minus;b] [&minus;f] [&minus;l]
-<b>&lt;</b> <i>Input file</i> <b>&gt;</b> <i>Output
-file</i></p>
+[-n] [-r] [-b] [-f] [-l] <b>&lt;</b> <i>Input file</i>
+<b>&gt;</b> <i>Output file</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>sdata
-&minus;?</b></p>
+-?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -60,10 +59,10 @@ file</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>sdata</b> is
 a filter which displays the contents of an raw HP sdata file
-(also known as an HP41C data file) in a human&minus;readable
-format. An sdata file consists of a sequence of 8&minus;byte
+(also known as an HP41C data file) in a human-readable
+format. An sdata file consists of a sequence of 8-byte
 records each of which represents an HP41 storage register
-containing either a real number or a 6&minus;character text
+containing either a real number or a 6-character text
 string. The sdata file is read from standard input and the
 output written to standard output.</p>
 
@@ -72,8 +71,8 @@ output written to standard output.</p>
 strings as a sequence of characters surrounded by double
 quotes. See <i>OPTIONS</i> below for other output formats.
 Characters in text strings that are printable ASCII
-characters are output as such, non&minus;printable
-characters are output as \nnn octal escape sequences.</p>
+characters are output as such, non-printable characters are
+output as \nnn octal escape sequences.</p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
@@ -87,7 +86,7 @@ characters are output as \nnn octal escape sequences.</p>
 <td width="3%">
 
 
-<p style="margin-top: 1em"><i>&minus;n</i></p></td>
+<p style="margin-top: 1em"><i>-n</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -99,19 +98,19 @@ start of each output line.</p></td></tr>
 <td width="3%">
 
 
-<p><i>&minus;r</i></p></td>
+<p><i>-r</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
 
-<p>Print the register contents as 8 2&minus;digit
-hexadecimal numbers without attempting to interpret them</p></td></tr>
+<p>Print the register contents as 8 2-digit hexadecimal
+numbers without attempting to interpret them</p></td></tr>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="3%">
 
 
-<p><i>&minus;b</i></p></td>
+<p><i>-b</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -123,7 +122,7 @@ hexadecimal numbers without attempting to interpret them</p></td></tr>
 <td width="3%">
 
 
-<p><i>&minus;f</i></p></td>
+<p><i>-f</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -137,7 +136,7 @@ functions command).</p></td></tr>
 <td width="3%">
 
 
-<p><i>&minus;l</i></p></td>
+<p><i>-l</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -149,7 +148,7 @@ the HP71B.</p></td></tr>
 <td width="3%">
 
 
-<p><i>&minus;?</i></p></td>
+<p><i>-?</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -167,10 +166,10 @@ error.</p> </td></tr>
 format is documented in sections 11.2.4.2 and 11.2.7 of the
 <i>HP71 Software Internal Design Specifications Volume 1
 (Hewlett-Packard).</i> More information can be found in the
-routines <i>RED41C (0x13F28)</i> and <i>N&minus;STR
-(0x14BFC)</i> in the <i>HP71 Software Internal Design
-Specifications Volume 3 (Hewlett-Packard).</i> (Addresses
-given are for the 1BBBB version of the ROM).</p>
+routines <i>RED41C (0x13F28)</i> and <i>N-STR (0x14BFC)</i>
+in the <i>HP71 Software Internal Design Specifications
+Volume 3 (Hewlett-Packard).</i> (Addresses given are for the
+1BBBB version of the ROM).</p>
 
 <h2>EXAMPLES
 <a name="EXAMPLES"></a>
@@ -178,14 +177,14 @@ given are for the 1BBBB version of the ROM).</p>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.img</i> is a LIF disk image containing an sdata
+<i>disk1.dat</i> is a LIF disk image containing an sdata
 file called DATA1 then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifget
-&minus;r disk1.img DATA1 | sdata &minus;n</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifget -r
+disk1.dat DATA1 | sdata -n</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will produce a
-register&minus;numbered listing of the data in that file to
+register-numbered listing of the data in that file to
 standard output</p>
 
 <h2>BUGS
@@ -193,12 +192,12 @@ standard output</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The
-<i>&minus;f</i> flags function has not been fully tested.
-This program may not display non&minus;normalised numbers
-correctly. Some commonly&minus;used HP41C characters are
-non&minus;printable in ASCII, and thus the display of normal
-HP41C alpha strings may look messy</p>
+<p style="margin-left:11%; margin-top: 1em">The <i>-f</i>
+flags function has not been fully tested. This program may
+not display non-normalised numbers correctly. Some
+commonly-used HP41C characters are non-printable in ASCII,
+and thus the display of normal HP41C alpha strings may look
+messy</p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>

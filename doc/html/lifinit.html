@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sat Apr 14 13:57:19 2018 -->
+<!-- CreationDate: Wed Jul 25 12:38:57 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,7 +36,7 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">lifinit &minus;
+<p style="margin-left:11%; margin-top: 1em">lifinit -
 initialize a lif image file</p>
 
 <h2>SYNOPSIS
@@ -45,11 +45,11 @@ initialize a lif image file</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifinit
-[&minus;z]</b> &minus;m Mediumtype <i>&lt;LIF image file&gt;
-&lt;number of directory entries&gt;</i></p>
+[-z]</b> -m Mediumtype <i>&lt;LIF image file&gt; &lt;number
+of directory entries&gt;</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifinit
-&minus;?</b></p>
+-?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -72,7 +72,7 @@ file</i> with <i>number of directory</i> entries</p>
 <td width="3%">
 
 
-<p style="margin-top: 1em"><i>&minus;m</i></p></td>
+<p style="margin-top: 1em"><i>-m</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -104,7 +104,7 @@ disk</p>
 <td width="3%">
 
 
-<p style="margin-top: 1em"><i>&minus;z</i></p></td>
+<p style="margin-top: 1em"><i>-z</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -116,7 +116,7 @@ image with zeros.</p></td></tr>
 <td width="3%">
 
 
-<p><i>&minus;?</i></p></td>
+<p><i>-?</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -131,14 +131,14 @@ error.</p> </td></tr>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.img</i> shall be created as LIF disk image file
+<i>disk1.dat</i> shall be created as LIF disk image file
 then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifinit -m
-disk disk1.lif 160</b></p>
+disk disk1.dat 160</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will create the
-lif image file <i>disk1.lif</i> with a directory size of
+lif image file <i>disk1.dat</i> with a directory size of
 <i>160</i> entries. The command creates the disk header and
 an empty directory. The header is initialized with the
 parameters of the HP9114B double sided disk medium.</p>
@@ -149,11 +149,10 @@ parameters of the HP9114B double sided disk medium.</p>
 
 
 <p style="margin-left:11%; margin-top: 1em">The LIF disk
-format is documented in the <i>HP&minus;IL Interface Owners
-Manual for the HP&minus;71 (Hewlett&minus;Packard)</i> with
-further details (particularly HP41 and HP75 file types) in
-the <i>HP&minus;41 Synthetic Quick Reference Guide (Jeremy
-Smith)</i></p>
+format is documented in the <i>HP-IL Interface Owners Manual
+for the HP-71 (Hewlett-Packard)</i> with further details
+(particularly HP41 and HP75 file types) in the <i>HP-41
+Synthetic Quick Reference Guide (Jeremy Smith)</i></p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>

@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sat Apr 14 13:57:20 2018 -->
+<!-- CreationDate: Wed Jul 25 12:38:57 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -35,8 +35,8 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">regs41 &minus;
-a filter to display an HP41 raw file as
+<p style="margin-left:11%; margin-top: 1em">regs41 - a
+filter to display an HP41 raw file as
 &rsquo;registers&rsquo;</p>
 
 <h2>SYNOPSIS
@@ -55,9 +55,9 @@ file</i></p>
 
 <p style="margin-left:11%; margin-top: 1em">The memory of
 an HP41 calculator is divided into 14 nybble (7 byte)
-registers. Many HP41 mass&minus;storage files use an 8 byte
-record to store each register, with the nybbles in a
-scrambled order</p>
+registers. Many HP41 mass-storage files use an 8 byte record
+to store each register, with the nybbles in a scrambled
+order</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>regs41</b>
 undoes this scrambling and displays the 7 bytes of each
@@ -76,10 +76,9 @@ to standard output.</p>
 <i>sdata</i> manpage gives references to the format of the
 sdata file, which is the most common HP41 file made up of
 registers. The nybble scrambling is the same for all such
-files. <i>Extend Your HP41 (W. A. C.
-Mier&minus;Jedrzejowicz)</i> contains a considerable amount
-of information as to how the HP41 packs data into
-registers</p>
+files. <i>Extend Your HP41 (W. A. C. Mier-Jedrzejowicz)</i>
+contains a considerable amount of information as to how the
+HP41 packs data into registers</p>
 
 <h2>EXAMPLES
 <a name="EXAMPLES"></a>
@@ -87,11 +86,11 @@ registers</p>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.lif</i> is a LIF disk image containing some unknown
+<i>disk1.dat</i> is a LIF disk image containing some unknown
 type of HP41 data file called <i>ST41</i> then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifget
-&minus;r disk1.lif ST41 | regs41</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifget -r
+disk1.dat ST41 | regs41</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will display
 the data in that file as HP41 registers and will hopefully

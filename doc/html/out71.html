@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sat Apr 14 13:57:20 2018 -->
+<!-- CreationDate: Wed Jul 25 12:38:57 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -39,7 +39,7 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">out71 &minus; a
+<p style="margin-left:11%; margin-top: 1em">out71 - a
 filter to send a program to an HP-71B</p>
 
 <h2>SYNOPSIS
@@ -48,11 +48,11 @@ filter to send a program to an HP-71B</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>out71
-[&minus;o]</b> <i>filetype</i> <b>&lt;</b> <i>input_file</i>
+[-o]</b> <i>filetype</i> <b>&lt;</b> <i>input_file</i>
 <b>&gt;</b> <i>output_device</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>out71
-&minus;?</b></p>
+-?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -87,7 +87,7 @@ example via an HP82164 RS232 interface.</p>
 <td width="3%">
 
 
-<p style="margin-top: 1em"><i>&minus;o</i></p></td>
+<p style="margin-top: 1em"><i>-o</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -98,16 +98,15 @@ added by <b>out71</b> ) given in nybbles. <b>out71</b>
 assumes that all the nybbles in a linux file are part of the
 HP-71B file, and thus always sets this nybble length to an
 even number. This can cause problems if the original HP-71B
-file had an odd length in nybbles. The <i>&minus;o</i>
-option decreases the nybble count in the header by one,
-effectively truncating the last nybble of the linux
-file.</p> </td></tr>
+file had an odd length in nybbles. The <i>-o</i> option
+decreases the nybble count in the header by one, effectively
+truncating the last nybble of the linux file.</p></td></tr>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="3%">
 
 
-<p><i>&minus;?</i></p></td>
+<p><i>-?</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -163,10 +162,9 @@ Internal Design Specifications Volume 1.</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The
-<i>&minus;o</i> option is not elegant, but there is no
-automatic way to decide when an HP-71 file has an odd length
-in nybbles.</p>
+<p style="margin-left:11%; margin-top: 1em">The <i>-o</i>
+option is not elegant, but there is no automatic way to
+decide when an HP-71 file has an odd length in nybbles.</p>
 
 <h2>SEE ALSO
 <a name="SEE ALSO"></a>

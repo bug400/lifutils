@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sat Apr 14 13:57:20 2018 -->
+<!-- CreationDate: Wed Jul 25 12:38:58 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,9 +37,9 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">sdatabar
-&minus; Convert a raw SDATA file into an intermediate
-barcode file</p>
+<p style="margin-left:11%; margin-top: 1em">sdatabar -
+Convert a raw SDATA file into an intermediate barcode
+file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
@@ -85,7 +85,7 @@ program such as <b>barps</b></p>
 <td width="3%">
 
 
-<p style="margin-top: 1em"><b><i>&minus;e</i></b></p></td>
+<p style="margin-top: 1em"><b><i>-e</i></b></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -94,19 +94,18 @@ program such as <b>barps</b></p>
 version 1E ROM have a bug which means they cannot read
 numeric data barcode rows containing 10 or more data bytes.
 Unfortunately, some HP41 real numbers require 10 bytes to
-represent them in barcode format. If the <i>&minus;e</i>
-option is given to sdatabar, the program attempts to reduce
-the length of the barcode by omitting the decimal point and
-adjusting the exponent to compensate. This is not always
-possible, in which case, a suitable message is written to
-standard error, and the last mantissa digit is omitted from
-the barcode.</p></td></tr>
+represent them in barcode format. If the <i>-e</i> option is
+given to sdatabar, the program attempts to reduce the length
+of the barcode by omitting the decimal point and adjusting
+the exponent to compensate. This is not always possible, in
+which case, a suitable message is written to standard error,
+and the last mantissa digit is omitted from the barcode.</p></td></tr>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="3%">
 
 
-<p><i>&minus;?</i></p></td>
+<p><i>-?</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -122,7 +121,7 @@ exit</p> </td></tr>
 
 <p style="margin-left:11%; margin-top: 1em">The format of
 HP41 barcode is given in the book <i>Creating your own HP41
-Barcode (Hewlett&minus;Packard)</i></p>
+Barcode (Hewlett-Packard)</i></p>
 
 <p style="margin-left:11%; margin-top: 1em">The format of
 the barcode file written by sdatabar is given in

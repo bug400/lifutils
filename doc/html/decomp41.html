@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sat Apr 14 13:57:18 2018 -->
+<!-- CreationDate: Wed Jul 25 12:38:56 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,8 +38,8 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">decomp41
-&minus; a filter to decompile a HP-41 program raw file</p>
+<p style="margin-left:11%; margin-top: 1em">decomp41 - a
+filter to decompile a HP-41 program raw file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
@@ -48,12 +48,12 @@
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>decomp41</b>
-[&minus;h] [&minus;l] [&minus;x <i>xrom_file</i> ] [&minus;x
-<i>xrom_file</i> ] ... <b>&lt;</b> <i>Input file</i>
-<b>&gt;</b> <i>Output file</i></p>
+[-h] [-l] [-x <i>xrom_file</i> ] [-x <i>xrom_file</i> ] ...
+<b>&lt;</b> <i>Input file</i> <b>&gt;</b> <i>Output
+file</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>decomp41
-&minus;?</b></p>
+-?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -73,7 +73,7 @@ functions contained in plug-in modules are displayed as
 <i>XROM rr,nn</i> where <i>rr</i> is the number of the
 plug-in ROM and <i>nn</i> is the number of the function
 within that ROM. This can be overridden by loading
-<i>xrom_files,</i> see the <i>&minus;x</i> option below. An
+<i>xrom_files,</i> see the <i>-x</i> option below. An
 <i>xrom_file</i> consists of a number of lines, each
 consisting of 2 decimal numbers and a string (containing no
 whitespace), in that order, separated by whitespace. The
@@ -96,7 +96,7 @@ command <b>pr</b> may be useful for formatting the output of
 <td width="3%">
 
 
-<p style="margin-top: 1em"><i>&minus;h</i></p></td>
+<p style="margin-top: 1em"><i>-h</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -109,7 +109,7 @@ immediately preceding the display of that instruction</p></td></tr>
 <td width="3%">
 
 
-<p><i>&minus;l</i></p></td>
+<p><i>-l</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -117,7 +117,7 @@ immediately preceding the display of that instruction</p></td></tr>
 <p>Enable line numbers</p></td></tr>
 </table>
 
-<p style="margin-left:11%;"><i>&minus;x xrom_file</i></p>
+<p style="margin-left:11%;"><i>-x xrom_file</i></p>
 
 <p style="margin-left:22%;">Use <i>xrom_file</i> to define
 names for functions in plug-in modules. This option may be
@@ -134,7 +134,7 @@ LIFUTILSXROMDIR (see below).</p>
 <td width="3%">
 
 
-<p><i>&minus;?</i></p></td>
+<p><i>-?</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -174,12 +174,11 @@ Quick Reference Guide (Jeremy Smith)</i></p>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.img</i> is a LIF disk image containing an HP41
+<i>disk1.dat</i> is a LIF disk image containing an HP41
 program called <i>PROG</i> then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifget -r
-disk1.img PROG | decomp41 &minus;x hpil.xrom &minus;x
-time.xrom</b></p>
+disk1.dat PROG | decomp41 -x hpil.xrom -x time.xrom</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will produce a
 listing of the program to standard output, with the standard

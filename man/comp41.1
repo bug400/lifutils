@@ -73,18 +73,18 @@ If
 .I prog1.txt
 is a text file with a FOCAL program that uses functions of the HP-IL and time module and
 .I
-hp41prog.img
+hp41prog.dat
 is a LIF image file
 then
 .PP
-.B cat prog1.txt | comp41 \-x hpil \-x time | prog41hp PROG1 | lifput hp41prog.img 
+.B cat prog1.txt | comp41 \-x hpil \-x time | prog41hp PROG1 | lifput hp41prog.dat 
 .PP 
 will compile the file
 .I prog1.txt
 to a raw file that is transformed to a LIF file named
 .I PROG1
 that is stored in the LIF image file
-.I hp41prog.img
+.I hp41prog.dat
 .SH BUGS
 Unknown.
 .SH AUTHOR

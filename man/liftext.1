@@ -26,12 +26,12 @@ The HP text file format is documented in section 11.2.8.1 of the
 .I HP-71 Software Internal Design Specifications Volume 1 (Hewlett\-Packard)
 .SH EXAMPLES
 If 
-.I disk1.img
+.I disk1.dat
 is a LIF disk image containing an HP text file called 
 .I TEXTA 
 then
 .PP
-.B lifget -r disk1.img TEXTA | liftext
+.B lifget -r disk1.dat TEXTA | liftext
 .PP 
 will produce a listing of this file to standard output.
 .SH AUTHOR

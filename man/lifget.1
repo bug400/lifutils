@@ -40,15 +40,15 @@ complete blocks.
 Print a message giving the program usage to standard error.
 .SH EXAMPLES
 If 
-.I disk1.img
-is a LIF image file containing a file called 
+.I disk1.dat
+is a LIF image file containing a HP-41 SDATA file called 
 .I TEST1
 then 
 .PP
-.B lifget disk1.lif TEST1 lif_test_file.lif
+.B lifget disk1.dat TEST1 lif_test_file.d41
 .PP
-will copy the file TEST1 from the LIF disk image to the file
-.I lif_test_file.lif.
+will copy the file TEST1 from the LIF disk image to the LIF file
+.I lif_test_file.d41.
 .SH REFERENCES
 The LIF disk directory format is documented in the
 .I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)

@@ -68,12 +68,12 @@ and
 .I The HP41 Synthetic Programming Quick Reference Guide (Jeremy Smith)
 .SH EXAMPLES
 If
-.I disk1.lif
+.I disk1.dat
 is a LIF disk image containing an HP41 key assignment file called
 .I KEYS
 then
 .PP
-.B lifget \-r disk1.lif KEYS | key41 \-x hpil  \-x time 
+.B lifget \-r disk1.dat KEYS | key41 \-x hpil  \-x time 
 .PP 
 will produce a listing of the keys to standard output, with the 
 standard names for the functions in the HPIL module and time module.

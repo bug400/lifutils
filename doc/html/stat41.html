@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sat Apr 14 13:57:20 2018 -->
+<!-- CreationDate: Wed Jul 25 12:38:58 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -35,8 +35,8 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">stat41 &minus;
-a filter to display a raw HP41 status file</p>
+<p style="margin-left:11%; margin-top: 1em">stat41 - a
+filter to display a raw HP41 status file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
@@ -44,11 +44,10 @@ a filter to display a raw HP41 status file</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>stat41</b>
-[&minus;b] [&minus;f] [&minus;v] <b>&lt;</b> <i>Input
-file</i></p>
+[-b] [-f] [-v] <b>&lt;</b> <i>Input file</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>stat41
-&minus;?</b></p>
+-?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -75,7 +74,7 @@ displayed in human-readable form on standard output.</p>
 <td width="3%">
 
 
-<p style="margin-top: 1em"><i>&minus;b</i></p></td>
+<p style="margin-top: 1em"><i>-b</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -87,7 +86,7 @@ registers as BLDSPEC values.</p></td></tr>
 <td width="3%">
 
 
-<p><i>&minus;f</i></p></td>
+<p><i>-f</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -99,7 +98,7 @@ if appropriate.</p></td></tr>
 <td width="3%">
 
 
-<p><i>&minus;v</i></p></td>
+<p><i>-v</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -111,7 +110,7 @@ number.</p> </td></tr>
 <td width="3%">
 
 
-<p><i>&minus;?</i></p></td>
+<p><i>-?</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -126,11 +125,11 @@ error.</p> </td></tr>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.img</i> is a LIF image file containing an HP41
+<i>disk1.dat</i> is a LIF image file containing an HP41
 status file called <i>STAT</i> then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifget
-&minus;r disk1.lif STAT | stat41</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifget -r
+disk1.dat STAT | stat41</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will display
 the contents of this status file on standard output</p>

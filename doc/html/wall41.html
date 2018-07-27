@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sat Apr 14 13:57:20 2018 -->
+<!-- CreationDate: Wed Jul 25 12:38:58 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,8 +37,8 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">wall41 &minus;
-a program to extract information from a raw HP41 Write All
+<p style="margin-left:11%; margin-top: 1em">wall41 - a
+program to extract information from a raw HP41 Write All
 file</p>
 
 <h2>SYNOPSIS
@@ -47,13 +47,13 @@ file</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>wall41</b>
-[&minus;k [ <i>key_file</i> ] ] [&minus;b <i>buff#</i> [
-<i>buffer_file</i> ] ] [&minus;r [ <i>register_file</i> ] ]
-[&minus;s [ status_file ] ] [&minus;p <i>program_name</i> ]
-&lt; <i>writeall_file</i></p>
+[-k [ <i>key_file</i> ] ] [-b <i>buff#</i> [
+<i>buffer_file</i> ] ] [-r [ <i>register_file</i> ] ] [-s [
+status_file ] ] [-p <i>program_name</i> ] &lt;
+<i>writeall_file</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>wall41</b>
-&minus;?</p>
+-?</p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -75,7 +75,7 @@ Utilities package.</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><i>&minus;k
+<p style="margin-left:11%; margin-top: 1em"><i>-k
 [key_file]</i></p>
 
 <p style="margin-left:22%;">Extract the KARs (Key
@@ -84,23 +84,21 @@ Assignment Registers) in a format suitable for decoding with
 written to standard output and can be piped directly in to
 <b>key41</b></p>
 
-<p style="margin-left:11%;"><i>&minus;b buff#
+<p style="margin-left:11%;"><i>-b buff#
 [buffer_file]</i></p>
 
 <p style="margin-left:22%;">Extract the contents of the
 buffer area with id <i>buff#.</i> If <i>buffer_file</i> is
 not specified, the data is written to standard output.</p>
 
-<p style="margin-left:11%;"><i>&minus;r
-[register_file]</i></p>
+<p style="margin-left:11%;"><i>-r [register_file]</i></p>
 
 <p style="margin-left:22%;">Extract the user data registers
 as an <b>sdata file.</b> If no output file is specified,
 write the data to standard output, suitable for piping to
 the <b>sdata</b> program.</p>
 
-<p style="margin-left:11%;"><i>&minus;s
-[status_file]</i></p>
+<p style="margin-left:11%;"><i>-s [status_file]</i></p>
 
 <p style="margin-left:22%;">Extract the status information
 (user stack, alpha register, user flags) to the specified
@@ -108,8 +106,7 @@ file, or, if no file is given, to standard output. The
 program <b>stat41</b> can be used to decode this
 information.</p>
 
-<p style="margin-left:11%;"><i>&minus;p
-program_name</i></p>
+<p style="margin-left:11%;"><i>-p program_name</i></p>
 
 <p style="margin-left:22%;">Extract the user programs to
 files called <i>program_name.001, program_name.002</i> and
@@ -123,7 +120,7 @@ option cannot write data to standard output.</p>
 <td width="3%">
 
 
-<p><i>&minus;?</i></p></td>
+<p><i>-?</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 

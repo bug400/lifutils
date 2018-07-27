@@ -80,7 +80,7 @@ Any access to LIF image files occurs by reading or writing complete blocks.</b>
 
 <p>In the file area the content of each file is stored in consecutive blocks. A frequent creation and deletion of files results in a fragmentation of the file area. Thus you might not be able to create a file although a sufficient number of free blocks is available. You can remove fragmentation of a LIF image with the <a href="html/lifpack.html">lifpack</a> utility.</p> 
 
-<p>The recommended suffix for a LIF image file is ".img".</p>
+<p>The recommended suffix for a LIF image file is ".dat" or ".lif".</p>
 
 <H4>LIF File</H4> 
 
@@ -88,7 +88,7 @@ Any access to LIF image files occurs by reading or writing complete blocks.</b>
 
 <p>The LIF file is also used if the HP-71 copies a file to or from a HP-IL device of type interface (e.g. the HP82164A HP-IL/RS232 interface). This file type is also used by the DOSLINK device of some virtual HP-IL device emulators. The <a href="html/lifheader.html">lifheader</a> utility displays the information of the directory header of a LIF file.</p> 
 
-<p>The recommended suffix for a LIF file is ".lif". </p> 
+<p>Extensions of LIF files should reflect their content. See the <a href="ftp://ftp.hpmuseum.org/lif/swap/0readme">recommended suffixes for LIF files</a>.
 
 <H4>Raw File</H4>
 
@@ -197,7 +197,7 @@ determined from the implementation bytes.</li>
 
 <H3><a name="CREATING_LIF_FILES_FROM_RAW_FILES"></a>Creating LIF files from raw files</H3>
 
-<p>For some LIF file types the <em>LIFUTILS</em> provide programs to create LIF files with a valid LIF header and the necessary implementation bytes from raw data. You have ever to specify a valid LIF file name which must not exist in the destination LIF image file.</p>
+<p>For some LIF file types the <em>LIFUTILS</em> provide programs to create LIF files with a valid LIF header and the necessary implementation bytes from raw data. You have to specify a valid LIF file name which must not exist in the destination LIF image file.</p>
 <ul>
 <li><a href="html/textlif.html">textlif</a>: creates a LIF text file from an ASCII file. This file type can be used with the HP-71 (TEXT), the HP-75 (Interchange File) and the extended memory or HEPAX file system of the HP-41 (ASCII). The utility does not perform any character set conversion. <em>Note:</em> The <em>-r</em> option is mandatory if the LIF text file is to be used in the extended Memory or HEPAX Memory of a HP41-C. This parameter specifes the file size in registers and is stored in the implementation bytes of the LIF header. The HP-41 needs this information to allocate an appropriate amount of space for the file. If you specifiy the <em>-r</em> option without a size value then the register size is determined from the size of the ASCII file.</li>
 <li><a href="html/raw41lif.html">raw41lif</a>: creates a HP-41 LIF program file from a HP-41 raw file. A HP-41 raw file which contains compiled FOCAL code can be converted from a FOCAL text file with the <a href="html/comp41.html">comp41</a> utility. <a href="html/rawlif.html">rawlif</a>  adds the necessary implementation bytes in the LIF header so that the file can be loaded into the HP-41 memory.</li>
@@ -255,7 +255,7 @@ of rom modules correctly their xrom mapping files must be specified on the comma
 
 <p>In most cases the <em>LIFUTILS</em> programs expect the source file on standard input and the destination file on standard output. You cannot specifiy the input or output file with command line parameters. An exception are LIF image files.</p>
 
-<p>If you linke to convert the content of a raw HP-41 program with <a href="html/decomp41.html">decomp41</a> type:</p>
+<p>If you would like to convert the content of a raw HP-41 program with <a href="html/decomp41.html">decomp41</a> type:</p>
 
 <pre>
 cat/type example.p41 | decomp41 &gt; example.txt
@@ -278,7 +278,7 @@ lifget -r lifimg.dat PROG41 | prog41bar | barps | lpr
 <ul>
 <li>All input comes from standard input if not stated otherwise.</li>
 <li>All output goes to standard output if not stated otherwise.</li>
-<li>All diagnostic information (warnings or error messages) go th standard error.</li>
+<li>All diagnostic information (warnings or error messages) goes to standard error.</li>
 <li>The programs return 0 on successful completion and 1 on error.</li>
 </ul>
 
@@ -363,12 +363,12 @@ STAT1,STAT41,57440,81,54,1,0,0,0,0,0,0,128,1,0,10,0,32
 <p>To get the file <em>DATA1</em> from the LIF image file <em>liftest.dat</em> use the <a href="html/lifget.html">lifget</a> command: </p>
 
 <pre>
-lifget liftest.dat DATA1 data1.lif
+lifget liftest.dat DATA1 data1.d41
 </pre>
 
-<p>This extracts the file DATA1 from the LIF image file into the file <em>data1.lif</em>. The file <em>data1.lif</em> is a LIF file. If you check with <a href="html/lifheader.html">lifheader</a> you get:</p>
+<p>This extracts the file DATA1 from the LIF image file into the file <em>data1.d41</em>. The file <em>data1.d41</em> is a LIF file. If you check with <a href="html/lifheader.html">lifheader</a> you get:</p>
 <pre>
-lifheader data1.lif 
+lifheader data1.d41
 File name           : DATA1     
 File type           : e0d0 (SDATA) 
 Data length         : 160
@@ -393,9 +393,9 @@ lifget  liftest.dat DATA1 | lifraw | sdata
 <H4>Put files into a LIF image file</H4>
 
 <p>The <a href="html/lifput.html">lifput</a> utility puts LIF files into a LIF image file. This means that you have to convert an input file to a LIF file first. For text files, HP 41 program and rom files this is covered in detail below.
-To put the LIF file <em>data2.lif</em> into the LIF image file <em>liftest.dat</em> type:</p>
+To put the LIF file <em>data2.d41</em> into the LIF image file <em>liftest.dat</em> type:</p>
 <pre>
-lifput liftest.dat data1.lif
+lifput liftest.dat data1.d41
 </pre>
 
 <p>Note: If you insert a file into a LIF image file:</p>
@@ -410,22 +410,22 @@ lifput liftest.dat data1.lif
 
 <p>You can create a new LIF image file with the <a href="html/lifinit.html">lifinit</a> command. You can specify the medium size (see above) and the size of the directory. Note: you can not alter the medium and directory size of an existing LIF image file.</p>
 
-<p>To create an empty LIF image file <em>hpfloppy.img</em> with a medium size of the HP9114 floppy and 250 directory entries type:</p>
+<p>To create an empty LIF image file <em>hpfloppy.dat</em> with a medium size of the HP9114 floppy and 250 directory entries type:</p>
 
 <pre>
-lifinit -m disk hpfloppy.img 250 
+lifinit -m disk hpfloppy.dat 250 
 </pre>
 
 <p>You can add a volume label to a LIF image file with the <a href="html/liflabel.html">liflabel</a> command:</p>
 <pre>
-liflabel hpfloppy.img VOLA
+liflabel hpfloppy.dat VOLA
 </pre>
 
 <p>Note: The label must only include capital letters and digits, starting with a letter. The maximum size is 6 characters.</p>
 
 <p>To remove a label from a lif image file:</p>
 <pre>
-liflabel -c hpfloppy.img
+liflabel -c hpfloppy.dat
 </pre>
 
 
@@ -455,15 +455,15 @@ lifrename swapdk.dat "M*M" MTIMESM
 <p>To put an ASCII text file as LIF file into a LIF image file:</p>
 
 <pre>
-cat/type tdata.txt | textlif TDATA | lifput liftest.img
+cat/type tdata.txt | textlif TDATA | lifput liftest.dat
 </pre>
 
-<p>This example converts the ASCII file <em>tdata.txt</em> into a LIF file, prepends the LIF header with the file name <em>TDATA</em> and puts it into the LIF image file <em>liftest.img</em>. Note: This file can only be used with the HP-71B.</p>
+<p>This example converts the ASCII file <em>tdata.txt</em> into a LIF file, prepends the LIF header with the file name <em>TDATA</em> and puts it into the LIF image file <em>liftest.dat</em>. Note: This file can only be used with the HP-71B.</p>
 
 <p>The HP-41 needs exact information how much space (in registers) shall be allocated in the HEPAX- or X-Memory. This size is specified with the <em>-r</em> parameter and stored in the implementation bytes of the LIF text file.</p>
 
 <pre>
-cat/type tdata.txt | textlif -r 0 TDATA | lifput liftest.img
+cat/type tdata.txt | textlif -r 0 TDATA | lifput liftest.dat
 </pre>
 
 <p>If a value of 0 is specified the  number of  register is determined from the size of the input text file. If you intend to extend the file in the HP-41 later, you must choose an appropriate number of registers. The file size in registers is:</p>
@@ -477,7 +477,7 @@ cat/type tdata.txt | textlif -r 0 TDATA | lifput liftest.img
 <p>To display the content of the text file <em>TDATA</em> in the LIF image file <em>lifimag.dat</em> type:</p>
 
 <pre>
-lifget -r liftest.img TDATA | liftext
+lifget -r liftest.dat TDATA | liftext
 </pre>
 
 <p>Since <a href="html/liftext.html">liftext</a> expects a raw file as input the <em>-r</em> parameter is used with the <a href="html/lifget.html">lifget</a> command to strip the LIF header.</p>
@@ -485,7 +485,7 @@ lifget -r liftest.img TDATA | liftext
 <p>The text files encoded with <a href="html/textlif.html">textlif</a> and decoded with <a href="html/liftext.html">liftext</a> are called interchange files on the HP-75. The HP-75 uses an own text file format with a different LIF file type. This format can be decoded in the following way:</p>
 
 <pre>
-lifget -r liftest.img TDATA75 | text75
+lifget -r liftest.dat TDATA75 | text75
 </pre>
 
 <p>There is no utility to create HP-75 text files from ASCII files but you can copy the interchange file into the HP-75 and convert it into a HP-75 text file and vice versa with the <em>TRANSFORM</em> command.</p>
@@ -502,24 +502,24 @@ cat/type p41.foc | comp41 -x hpil -x xio &gt; p41.raw
 
 <p>You can use HP-41 program raw files in software emulators of this calculators.</p>
 
-<p>To put the raw file <em>p41.raw</em> into the LIF image file <em>liftest.img</em> you must first create a LIF file from the raw file:</p>
+<p>To put the raw file <em>p41.raw</em> into the LIF image file <em>liftest.dat</em> you must first create a LIF file from the raw file:</p>
 
 <pre>
-cat/type p41.raw | rawlif PROG41 | lifput liftest.img
+cat/type p41.raw | rawlif PROG41 | lifput liftest.dat
 </pre>
 
 <p>Or put everything into one pipe:</p>
 
 <pre>
-cat/type p41.foc | comp41 -x hpil -x xio | rawlif PROG41 | lifput liftest.img
+cat/type p41.foc | comp41 -x hpil -x xio | rawlif PROG41 | lifput liftest.dat
 </pre>
 
-<p>Both example store the compiled program with the file name <em>PROG41</em> into the lifimage file <em>liftest.img</em>.</p>
+<p>Both example store the compiled program with the file name <em>PROG41</em> into the lifimage file <em>liftest.dat</em>.</p>
 
-<p>To get the FOCAL code of a compiled HP-41 program use the <a href="html/decomp41.html">decomp41</a> utility. The following line prints the source of the file <em>PROG41</em> we just stored in the LIF image file <em>liftest.img</em>:</p>
+<p>To get the FOCAL code of a compiled HP-41 program use the <a href="html/decomp41.html">decomp41</a> utility. The following line prints the source of the file <em>PROG41</em> we just stored in the LIF image file <em>liftest.dat</em>:</p>
 
 <pre>
-lifget -r liftest.img PROG41 | decomp41 -x hpil -x xio
+lifget -r liftest.dat PROG41 | decomp41 -x hpil -x xio
 </pre>
 
 <p>Note: the <em>-r</em> option of <a href="html/lifget.html">lifget</a> removes the LIF header.</p>
@@ -553,18 +553,18 @@ A compiled HP-41 focal programs references a call to a rom function with a rom n
 
 <p>The <a href="html/rom41hx.html">rom41hx</a> and <a href="html/hx41rom.html">hx41rom</a> convert between an unscrambled rom image an a HEPAX scrambled LIF file. This LIF file has the file type <em>SDATA</em>.
 
-<p>To load the file <em>Math-1A.rom</em> as a scrambled HEPAX rom file into the LIF image file <em>liftest.img</em> do:
+<p>To load the file <em>Math-1A.rom</em> as a scrambled HEPAX rom file into the LIF image file <em>liftest.dat</em> do:
 
 <pre>
-cat/type Math-1A.rom | rom41hx MATHHXROM | lifput liftest.img
+cat/type Math-1A.rom | rom41hx MATHHXROM | lifput liftest.dat
 </pre>
 
-<p>If you attach <em>liftest.img</em> to the <a href="http://hp.giesselink.com/hpil.htm">ILPer</a> software suite (Windows) or the <a href="https://github.com/bug400/pyilper">pyILPER</a> program and a PIL-Box you can load the scrambled rom file into a HP-41 ram page with the HEPAX <em>READROM</em> command.</p>
+<p>If you attach <em>liftest.dat</em> to the <a href="http://hp.giesselink.com/hpil.htm">ILPer</a> software suite (Windows) or the <a href="https://github.com/bug400/pyilper">pyILPER</a> program and a PIL-Box you can load the scrambled rom file into a HP-41 ram page with the HEPAX <em>READROM</em> command.</p>
 
 <p>To list the content of the HEPAX scrambled HP-41 rom file <em>MATHHXROM</em> in the LIF image file <em>lifmag.dat</em> use:</p>
 
 <pre>
-lifget -r liftest.img MATHHXROM | hx41rom | rom41cat
+lifget -r liftest.dat MATHHXROM | hx41rom | rom41cat
 </pre>
 
 <p>This displays the function address table of the rom if present.</p>
@@ -679,10 +679,10 @@ for /F %%f in ('lifdir -n %1') do (
 
 <p>All <em>LIFUTIL</em> programs that access LIF image files can access a floppy drive if the <em>-p</em> parameter is specified. This option is only documented here. Because of the time consuming recalibration the preferred way is to exchange whole LIF image files with the floppy disk.</p>
 
-<p>To copy a LIF image file you need a properly formatted floppy disk. The safest way is to format that disk with the HP-9114 drive. To copy the LIF image file <em>liftest.img</em> to a floppy disk use:</p>
+<p>To copy a LIF image file you need a properly formatted floppy disk. The safest way is to format that disk with the HP-9114 drive. To copy the LIF image file <em>liftest.dat</em> to a floppy disk use:</p>
 
 <pre>
-lifdump liftest.img /dev/fd0
+lifdump liftest.dat /dev/fd0
 </pre>
 
 <p>Note: this will overwrite all data on the floppy disk.</p>
@@ -690,10 +690,10 @@ lifdump liftest.img /dev/fd0
 <p>To get a LIF image file as a copy of a LIF volume floppy disk use:</p>
 
 <pre>
-lifimage /dev/fd0 lifdisk.img
+lifimage /dev/fd0 lifdisk.dat
 </pre>
 
-<p>This copies all data on the floppy disk to the LIF image file <em>lifdisk.img</em>.
+<p>This copies all data on the floppy disk to the LIF image file <em>lifdisk.dat</em>.
 
 <p>Formatting a HP9114 compatible floppy seems to be more dependent to the capabilities of the floppy drive and the controller than reading and writing. If you have a lucky combination of drive and controller you may use the commands to format the disk:</p>
 <pre>

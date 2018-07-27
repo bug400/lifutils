@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sat Apr 14 13:57:19 2018 -->
+<!-- CreationDate: Wed Jul 25 12:38:57 2018 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,7 +37,7 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">lifget &minus;
+<p style="margin-left:11%; margin-top: 1em">lifget -
 extract a file from a LIF image file</p>
 
 <h2>SYNOPSIS
@@ -46,18 +46,17 @@ extract a file from a LIF image file</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifget</b>
-[&minus;r] [&minus;b] <i>&lt;LIF image file&gt;
-&lt;filename&gt; &lt;output file&gt;</i></p>
+[-r] [-b] <i>&lt;LIF image file&gt; &lt;filename&gt;
+&lt;output file&gt;</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifget</b>
-[&minus;r] [&minus;b] <i>&lt;LIF image file&gt;
-&lt;filename&gt;</i></p>
+[-r] [-b] <i>&lt;LIF image file&gt; &lt;filename&gt;</i></p>
 
 <p style="margin-left:11%; margin-top: 1em">(last form send
 the extracted file to standard output)</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifget
-&minus;?</b></p>
+-?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -66,11 +65,11 @@ the extracted file to standard output)</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifget</b>
 extracts a single file, specified by <i>filename</i> from a
-LIF image file. <i>filename</i> is case&minus;sensitive and
-must be given in upper case. If <b>lifget</b> is executed
-with 3 arguments after the options then the third argument
-is used as the name of the file that the LIF file is copied
-to. If only 2 arguments are given then the file is copied to
+LIF image file. <i>filename</i> is case-sensitive and must
+be given in upper case. If <b>lifget</b> is executed with 3
+arguments after the options then the third argument is used
+as the name of the file that the LIF file is copied to. If
+only 2 arguments are given then the file is copied to
 standard output.</p>
 
 <h2>OPTIONS
@@ -85,12 +84,12 @@ standard output.</p>
 <td width="3%">
 
 
-<p style="margin-top: 1em"><i>&minus;r</i></p></td>
+<p style="margin-top: 1em"><i>-r</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
 
-<p style="margin-top: 1em">Remove the 32&minus;byte header
+<p style="margin-top: 1em">Remove the 32-byte header
 consisting of the directory record from the LIF disk
 directory from the beginning of the output file.</p></td></tr>
 <tr valign="top" align="left">
@@ -98,7 +97,7 @@ directory from the beginning of the output file.</p></td></tr>
 <td width="3%">
 
 
-<p><i>&minus;b</i></p></td>
+<p><i>-b</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -113,7 +112,7 @@ blocks.</p> </td></tr>
 <td width="3%">
 
 
-<p><i>&minus;?</i></p></td>
+<p><i>-?</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -128,15 +127,15 @@ error.</p> </td></tr>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.img</i> is a LIF image file containing a file
-called <i>TEST1</i> then</p>
+<i>disk1.dat</i> is a LIF image file containing a HP-41
+SDATA file called <i>TEST1</i> then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifget
-disk1.lif TEST1 lif_test_file.lif</b></p>
+disk1.dat TEST1 lif_test_file.d41</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will copy the
-file TEST1 from the LIF disk image to the file
-<i>lif_test_file.lif.</i></p>
+file TEST1 from the LIF disk image to the LIF file
+<i>lif_test_file.d41.</i></p>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>
@@ -144,11 +143,10 @@ file TEST1 from the LIF disk image to the file
 
 
 <p style="margin-left:11%; margin-top: 1em">The LIF disk
-directory format is documented in the <i>HP&minus;IL
-Interface Owners Manual for the HP&minus;71
-(Hewlett&minus;Packard)</i> with further details
-(particularly HP41 and HP75 file types) in the
-<i>HP&minus;41 Synthetic Quick Reference Guide (Jeremy
+directory format is documented in the <i>HP-IL Interface
+Owners Manual for the HP-71 (Hewlett-Packard)</i> with
+further details (particularly HP41 and HP75 file types) in
+the <i>HP-41 Synthetic Quick Reference Guide (Jeremy
 Smith)</i></p>
 
 <h2>BUGS

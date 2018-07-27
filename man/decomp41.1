@@ -80,12 +80,12 @@ and
 .I The HP41 Synthetic Programming Quick Reference Guide (Jeremy Smith)
 .SH EXAMPLES
 If
-.I disk1.img
+.I disk1.dat
 is a LIF disk image containing an HP41 program called
 .I PROG
 then
 .PP
-.B lifget -r  disk1.img PROG | decomp41 \-x hpil.xrom  \-x time.xrom
+.B lifget -r  disk1.dat PROG | decomp41 \-x hpil.xrom  \-x time.xrom
 .PP 
 will produce a listing of the program to standard output, with the 
 standard names for the functions in the HPIL module and time module.
