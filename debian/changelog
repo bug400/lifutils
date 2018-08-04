@@ -1,9 +1,16 @@
+lifutils (1.7.8b1) bionic; urgency=medium
+
+  * first beta 
+
+ -- trusty <achim@trillian.trilldom.lan>  Sat, 04 Aug 2018 07:19:09 +0200
+
 lifutils (1.7.8-devel) xenial; urgency=medium
 
   * lifdir: extended directory listing
   * lifheader: extended output 
   * lif_phy_linux.c: fixes
   * lifilper program removed
+  * tutorial added
 
  -- trusty <achim@trillian>  Mon, 04 Dec 2017 19:02:12 +0100
 
