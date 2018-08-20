@@ -1,3 +1,9 @@
+lifutils (1.7.8-ubuntu1) bionic; urgency=medium
+
+  * production 
+
+ -- trusty <achim@trillian.trilldom.lan>  Mon, 20 Aug 2018 08:45:31 +0200
+
 lifutils (1.7.8b1) bionic; urgency=medium
 
   * first beta 
