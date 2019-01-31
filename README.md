@@ -28,8 +28,7 @@ Main features are:
 * output HP-41 SDATA-, KEY-, status- WALL-files as text
 
 
-See the [doc/readme.html](https://rawgit.com/bug400/lifutils/master/doc/readme.html)
-for more information about features and usage.
+See the doc/readme.html file for more information about features and usage.
 
 Note: there is experimental support for the access of floppy devices to
 read and write HP9114 floppy disks under LINUX. Floppy disk support will 
