@@ -167,7 +167,7 @@ int main (int argc, char **argv)
 int get_line_args( char *line_argv[],char  **line_ptr )
 {
    char *pc;
-   int i, count, done;
+   int i, j, count, done;
 
     count = 0;
     pc = *line_ptr;
@@ -188,7 +188,8 @@ int get_line_args( char *line_argv[],char  **line_ptr )
             i = 0;
             do {
                 // consider quotes as a unit
-                i += is_inquotes( &pc[ i++ ] );
+                j = is_inquotes( &pc[ i++ ] );
+                i += j;
 
                 // end of line?
                 if( pc[ i ] == '\0' ) {
