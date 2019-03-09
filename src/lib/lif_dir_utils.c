@@ -284,7 +284,8 @@ int check_name(char *name, int len)
       if(name [0] < 'A' || name [0] > 'Z') return (0);
       for (i=1; i< strlen(name); i++) {
          if(name[i] < 'A' || name[i] > 'Z')  
-            if (name[i] < '0' || name[i] > '9') return(0);
+            if (name[i] < '0' || name[i] > '9')
+               if (name[i] != '_') return(0);
       }
       return(1);
   }
