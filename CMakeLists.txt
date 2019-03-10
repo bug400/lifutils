@@ -27,11 +27,11 @@ set(CMAKE_BUILD_TYPE "Release")
 # Install Prefix
 #
 if(UNIX)
-  if(APPLE)
-    set(CMAKE_INSTALL_PREFIX "/usr/local")
-  else(APPLE)
+  if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
     set(CMAKE_INSTALL_PREFIX "/usr")
-  endif(APPLE)
+  else()
+    set(CMAKE_INSTALL_PREFIX "/usr/local")
+  endif()
 endif(UNIX)
 #
 # do portability checks and generate config.h
