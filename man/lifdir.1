@@ -1,11 +1,13 @@
-.TH lifdir 1 14-April-2018 "LIF Utilities" "LIF Utilities"
+.TH lifdir 1 16-March-2019 "LIF Utilities" "LIF Utilities"
 .SH NAME
 lifdir \- print a directory of a LIF image file
 .SH SYNOPSIS
-.B lifdir [\-n] [\-v l]
+.B lifdir 
+[\-n] [\-v l] [\-p]
 .I <LIF image file>
 .PP
-.B lifdir \-?
+.B lifdir 
+\-?
 .SH DESCRIPTION
 .B lifdir
 reads the directory of a LIF image file and prints 
@@ -70,6 +72,9 @@ Implementation bytes
 Note: verbosity level and csv output options are mutually exclusive.
 All numeric information is decimal.
 .RE
+.TP
+.I \-p
+Show directory info of a floppy disk with a LIF file system. Note: this option is only supported on LINUX. Specify the floppy device instead of the lif-image-filename. See the LIFUTILS tutorial for details.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.

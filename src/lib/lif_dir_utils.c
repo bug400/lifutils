@@ -276,7 +276,7 @@ void pad_label(char *name, char *cmp_name)
       }
   }
 
-int check_name(char *name, int len)
+int check_name(char *name, int len, int lax)
   {
       int i;
 
@@ -284,18 +284,19 @@ int check_name(char *name, int len)
       if(name [0] < 'A' || name [0] > 'Z') return (0);
       for (i=1; i< strlen(name); i++) {
          if(name[i] < 'A' || name[i] > 'Z')  
-            if (name[i] < '0' || name[i] > '9') return(0);
+            if (name[i] < '0' || name[i] > '9')
+               if (name[i]== '_' && (! lax)) return(0); 
       }
       return(1);
   }
 
-int check_filename(char *name)
+int check_filename(char *name, int lax)
   {
-      return check_name(name,NAME_LEN);
+      return check_name(name,NAME_LEN,lax);
   }
 
 int check_labelname(char *name)
   {
-      return check_name(name,LABEL_LEN);
+      return check_name(name,LABEL_LEN,0);
   }
 

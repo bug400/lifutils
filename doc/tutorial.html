@@ -99,7 +99,7 @@ Any access to LIF image files occurs by reading or writing complete blocks.</b>
 <li>ASCII text files (see <a href="html/textlif.html">textlif</a>)</li>
 <li>compiled HP-41 Focal programs (see <a href=html/raw41lif.html>raw41lif</a>)</li>
 <li>HP-41 ROMS (see <a href="html/rom41er.html">rom41er</a>, <a href="html/rom41hx.html">rom41hx</a> or <a href="html/rom41lif.html">rom41lif</a>)</li>
-<li>HP-71 LEX, BIN or ROM data (see <a href="https://www.hpcalc.org/details/7585">alifhdr</a> not part of the <em>LIFUTILS</em>)</li>
+<li>HP-71 LEX, BIN or ROM data (see the <a href="https://www.hpcalc.org/details/7585">alifhdr utility</a> which is not part of the <em>LIFUTILS</em>)</li>
 </ul>
 <p>You should assign raw files a suffix that explains their file type.</p>
 
@@ -677,7 +677,7 @@ for /F %%f in ('lifdir -n %1') do (
 
 <p><em>LIFUTULS</em> programs that access a floppy perform a recalibration of the drive at start up. The recalibration always needs write access to the drive but does not write anything to the disk. During the recalibration error messages may occur. The recalibration needs some time to complete.</p>
 
-<p>All <em>LIFUTIL</em> programs that access LIF image files can access a floppy drive if the <em>-p</em> parameter is specified. This option is only documented here. Because of the time consuming recalibration the preferred way is to exchange whole LIF image files with the floppy disk.</p>
+<p>All <em>LIFUTIL</em> programs that access LIF image files can access a floppy drive if the <em>-p</em> parameter is specified. Because of the time consuming recalibration the preferred way is to exchange whole LIF image files with the floppy disk.</p>
 
 <p>To copy a LIF image file you need a properly formatted floppy disk. The safest way is to format that disk with the HP-9114 drive. To copy the LIF image file <em>liftest.dat</em> to a floppy disk use:</p>
 

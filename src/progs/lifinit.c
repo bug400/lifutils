@@ -21,12 +21,14 @@
 
 void usage(void)
   {
-    fprintf(stderr,
-    "Usage:lifinit lif-image-filename directorysize\n");
-    fprintf(stderr,"      lifinit [-z] -m Mediumtype lif-image-filename directorysize\n");
+    fprintf(stderr,"Usage:lifinit [-z] [-p] -m Mediumtype lif-image-filename directorysize\n");
     fprintf(stderr,"\n");
     fprintf(stderr, "      -m Medium type (cass | disk | hdrive1) \n");
     fprintf(stderr, "      -z Initialize the data are with zeros) \n");
+    fprintf(stderr,"      -p Initialize a LIF file system on a floppy disk.\n");
+    fprintf(stderr,"         Note: this option is only supported on LINUX.\n");
+    fprintf(stderr,"         Specify the floppy device instead of the lif-image-filename.\n");
+    fprintf(stderr,"         See the LIFUTILS tutorial for details.\n");
     exit(1);
   }
 

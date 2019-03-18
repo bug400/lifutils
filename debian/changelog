@@ -1,8 +1,12 @@
-lifutils (1.7.8-ubuntu1) bionic; urgency=medium
+lifutils (1.7.9-devel) bionic; urgency=medium
 
-  * production 
+  * merged pull #3: make LIFUTILS build on non LINUX Unices, 
+    fix potential side effect in comp41.c
+  * added -l option to relax file name checking, allow underscore in
+    lif filenames 
+  * documented the "-p" option for floppy disk access (LINUX only)
 
- -- trusty <achim@trillian.trilldom.lan>  Mon, 20 Aug 2018 08:45:31 +0200
+ -- trusty <achim@trillian.trilldom.lan>  Sat, 16 Mar 2019 14:58:17 +0100
 
 lifutils (1.7.8b1) bionic; urgency=medium
 

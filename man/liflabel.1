@@ -1,9 +1,9 @@
-.TH liflabel 1 14-April-2018 "LIF Utilities" "LIF Utilities"
+.TH liflabel 1 16-March-2019 "LIF Utilities" "LIF Utilities"
 .SH NAME
 liflabel \- label a LIF image file
 .SH SYNOPSIS
 .B liflabel
-[\-c] 
+[\-c] [\-p]
 .I <LIF image file> <Label name>
 .PP
 .B liflabel \-?
@@ -17,6 +17,9 @@ to the label specified by
 .TP
 .I \-c
 Clears an existing label
+.TP
+.I \-p
+Label a LIF file system on a floppy disk. Note: this option is only supported on LINUX. Specify the floppy device instead of the lif-image-filename. See the LIFUTILS tutorial for details.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.

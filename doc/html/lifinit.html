@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Wed Jul 25 12:38:57 2018 -->
+<!-- CreationDate: Mon Mar 18 19:32:20 2019 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -44,8 +44,8 @@ initialize a lif image file</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifinit
-[-z]</b> -m Mediumtype <i>&lt;LIF image file&gt; &lt;number
+<p style="margin-left:11%; margin-top: 1em"><b>lifinit</b>
+[-z] -m Mediumtype [-p] <i>&lt;LIF image file&gt; &lt;number
 of directory entries&gt;</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifinit
@@ -116,13 +116,16 @@ image with zeros.</p></td></tr>
 <td width="3%">
 
 
-<p><i>-?</i></p></td>
+<p><i>-p</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
 
-<p>Print a message giving the program usage to standard
-error.</p> </td></tr>
+<p>Initialize a LIF file system on a floppy disk. Note:
+this option is only supported on LINUX. Specify the floppy
+device instead of the lif-image-filename. See the LIFUTILS
+tutorial for details. <i>-?</i> Print a message giving the
+program usage to standard error.</p></td></tr>
 </table>
 
 <h2>EXAMPLES

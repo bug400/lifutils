@@ -19,8 +19,13 @@
 void usage(void)
   {
     fprintf(stderr,
-    "Usage:lifpurge lif-image-filename filename\n");
+    "Usage:lifpurge [-l] [-p] lif-image-filename filename\n");
     fprintf(stderr,"\n");
+    fprintf(stderr,"      -l Relax file name checking, allow underscores in file names.\n");
+    fprintf(stderr,"      -p Purge file on a floppy disk with a LIF file system.\n");
+    fprintf(stderr,"         Note: this option is only supported on LINUX.\n");
+    fprintf(stderr,"         Specify the floppy device instead of the lif-image-filename.\n");
+    fprintf(stderr,"         See the LIFUTILS tutorial for details.\n");
     exit(1);
   }
 
@@ -29,6 +34,7 @@ int main(int argc, char **argv)
     /* System variables */
     int option; /* Command line option character */
     int physical_flag; /* Option to use a physical device */
+    int lax; /* Option to relax file name checking */
     int lif_device; /* Descriptor of input device */
     char cmp_name[10]; /* File name to look for */
     int i;
@@ -55,13 +61,16 @@ int main(int argc, char **argv)
 
     /* Process command line options */
     physical_flag=0;
+    lax=0;
 
     optind=1;
-    while ((option=getopt(argc,argv,"p?"))!=-1)
+    while ((option=getopt(argc,argv,"pl?"))!=-1)
       {
         switch(option)
           {
             case 'p' : physical_flag=1;
+                       break;
+            case 'l' : lax=1;
                        break;
             case '?' : usage();
                        break;
@@ -76,7 +85,7 @@ int main(int argc, char **argv)
       }
 
     /* Check file name */
-    if(check_filename(argv[optind+1])==0) 
+    if(check_filename(argv[optind+1],lax)==0) 
       {
         fprintf(stderr,"Illegal file name\n");
         exit(1);

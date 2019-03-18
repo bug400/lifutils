@@ -1,13 +1,13 @@
-.TH lifget 1 13-April-2018 "LIF Utilities" "LIF Utilities"
+.TH lifget 1 15-March-2018 "LIF Utilities" "LIF Utilities"
 .SH NAME
 lifget \- extract a file from a LIF image file
 .SH SYNOPSIS
 .B lifget 
-[\-r] [\-b]
+[\-r] [\-b] [\-l] [\-p]
 .I <LIF image file> <filename> <output file>
 .PP
 .B lifget 
-[\-r] [\-b]
+[\-r] [\-b] [\-l] [\-p]
 .I <LIF image file> <filename>
 .PP
 (last form send the extracted file to standard output)
@@ -35,6 +35,12 @@ Copy the blocks occupied by the file (including the entire last block)
 rather then the number of bytes given by the file length. This option has 
 no meaning for file types where the file is always assumed to occupy 
 complete blocks.
+.TP
+.I \-l
+Relax file name checking, allow underscores in filenames.
+.TP
+.I \-p
+Read file from a floppy disk with a LIF file system. Note: this option is only supported on LINUX. Specify the floppy device instead of the lif-image-filename. See the LIFUTILS tutorial for details.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.

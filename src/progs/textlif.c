@@ -35,16 +35,16 @@
 
 void usage(void)
 {
-   fprintf(stderr, "Usage:textlif [-r registers] LIF-filename\n");
-   fprintf(stderr, "     -r specifies file size in HP-41 registers.\n");
+   fprintf(stderr, "Usage:textlif [-r registers] [-l] LIF-filename\n");
+   fprintf(stderr, "     -r Specifies file size in HP-41 registers.\n");
    fprintf(stderr, "        If value 0 is specified, the number of registers is\n");
    fprintf(stderr, "        determined automatically from the input text file\n");
    fprintf(stderr, "        size. Note: this parameter is only needed if the resulting\n");
-   fprintf(stderr, "        file shall be used on the HP-41!\n\n");
+   fprintf(stderr, "        file shall be used on the HP-41!\n");
+   fprintf(stderr,"     -l Relax file name checking, allow underscores in file names.\n\n");
    fprintf(stderr,"      (Input comes from standard input)\n");
    fprintf(stderr,"      (Output goes to standard output)(\n");
    fprintf(stderr,"\n");
-   fprintf(stderr,"      the LIF-filename must not exceed 10 characters\n\n");
    exit(1);
 }
 
@@ -89,6 +89,7 @@ int main(int argc, char**argv)
     int num_reg= -1;    /* file length in registers */
     int min_reg;      /* minimun number of registers needed on the HP-41 */
     char *snum_reg= (char *) NULL;
+    int lax; /* option to relax file name checking */
     unsigned char dir_entry[ENTRY_SIZE]; /* New directory entry */
     unsigned char line[LINE_LENGTH];     /* line buffer */
     unsigned char filebuffer[MAX_LENGTH]; /* file buffer */
@@ -101,13 +102,16 @@ int main(int argc, char**argv)
     SETMODE_STDOUT_BINARY;
 
     lines= length= num_characters=0;
+    lax=0;
 
     /* command line options */
-    while ((option=getopt(argc,argv,"r:?"))!=-1)
+    while ((option=getopt(argc,argv,"r:l?"))!=-1)
       {
         switch(option)
           {
             case 'r':  snum_reg=optarg;
+                       break;
+            case 'l':  lax=1;
                        break;
             case '?' : usage();
                        break;
@@ -120,7 +124,7 @@ int main(int argc, char**argv)
     }
 
     /* Check file name */
-    if(check_filename(argv[optind])==0)
+    if(check_filename(argv[optind],lax)==0)
       {
         fprintf(stderr,"Illegal file name\n");
         exit(1);

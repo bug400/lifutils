@@ -14,14 +14,20 @@
 void usage(void)
   {
     fprintf(stderr,
-    "Usage:lifget [-r] [-b] lif-image-filename filename output-file\n");
-    fprintf(stderr,"      lifget [-r] [-b] lif-image-filename filename\n");
+    "Usage:lifget [-r] [-b] [-l] [-p] lif-image-filename filename output-file\n");
+    fprintf(stderr,"      lifget [-r] [-b] [-l] [-p] lif-image-filename filename\n");
     fprintf(stderr,"      (Output goes to standard output)\n");
     fprintf(stderr,"\n");
     fprintf(stderr,
     "      -r flag to remove directory entry on start of file \n"); 
-    fprintf(stderr,"      -b flag to copy the blocks used by the file,\n");
+    fprintf(stderr,"      -b Flag to copy the blocks used by the file,\n");
     fprintf(stderr,"          ignoring the file length information\n");
+    fprintf(stderr,"      -l Relaxe file name checking, allow underscores in file names\n");
+    fprintf(stderr,"      -p Read file from a floppy disk with a LIF file system.\n");
+    fprintf(stderr,"         Note: this option is only supported on LINUX.\n");
+    fprintf(stderr,"         Specify the floppy device instead of the lif-image-filename.\n");
+    fprintf(stderr,"         See the LIFUTILS tutorial for details.\n");
+
     exit(1);
   }
 
@@ -62,6 +68,7 @@ int main(int argc, char **argv)
     int remove_dir_flag; /* Remove directory entry on start of output */
     int block_flag; /* Copy blocks */
     int physical_flag; /* Option to use a physical device */
+    int lax; /* Option to relax file name checking */
 
     int input_device; /* Descriptor of input device */
     FILE *output_file; /* Output file stream */
@@ -87,9 +94,10 @@ int main(int argc, char **argv)
     remove_dir_flag=0;
     block_flag=0;
     physical_flag=0;
+    lax=0;
 
     optind=1;
-    while ((option=getopt(argc,argv,"prb?"))!=-1)
+    while ((option=getopt(argc,argv,"prbl?"))!=-1)
       {
         switch(option)
           {
@@ -98,7 +106,9 @@ int main(int argc, char **argv)
             case 'b' : block_flag=1;
                        break;
             case 'p' : physical_flag=1;
-                        break;
+                       break;
+            case 'l' : lax=1;
+                       break;
             case '?' : usage();
           }
       }
@@ -111,7 +121,7 @@ int main(int argc, char **argv)
       }
 
     /* Check file name */
-    if(check_filename(argv[optind+1])==0)
+    if(check_filename(argv[optind+1],lax)==0)
       {
         fprintf(stderr,"Illegal file name\n");
         exit(1);

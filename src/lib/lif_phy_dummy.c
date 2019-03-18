@@ -32,3 +32,13 @@ void lif_write_phy_block(int output_device, int block, unsigned char *data)
 void lif_seek_phy_device(int device, int cylinder)
   {
   }
+
+void lif_read_phy_device(int device, int cylinder, int head, int sector,
+              unsigned char *data)
+  {
+  }
+
+void lif_write_phy_device(int device, int cylinder, int head, int sector,
+               unsigned char *data)
+  {
+  }

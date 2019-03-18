@@ -25,9 +25,14 @@
 
 void usage(void)
   {
-    fprintf(stderr, "Usage: lifput lif-image-filename filename\n");
+    fprintf(stderr, "Usage: lifput [-l] [-p] lif-image-filename filename\n");
     fprintf(stderr,"      if filename is omitted, input comes from standard input\n");
     fprintf(stderr,"\n");
+    fprintf(stderr,"      -l Relax file name checking, allow underscores in file names.\n");
+    fprintf(stderr,"      -p Write file to a floppy disk with a LIF file system.\n");
+    fprintf(stderr,"         Note: this option is only supported on LINUX.\n");
+    fprintf(stderr,"         Specify the floppy device instead of the lif-image-filename.\n");
+    fprintf(stderr,"         See the LIFUTILS tutorial for details.\n");
     exit(1);
   }
 
@@ -72,6 +77,7 @@ int main(int argc, char **argv)
     int data_length; /* length of input file in bytes without header */
     int num_blocks; /* size of input file in blocks */
     int physical_flag; /* Option to use a physical device */
+    int lax; /* option to relax file name checking */
     struct blocktype {
        int startblock;
        int filelength;
@@ -109,13 +115,17 @@ int main(int argc, char **argv)
 
     /* Process command line options */
     physical_flag=0;
+    lax=0;
     optind=1;
-    while ((option=getopt(argc,argv,"p?"))!=-1)
+    while ((option=getopt(argc,argv,"pl?"))!=-1)
       {
         switch(option)
           {
             case 'p' : physical_flag=1;
-                        break;
+                       break;
+
+            case 'l' : lax=1;
+                       break;
 
             case '?' : usage();
                        break;
@@ -207,7 +217,7 @@ int main(int argc, char **argv)
           chk_name[i]= new_dir_entry[i];
     chk_name[NAME_LEN]='\0';
     debug_print("File name to check: %s\n",chk_name);
-    if (check_filename(chk_name)==0) {
+    if (check_filename(chk_name,lax)==0) {
           fprintf(stderr,"illegal file name\n");
           exit(2);
     }

@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Wed Jul 25 12:38:57 2018 -->
+<!-- CreationDate: Mon Mar 18 19:32:20 2019 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -46,8 +46,8 @@ renames a file on a LIF image file</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifrename</b>
-<i>&lt;LIF image file&gt; &lt;old filename&gt; &lt;new
-filename&gt;</i></p>
+[-l] [-p] <i>&lt;LIF image file&gt; &lt;old filename&gt;
+&lt;new filename&gt;</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifrename
 -?</b></p>
@@ -82,13 +82,39 @@ be used to rename files that can not processed with the
 <td width="3%">
 
 
-<p style="margin-top: 1em"><i>-?</i></p></td>
+<p style="margin-top: 1em"><i>-l</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
 
-<p style="margin-top: 1em">Print a message giving the
-program usage to standard error.</p></td></tr>
+<p style="margin-top: 1em">Relax file name checking, allow
+underscores in new file name.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>-p</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Rename a file on a floppy disk with a LIF file system.
+Note: this option is only supported on LINUX. Specify the
+floppy device instead of the lif-image-filename. See the
+LIFUTILS tutorial for details.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>-?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Print a message giving the program usage to standard
+error.</p> </td></tr>
 </table>
 
 <h2>EXAMPLES

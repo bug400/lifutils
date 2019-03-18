@@ -12,10 +12,10 @@ unsigned char bcd_to_dec(unsigned char bcd);
 int file_length(unsigned char *entry, char *file_type);
 /* Get file length and type from a directory entry */
 
-int check_name(char *name, int len);
+int check_name(char *name, int len, int lax);
 /* check file name */
 
-int check_filename(char *name);
+int check_filename(char *name, int lax);
 
 int check_labelname(char *name);
 

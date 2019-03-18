@@ -4,6 +4,7 @@ liffix \- fixes the medium size information in the volume header of a LIF image 
 .SH SYNOPSIS
 .B liffix
 \-m Mediumtype 
+[-p]
 .I <LIF image file> 
 .PP
 .B liffix \-?
@@ -39,6 +40,9 @@ hdrive8: Initializes a medium with the size of a 8 MB disk
 .RS
 hdrive16: Initializes a medium with the size of a 16 MB disk
 .RE
+.TP
+.I \-p
+Fix a LIF file system on a floppy disk. Note: this option is only supported on LINUX. Specify the floppy device instead of the lif-image-filename. See the LIFUTILS tutorial for details.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.

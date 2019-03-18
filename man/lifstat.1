@@ -3,12 +3,15 @@
 lifstat \- A program to display statistics for a LIF image file
 .SH SYNOPSIS
 .B lifstat 
-.I <LIF image file>
+[\-p]
+.I <LIF image file> 
 .PP 
-.B lifstat
+.B lifstat 
+[\-p]
 .I <LIF image file> <block_number>
 .PP
-.B lifstat
+.B lifstat 
+[\-p]
 .I <LIF image file> <cylinder> <head> <sector>
 .PP
 .B lifstat \-?
@@ -43,6 +46,9 @@ or
 .I unused
 as appropriate.
 .SH OPTIONS
+.TP
+.I \-p
+Print summary of LIF file system stats on a floppy disk. Note: this option is only supported on LINUX. Specify the floppy device instead of the lif-image-filename. See the LIFUTILS tutorial for details.
 .TP
 .I \-?
 Print a message giving program usage to standard error and exit.

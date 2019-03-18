@@ -213,12 +213,16 @@ void lif_status(int input_file, int block_flag, unsigned
 
 void usage(void)
   {
-    fprintf(stderr,"Usage : lifstat  lif-image-filename\n");
+    fprintf(stderr,"Usage : lifstat [-p] lif-image-filename\n");
     fprintf(stderr,"        print summary of LIF disk stats\n\n");
     fprintf(stderr,"        lifstat lif-image-filename block_no\n");
     fprintf(stderr,
-      "        lifstat  lif-image-filename cylinder head sector \n");
-    fprintf(stderr,"        print filename containing given block\n");
+      "        lifstat  [-p] lif-image-filename cylinder head sector \n");
+    fprintf(stderr,"        print filename containing given block\n\n");
+    fprintf(stderr,"        -p Print summary of LIF file system stats on a floppy disk.\n");
+    fprintf(stderr,"           Note: this option is only supported on LINUX.\n");
+    fprintf(stderr,"           Specify the floppy device instead of the lif-image-filename.\n");
+    fprintf(stderr,"           See the LIFUTILS tutorial for details.\n");
     exit(1);
   }
 

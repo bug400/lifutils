@@ -2,7 +2,8 @@
 .SH NAME
 lifpack \- pack a LIF image file
 .SH SYNOPSIS
-.B lifpack
+.B lifpack 
+[\-p]
 .I <LIF image file>
 .PP
 .B lifpack \-?
@@ -10,6 +11,9 @@ lifpack \- pack a LIF image file
 .B lifpack
 packs the directory and the file area on a LIF image file. After packing all unused sectors of the file area are available in one contiguous block. All directory entries are allocated at the beginning of the directory area which speeds up directory searches.
 .SH OPTIONS
+.TP
+.I \-p
+Pack a LIF file system on a floppy disk. Note: this option is only supported on LINUX. Specify the floppy device instead of the lif-image-filename. See the LIFUTILS tutorial for details.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.

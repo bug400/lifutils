@@ -19,11 +19,15 @@
 void usage(void)
   {
     fprintf(stderr,
-    "Usage: liflabel [-c] lif-image-filename label\n");
+    "Usage: liflabel [-c] [-p] lif-image-filename label\n");
     fprintf(stderr,"      if label is omitted, the current label is displayed\n");
     fprintf(stderr,"\n");
     fprintf(stderr,
    "      -c clear an existing label. The label argument must be omitted\n");
+    fprintf(stderr,"      -p Label a LIF file system on a floppy disk.\n");
+    fprintf(stderr,"         Note: this option is only supported on LINUX.\n");
+    fprintf(stderr,"         Specify the floppy device instead of the lif-image-filename.\n");
+    fprintf(stderr,"         See the LIFUTILS tutorial for details.\n");
     exit(1);
   }
 

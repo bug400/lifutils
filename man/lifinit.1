@@ -1,9 +1,11 @@
-.TH lifinit 1 14-April-2018 "LIF Utilities" "LIF Utilities"
+.TH lifinit 1 16-March-2019 "LIF Utilities" "LIF Utilities"
 .SH NAME
 lifinit \- initialize a lif image file
 .SH SYNOPSIS
-.B lifinit [\-z] 
+.B lifinit 
+[\-z] 
 \-m Mediumtype 
+[-p]
 .I <LIF image file> <number of directory entries>
 .PP
 .B lifinit \-?
@@ -44,6 +46,8 @@ hdrive16: Initializes a medium with the size of a 16 MB disk
 .I \-z
 Initialize the data area of the image with zeros.
 .TP
+.I \-p
+Initialize a LIF file system on a floppy disk. Note: this option is only supported on LINUX. Specify the floppy device instead of the lif-image-filename. See the LIFUTILS tutorial for details.
 .I \-?
 Print a message giving the program usage to standard error.
 .SH EXAMPLES

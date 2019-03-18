@@ -28,8 +28,8 @@ instructions below.
 * Uninstall any previous installed version of the lifutils before installing
 a new version.
 * A 32 bit version of the lifutils will not install on a 64 bit windows
-* you may choose a system wide installation or an installation only for
-the current user. A system wide installation requires administrator privileges.
+* you may choose a system-wide installation or an installation only for
+the current user. A system-wide installation requires administrator privileges.
 * You may choose to have the installer modify the PATH variable and the
 LIFUTILSXROMDIR environment variable. This is not needed if you call the
 lifutils from the "lifutils prompt" in the start menu.

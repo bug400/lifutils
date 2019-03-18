@@ -21,11 +21,13 @@
 
 void usage(void)
   {
-    fprintf(stderr,
-    "Usage:liffix lif-image-filename \n");
-    fprintf(stderr,"      liffix -m Mediumtype lif-image-filename\n");
+    fprintf(stderr,"Usage:liffix -m Mediumtype [-p] lif-image-filename\n");
     fprintf(stderr,"\n");
-    fprintf(stderr, "      -m Medium type (cass | disk | hdrive1) \n");
+    fprintf(stderr,"      -m Medium type (cass | disk | hdrive1) \n");
+    fprintf(stderr,"      -p Fix a LIF file system on a floppy disk.\n");
+    fprintf(stderr,"         Note: this option is only supported on LINUX.\n");
+    fprintf(stderr,"         Specify the floppy device instead of the lif-image-filename.\n");
+    fprintf(stderr,"         See the LIFUTILS tutorial for details.\n");
     exit(1);
   }
 

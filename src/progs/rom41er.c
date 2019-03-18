@@ -120,7 +120,7 @@ int main(int argc, char**argv)
     }
 
     /* Check file name */
-    if(check_filename(argv[1])==0)
+    if(check_filename(argv[1],0)==0)
       {
         fprintf(stderr,"Illegal file name\n");
         exit(1);

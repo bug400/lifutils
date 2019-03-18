@@ -140,7 +140,7 @@ void csv_dir_entry(unsigned char *entry)
 
 void usage(void)
   {
-     fprintf(stderr,"Usage:lifdir [-n] [-v l] <lif-image-file>\n");
+     fprintf(stderr,"Usage:lifdir [-n] [-v l] [-c] [-p] <lif-image-file>\n");
      fprintf(stderr,"\n");
      fprintf(stderr,"      -n flag to display file names only\n");
      fprintf(stderr,"      -v l verbosity level\n");
@@ -153,6 +153,11 @@ void usage(void)
      fprintf(stderr,"\n");
      fprintf(stderr,"         Note: verbosity level and csv output options are\n");
      fprintf(stderr,"         mutually exclusive.\n");
+     fprintf(stderr,"\n");
+     fprintf(stderr,"      -p Show directory info of LIF file system on a floppy disk.\n");
+    fprintf(stderr,"         Note: this option is only supported on LINUX.\n");
+    fprintf(stderr,"         Specify the floppy device instead of the lif-image-filename.\n");
+    fprintf(stderr,"         See the LIFUTILS tutorial for details.\n");
      exit(1);
   }
 

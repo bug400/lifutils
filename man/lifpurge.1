@@ -1,8 +1,10 @@
-.TH lifpurge 1 14-April-2018 "LIF Utilities" "LIF Utilities"
+.TH lifpurge 1 16-March-2019 "LIF Utilities" "LIF Utilities"
 .SH NAME
 lifpurge \- purge a file from a LIF image file
 .SH SYNOPSIS
 .B lifpurge 
+[\-l]
+[\-p]
 .I <LIF image file> <filename> 
 .PP
 .B lifpurge \-?
@@ -14,6 +16,12 @@ from a LIF image file.
 .I filename
 is case\-sensitive and must be given in upper case. 
 .SH OPTIONS
+.TP
+.I \-l
+Relax file name checking, allow underscores in filenames.
+.TP
+.I \-p
+Purge file on a floppy disk with a LIF file system. Note: this option is only supported on LINUX. Specify the floppy device instead of the lif-image-filename. See the LIFUTILS tutorial for details.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.

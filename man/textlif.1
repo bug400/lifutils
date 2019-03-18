@@ -4,6 +4,7 @@ textlif \- a filter to convert an ASCII file to a LIF text file
 .SH SYNOPSIS
 .B textlif
 [\-r registers]
+[\-l]
 .I <LIF filename>
 .B <
 .I Input file
@@ -27,6 +28,9 @@ for the resulting file in the HP-41 extended memory or the HEPAX file system.
 If a value of 0 is specified the number of register is determined from the 
 size of the input text file.  According to the HEPAX documentation the 
 maximum file size is 577 registers.
+.TP
+.I \-l
+Relax file name checking, allow underscores in LIF filename.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.
