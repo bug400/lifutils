@@ -30,11 +30,11 @@ a new version.
 * A 32 bit version of the lifutils will not install on a 64 bit windows
 * you may choose a system-wide installation or an installation only for
 the current user. A system-wide installation requires administrator privileges.
-* You may choose to have the installer modify the PATH variable and the
+* You may choose to modify the PATH variable and set the
 LIFUTILSXROMDIR environment variable. This is not needed if you call the
 lifutils from the "lifutils prompt" in the start menu.
-* The uninstaller fails if issued from "Apps and Features" in Windows 10. 
-Uninstall the lifutils from the control panel instead.
+* It is recommended to uninstall ASM71 from the legacy "program and features" control panel. Uninstalling from the "apps and features " control panel (Windows 10) requires to enter administrator credentials even for a local installation.
+
 
 
 Mac OS:
