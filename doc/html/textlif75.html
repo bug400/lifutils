@@ -13,12 +13,12 @@
        table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
        h1      { text-align: center }
 </style>
-<title>textlif</title>
+<title>textlif75</title>
 
 </head>
 <body>
 
-<h1 align="center">textlif</h1>
+<h1 align="center">textlif75</h1>
 
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
@@ -36,19 +36,20 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">textlif - a
-filter to convert an ASCII file to a LIF text file</p>
+<p style="margin-left:11%; margin-top: 1em">textlif75 - a
+filter to convert an ASCII file to a HP-75 text file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>textlif</b>
-[-r registers] [-l] <i>&lt;LIF filename&gt;</i> <b>&lt;</b>
-<i>Input file</i> <b>&gt;</b> <i>Output file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>textlif
+<p style="margin-left:11%; margin-top: 1em"><b>textlif75</b>
+[-n] <i>&lt;LIF filename&gt;</i> <b>&lt;</b> <i>Input
+file</i> <b>&gt;</b> <i>Output file</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>textlif75
 -?</b></p>
 
 <h2>DESCRIPTION
@@ -56,13 +57,16 @@ filter to convert an ASCII file to a LIF text file</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>textlif</b>
-is a filter which generates a LIF file from a text file. The
-filter reads the text from standard input and writes the LIF
-file header and the LIF formatted text to standard output.
-This file type can be used on the HP-71 (TEXT) or the HP-41
-extended Memory or HEPAX file system (ASCII). If the file
-shall be used on a HP-41 the -r option is mandatory.</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>textlif75</b>
+is a filter which generates a text file for the HP-75. The
+filter reads plain text from standard input and writes the
+LIF file header followed by the converted HP-75 text file to
+standard output. This file type can be used on the HP-75
+only. The maximum line length of this file type is 255
+characters excluding end of line char(s). <b>textlif75</b>
+adds a line numbering starting with zero with an increment
+of one.</p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
@@ -76,30 +80,16 @@ shall be used on a HP-41 the -r option is mandatory.</p>
 <td width="3%">
 
 
-<p style="margin-top: 1em"><i>-r</i></p></td>
+<p style="margin-top: 1em"><i>-n</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
 
-<p style="margin-top: 1em">This option specifies the file
-size in registers which shall be allocated for the resulting
-file in the HP-41 extended memory or the HEPAX file system.
-If a value of 0 is specified the number of register is
-determined from the size of the input text file. According
-to the HEPAX documentation the maximum file size is 577
-registers.</p> </td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="3%">
-
-
-<p><i>-l</i></p></td>
-<td width="8%"></td>
-<td width="78%">
-
-
-<p>Relax file name checking, allow underscores in LIF
-filename.</p> </td></tr>
+<p style="margin-top: 1em">Get the linenumbering from the
+input file. The line numbers must be the first token in each
+line of the input file. They must be in the range 0-9999 and
+in consecutive order. Exactly one space seperates the line
+number from the following text of the line.</p></td></tr>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="3%">
@@ -120,9 +110,8 @@ error.</p> </td></tr>
 
 
 <p style="margin-left:11%; margin-top: 1em">The HP text
-file format is documented in section 11.2.8.1 of the <i>HP71
-Software Internal Design Specifications Volume 1
-(Hewlett-Packard)</i></p>
+file format is documented in page 107 and 111 of the <i>HP75
+Description and Entry Points documentation.</i></p>
 
 <h2>EXAMPLES
 <a name="EXAMPLES"></a>
@@ -133,10 +122,10 @@ Software Internal Design Specifications Volume 1
 <i>demo.txt</i> is an ASCII text file then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>cat demo.txt
-| textlif DEMO | lifput lifimage.dat</b></p>
+| textlif75 DEMO | lifput lifimage.dat</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will put the
-LIF text file with the name <i>DEMO</i> into the LIF image
+HP-75 text file with the name <i>DEMO</i> into the LIF image
 file <i>lifimage.dat</i></p>
 
 <h2>AUTHOR

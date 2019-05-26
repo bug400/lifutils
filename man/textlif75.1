@@ -1,0 +1,49 @@
+.TH textlif75 1 22-May-2019 "LIF Utilitites" "LIF Utilities"
+.SH NAME
+textlif75 \- a filter to convert an ASCII file to a HP-75 text file
+.SH SYNOPSIS
+.B textlif75
+[\-n]
+.I <LIF filename>
+.B <
+.I Input file
+.B >
+.I Output file
+.PP
+.B textlif75 \-?
+.SH DESCRIPTION
+.B textlif75
+is a filter which generates a text file for the HP-75.
+The filter reads plain text from standard input and writes the LIF file header 
+followed by the converted HP-75 text file to standard output. 
+This file type can be used on the HP-75 only. The maximum line length of this file type is 255 characters excluding end of line char(s). 
+.B textlif75 
+adds a line numbering starting with zero with an increment of one.
+.SH OPTIONS
+.TP
+.I \-n
+Get the linenumbering from the input file. The line numbers must be the first token in each line of the input file. They must be in the range 0-9999 and in consecutive order. Exactly one space seperates the line number from the following text of the line.
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
+.SH REFERENCES
+The HP text file format is documented in page 107 and 111 of the
+.I
+HP75 Description and Entry Points documentation.
+.SH EXAMPLES
+If
+.I demo.txt
+is an ASCII text file 
+then
+.PP
+.B cat demo.txt | textlif75 DEMO | lifput lifimage.dat
+.PP
+will put the HP-75 text file with the name
+.I DEMO
+into the LIF image file
+.I lifimage.dat
+.SH AUTHOR
+.B textlif
+was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, 
+ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

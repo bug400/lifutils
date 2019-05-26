@@ -3,6 +3,7 @@
 
 #include<string.h>
 #include<ctype.h>
+#include<stdlib.h>
 #include<time.h>
 
 int get_filetype(char *type_string)
@@ -99,6 +100,17 @@ void put_time(unsigned char *entry)
   {
     time_t real_time;
     struct tm *decoded_time;
+
+    /* this is for regression tests */
+    if (getenv("LIFUTILSREGRESSIONTEST")!= (char *) NULL) {
+        entry[20]=bcd(1);
+        entry[21]=bcd(1);
+        entry[22]=bcd(1);
+        entry[23]=bcd(0);
+        entry[24]=bcd(0);
+        entry[25]=bcd(0);
+        return;
+    }
 
     real_time=time(0);
     decoded_time=localtime(&real_time);

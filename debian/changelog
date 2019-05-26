@@ -5,7 +5,9 @@ lifutils (1.7.9-devel) bionic; urgency=medium
   * added -l option to relax file name checking, allow underscore in
     lif filenames 
   * documented the "-p" option for floppy disk access (LINUX only)
-  * Windows installer updates
+  * Windows installer updates 
+  * renamed text75 to liftext75
+  * added textlif75
 
  -- trusty <achim@trillian.trilldom.lan>  Sat, 16 Mar 2019 14:58:17 +0100
 

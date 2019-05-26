@@ -14,3 +14,6 @@ void put_lif_int(unsigned char *data, int length, unsigned int value);
 void put_time(unsigned char *entry);
 /* put  time stamp value in to a directory entry */
 
+int bcd (int value);
+/* convert a 2 digit number to bcd) */
+

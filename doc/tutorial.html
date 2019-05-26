@@ -96,7 +96,7 @@ Any access to LIF image files occurs by reading or writing complete blocks.</b>
 
 <p>Building LIF files from raw files is possible for:</p>
 <ul>
-<li>ASCII text files (see <a href="html/textlif.html">textlif</a>)</li>
+<li>ASCII text files (see <a href="html/textlif.html">textlif</a>, and <a href="html/textlif75.html">textlif75</a>)</li>
 <li>compiled HP-41 Focal programs (see <a href=html/raw41lif.html>raw41lif</a>)</li>
 <li>HP-41 ROMS (see <a href="html/rom41er.html">rom41er</a>, <a href="html/rom41hx.html">rom41hx</a> or <a href="html/rom41lif.html">rom41lif</a>)</li>
 <li>HP-71 LEX, BIN or ROM data (see the <a href="https://www.hpcalc.org/details/7585">alifhdr utility</a> which is not part of the <em>LIFUTILS</em>)</li>
@@ -200,6 +200,7 @@ determined from the implementation bytes.</li>
 <p>For some LIF file types the <em>LIFUTILS</em> provide programs to create LIF files with a valid LIF header and the necessary implementation bytes from raw data. You have to specify a valid LIF file name which must not exist in the destination LIF image file.</p>
 <ul>
 <li><a href="html/textlif.html">textlif</a>: creates a LIF text file from an ASCII file. This file type can be used with the HP-71 (TEXT), the HP-75 (Interchange File) and the extended memory or HEPAX file system of the HP-41 (ASCII). The utility does not perform any character set conversion. <em>Note:</em> The <em>-r</em> option is mandatory if the LIF text file is to be used in the extended Memory or HEPAX Memory of a HP41-C. This parameter specifes the file size in registers and is stored in the implementation bytes of the LIF header. The HP-41 needs this information to allocate an appropriate amount of space for the file. If you specifiy the <em>-r</em> option without a size value then the register size is determined from the size of the ASCII file.</li>
+<li><a href="html/textlif75.html">textlif75</a>: creates a HP-75 text file from an ASCII file. This file type can only be used with the HP-75 (TEXT). The utility does not perform any character set conversion. The utility allocates a line number to each input line. If the <em>-n</em> option is used, the line numbers are taken from the input file. <em>Note:</em> The line numbers in the input file must match the HP-75 line numbering rules and must be separated from the text by exactly one space.</p> 
 <li><a href="html/raw41lif.html">raw41lif</a>: creates a HP-41 LIF program file from a HP-41 raw file. A HP-41 raw file which contains compiled FOCAL code can be converted from a FOCAL text file with the <a href="html/comp41.html">comp41</a> utility. <a href="html/rawlif.html">rawlif</a>  adds the necessary implementation bytes in the LIF header so that the file can be loaded into the HP-41 memory.</li>
 <li><a href="html/rom41er.html">rom41er</a>: This utility creates a LIF file of type X-M41 from a raw HP-41 rom file. The output file contains the rom image in a specific compressed format that can be used by the ERAMCO MLDL-OS.</li>
 <li><a href="html/rom41hx.html">rom41hx</a>: This utility creates a HP-41 sdata LIF file from a raw HP-41 rom file. The output file contains the rom image in a specific compressed format that can be used by the HEPAX <em>READROM</em> command.</li>
@@ -219,7 +220,7 @@ determined from the implementation bytes.</li>
 <ul>
 
 <li><a href="html/liftext.html">liftext</a>: Creates an ASCII text file from a LIF text file. The utility does not perform any character set conversion. </li>
-<li><a href="html/text75.html">text75</a>: Creates an ASCII text file from a HP-75 text file. The utility does not perform any character set conversion.</li>
+<li><a href="html/liftext75.html">liftext75</a>: Creates an ASCII text file from a HP-75 text file. The utility does not perform any character set conversion.</li>
 <li><a href="html/lexcat71.html">lexcat71</a>: displays information about a HP71 lex files from the internal tables.</a>
 <li><a href="html/decomp41.html">decomp41</a>: Decompiles a HP-41 focal raw file into an ASCII file. Characters not printable in ASCII are displayed as octal sequences. The output of this utility is compatible with the <a href="html/comp41.html">comp41</a> utility (see below). To display the function names
 of rom modules correctly their xrom mapping files must be specified on the command line (see application examples below).</li>
@@ -485,10 +486,9 @@ lifget -r liftest.dat TDATA | liftext
 <p>The text files encoded with <a href="html/textlif.html">textlif</a> and decoded with <a href="html/liftext.html">liftext</a> are called interchange files on the HP-75. The HP-75 uses an own text file format with a different LIF file type. This format can be decoded in the following way:</p>
 
 <pre>
-lifget -r liftest.dat TDATA75 | text75
+lifget -r liftest.dat TDATA75 | liftext75
 </pre>
 
-<p>There is no utility to create HP-75 text files from ASCII files but you can copy the interchange file into the HP-75 and convert it into a HP-75 text file and vice versa with the <em>TRANSFORM</em> command.</p>
 
 <H4>Working with HP-41 programs</H4>
 

@@ -1,21 +1,19 @@
-/* text75.c -- a filter to decode HP75 text files */
+/* liftext75.c -- a filter to decode HP75 text files */
 /* 2000 A. R. Duell, and placed under the GPL */
 
-/* An HP75 text file consists of : 
-     A 28 byte header. The meaning of this is unknown (it may be the
-     HP75's internal directory entry), and this header is ignored by
-     this program
+/* A HP75 text file consists of : 
+   A 28 byte header which is ignored by this program
 
-      A number of lines. Each line starts with a 3 byte header. The first 2
-      bytes give the line number in BCD (low byte first). The 3rd byte is the
-      length of the line in binary. The header is followed by the 
-      characters that make up that line. 
+   A number of lines. Each line starts with a 3 byte header. The first 2
+   bytes give the line number in BCD (low byte first). The 3rd byte is the
+   length of the line in binary. The header is followed by the 
+   characters that make up that line. 
 
-       The end of the file is marked by a line having the illegal line number
-       0xa999. 
+   The end of the file is marked by a line having the illegal line number
+   0xa999. 
 
    This filter reads such a file on standard input and writes the decoded 
-   form (as a stream-of-bytes) to stnadard output */
+   form (as a stream-of-bytes) to stadard output */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -62,7 +60,7 @@ int print_line(int number_flag)
             if(number_flag)
               {
                 /* If desired, print the line number */
-                printf("%4d : ",line_no);
+                printf("%4.4d ",line_no);
               }
             /* Read in the line */
             chars_read=fread(line,sizeof(char),hdr[2],stdin);
@@ -107,7 +105,12 @@ int main(int argc, char **argv)
 
     /* Read in file header */
     fread(hdr,sizeof(char),FILE_HDR,stdin);
-    /* And ignore it! */
+    
+    /* check of we have a HP-75 text file */
+    if (hdr[5]!=0x54) {
+        fprintf(stderr,"This is not a HP-75 text file\n");
+        exit(1);
+    }
 
     /* Read and print the lines of the file */
     do

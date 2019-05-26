@@ -58,6 +58,7 @@ LIF Utilities v1.7.9 Readme
 <tr><td><a href="html/lifrename.html">lifrename</a> </td><td>Rename a file in a LIF image file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/lifstat.html">lifstat</a> </td><td>Display LIF image file statstics, show which file contains a certain block</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/liftext.html">liftext</a></td><td>Decode a LIF file of type TEXt (LIF1) to an ASCII file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/liftext75.html">liftext75</a></td><td>Decode a raw file of type HP-75 text into an ASCII file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/outp41.html">outp41</a></td><td>Translate a HP-41 program raw file into hex</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/out71.html">out71</a></td><td>Send a file to a HP-71 via (e.g.) a RS232 interface</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/prog41bar.html">prog41bar</a> </td><td>Produce an intermediate barcode file from a HP-41 program raw file</td><td>yes</td><td>yes</td></tr>
@@ -70,8 +71,8 @@ LIF Utilities v1.7.9 Readme
 <tr><td><a href="html/sdata.html">sdata</a></td><td>Interpret a raw SDATA file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/sdatabar.html">sdatabar</a> </td><td>Convert a raw SDATA file into an intermediate barcode file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/textlif.html">textlif</a></td><td>Convert an ASCII file to a LIF file</td><td>yes</td><td>yes</td></tr>
+<tr><td><a href="html/textlif75.html">textlif75</a></td><td>Convert an ASCII file to a HP-75 text file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/stat41.html">stat41</a></td><td>Display a raw HP-41 'status' file</td><td>yes</td><td>yes</td></tr>
-<tr><td><a href="html/text75.html">text75</a></td><td>Decode a raw file of type HP-75 text into an ASCII file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/wall41.html">wall41</a></td><td>Extract information from a raw HP-41 Write-All file</td><td>yes</td><td>yes</td></tr>
 <tr><td><a href="html/wcat41.html">wcat41</a></td><td>Display a catalogue of the contents of a raw HP-41 Write-All file</td><td>yes</td><td>yes</td></tr>
 </table>
@@ -190,7 +191,7 @@ The textlif utility was enhanced to write HP-41 specific implementation bytes.
 Extended output options for lifdir and lifheader. Removed lifilper. Fixes in lif_phy_linux.c. Better error diagnostics in lif_img.c. Added switch in lifinit to zero the data area. Added tutorial. inp41, outp41, in71 and out71 are now available on all platforms. All existing documentation checked and updated.
 </td></tr>
 <tr><td>v1.7.8</td><td>
-Merged pull request 3: make LIFUTILS build on non LINUX Unices, fix potential side effect in comp41.c.  Add -l option to lifget, lifput, lifpurge, lifrename, textlif to relax file name checking of lif files and allow them to have underscores. Documented the -p switch for floppy disk access (LINUX only).
+Merged pull request 3: make LIFUTILS build on non LINUX Unices, fix potential side effect in comp41.c.  Add -l option to lifget, lifput, lifpurge, lifrename, textlif to relax file name checking of lif files and allow them to have underscores. Documented the -p switch for floppy disk access (LINUX only). Renamed the text75 program to liftext75 to ensure naming consistency. Added the textlif75 utility.
 </td></tr>
 </table>
 </p>
