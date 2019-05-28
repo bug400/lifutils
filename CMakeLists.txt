@@ -165,4 +165,10 @@ endif(UNIX)
 #
 # tests
 #
-add_test(NAME basic WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/test COMMAND  "${CMAKE_SOURCE_DIR}/test/runtest" "basic" "${CMAKE_CURRENT_BINARY_DIR}" "${CMAKE_SOURCE_DIR}/xroms")
+if(WIN32)
+    SET(TESTDRIVER "runtest.cmd")
+endif(WIN32)
+if (UNIX)
+    SET(TESTDRIVER "runtest.sh")
+endif(UNIX)
+add_test(NAME basic WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/test COMMAND  "${CMAKE_SOURCE_DIR}/test/${TESTDRIVER}" "basic" "${CMAKE_CURRENT_BINARY_DIR}" "${CMAKE_SOURCE_DIR}/xroms")

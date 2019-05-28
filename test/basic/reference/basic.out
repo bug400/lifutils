@@ -1,0 +1,285 @@
+New Volume : TEST  
+Volume : TEST   ( formatted : 01/01/01 00:00:00 )
+Tracks: 2 Surfaces: 1 Blocks per Track: 256 Total size: 512 Blocks, 131072 Bytes
+Directory start : 2 (0/0/3) end : 9 (0/0/10)
+User data start : 10 (0/0/11) end : 55 (1/1/8)
+Old Volume : TEST  
+Volume : TEST   , formatted : 01/01/01 00:00:00
+Tracks: 2 Surfaces: 1 Blocks/Track: 256 Total size: 512 Blocks, 131072 Bytes
+AUDI2       PGM41        1972/2048                      
+TEST1       PGM41         185/256                       
+TXTB        TEXT          256/256      01/01/01 00:00:00
+TXT75       TXT75         256/256      01/01/01 00:00:00
+VERMROM     SDATA        5120/5120     01/01/01 00:00:00
+TXTA        TEXT          256/256      01/01/01 00:00:00
+DATA1       SDATA         160/256                       
+KEY1        KEY41           9/256                       
+WALL1       ALL41        2689/2816                      
+STAT1       STAT41         81/256                       
+10 files (64 max), last block used: 55 of 512
+Volume : TEST   ( formatted : 01/01/01 00:00:00 )
+Tracks: 2 Surfaces: 1 Blocks per Track: 256 Total size: 512 Blocks, 131072 Bytes
+Directory start : 2 (0/0/3) end : 9 (0/0/10)
+User data start : 10 (0/0/11) end : 35 (1/0/4)
+Volume : TEST   , formatted : 01/01/01 00:00:00
+Tracks: 2 Surfaces: 1 Blocks/Track: 256 Total size: 512 Blocks, 131072 Bytes
+AUDI2       PGM41        1972/2048                      
+TEST1       PGM41         185/256                       
+TXTB        TEXT          256/256      01/01/01 00:00:00
+TXT75       TXT75         256/256      01/01/01 00:00:00
+TXTA        TEXT          256/256      01/01/01 00:00:00
+DATA1       SDATA         160/256                       
+KEY1        KEY41           9/256                       
+WALL1       ALL41        2689/2816                      
+STAT1       STAT41         81/256                       
+9 files (64 max), last block used: 35 of 512
+output of liftext...
+RECORD1
+RECORD2
+RECORD3
+output of liftext75...
+0000 RECORD1
+0001 RECORD2
+0002 RECORD3
+output of decomp41...
+LBL "TEST1"
+20
+"TXTA"
+HCRFLAS
+"RECORD1"
+HAPPREC
+"RECORD2"
+HAPPREC
+"RECORD3"
+HAPPREC
+"TXTA,TXTA"
+HWRTFL
+"TXTA"
+HPURFL
+"TXTB,TXTB"
+HREADFL
+"TXTB"
+11
+STO 10
+LBL 00
+1
+ST- 10
+RCL 10
+X=0?
+GTO 01
+HGETREC
+AVIEW
+GTO 00
+LBL 01
+"TXTB"
+HPURFL
+10
+STO 00
+LBL 02
+RCL 00
+STO IND 10
+ST+ 10
+RCL 10
+20
+X=Y?
+GTO 03
+GTO 02
+LBL 03
+"DATA1"
+20
+CREATE
+0
+SEEKR
+10.020
+WRTRX
+"READP"
+21
+XF
+8
+"KEY1"
+WRTK
+"STAT1"
+WRTS
+"WALL1"
+WRTA
+END
+Output of sdata...
++2.000000000E+1
++0.000000000E+0
++0.000000000E+0
++0.000000000E+0
++0.000000000E+0
++0.000000000E+0
++0.000000000E+0
++0.000000000E+0
++0.000000000E+0
++0.000000000E+0
++0.000000000E+0
++0.000000000E+0
++0.000000000E+0
++0.000000000E+0
++0.000000000E+0
++0.000000000E+0
++0.000000000E+0
++0.000000000E+0
++0.000000000E+0
++0.000000000E+0
+Output of regs41...
+0000 : 02 00 00 00 00 00 01
+0001 : 00 00 00 00 00 00 00
+0002 : 00 00 00 00 00 00 00
+0003 : 00 00 00 00 00 00 00
+0004 : 00 00 00 00 00 00 00
+0005 : 00 00 00 00 00 00 00
+0006 : 00 00 00 00 00 00 00
+0007 : 00 00 00 00 00 00 00
+0008 : 00 00 00 00 00 00 00
+0009 : 00 00 00 00 00 00 00
+000a : 00 00 00 00 00 00 00
+000b : 00 00 00 00 00 00 00
+000c : 00 00 00 00 00 00 00
+000d : 00 00 00 00 00 00 00
+000e : 00 00 00 00 00 00 00
+000f : 00 00 00 00 00 00 00
+0010 : 00 00 00 00 00 00 00
+0011 : 00 00 00 00 00 00 00
+0012 : 00 00 00 00 00 00 00
+0013 : 00 00 00 00 00 00 00
+Output of key41...
+ 21 : XROM 28,07
+Output of wcat41...
+SIZE 273
+First statistical register = 011
+
+1 KAR found
+"TEST1"
+.END.
+Output of stat41...
+RPN Stack : 
+
+ T : +2.000000000E+1
+ Z : +0.000000000E+0
+ Y : +1.002000000E+1
+ X : +2.100000000E+1
+ L : +0.000000000E+0
+
+Alpha : "STAT1"
+
+SIZE = 273
+Statistics start = 011
+
+User Flags 00--43 : 00000000000000000000010100101100000001001000
+Output of ROM dump
+30 0 VERMROM_1A
+30 1 XROM'AUDI2'
+30 2 XROM'Z'
+30 3 XROM'NCS'
+30 4 XROM'PCS'
+30 5 XROM'NEW'
+30 6 XROM'PUR'
+30 7 XROM'SAV'
+30 8 XROM'GET'
+30 9 XROM'?'
+30 10 XROM'EIN'
+30 11 XROM'AUS'
+30 12 XROM'CLR'
+30 13 XROM'INH'
+30 14 XROM'AK'
+30 15 XROM'WR'
+30 16 XROM'CAN'
+30 17 XROM'AN'
+30 18 XROM'NAN'
+30 19 XROM'CLA'
+30 20 XROM'VPT'
+30 21 XROM'DPT'
+30 22 XROM'AUF'
+30 23 XROM'AB'
+30 24 XROM'ABL'
+30 25 XROM'ABO'
+30 26 XROM'TAV'
+30 27 XROM'KLP'
+30 28 XROM'FL'
+30 29 XROM'FLP'
+30 30 XROM'GS'
+Row :  1 ,  8 bytes
+HEX :  3b  62  b0  00  00  00  0e  1a
+DEC :  59  98 176   0   0   0  14  26
+Row :  2 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+Row :  3 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+Row :  4 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+Row :  5 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+Row :  6 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+Row :  7 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+Row :  8 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+Row :  9 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+Row : 10 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+Row : 11 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+Row : 12 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+Row : 13 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+Row : 14 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+Row : 15 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+Row : 16 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+Row : 17 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+Row : 18 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+Row : 19 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+Row : 20 ,  7 bytes
+HEX :  1b  60  b0  00  00  00  0a
+DEC :  27  96 176   0   0   0  10
+output of lex71
+LEX ID: 5c
+Lowest token: 1
+Highest token: 9
+Poll handler present
+ Keyword Token Characterization
+    ANZ?     1 BASIC function
+     DEL     2 Legal after THEN/ELSE, Programmable
+     GET     3 Legal after THEN/ELSE, Programmable
+    MAX?     4 BASIC function
+    NEWK     5 Legal after THEN/ELSE, Programmable
+     OUT     6 Legal after THEN/ELSE, Programmable
+    PURK     7 Legal after THEN/ELSE, Programmable
+     PUT     8 Legal after THEN/ELSE, Programmable
+     UPD     9 Legal after THEN/ELSE, Programmable
+
+File name           : MEM       
+File type           : e208 (LEX71) 
+Data length         : 959
+Number of blocks    : 4
+Creation date       : 01/03/16 21:15:40
+Implementation bytes: 80017D070000
