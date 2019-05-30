@@ -71,4 +71,4 @@ build directories:
 * linux: Linux (Debian package tools)
 * macos: mac OS (XCode command line tools)
 * mingw (mingw cross compile under Linux and nsis 3.0 package builder)
-* windows (MSVC 2017 and nsis 3.0 package builder)
+* windows (MSVC 2017 or MSVC 2019 and nsis 3.0 package builder)
