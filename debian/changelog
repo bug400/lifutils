@@ -1,4 +1,4 @@
-lifutils (1.7.9-devel) bionic; urgency=medium
+lifutils (1.7.9) bionic; urgency=medium
 
   * merged pull #3: make LIFUTILS build on non LINUX Unices, 
     fix potential side effect in comp41.c

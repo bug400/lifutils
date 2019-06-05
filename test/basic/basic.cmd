@@ -46,8 +46,11 @@ lifget -r liftest.dat TEST1 | prog41bar | barps > prog.ps
 diff prog.ps reference/prog.ps
 lifget -r liftest.dat DATA1 | sdatabar | barprt
 lifput liftest.dat memt.lex
+lifput liftest.dat phycons.lif
 echo output of lex71
 lifget -r liftest.dat MEM | lexcat71
+echo output of lex75
+lifget -r liftest.dat PHYCONS | lexcat75
 lifheader memt.lex
 rom41hx VERMROM < verm1.rom | lifraw | hx41rom > tst.rom
 diff verm1.rom tst.rom

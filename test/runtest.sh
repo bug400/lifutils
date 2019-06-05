@@ -24,6 +24,6 @@ cd ${testfile}
 rm -f ${testfile}.out
 ./${testfile}.sh > ${testfile}.out
 diff ${testfile}.out reference/${testfile}.out
-rm -f ${testfile}.out
 ret=$?
+rm -f ${testfile}.out
 exit $ret
