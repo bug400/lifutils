@@ -1,0 +1,41 @@
+.TH lexcat75 13-April-2018 "LIF Utilitites" "LIF Utilities"
+.SH NAME
+lexcat75 \- a filter to display information about HP75 LEX files
+.SH SYNOPSIS
+.B lexcat75
+.B <
+.I Input file
+.B >
+.I Output file
+.PP
+.B lexcat75 \-?
+.SH DESCRIPTION
+.B lexcat75
+is a filter which reads a HP-75 raw lex file from standard input and displays the following information on standard output:
+.PP
+.IP \- 3
+LEX file id
+.IP \- 3
+list of keywords with their attribute
+.IP \- 3
+code attributes
+.PP
+.B Note: the lex file header must not be present
+
+.SH REFERENCES
+The LEX file format is documented in the 
+.I HP\-75 Description and Entry Points Documentation pp 156
+.SH EXAMPLES
+If
+.I mem.lex
+is a raw file containing an HP75 lex file, then
+.PP
+.B cat mem.lex | lexcat75
+.PP 
+will display information about the LEX file
+.B mem.lex
+.SH AUTHOR
+.B lexcat75
+was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, 
+ard@p850ug1.demon.co.uk and has been placed 
+under the GNU Public License version 2.0

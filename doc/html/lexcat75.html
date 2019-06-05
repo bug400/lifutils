@@ -13,12 +13,12 @@
        table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
        h1      { text-align: center }
 </style>
-<title>lexcat71</title>
+<title>lexcat75</title>
 
 </head>
 <body>
 
-<h1 align="center">lexcat71</h1>
+<h1 align="center">lexcat75</h1>
 
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
@@ -35,19 +35,19 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">lexcat71 - a
-filter to display information about HP71 LEX files</p>
+<p style="margin-left:11%; margin-top: 1em">lexcat75 - a
+filter to display information about HP75 LEX files</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lexcat71
+<p style="margin-left:11%; margin-top: 1em"><b>lexcat75
 &lt;</b> <i>Input file</i> <b>&gt;</b> <i>Output
 file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lexcat71
+<p style="margin-left:11%; margin-top: 1em"><b>lexcat75
 -?</b></p>
 
 <h2>DESCRIPTION
@@ -56,12 +56,10 @@ file</i></p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lexcat71</b>
-is a filter which reads a HP-71 raw lex file from standard
+<p style="margin-left:11%; margin-top: 1em"><b>lexcat75</b>
+is a filter which reads a HP-75 raw lex file from standard
 input and displays the following information on standard
-output: <br>
-LEX file id <br>
-for each of existing lex tables:</p>
+output:</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
@@ -72,10 +70,12 @@ for each of existing lex tables:</p>
 
 <p>-</p></td>
 <td width="3%"></td>
-<td width="85%">
+<td width="57%">
 
 
-<p>lowest token ID</p></td></tr>
+<p>LEX file id</p></td>
+<td width="28%">
+</td></tr>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="1%">
@@ -83,10 +83,12 @@ for each of existing lex tables:</p>
 
 <p>-</p></td>
 <td width="3%"></td>
-<td width="85%">
+<td width="57%">
 
 
-<p>highest token ID</p></td></tr>
+<p>list of keywords with their attribute</p></td>
+<td width="28%">
+</td></tr>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="1%">
@@ -94,44 +96,12 @@ for each of existing lex tables:</p>
 
 <p>-</p></td>
 <td width="3%"></td>
-<td width="85%">
+<td width="57%">
 
 
-<p>existence of speed table</p></td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="1%">
-
-
-<p>-</p></td>
-<td width="3%"></td>
-<td width="85%">
-
-
-<p>existence of message table</p></td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="1%">
-
-
-<p>-</p></td>
-<td width="3%"></td>
-<td width="85%">
-
-
-<p>existence of poll handler</p></td></tr>
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="1%">
-
-
-<p>-</p></td>
-<td width="3%"></td>
-<td width="85%">
-
-
-<p>list of keywords with token number and characterization
-nibble</p> </td></tr>
+<p>code attributes</p></td>
+<td width="28%">
+</td></tr>
 </table>
 
 <p style="margin-left:11%; margin-top: 1em"><b>Note: the
@@ -143,8 +113,8 @@ lex file header must not be present</b></p>
 
 
 <p style="margin-left:11%; margin-top: 1em">The LEX file
-format is documented in the <i>HP-71 IDS Volume 1, chapter
-6.</i></p>
+format is documented in the <i>HP-75 Description and Entry
+Points Documentation pp 156</i></p>
 
 <h2>EXAMPLES
 <a name="EXAMPLES"></a>
@@ -152,11 +122,11 @@ format is documented in the <i>HP-71 IDS Volume 1, chapter
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>mem.lex</i> is a raw file containing an HP71 lex file,
+<i>mem.lex</i> is a raw file containing an HP75 lex file,
 then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>cat mem.lex
-| lexcat71</b></p>
+| lexcat75</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will display
 information about the LEX file <b>mem.lex</b></p>
@@ -167,7 +137,7 @@ information about the LEX file <b>mem.lex</b></p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lexcat71</b>
+<p style="margin-left:11%; margin-top: 1em"><b>lexcat75</b>
 was written by Joachim Siebold, bug400@gmx.de using code
 from Tony Duell, ard@p850ug1.demon.co.uk and has been placed
 under the GNU Public License version 2.0</p>
