@@ -16,8 +16,8 @@
 /* This is therefore larger than any real HP75 */
 #define LEXFILE_SIZE 65536
 
-/* Don't know the actual size limit */
-#define KEYWORD_LEN 20 
+/* Don't know the actual size limit, possible overflow is handled below */
+#define KEYWORD_LEN  30
 
 /* lex file byte array */
 unsigned char lexfile[LEXFILE_SIZE];
@@ -145,8 +145,13 @@ void lex_table()
             if(attr == 0x00) fprintf(stdout,"function or operator.\n");
             len=0;
         } else {
-            keyword[len]= (char) c;
-            len+=1;
+            if(len== KEYWORD_LEN) {
+                fprintf(stderr,"keyword too long\n");
+                exit(1);
+            } else {
+                keyword[len]= (char) c;
+                len+=1;
+            }
         }
         keyword_ptr+=1;
     }
