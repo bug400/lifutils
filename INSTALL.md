@@ -33,7 +33,7 @@ the current user. A system-wide installation requires administrator privileges.
 * You may choose to modify the PATH variable and set the
 LIFUTILSXROMDIR environment variable. This is not needed if you call the
 lifutils from the "lifutils prompt" in the start menu.
-* It is recommended to uninstall ASM71 from the legacy "program and features" control panel. Uninstalling from the "apps and features " control panel (Windows 10) requires to enter administrator credentials even for a local installation.
+* It is recommended to uninstall ASM71 from the legacy "programs and features" control panel. Uninstalling from the "apps and features " control panel (Windows 10) requires to enter administrator credentials even for a local installation.
 
 
 
