@@ -91,7 +91,13 @@ void lex_table()
     int keyword_ptr;     /* pointer to keyword table */
     int runtime_ptr;     /* pointer to runtime table */  
     int function_ptr;    /* pointer to keyword function code */
+    int sec_attr_ptr;    /* pointer to secondary attributes of func/oper */
+    int num_params;      /* number of parameters */
+    int param_type;      /* parameter type */
     int attr;            /* keyword attributes */
+    int class;           /* keyword class */
+    int i;               /* keyword counter */
+    int shift;           /* keyword attribute mask shift */
     char keyword[KEYWORD_LEN+1];
     int len;             /* keyword length */
     unsigned int c;
@@ -116,7 +122,7 @@ void lex_table()
 
     /* set pointer to the beginning of the runtime tab */
     runtime_ptr= byte_ptr+read_int(byte_ptr+2,2)+2;
-    fprintf(stdout,"%20s %s\n","Keyword","Attribute");
+    fprintf(stdout,"\nKeywords:\n");
 
     /* now output keywords and their attribute */
     len=0;
@@ -128,21 +134,75 @@ void lex_table()
             function_ptr=read_int(runtime_ptr,2)+byte_ptr;
             runtime_ptr+=2;
             attr= read_int(function_ptr-1,1)& 0xC0;
+            class= read_int(function_ptr-1,1)& 0x3F;
         }
         c= lexfile[keyword_ptr];
 
-        /* end of keyword, print it and decode its attribute */
+        /* end of keyword, decode its attribute */
         if (c & 0x80) {
             keyword[len]= (char) c & 0x7F;
             keyword[len+1]='\0';
-            fprintf(stdout,"%20s ",keyword);
             
             /* see HP 85 assembler rom documentation 5-19 
                 to 5-22 */
-            if(attr == 0xc0) fprintf(stdout,"BASIC statement, illegal after THEN.\n");
-            if(attr == 0x80) fprintf(stdout,"BASIC statement, legal after THEN.\n");
-            if(attr == 0x40) fprintf(stdout,"non programmable.\n");
-            if(attr == 0x00) fprintf(stdout,"function or operator.\n");
+            /* BASIC statement, illegal after THEN */
+            if(attr == 0xc0) fprintf(stdout,"stmt: ");
+            /* BASIC statement, legal after THEN */
+            if(attr == 0x80) fprintf(stdout,"STMT: ");
+            /* Non programmable */
+            if(attr == 0x40) fprintf(stdout,"NOTP: ");
+            /* Non BASIC statement */
+            if(attr == 0x00) {
+               switch (class) {
+               case 040: fprintf(stdout,"IMEX: ");
+                          break;
+               case 041:
+               case 042:
+               case 044: fprintf(stdout,"OTHR: ");
+                          break;
+               case 050: fprintf(stdout,"OP#1: ");
+                          break;
+               case 051: fprintf(stdout,"OP#2: ");
+                          break;
+               case 052: fprintf(stdout,"OP$1: ");
+                          break;
+               case 053: fprintf(stdout,"OP$2: ");
+                          break;
+               case 055: fprintf(stdout,"FNC#: ");
+                          break;
+               case 056: fprintf(stdout,"FNC$: ");
+                          break;
+               }
+            }
+            fprintf(stdout,"%s",keyword);
+            /* now decode secondary attributes */
+            if(attr == 0x0) {
+                sec_attr_ptr= function_ptr-2;
+                num_params= (read_int(sec_attr_ptr,1)&0xF0 ) >> 4;
+                if(num_params > 0) {
+                    fprintf(stdout,"(");
+                    shift=2;
+                    for(i=0;i<num_params;i++) {
+                        param_type=((read_int(sec_attr_ptr,1) & (0x3<<shift))>>shift);
+                        switch(param_type) {
+                        case 0: fprintf(stdout,"#");
+                                break;
+                        case 1: fprintf(stdout,"#()");
+                                break;
+                        case 2: fprintf(stdout,"$");
+                                break;
+                        }
+                        shift-=2;
+                        if(shift <0) {
+                            shift=6;
+                            sec_attr_ptr-=1;
+                        }
+                        if(i!=num_params-1) fprintf(stdout,",");
+                    }
+                    fprintf(stdout,")");
+                }
+            }
+            fprintf(stdout,"\n");
             len=0;
         } else {
             if(len== KEYWORD_LEN) {
