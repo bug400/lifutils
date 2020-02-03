@@ -1,5 +1,5 @@
 /*
  define the version string of lifversion
 */
-#define VERSION "010709"
+#define VERSION "010710"
 
