@@ -279,32 +279,33 @@ Poll handler present
 
 output of lex75
 LEX ID: 232 (hex)
-             Keyword Attribute
-               UNIT$ function or operator.
-               VLITE function or operator.
-              CHARGE function or operator.
-              PLANCK function or operator.
-              ELMASS function or operator.
-              AVGDRO function or operator.
-              MOLRGC function or operator.
-               BOLTK function or operator.
-               GRAVK function or operator.
-              MOLVOL function or operator.
-              FARADK function or operator.
-              RYDBRK function or operator.
-              FINSTK function or operator.
-               ELRAD function or operator.
-              BOHRAD function or operator.
-              MAGFLX function or operator.
-              ATMASS function or operator.
-              PRMASS function or operator.
-              NTMASS function or operator.
-                ELGK function or operator.
-              BOHRMG function or operator.
-              NUCLMG function or operator.
-               ELMAG function or operator.
-               PRMAG function or operator.
-              PRGYMR function or operator.
+
+Keywords:
+FNC$: UNIT$
+FNC#: VLITE
+FNC#: CHARGE
+FNC#: PLANCK
+FNC#: ELMASS
+FNC#: AVGDRO
+FNC#: MOLRGC
+FNC#: BOLTK
+FNC#: GRAVK
+FNC#: MOLVOL
+FNC#: FARADK
+FNC#: RYDBRK
+FNC#: FINSTK
+FNC#: ELRAD
+FNC#: BOHRAD
+FNC#: MAGFLX
+FNC#: ATMASS
+FNC#: PRMASS
+FNC#: NTMASS
+FNC#: ELGK
+FNC#: BOHRMG
+FNC#: NUCLMG
+FNC#: ELMAG
+FNC#: PRMAG
+FNC#: PRGYMR
 
 
 Code attributes:
