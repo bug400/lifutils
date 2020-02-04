@@ -52,10 +52,10 @@ lifget -r liftest.dat MEM | lexcat71
 echo "output of lex75"
 lifget -r liftest.dat PHYCONS | lexcat75
 lifheader memt.lex
-rom41hx VERMROM < vermrom1.rom | lifraw | hx41rom > tst.rom
-diff vermrom1.rom tst.rom
-rom41er VERMROM < vermrom1.rom | lifraw | er41rom > tst.rom
-diff vermrom1.rom tst.rom
+rom41hx VERMROM < verm1.rom | lifraw | hx41rom > tst.rom
+diff verm1.rom tst.rom
+rom41er VERMROM < verm1.rom | lifraw | er41rom > tst.rom
+diff verm1.rom tst.rom
 rm -rf liftest.dat
 rm -f tst.rom
 rm -f sdata.ps

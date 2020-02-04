@@ -1,5 +1,5 @@
 /* lexcat71.c -- display the keywords of a HP-71 lex file */
-/* 2016 J. Siebold, and placed under the GPL */
+/* 2016-2020 J. Siebold, and placed under the GPL */
 
 /* This program reads an HP-71B lex file (see the HP-71IDS Vol. 1 for the 
    format of this file) from standard input and displays the following
@@ -199,8 +199,13 @@ int lex_table()
          token= read_int(key_start+len+1,2);
          ckr=read_int(nib_ptr,1);
          nib_ptr++;
+         
+         /* do not output entries, which begin with lowercase letters */
+         if(keyword[0]>= 'a' && keyword[0] <= 'z') continue;
+
          fprintf(stdout,"%8s %5d ",keyword,token);
          if (ckr == 0xF) fprintf(stdout,"BASIC function\n");
+         else if (ckr ==0) fprintf(stdout,"Intermediate\n");
          else 
            {
               int need_comma=0;
