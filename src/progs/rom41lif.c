@@ -51,10 +51,10 @@ int read_rom(unsigned char *memory)
     bytes_read=fread(rom_data1,sizeof(short),RECORD_SIZE,stdin);
     while(bytes_read== RECORD_SIZE) {
           memcpy(rom_data0,rom_data1,sizeof(short)* RECORD_SIZE);
-          /* determine checksum */
+          /* determine checksum, use only the lower 10 bits */
           for(j=0;j< RECORD_SIZE;j++) {
               l=s;
-              t= ((rom_data0[j] & 0xFF) <<8) | ((rom_data0[j] & 0xFF00) >> 8);
+              t= ((rom_data0[j] & 0x03) <<8) | ((rom_data0[j] & 0xFF00) >> 8);
               s+= t;
               if (s>= 1024) {
                   s= s & 0x3FF;
