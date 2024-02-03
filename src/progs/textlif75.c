@@ -258,8 +258,6 @@ int main(int argc, char**argv)
     create_entry(dir_entry,lif_filename,0xE052,0,file_length,0);
 
     /* Store implementation bytes for HP75 text files */
-    dir_entry[26]=0x80;
-    dir_entry[27]=0x01;
     /* Password area */
     dir_entry[28]=0x20;
     dir_entry[29]=0x20;

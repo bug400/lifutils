@@ -212,8 +212,6 @@ int main(int argc, char**argv)
 
     /* Store implementation bytes for HP41 text files */
     if (num_reg != -1) {
-       dir_entry[26]=0x80;
-       dir_entry[27]=0x01;
        dir_entry[28]=num_reg >> 8;
        dir_entry[29]=num_reg & 0xff;
        dir_entry[30]=0x00;

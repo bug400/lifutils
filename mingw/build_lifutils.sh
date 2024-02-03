@@ -2,6 +2,7 @@
 #
 # mingw 32 bit cross compile
 #
+export NSISDIR=$HOME/nsis
 if [ "`dirname $0`" != "." ] ; then
    echo "script must be called from its subdirectory"
    exit 1
@@ -17,7 +18,7 @@ make install
 popd > /dev/null
 popd > /dev/null
 ./run_nsis.sh X86
-rm -rf install32
+#rm -rf install32
 #
 # mingw 64 bit cross compile
 #
@@ -33,4 +34,4 @@ popd > /dev/null
 rm -rf build
 popd > /dev/null
 ./run_nsis.sh i686
-rm -rf install64
+#rm -rf install64

@@ -261,8 +261,6 @@ int main(int argc, char**argv)
     /* create and write directory entry */
     create_entry(dir_entry,lif_filename,0xE080,0,prog_length+1,0);
     /* Implementation bytes for HP41 files */
-    dir_entry[26]=0x80;
-    dir_entry[27]=0x01;
     dir_entry[28]=prog_length >> 8;
     dir_entry[29]=prog_length & 0xff;
     dir_entry[30]=0x00;

@@ -1,3 +1,9 @@
+lifutils (1.7.11) bookworm; urgency=medium
+
+  * fixed volume/header info in rom41er, rom41hx and rom41lif 
+
+ -- bookworm <achim@trillian>  Fri, 02 Feb 2024 13:19:34 +0100
+
 lifutils (1.7.10) bionic; urgency=medium
 
   * lexcat75: the output of the program is now similar to the output of

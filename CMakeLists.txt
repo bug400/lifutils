@@ -1,8 +1,11 @@
 #
 # build file for lifutils
 #
+if (CMAKE_HOST_SYSTEM_NAME STREQUAL "Darwin")
+  set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE STRING "" FORCE)
+endif()
 project(lifutils)
-cmake_minimum_required (VERSION 2.8.4)
+cmake_minimum_required (VERSION 2.8.12)
 enable_testing()
 #
 # tweaks for Microsoft Visual C: 

@@ -128,8 +128,6 @@ int main(int argc, char**argv)
     num_reg= length/8;
     create_entry(dir_entry,lif_filename,0xE0D0,0,length,0);
     /* Implementation bytes for HP41 files */
-    dir_entry[26]=0x00;
-    dir_entry[27]=0x00;
     dir_entry[28]=num_reg >> 8;
     dir_entry[29]=num_reg & 0xff;
     dir_entry[30]=0x00;

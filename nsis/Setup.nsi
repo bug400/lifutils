@@ -7,7 +7,7 @@
 ; - does always require elevation if deinstalled from "Apps & Features"
 ;
 Unicode true ; properly display all languages (Installer will not work on Windows 95, 98 or ME!)
-SetCompressor /SOLID lzma
+;SetCompressor /SOLID lzma
 !include MUI2.nsh
 !include UAC.nsh
 !include NsisMultiUser.nsh
