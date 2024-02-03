@@ -5,7 +5,7 @@ if [ -z "${version}" ] ; then
    exit 1
 fi
 if test "${1}" == "X86" ; then
-   makensis -V4 -NOCD -INPUTCHARSET CP1252 -DINPDIR=install32 -DVERSTR="${version}" ../nsis/Setup.nsi
+   $NSISDIR/makensis -V4 -NOCD -INPUTCHARSET CP1252 -DINPDIR=install32 -DVERSTR="${version}" ../nsis/Setup.nsi
 else
-   makensis -V4 -NOCD -INPUTCHARSET CP1252 -DINPDIR64=install64 -DVERSTR="${version}" ../nsis/Setup.nsi
+   $NSISDIR/makensis -V4 -NOCD -INPUTCHARSET CP1252 -DINPDIR64=install64 -DVERSTR="${version}" ../nsis/Setup.nsi
 fi

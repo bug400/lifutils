@@ -1,8 +1,12 @@
 !include LogicLib.nsh
 !include x64.nsh
 
-!define ERROR_ALREADY_EXISTS 0x000000b7
-!define ERROR_ACCESS_DENIED 0x5
+!ifndef ERROR_ALREADY_EXISTS
+   !define ERROR_ALREADY_EXISTS 0x000000b7
+!endif
+!ifndef ERROR_ACCESS_DENIED
+   !define ERROR_ACCESS_DENIED 0x5
+!endif
 
 !macro CheckPlatform PLATFORM
 	${if} ${RunningX64}
