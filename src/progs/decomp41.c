@@ -72,55 +72,92 @@ void print_suffix(unsigned char byte)
       }
   }
 
-void print_char(unsigned char c)
-  {
-    /* Print a character. If it's printable, print it, otherwise print
-       a \nnn octal escape sequence */
-    if(isprint(c))
-      {
-        putchar(c);
-      }
-    else
-      {
-        printf("\\%02x",c);
-      }
-  }
-
-void print_string(unsigned char *memory, int pc, int length)
+void print_string(unsigned char *memory, int pc, int length, int alt_flag)
   {
     /* Print a string of length characters from memory, starting at pc */
     int i; /* character counter */
+    unsigned char c;
 
-    /* Handle append char : >"String" */
+    /* Handle append char : "~String" */
+    printf("\"");
     if(memory[pc]== 0x7f) 
-      {
-        putchar('>');
+    {
+        if(alt_flag) 
+        {
+           fputs("├",stdout);
+        } else
+        {
+           putchar('~');
+        }
+/*
+        putchar('~');
+*/
         pc++;
         length--;
-    }  
-    printf("\"");
-    for(i=0; i<length; i++)
-      {
-        print_char(memory[pc+i]);
-      }
-    printf("\"\n");
+    } 
+    else
+    {
+       if(length>1 && memory[pc]=='>' && memory[pc+1]=='-') 
+       {
+          printf("\\%02x",memory[pc]);        
+          printf("\\%02x",memory[pc+1]);        
+          pc+=2;
+          length-=2;
+       } 
+       else if (length>1 && memory[pc]=='-' && memory[pc+1]=='>')
+       {
+          printf("\\%02x",memory[pc]);        
+          printf("\\%02x",memory[pc+1]);        
+          pc+=2;
+          length-=2;
+       }
+       else if (length>1 && memory[pc]=='\\' && memory[pc+1]=='-')
+       {
+          printf("\\%02x",memory[pc]);        
+          printf("\\%02x",memory[pc+1]);        
+          pc+=2;
+          length-=2;
+       }
+       else if (length>1 && memory[pc]=='|' && memory[pc+1]=='-')
+       {
+          printf("\\%02x",memory[pc]);        
+          printf("\\%02x",memory[pc+1]);        
+          pc+=2;
+          length-=2;
+       }
+       else if (length>0 && memory[pc]=='>')
+       {
+          printf("\\%02x",memory[pc]);        
+          pc++;
+          length--;
+       }
+       else if (length>0 && memory[pc]=='~')
+       {
+          printf("\\%02x",memory[pc]);        
+          pc++;
+          length--;
+       }
+    }
+    printf("%s\"\n",to_hp41_string(memory+pc,length,0));
   }
 
-void xrom(unsigned char *memory, int pc, int line, int line_flag)
+void xrom(unsigned char *memory, int pc, int line, int line_flag, int alt_flag)
   {
     /* Print the appropriate name from the xrom_names[][] array */
     int rom; /* The ROM select code */
     int fn; /* The function in that ROM */
-    char * name; /* The ROM function name */
+    int ind; /* array index in xrom table */
 
     rom = (memory[pc]&7)*4 + (memory[pc+1]>>6);
     fn=memory[pc+1]&0x3f;
-    name=get_xrom_by_id(rom,fn);
+    ind=find_xrom_by_id(rom,fn);
     if(line_flag) printf("%04d  ",line);
-    if (name == (char *) NULL )
+    if (ind == -1 ) 
+    {
        printf("XROM %02d,%02d\n",rom,fn);
+    }
     else
-       printf("%s\n",name);
+       printf("%s\n",(alt_flag ? get_xrom_alt_name_by_index(ind): get_xrom_name_by_index(ind)));
   }
 
 void short_lbl(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag)
@@ -193,7 +230,7 @@ void swap_lbl(unsigned char *memory, int *pc, int *line, int hex_flag, int line_
     (*pc)+=2; /* And pc */
   }
 
-int global_end(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag)
+int global_end(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
   {
     /* Print global labels and ENDs from the start of row C of the
        byte table */
@@ -211,7 +248,7 @@ int global_end(unsigned char *memory, int *pc, int *line, int hex_flag, int line
         if(line_flag) printf("%04d  ",*line);
         printf("LBL ");
         /* Miss off the first character of the string (key asignment) */
-        print_string(memory,(*pc)+4,(memory[(*pc)+2]&0xf)-1);
+        print_string(memory,(*pc)+4,(memory[(*pc)+2]&0xf)-1,alt_flag);
         end_flag=0;
       }
     else
@@ -244,7 +281,7 @@ void print_gto_xeq(unsigned char *memory, int *pc, int *line, int hex_flag, int 
     (*pc)+=3; /* This is a 3 byte instruction */
   }
 
-void print_alpha_gto(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag)
+void print_alpha_gto(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
   {
     /* Print GTOs and XEQs with alpha destinations */
     if(hex_flag)
@@ -254,7 +291,7 @@ void print_alpha_gto(unsigned char *memory, int *pc, int *line, int hex_flag, in
     /* print the instruction */
     if(line_flag) printf("%04d  ",*line);
     printf("%s ",alpha_gto[memory[*pc]-0x1d]);
-    print_string(memory,(*pc)+2,memory[(*pc)+1]&0xf);
+    print_string(memory,(*pc)+2,memory[(*pc)+1]&0xf, alt_flag);
     (*line)++; /* Increment line number */
     /* 'Extend Your HP41' section 15.7 says that if the high nybble of 
        the second byte is not f, then the pc is only incremented by 2 */
@@ -293,7 +330,7 @@ void print_digits(unsigned char *memory, int *pc, int *line, int hex_flag, int l
     (*line)++;
   }
      
-void print_1_byte(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag)
+void print_1_byte(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
   {
     /* Print the single-byte instructions from rows 4--8 of the byte 
        table */ 
@@ -304,12 +341,12 @@ void print_1_byte(unsigned char *memory, int *pc, int *line, int hex_flag, int l
       }
     /* print the program line */
     if(line_flag) printf("%04d  ",*line);
-    printf("%s\n",single_byte[memory[*pc]-0x40]);
+    printf("%s\n",(alt_flag) ? alt_single_byte[memory[*pc]-0x40]: single_byte[memory[*pc]-0x40]);
     (*line)++; /* Increase the line counter */
     (*pc)++; /* And the program counter */
   }
 
-void print_2_byte(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag)
+void print_2_byte(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
   {
     /* Print the double-byte instructions from rows 9--A of the byte table */
     if(hex_flag)
@@ -332,12 +369,12 @@ void print_2_byte(unsigned char *memory, int *pc, int *line, int hex_flag, int l
             /* Is it an XROM ? */
             if((memory[*pc]>=0xa0) && (memory[*pc]<=0xa7))
               {
-                xrom(memory,*pc,*line,line_flag);
+                xrom(memory,*pc,*line,line_flag,alt_flag);
               }
             else
               {
                 if(line_flag) printf("%04d  ",*line);
-                printf("%s",double_byte[memory[*pc]-0x90]);
+                printf("%s",(alt_flag) ? alt_double_byte[memory[*pc]-0x90]: double_byte[memory[*pc]-0x90]);
                 print_suffix(memory[(*pc)+1]);
               }
           }
@@ -346,20 +383,20 @@ void print_2_byte(unsigned char *memory, int *pc, int *line, int hex_flag, int l
    (*pc)+=2; /* Move pc on 2 bytes */
   }
 
-void print_row_1(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag)
+void print_row_1(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
   {
     /* Print everything in row 1 of the byte table */
     if(memory[*pc]>=0x1d)
       {
         /* It's an alpha GTO/XEQ */
-        print_alpha_gto(memory,pc,line,hex_flag,line_flag);
+        print_alpha_gto(memory,pc,line,hex_flag,line_flag, alt_flag);
       }
     else
       {
         print_digits(memory,pc,line,hex_flag,line_flag);
       }
   }
-int print_row_c(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag)
+int print_row_c(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
   {
     /* Print everything in row c of the byte table */
     if(memory[*pc]>=0xce)
@@ -371,11 +408,11 @@ int print_row_c(unsigned char *memory, int *pc, int *line, int hex_flag, int lin
     else
       {
         /* It's a global label or an end */
-        return(global_end(memory,pc,line,hex_flag, line_flag));
+        return(global_end(memory,pc,line,hex_flag, line_flag, alt_flag));
       }
   }
 
-void print_text(unsigned char *memory, int *pc, int *line, int hex_flag,int line_flag)
+void print_text(unsigned char *memory, int *pc, int *line, int hex_flag,int line_flag, int alt_flag)
   {
     /* Print text strings started by bytes in row F of the byte table */
     if(hex_flag)
@@ -384,22 +421,24 @@ void print_text(unsigned char *memory, int *pc, int *line, int hex_flag,int line
         print_hex(memory,*pc,(memory[*pc]&0xf)+1);
       }
     if(line_flag) printf("%04d  ",*line);
-    print_string(memory,(*pc)+1, memory[*pc]&0xf); /* And string */
+    print_string(memory,(*pc)+1, memory[*pc]&0xf,alt_flag); /* And string */
     (*line)++; /* Increment line number */ 
     (*pc)+=(memory[*pc]&0xf)+1; /* And pc to after the string */
   }
 
-int print_instruction(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag)
+int print_instruction(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
   {
     /* Instructions with the same high nybble tend to have similar
        formats, so decode based on this */
     int end_flag; /* Set to signal end of program */
+    int i,oldpc;
+    oldpc= *pc;
     end_flag=0;
     switch(memory[*pc]>>4)
       {
         case 0: short_lbl(memory,pc,line,hex_flag,line_flag);
                 break;
-        case 1: print_row_1(memory,pc,line,hex_flag,line_flag);
+        case 1: print_row_1(memory,pc,line,hex_flag,line_flag, alt_flag);
                 break;
         case 2:
         case 3: short_sto_rcl(memory,pc,line,hex_flag,line_flag);
@@ -408,25 +447,26 @@ int print_instruction(unsigned char *memory, int *pc, int *line, int hex_flag, i
         case 5:
         case 6:
         case 7:
-        case 8: print_1_byte(memory,pc,line,hex_flag,line_flag);
+        case 8: print_1_byte(memory,pc,line,hex_flag,line_flag,alt_flag);
                 break;
         case 9:
-        case 0xa: print_2_byte(memory,pc,line,hex_flag,line_flag);
+        case 0xa: print_2_byte(memory,pc,line,hex_flag,line_flag,alt_flag);
                   break;
         case 0xb: short_gto(memory,pc,line,hex_flag,line_flag);
                   break;
-        case 0xc: end_flag=print_row_c(memory,pc,line,hex_flag, line_flag)?1:end_flag;
+        case 0xc: end_flag=print_row_c(memory,pc,line,hex_flag, line_flag,alt_flag)?1:end_flag;
                   break; 
         case 0xd:
         case 0xe: print_gto_xeq(memory,pc,line,hex_flag,line_flag);
                   break;
-        case 0xf: print_text(memory,pc,line,hex_flag,line_flag);
+        case 0xf: print_text(memory,pc,line,hex_flag,line_flag,alt_flag);
                   break;
       }
+      //for(i=oldpc;i<*pc;i++) printf("%2x ",memory[i]); printf("\n");
     return(end_flag); 
   }
  
-void list_prog(unsigned char *memory, int length, int hex_flag, int line_flag)
+void list_prog(unsigned char *memory, int length, int hex_flag, int line_flag, int alt_flag)
   {
     int pc; /* current program counter */
     int end_flag=0; /* Emd of program detected */
@@ -436,7 +476,7 @@ void list_prog(unsigned char *memory, int length, int hex_flag, int line_flag)
     line=1;
     while ((pc<length) && (!end_flag))
       {
-        end_flag=print_instruction(memory,&pc,&line,hex_flag,line_flag);
+        end_flag=print_instruction(memory,&pc,&line,hex_flag,line_flag, alt_flag);
       }
   }
 
@@ -447,6 +487,7 @@ void usage(void)
     fprintf(stderr,"       each program line\n");
     fprintf(stderr,"       -x xrom_name_file uses those names for XROM\n"); 
     fprintf(stderr,"       functions\n");
+    fprintf(stderr,"       -a flag prints function names with UTF-8 characters\n");
     exit(1);
   }
 
@@ -456,6 +497,7 @@ int main(int argc, char **argv)
     int prog_length; /* program length */
     int hex_flag=0; /* Print bytes in hex first? */
     int line_flag=0; /* Print line numbers) */
+    int alt_flag=0;  /* alternate UTF-8 function names */
     unsigned char memory[MEMORY_SIZE]; /* HP41 program memory */
 
     init_xrom(); /* Initialize xrom */
@@ -463,7 +505,7 @@ int main(int argc, char **argv)
     SETMODE_STDIN_BINARY;
 
     optind=1;
-    while((option=getopt(argc,argv,"hlx:?"))!=-1)
+    while((option=getopt(argc,argv,"ahlx:?"))!=-1)
       {
         switch(option)
           {
@@ -472,6 +514,8 @@ int main(int argc, char **argv)
             case 'x' : read_xrom(optarg);
                        break;
             case 'l' : line_flag=1;
+                       break;
+            case 'a' : alt_flag=1;
                        break;
             case '?' : usage();
            }
@@ -482,6 +526,6 @@ int main(int argc, char **argv)
       }
 
     prog_length=read_prog(memory); /* Read in the program */
-    list_prog(memory,prog_length,hex_flag, line_flag); /* list it */
+    list_prog(memory,prog_length,hex_flag, line_flag,alt_flag); /* list it */
     exit(0);
   }

@@ -15,10 +15,30 @@ char *single_byte[80]={
 "DEG", "RAD", "GRAD", "ENTER^", "STOP", "RTN", "BEEP", "CLA",
 "ASHF", "PSE", "CLRG", "AOFF", "AON", "OFF", "PROMPT", "ADV"};
 
+/* Single Byte functions from 0x40--0x8f (UTF-8) */
+char *alt_single_byte[80]={
+"+", "-", "*", "/", "X<Y?", "X>Y?", "X<=Y?", "Σ+",
+"Σ-", "HMS+", "HMS-", "MOD", "%", "%CH", "P-R", "R-P",
+"LN", "X^2", "SQRT", "Y^X", "CHS", "E^X", "LOG", "10^X",
+"E^X-1", "SIN", "COS", "TAN", "ASIN", "ACOS", "ATAN", "DEC",
+"1/X", "ABS", "FACT", "X#0?", "X>0?", "LN1+X", "X<0?", "X=0?",
+"INT", "FRC", "D-R", "R-D", "HMS", "HR", "RND", "OCT",
+"CLΣ", "X<>Y", "PI", "CLST", "R^", "RDN", "LASTX", "CLX",
+"X=Y?", "X#Y?", "SIGN","X<=0?", "MEAN", "SDEV", "AVIEW", "CLD",
+"DEG", "RAD", "GRAD", "ENTER^", "STOP", "RTN", "BEEP", "CLA",
+"ASHF", "PSE", "CLRG", "AOFF", "AON", "OFF", "PROMPT", "ADV"};
+
 /* Double Byte functions from 0x90-0xaf */
 char *double_byte[32]={
 "RCL", "STO", "ST+", "ST-", "ST*", "ST/", "ISG", "DSE",
 "VIEW", "SREG", "ASTO", "ARCL", "FIX", "SCI", "ENG", "TONE",
+"XR", "XR", "XR", "XR", "XR", "XR", "XR", "XR",
+"SF", "CF", "FS?C", "FC?C", "FS?",  "FC?", "GX", "??"};
+
+/* Double Byte functions from 0x90-0xaf (UTF-8) */
+char *alt_double_byte[32]={
+"RCL", "STO", "ST+", "ST-", "ST*", "ST/", "ISG", "DSE",
+"VIEW", "ΣREG", "ASTO", "ARCL", "FIX", "SCI", "ENG", "TONE",
 "XR", "XR", "XR", "XR", "XR", "XR", "XR", "XR",
 "SF", "CF", "FS?C", "FC?C", "FS?",  "FC?", "GX", "??"};
 

@@ -190,17 +190,17 @@ int compile_args( char *code_buffer,
 
 int compile_num( char *code, char *num );
 int compile_text( char *code, char *text, int count );
-int compile_alpha( char *code, char *prefix, char *alpha );
+int compile_alpha( char *code, char *prefix, char *alpha, int count );
 int compile_arg1( char *code, char *prefix );
 int compile_arg2( char *code, char *prefix, char *postfix );
 int compile_arg3( char *code, char *prefix, char *pind, char *postfix );
-int compile_label( char *code, char *label, char *alpha, char *key );
+int compile_label( char *code, char *label, char *alpha, int count, char *key );
 
 int get_numeric_prefix( char *numeric, char *buffer );
 
 int get_text_prefix( char *text, char *buffer, int *pcount );
 
-int get_alpha_postfix( char *alpha, char *buffer );
+int get_alpha_postfix( char *alpha, char *buffer, int *size );
 
 int is_postfix( char *postfix, int *pindex );
 

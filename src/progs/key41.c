@@ -35,19 +35,20 @@ void display_hex(unsigned char *key)
     printf("%02x %02x\n",key[0],key[1]);
   }
 
-void xrom(unsigned char *key)
+void xrom(unsigned char *key, int alt_flag)
 /* Display XROM assignments */
   {
     int rom,fn; /* ROM and function numbers */
+    int ind;    /* index in xrom table */
     char * name; /* The ROM function name */
 
     rom=(key[0]&7)*4 + (key[1]>>6);
     fn=key[1]&0x3f;
-    name=get_xrom_by_id(rom,fn);
-    if (name == (char *) NULL )
+    ind=find_xrom_by_id(rom,fn);
+    if (ind== -1 )
        printf("XROM %02d,%02d\n",rom,fn);
     else
-       printf("%s\n",name);
+       printf("%s\n",(alt_flag ? get_xrom_alt_name_by_index(ind): get_xrom_name_by_index(ind)));
   }
 
 void display_suffix(unsigned char byte)
@@ -186,7 +187,7 @@ void single_row_f(unsigned char byte)
       }
   }
 
-void single_byte_asn(unsigned char *key, int row)
+void single_byte_asn(unsigned char *key, int row, int alt_flag)
 /* Display single-byte assignements -- ones where the high nybble of the 
    first byte is 0 */
   {
@@ -243,10 +244,10 @@ void single_byte_asn(unsigned char *key, int row)
         case 6 :
         case 7 :
         case 8 : /* Normal single-byte assignments */
-                 printf("%s\n",single_byte[key[1]-0x40]);
+                 printf("%s\n",(alt_flag) ? alt_single_byte[key[1]-0x40]: single_byte[key[1]-0x40]);
                  break;
         case 9 : /* Normal prefix bytes */
-                 printf("%s\n",double_byte[key[1]-0x90]);
+                 printf("%s\n",(alt_flag) ? alt_double_byte[key[1]-0x90]: double_byte[key[1]-0x90]);
                  break;
         case 0xa : /* Synthetic XROM prefixes and normal prefixes */
                  printf("%s\n",single_byte_a[key[1]-0xa0]);
@@ -416,7 +417,7 @@ void display_gto_xeq_suffix(unsigned char byte)
     display_suffix(byte&0x7f);
   }
 
-void display_key(unsigned char *key, int hex_flag)
+void display_key(unsigned char *key, int hex_flag, int alt_flag)
 /* Display a single key definition */
   {
     int keycode; /* Keycode from the KAR */
@@ -455,7 +456,7 @@ void display_key(unsigned char *key, int hex_flag)
             switch(key[0]>>4)
               {
                 case 0 : /* Normal Single-byte function assignments */
-                         single_byte_asn(key,row);
+                         single_byte_asn(key,row,alt_flag);
                          break;
                 case 1 : /* Q-loaders */
                          qloader(key[0]);
@@ -472,11 +473,11 @@ void display_key(unsigned char *key, int hex_flag)
                 case 7 :
                 case 8 : /* Synthetically-assigned one byte instructions
                             -- the second byte is ignored */
-                         printf("%s\n",single_byte[key[0]-0x40]);
+                         printf("%s\n",(alt_flag) ? alt_single_byte[key[0]-0x40]: single_byte[key[0]-0x40]);
                          break;
                 case 9 : /* Synthetically-assigned complete 2-byte 
                             instructions */
-                         printf("%s",double_byte[key[0]-0x90]);
+                         printf("%s\n",(alt_flag) ? alt_double_byte[key[0]-0x90]: double_byte[key[0]-0x90]);
                          display_suffix(key[1]);
                          break;
                 case 0xa : /* XROMs and synthetically-assigned 2-byte 
@@ -484,14 +485,14 @@ void display_key(unsigned char *key, int hex_flag)
                          if(key[0]<=0xa7)
                            {
                              /* It's an XROM */
-                             xrom(key);
+                             xrom(key,alt_flag);
                            }
                          else
                            {
                              if(key[0]<=0xad)
                                {
                                  /* It's a 2-byte instruction */
-                                 printf("%s",double_byte[key[0]-0x90]);
+                                 printf("%s\n",(alt_flag) ? alt_double_byte[key[0]-0x90]:double_byte[key[0]-0x90]);
                                  display_suffix(key[1]);
                                }
                              else
@@ -537,15 +538,15 @@ void display_key(unsigned char *key, int hex_flag)
       }
   }
 
-void display_kar(unsigned char *kar, int hex_flag)
+void display_kar(unsigned char *kar, int hex_flag, int alt_flag)
 /* Dispaly the 2 key definitions in a KAR */
   {
     /* Is this a valid KAR ? */
     if(kar[0]==0xf0)
       {
         /* Yes, display the keys */
-        display_key(kar+1,hex_flag);
-        display_key(kar+4,hex_flag);
+        display_key(kar+1,hex_flag, alt_flag);
+        display_key(kar+4,hex_flag, alt_flag);
       }
   }
 
@@ -556,6 +557,7 @@ void usage(void)
     fprintf(stderr,"       than as names\n");
     fprintf(stderr,"       -x xrom_name_file uses those names for XROM\n");
     fprintf(stderr,"       functions\n");
+    fprintf(stderr,"       -a flag prints function names with UTF-8 characters\n");
     exit(1);
   }
 
@@ -563,6 +565,7 @@ int main(int argc, char **argv)
   {
     int option; /* current option character */
     int hex_flag=0; /* print functions in hex, not as names */
+    int alt_flag=0; /* print function names with UTF-8 characters */
     unsigned char rec[8]; /* One file record */
     unsigned char kar[7]; /* Key assignment register */
 
@@ -570,13 +573,15 @@ int main(int argc, char **argv)
 
     init_xrom(); /* Load initial xrom names */
     optind=1;
-    while((option=getopt(argc,argv,"hx:?"))!=-1)
+    while((option=getopt(argc,argv,"ahx:?"))!=-1)
       {
         switch(option)
           {
             case 'h' : hex_flag=1;
                        break;
             case 'x' : read_xrom(optarg);
+                       break;
+            case 'a' : alt_flag=1;
                        break;
             case '?' : usage();
           }
@@ -592,7 +597,7 @@ int main(int argc, char **argv)
         /* Turn record into KAR */
         descramble(rec,kar);
         /* Display KAR */
-        display_kar(kar,hex_flag);
+        display_kar(kar,hex_flag,alt_flag);
        }
     exit(0);
   }

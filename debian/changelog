@@ -1,3 +1,9 @@
+lifutils (1.7.12) bookworm; urgency=medium
+
+  * various fixes comp41, decomp41, rom41cat 
+
+ -- bookworm <achim@trillian>  Mon, 22 Apr 2024 07:58:13 +0200
+
 lifutils (1.7.11) bookworm; urgency=medium
 
   * fixed volume/header info in rom41er, rom41hx and rom41lif 

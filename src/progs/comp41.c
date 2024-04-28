@@ -33,8 +33,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "xrom.h"
 
 #define MAX_ARGS 5
-#define MAX_CODE 18
-#define MAX_LINE 128
+#define MAX_CODE 1500
+#define MAX_LINE 1500
 #define MEMORY_SIZE 4096
 
 /* global flags */
@@ -49,7 +49,7 @@ int force_global = 0;
 void usage(void)
   {
     fprintf(stderr,"Usage: comp41 [-n][-g] [-x xrom_name_file][-x...] input-file\n");
-    fprintf(stderr,"       -n ignore line numbers in text\n");
+    fprintf(stderr,"       -l ignore line numbers in text\n");
     fprintf(stderr,"       -g global for[ \"A..J\", \"a..e\" ] with quotes: [ lbl \"A\" ]\n");
     fprintf(stderr,"       -x xrom_name_file uses those names for XROM\n");
     fprintf(stderr,"       if input-filename is omitted, the input comes from standard input\n");
@@ -231,12 +231,12 @@ int get_line_args( char *line_argv[],char  **line_ptr )
     return( count );
 }
 
-#define MAX_NUMERIC     16
+//#define MAX_NUMERIC     16
+#define MAX_NUMERIC     1500
 #define MAX_DIGITS      10
 #define MAX_INT         8
 #define MAX_EXP         2
 
-#define MAX_ALPHA       15
 
 
 int get_numeric_prefix( char *numeric, char *buffer )
@@ -296,12 +296,16 @@ int get_numeric_prefix( char *numeric, char *buffer )
                 }
             }
 #else
+            ++num_digits;
+            numeric[ num_index++ ] = buffer[ i ];
+/*
             if( num_digits == MAX_DIGITS )
                 error = 1;
             else {
                  ++num_digits;
                  numeric[ num_index++ ] = buffer[ i ];
             }
+*/
 #endif
         }
         else if( buffer[ i ] == '.' ||
@@ -399,37 +403,31 @@ int get_text_prefix( char *text, char *buffer, int *pcount )
             // parse for esc-sequence after start-quote
             if( j >= 0 ) {
                 if( parse_text( text, &lbuffer[ j+1 ], pcount )) {
-                    text[ *pcount ] = '\0';
                     error = 0;
                 }
             }
         }
     }
-
     return( !error );
 }
 
-int get_alpha_postfix( char *alpha, char *buffer )
+
+int get_alpha_postfix( char *alpha, char *buffer, int *pcount)
 {
    int i;
    char lbuffer[ MAX_LINE ];
 
     // end-quote?
     if(( i = is_inquotes( buffer ))) {
-        // make string copy
-        strcpy( lbuffer, buffer );
-
+       // make string copy
+       strcpy( lbuffer, buffer );
         // remove end-quote
         lbuffer[ i ] = '\0';
-
-        // copy alpha string after start-quote
-        if( strlen( &lbuffer[ 1 ] ) <= MAX_ALPHA ) {
-            strcpy( alpha, &lbuffer[ 1 ] );
-            return( 1 );
-        }
+       if( parse_text( alpha, &lbuffer[ 1 ], pcount )) {
+           return(1);
+       }
     }
-
-    return( 0 );
+    return(0);
 }
 
 
@@ -457,6 +455,7 @@ int compile_num( char *code, char *num )
 int compile_text( char *code, char *text, int count )
 {
     // TEXT0..15
+//  fprintf(stderr,"compile text\n");
     code[ 0 ] = 0xF0 + count;
     if( count )
         memcpy( &code[ 1 ], text, count );
@@ -465,18 +464,19 @@ int compile_text( char *code, char *text, int count )
 }
 
 
-int compile_alpha( char *code, char *prefix, char *alpha )
+int compile_alpha( char *code, char *prefix, char *alpha, int count )
 {
    int j;
-   int local, count;
+   int local;
    char mm, ff;
 
     local = is_local_label( alpha );
-    count = strlen( alpha );
+
+//  fprintf(stderr,"compile alpha %s\n",prefix);
 
     // LBL "alpha"
     if( strcasecmp( prefix, "LBL" ) == 0 ) {
-        if( strlen( alpha ) >= MAX_ALPHA ) {
+        if( count >= MAX_ALPHA ) {
             fprintf(stderr, "Error: alpha (global) postfix[ %s \"%s\" ] too long.\n",
                      prefix, alpha );
             return( 0 );
@@ -547,7 +547,7 @@ int compile_alpha( char *code, char *prefix, char *alpha )
 
     // XROM "alpha"
     if( strcasecmp( prefix, "XROM") == 0 ) {
-        j= get_xrom_by_name(alpha);
+        j= get_xrom_by_name(to_hp41_string(alpha,count,1));
         if (j != -1)  {
            mm= (j >> 8);
            ff= j & 0xFF;
@@ -556,7 +556,7 @@ int compile_alpha( char *code, char *prefix, char *alpha )
            return( 2 );
         }
         fprintf(stderr, "Error: unrecognized alpha postfix[ %s \"%s\" ], try: [ XROM mm,ff ]\n",
-                 prefix, alpha );
+                 prefix, to_hp41_string(alpha,count,1) );
         return( 0 );
     }
 
@@ -570,6 +570,7 @@ int compile_arg1( char *code, char *prefix )
    int i, j;
    char mm, ff;
 
+//  fprintf(stderr,"compile arg1\n");
     // .END.
     if( strcasecmp( prefix, "END" ) == 0 ||
         strcasecmp( prefix, ".END." ) == 0 ) {
@@ -624,6 +625,7 @@ int compile_arg2( char *code, char *prefix, char *postfix )
    char num_postfix[] = "0#";
    char *ppostfix = postfix;
 
+//  fprintf(stderr,"compile arg2\n");
     // XROM mm,ff
     if( strcasecmp( prefix, "XROM") == 0 ) {
         if(( pf = strchr( postfix, ',' ))) {
@@ -779,6 +781,7 @@ int compile_arg3( char *code, char *prefix, char *ind, char *postfix )
    char num_postfix[] = "0#";
    char *ppostfix = postfix;
 
+//  fprintf(stderr,"compile arg3\n");
     // add leading "0"
     if( strlen( postfix ) == 1 &&
         isdigit( postfix[ 0 ] )) {
@@ -856,12 +859,12 @@ int compile_arg3( char *code, char *prefix, char *ind, char *postfix )
 }
 
 
-int compile_label( char *code, char *label, char *alpha, char *key )
+int compile_label( char *code, char *label, char *alpha, int count, char *key )
 {
-   int asn, count;
+   int asn;
 
+//  fprintf(stderr,"compile label\n");
     asn = get_key( key );
-    count = strlen( alpha );
     if( asn && count && count < MAX_ALPHA &&
         strcasecmp( label, "LBL" ) == 0 ) {
         code[ 0 ] = 0xC0;
@@ -897,6 +900,7 @@ void compile_end( char *buffer, int bytes )
     //
     // xx = 0D: non-private, unpacked
     //
+//  fprintf(stderr,"compile end\n");
     if( bytes > 3583 ) {
         a = 0;
         bc = 0;
@@ -960,7 +964,6 @@ int is_postfix( char *postfix, int *pindex )
        *pindex = 0x7A;
        return( 1 );
    }
-
    return( 0 );
 }
 
@@ -996,6 +999,14 @@ int parse_text( char *text, char *buffer, int *pcount )
                 --k;
                 ++i;
             }
+            // append "UTF-8 |-"
+            else if(k>1 && n == 0 && buffer[i]== (char) 0xe2 && buffer[i+1]== (char) 0x94 && 
+                 buffer [i+2] == (char) 0x9c) {
+                 text[ n++ ] = 0x7F;
+                 k-=2;
+                 i+=2;
+            }
+            
             // append: ">text"
             else if( k && n == 0 && buffer[ i ] == '>' ) {
                 text[ n++ ] = 0x7F;
@@ -1116,22 +1127,29 @@ int parse_text( char *text, char *buffer, int *pcount )
 int is_inquotes( char *buffer )
 {
    int i;
+   int esc;
 
+    esc=0;
     if( buffer[ 0 ] == '\"' || buffer[ 0 ] == '\'' ) {
         for( i=1; i<strlen( buffer ); ++i ) {
-            if( buffer[ i ] == buffer[ 0 ] &&
-                buffer[ i-1 ] != '\\' ) {
-                if( buffer[ i+1 ] == buffer[ 0 ] )
-                    ++i;
-                else if( buffer[ i+1 ] == '\0' ||
-                    buffer[ i+1 ] == '\t' ||
-                    buffer[ i+1 ] == 0x20 ) {
-                    return( i );
+            if(buffer[i]== '\\') {
+               if (esc) esc =0;
+               else esc=1;
+               continue;
+            }
+            
+            if( buffer[ i ] == buffer[ 0 ] && ! esc  ) {
+              if( buffer[ i+1 ] == buffer[ 0 ] )
+                  ++i;
+              else if( buffer[ i+1 ] == '\0' ||
+                  buffer[ i+1 ] == '\t' ||
+                  buffer[ i+1 ] == 0x20 ) {
+                  return( i );
                 }
             }
+            esc=0;
         }
     }
-
     return( 0 );
 }
 
@@ -1289,9 +1307,9 @@ int compile_args( char *code_buffer,
             if( get_text_prefix( text_buffer, lbuffer, &size )) {
                 count = compile_text( code_buffer, text_buffer, size );
             }
-            else if( get_alpha_postfix( text_buffer, line_argv[ base+1 ] )) {
+            else if( get_alpha_postfix( text_buffer, line_argv[ base+1 ], &size )) {
                 count = compile_alpha( code_buffer, line_argv[ base+0 ],
-                                       text_buffer );
+                                       text_buffer,size );
             }
             else {
                 count = compile_arg2( code_buffer, line_argv[ base+0 ],
@@ -1300,9 +1318,9 @@ int compile_args( char *code_buffer,
         }
     }
     else if( line_argc == 3 ) {
-        if( get_alpha_postfix( text_buffer, line_argv[ base+1 ] )) {
+        if( get_alpha_postfix( text_buffer, line_argv[ base+1 ], &size )) {
             count = compile_label( code_buffer, line_argv[ base+0 ],
-                                   text_buffer, line_argv[ base+2 ] );
+                                   text_buffer, size, line_argv[ base+2 ] );
         }
         else {
             count = compile_arg3( code_buffer, line_argv[ base+0 ],
@@ -1314,9 +1332,9 @@ int compile_args( char *code_buffer,
         strcpy( lbuffer, line_argv[ base+2 ] );
         strcat( lbuffer, line_argv[ base+3 ] );
 
-        if( get_alpha_postfix( text_buffer, line_argv[ base+1 ] )) {
+        if( get_alpha_postfix( text_buffer, line_argv[ base+1 ], &size )) {
             count = compile_label( code_buffer, line_argv[ base+0 ],
-                                   text_buffer, lbuffer );
+                                   text_buffer, size, lbuffer );
         }
     }
 

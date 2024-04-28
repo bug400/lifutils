@@ -2243,6 +2243,7 @@ int main(int argc, char * argv[])
 		cmdbuf_ptr=0;
 	}
 	free(line);
+     exit(0);
 }
 
 /*

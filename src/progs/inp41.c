@@ -93,5 +93,6 @@ int main(int argc, char **argv)
     byte=read_byte();
     /* And check it */
     fprintf(stderr,"inp41 : checksum %s\n",(byte==checksum)?"good":"bad");
+    exit(0);
   }
 

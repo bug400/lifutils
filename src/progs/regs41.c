@@ -43,5 +43,5 @@ int main(int argc, char **argv)
         print_register(reg);
         reg_number++;
       }
-    exit(1);
+    exit(0);
   }

@@ -61,7 +61,7 @@ void print_char(unsigned char c)
       }
     else
       {
-        printf("\\%03o",c);
+        printf("\\%02x",c);
       }
   }
 
@@ -84,8 +84,9 @@ void focal_name(unsigned int addr)
        and print it */
     unsigned int length; /* name length */
     unsigned int i; /* character counter */
+
       
-    length=(rom[addr+2]&0xf)-1; /* get the string length nybble */
+    length=rom[addr+2]-0xF1; /* get the string length nybble */
     /* display the string */
     for(i=0;i<length;i++)
       {
@@ -107,14 +108,17 @@ void display_names(unsigned int rom_size, char xrom_flag)
     
     n_pages = (rom_size+4095)/4096; /* number of 4K pages to look at */
     /* look at each page in turn */
+    if(! xrom_flag) printf("Number of pages %d ROM size %d\n",n_pages, rom_size);
     for(page=0; page<n_pages; page++)
       {
         xrom = rom[page*4096]; /* XROM id number */
         n_funcs = rom[page*4096+1]; /* number of functions in the FAT */
+
+        if(!xrom_flag) printf("Page %d, Number of Functions %d\n",page+1,n_funcs);
         for(func=0; func<n_funcs; func++)
           {
             fat_address=page*4096 + 2*func + 2;
-            start_address=((rom[fat_address]&0xf)<<8) 
+            start_address=((rom[fat_address]&0x1f)<<8) 
                          +(rom[fat_address+1]&0xff)
                          +page*4096;
             focal_flag=rom[fat_address]&0x200;
@@ -122,33 +126,47 @@ void display_names(unsigned int rom_size, char xrom_flag)
               {
                 /* For XROM file output, just print the ID numbers */
                 printf("%d %d ",xrom,func);
-                if(focal_flag)
-                  {
-                    printf("XROM'");
-                    focal_name(start_address);  
-                    printf("'\n");
-                  }
+                if(start_address> rom_size) 
+                {
+                  printf("function addr %x out of range\n", start_address);
+                }
                 else
+                { 
+                  if(focal_flag)
+                    {
+                      printf("XROM'");
+                      focal_name(start_address);  
+                      printf("'\n");
+                    }
+                  else
                   {
                     mcode_name(start_address);
                     putchar('\n');
                   }
+                }
               }
             else
              {
-               /* for user output, print the ID, language and entry point */
-               printf("XROM %02d,%02d ",xrom,func);
-               printf("Entry = %04x ", start_address);
-               printf("(%s) ",focal_flag?"Focal":"Mcode");
-               if(focal_flag)
-                 {
-                   focal_name(start_address);
-                 }
-               else
-                 {
-                   mcode_name(start_address);
-                 }
-               putchar('\n');
+                if(start_address> rom_size) 
+                {
+                  printf("function addr %x out of range\n", start_address);
+                }
+                else
+                {
+                 /* for user output, print the ID, language and entry point */
+                 printf("XROM %02d,%02d ",xrom,func);
+                 printf("Entry = %04x ", start_address);
+                 printf("(%s) ",focal_flag?"Focal":"Mcode");
+                 if(focal_flag)
+                   {
+                     focal_name(start_address);
+                   }
+                 else
+                   {
+                     mcode_name(start_address);
+                   }
+                 putchar('\n');
+               }
              }
           }
       }
@@ -157,7 +175,7 @@ void display_names(unsigned int rom_size, char xrom_flag)
 void usage(void)
   {
     fprintf(stderr,"usage : rom41cat [-x]\n");
-    fprintf(stderr,"        -x : output in XROM file format (for prog41)\n");
+    fprintf(stderr,"        -x : output in XROM file format\n");
     exit(1);
   }
 
