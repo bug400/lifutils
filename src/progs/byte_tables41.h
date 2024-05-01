@@ -21,10 +21,10 @@ char *alt_single_byte[80]={
 "Σ-", "HMS+", "HMS-", "MOD", "%", "%CH", "P-R", "R-P",
 "LN", "X^2", "SQRT", "Y^X", "CHS", "E^X", "LOG", "10^X",
 "E^X-1", "SIN", "COS", "TAN", "ASIN", "ACOS", "ATAN", "DEC",
-"1/X", "ABS", "FACT", "X#0?", "X>0?", "LN1+X", "X<0?", "X=0?",
+"1/X", "ABS", "FACT", "X≠0?", "X>0?", "LN1+X", "X<0?", "X=0?",
 "INT", "FRC", "D-R", "R-D", "HMS", "HR", "RND", "OCT",
 "CLΣ", "X<>Y", "PI", "CLST", "R^", "RDN", "LASTX", "CLX",
-"X=Y?", "X#Y?", "SIGN","X<=0?", "MEAN", "SDEV", "AVIEW", "CLD",
+"X=Y?", "X≠Y?", "SIGN","X<=0?", "MEAN", "SDEV", "AVIEW", "CLD",
 "DEG", "RAD", "GRAD", "ENTER^", "STOP", "RTN", "BEEP", "CLA",
 "ASHF", "PSE", "CLRG", "AOFF", "AON", "OFF", "PROMPT", "ADV"};
 

@@ -36,18 +36,28 @@ char * to_hp41_string(unsigned char *str, int len, int utf)
    if(len> MAX_ALPHA) return ((char *) NULL);
    for(i=0;i<len;i++) {
       c=str[i];
-      // UTF character, pass through
-      if((c & 0xC0) == 0xC0 && utf) {
-         hpstring[j++]=c;
+      // convert special character to UTF (append not handled here)
+      if(c==0x0c && utf) {
+         k=sprintf(hpstring+j,"%s","μ");
+         j+=k;
+      } else if(c==0x0d && utf) {
+         k=sprintf(hpstring+j,"%s","⊀");
+         j+=k;
+      } else if(c==0x1d && utf) {
+         k=sprintf(hpstring+j,"%s","≠");
+         j+=k;
+      } else if(c==0x7e && utf) {
+         k=sprintf(hpstring+j,"%s","Σ");
+         j+=k;
       // printable character, but escape backslash, ' and "
-      } else if (c >= 0x20 && c <= 0x7F) {
+      } else if (c >= 0x20 && c <= 0x65) {
          if(c == '\\' || c == '\'' || c == '"') {
             hpstring[j++]='\\';
          }
          hpstring[j++]=c;
       // non printable character, print hex
       } else {
-         k=sprintf(hpstring+j,"\\%02x",c);
+         k=sprintf(hpstring+j,"\\x%02x",c);
          j+=k;
       }
    }

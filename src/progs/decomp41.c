@@ -79,24 +79,23 @@ void print_string(unsigned char *memory, int pc, int length, int alt_flag)
     unsigned char c;
 
     /* Handle append char : "~String" */
-    printf("\"");
     if(memory[pc]== 0x7f) 
     {
         if(alt_flag) 
         {
+           printf("\"");
            fputs("├",stdout);
         } else
         {
-           putchar('~');
+           putchar('>');
+           printf("\"");
         }
-/*
-        putchar('~');
-*/
         pc++;
         length--;
     } 
     else
     {
+       printf("\"");
        if(length>1 && memory[pc]=='>' && memory[pc+1]=='-') 
        {
           printf("\\%02x",memory[pc]);        
@@ -138,7 +137,7 @@ void print_string(unsigned char *memory, int pc, int length, int alt_flag)
           length--;
        }
     }
-    printf("%s\"\n",to_hp41_string(memory+pc,length,0));
+    printf("%s\"\n",to_hp41_string(memory+pc,length,alt_flag));
   }
 
 void xrom(unsigned char *memory, int pc, int line, int line_flag, int alt_flag)

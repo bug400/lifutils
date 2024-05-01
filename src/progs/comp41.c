@@ -967,10 +967,20 @@ int is_postfix( char *postfix, int *pindex )
    return( 0 );
 }
 
+int UTFcmp(unsigned char *buffer, int len, int *utf)
+{
+   int ret;
+   ret=1;
+   for (int i=0;i<len;i++) {
+      if(buffer[i]!= (unsigned char) utf[i]) ret=0;
+   }
+   return(ret);
+}
 
 int parse_text( char *text, char *buffer, int *pcount )
 {
    int i, j, k, n;
+   int esc_x;
 
     *pcount = 0;
     k = strlen( buffer );
@@ -986,9 +996,11 @@ int parse_text( char *text, char *buffer, int *pcount )
         --k;
 
         if( j == 0 ) {
+
             // esc-sequence
             if( buffer[ i ] == '\\' && k  ) {
-                ++j;
+                j=1;
+                esc_x = 0;
             }
             // append: "|-text", ">-text", "->text"
             else if( k && n == 0 &&
@@ -999,14 +1011,46 @@ int parse_text( char *text, char *buffer, int *pcount )
                 --k;
                 ++i;
             }
+            // append ">text" 
+            else if (k && n == 0 && buffer[i] == '>') {
+                text[n++] = 0x7F;
+            }
+
             // append "UTF-8 |-"
-            else if(k>1 && n == 0 && buffer[i]== (char) 0xe2 && buffer[i+1]== (char) 0x94 && 
-                 buffer [i+2] == (char) 0x9c) {
+            else if(k>1 && n == 0 && UTFcmp(buffer+i,3,(int[] ) {0xe2,0x94,0x9c}))
+            {
                  text[ n++ ] = 0x7F;
                  k-=2;
                  i+=2;
             }
-            
+            // utf micro
+            else if(k && UTFcmp(buffer+i,2,(int[] ) {0xce,0xbc}))
+            {
+                text[ n++] = 0x0c;
+                --k;
+                ++i;
+            }
+            // utf angle
+            else if(k>1 && UTFcmp(buffer+i,3,(int[] ) {0xe2,0x8a,0x80}))
+            {
+                 text[ n++ ] = 0x0d;
+                 k-=2;
+                 i+=2;
+            }
+            // utf not equal
+            else if(k>1 && UTFcmp(buffer+i,3,(int[] ) {0xe2,0x89,0xa0}))
+            {
+                 text[ n++ ] = 0x1d;
+                 k-=2;
+                 i+=2;
+            }
+            // utf sigma
+            else if(k && UTFcmp(buffer+i,2,(int[] ) {0xce,0xa3}))
+            {
+                text[ n++] = 0x7e;
+                --k;
+                ++i;
+            }
             // append: ">text"
             else if( k && n == 0 && buffer[ i ] == '>' ) {
                 text[ n++ ] = 0x7F;
@@ -1022,6 +1066,7 @@ int parse_text( char *text, char *buffer, int *pcount )
                 text[ n++ ] = buffer[ i ];
             }
         }
+        // start of esc-sequence
         else if( j == 1 ) {
             if( isxdigit( buffer[ i ] )) {
                 if( k )
@@ -1030,6 +1075,18 @@ int parse_text( char *text, char *buffer, int *pcount )
                     text[ n++ ] = get_xdigit( buffer[ i ] );
                     j = 0;
                 }
+            }
+            else if (esc_x) {
+                     text[n++] = '\\';
+                     if (n < MAX_ALPHA) {
+                             text[n++] = 'x';
+                             if (n < MAX_ALPHA)
+                                     text[n++] = buffer[i];
+                     }
+                     j = 0;
+            }
+            else if( buffer[ i ] == 'x' ) {
+                   esc_x=1;
             }
             else if( buffer[ i ] == 'a' ) {
                 text[ n++ ] = '\a';
@@ -1075,23 +1132,20 @@ int parse_text( char *text, char *buffer, int *pcount )
                 text[ n++ ] = '\\';
                 j = 0;
             }
-            else if( buffer[ i ] != 'x' || k == 0 ||
-                     !isxdigit( buffer[ i + 1 ] )) {
+            else if( buffer[ i ] == '-' && n == 0 ) {
                 // append: "\-text"
-                if( buffer[ i ] == '-' && n == 0 ) {
-                    text[ n++ ] = 0x7F;
-                    j = 0;
-                }
-                else {
-                    text[ n++ ] = '\\';
-                    if( n < MAX_ALPHA ) {
+                text[ n++ ] = 0x7F;
+                j = 0;
+            }   
+            else {
+                text[ n++ ] = '\\';
+                 if( n < MAX_ALPHA ) 
                         text[ n++ ] = buffer[ i ];
-                        j = 0;
-                    }
-                }
+                 j = 0;
             }
         }
-        else {
+        // second hex-digit in esc-sequence?
+        else { // j == 2
             if( isxdigit( buffer[ i ] )) {
                 text[ n++ ] = ( get_xdigit( buffer[ i-1 ] ) << 4 ) +
                                 get_xdigit( buffer[ i ] );
@@ -1100,14 +1154,15 @@ int parse_text( char *text, char *buffer, int *pcount )
             else {
                 text[ n++ ] = get_xdigit( buffer[ i - 1 ] );
 
-                if( buffer[ i ] != '\\' || k == 0 ) {
-                    if( n < MAX_ALPHA ) {
-                        text[ n++ ] = buffer[ i ];
-                        j = 0;
-                    }
+                // start next esc-sequence?
+                if( buffer[ i ] == '\\' && k ) {
+                        esc_x = 0;
+                        j = 1;
                 }
                 else {
-                    j = 1;
+                    if( n < MAX_ALPHA ) 
+                        text[ n++ ] = buffer[ i ];
+                    j = 0;
                 }
             }
         }
