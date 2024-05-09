@@ -24,6 +24,14 @@
 
 #define MEMORY_SIZE 4096
 
+void check_length(int *pc, int length, int num_bytes)
+{
+   if(*pc+num_bytes-1 >= length) {
+      fprintf(stderr,"premature end of bytecode\n");
+      exit(1);
+   }
+}
+
 int read_prog(unsigned char *memory)
   {
     int byte_counter;
@@ -159,8 +167,10 @@ void xrom(unsigned char *memory, int pc, int line, int line_flag, int alt_flag)
        printf("%s\n",(alt_flag ? get_xrom_alt_name_by_index(ind): get_xrom_name_by_index(ind)));
   }
 
-void short_lbl(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag)
+void short_lbl(unsigned char *memory, int length, int *pc, int *line, int hex_flag, int line_flag)
   {
+    check_length(pc,length,1);
+
     /* Print the short-form labels (and handle NULL) from row 0 of 
        the byte table */
     if(hex_flag)
@@ -178,8 +188,10 @@ void short_lbl(unsigned char *memory, int *pc, int *line, int hex_flag, int line
     (*pc)++; /* inc program counter */
   }
 
-void short_sto_rcl(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag)
+void short_sto_rcl(unsigned char *memory, int length, int *pc, int *line, int hex_flag, int line_flag)
   {
+    check_length(pc,length,1);
+
     /* Print the short-form STO and RCL instructions from rows 2-3 of 
        the byte table */
     if(hex_flag)
@@ -194,8 +206,10 @@ void short_sto_rcl(unsigned char *memory, int *pc, int *line, int hex_flag, int 
     (*pc)++; /* and pc */
   }
 
-void short_gto(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag)
+void short_gto(unsigned char *memory, int length, int *pc, int *line, int hex_flag, int line_flag)
   {
+    check_length(pc,length,2);
+
     /* Print the short-form GTOs (and handle NULL) from row B of 
        the byte table */
     if(hex_flag)
@@ -213,8 +227,10 @@ void short_gto(unsigned char *memory, int *pc, int *line, int hex_flag, int line
     (*pc)+=2; /* inc program counter */
   }
 
-void swap_lbl(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag)
+void swap_lbl(unsigned char *memory, int length, int *pc, int *line, int hex_flag, int line_flag)
   {
+    check_length(pc,length,2);
+
     /* Print the odd 2-byte instructions at the end of row C of 
        the byte table */
     if(hex_flag)
@@ -229,13 +245,17 @@ void swap_lbl(unsigned char *memory, int *pc, int *line, int hex_flag, int line_
     (*pc)+=2; /* And pc */
   }
 
-int global_end(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
+int global_end(unsigned char *memory, int length, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
   {
     /* Print global labels and ENDs from the start of row C of the
        byte table */
     /* If the high bit of the 3rd byte of the instuction is set, then 
        it's a global label, otherwise it's an END */
     int end_flag;
+
+    check_length(pc,length,2);
+    check_length(pc,length,(memory[(*pc)+2]&0x80)?(memory[(*pc)+2]&0xf)+3:3);
+
     if(hex_flag)
       {
         print_hex(memory,*pc,
@@ -255,6 +275,7 @@ int global_end(unsigned char *memory, int *pc, int *line, int hex_flag, int line
         /* It's an END */
         /* Bit 5 of the third byte distinguishes a local end from a global
            one */
+        check_length(pc,length,2);
         if(line_flag) printf("%04d  ",*line);
         printf("%s\n",(memory[(*pc)+2]&0x20)?".END.":"END");
         end_flag=1;
@@ -264,8 +285,10 @@ int global_end(unsigned char *memory, int *pc, int *line, int hex_flag, int line
     return(end_flag); /* Is this the end of the program? */
   }
 
-void print_gto_xeq(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag)
+void print_gto_xeq(unsigned char *memory, int length, int *pc, int *line, int hex_flag, int line_flag)
   {
+    check_length(pc,length,3);
+
     /* Print the 3-byte XEQ and GTO instructions from rows D--E of
        the byte table */
     if(hex_flag)
@@ -280,8 +303,11 @@ void print_gto_xeq(unsigned char *memory, int *pc, int *line, int hex_flag, int 
     (*pc)+=3; /* This is a 3 byte instruction */
   }
 
-void print_alpha_gto(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
+void print_alpha_gto(unsigned char *memory, int length, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
   {
+    check_length(pc,length,1);
+    check_length(pc,length,(memory[(*pc)+1]&0xf)+2);
+
     /* Print GTOs and XEQs with alpha destinations */
     if(hex_flag)
       {
@@ -297,7 +323,7 @@ void print_alpha_gto(unsigned char *memory, int *pc, int *line, int hex_flag, in
     (*pc)+=((memory[(*pc)+1]>>4)==0xf)?(memory[(*pc)+1]&0xf)+2:2;
   }
 
-void print_digits(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag)
+void print_digits(unsigned char *memory, int length, int *pc, int *line, int hex_flag, int line_flag)
   {
     /* Print numbers in program listings */
     /* This is the only function where the number of bytes can't be 
@@ -311,6 +337,7 @@ void print_digits(unsigned char *memory, int *pc, int *line, int hex_flag, int l
         do
           {
             printf(" %02x",memory[temp_pc]);
+            check_length(&temp_pc,length,1);
             temp_pc++;
           }
         while((memory[temp_pc]>=0x10) && (memory[temp_pc]<=0x1c));
@@ -329,11 +356,13 @@ void print_digits(unsigned char *memory, int *pc, int *line, int hex_flag, int l
     (*line)++;
   }
      
-void print_1_byte(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
+void print_1_byte(unsigned char *memory, int length, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
   {
     /* Print the single-byte instructions from rows 4--8 of the byte 
        table */ 
  
+    check_length(pc,length,1);
+
     if(hex_flag)
       {
         print_hex(memory,*pc,1);
@@ -345,8 +374,10 @@ void print_1_byte(unsigned char *memory, int *pc, int *line, int hex_flag, int l
     (*pc)++; /* And the program counter */
   }
 
-void print_2_byte(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
+void print_2_byte(unsigned char *memory, int length, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
   {
+    check_length(pc,length,2);
+
     /* Print the double-byte instructions from rows 9--A of the byte table */
     if(hex_flag)
       {
@@ -382,37 +413,38 @@ void print_2_byte(unsigned char *memory, int *pc, int *line, int hex_flag, int l
    (*pc)+=2; /* Move pc on 2 bytes */
   }
 
-void print_row_1(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
+void print_row_1(unsigned char *memory, int length, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
   {
     /* Print everything in row 1 of the byte table */
     if(memory[*pc]>=0x1d)
       {
         /* It's an alpha GTO/XEQ */
-        print_alpha_gto(memory,pc,line,hex_flag,line_flag, alt_flag);
+        print_alpha_gto(memory,length,pc,line,hex_flag,line_flag, alt_flag);
       }
     else
       {
-        print_digits(memory,pc,line,hex_flag,line_flag);
+        print_digits(memory,length,pc,line,hex_flag,line_flag);
       }
   }
-int print_row_c(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
+int print_row_c(unsigned char *memory, int length, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
   {
     /* Print everything in row c of the byte table */
     if(memory[*pc]>=0xce)
       {
         /* It's one of the odd 2 instructions */
-        swap_lbl(memory,pc,line,hex_flag,line_flag);
+        swap_lbl(memory,length,pc,line,hex_flag,line_flag);
         return(0); /* This can't be the end */
       }
     else
       {
         /* It's a global label or an end */
-        return(global_end(memory,pc,line,hex_flag, line_flag, alt_flag));
+        return(global_end(memory,length, pc,line,hex_flag, line_flag, alt_flag));
       }
   }
 
-void print_text(unsigned char *memory, int *pc, int *line, int hex_flag,int line_flag, int alt_flag)
+void print_text(unsigned char *memory, int length, int *pc, int *line, int hex_flag,int line_flag, int alt_flag)
   {
+    check_length(pc,length,(memory[*pc]&0xf)+1);
     /* Print text strings started by bytes in row F of the byte table */
     if(hex_flag)
       {
@@ -425,43 +457,40 @@ void print_text(unsigned char *memory, int *pc, int *line, int hex_flag,int line
     (*pc)+=(memory[*pc]&0xf)+1; /* And pc to after the string */
   }
 
-int print_instruction(unsigned char *memory, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
+int print_instruction(unsigned char *memory, int length, int *pc, int *line, int hex_flag, int line_flag, int alt_flag)
   {
     /* Instructions with the same high nybble tend to have similar
        formats, so decode based on this */
     int end_flag; /* Set to signal end of program */
-    int i,oldpc;
-    oldpc= *pc;
     end_flag=0;
     switch(memory[*pc]>>4)
       {
-        case 0: short_lbl(memory,pc,line,hex_flag,line_flag);
+        case 0: short_lbl(memory,length,pc,line,hex_flag,line_flag);
                 break;
-        case 1: print_row_1(memory,pc,line,hex_flag,line_flag, alt_flag);
+        case 1: print_row_1(memory,length,pc,line,hex_flag,line_flag, alt_flag);
                 break;
         case 2:
-        case 3: short_sto_rcl(memory,pc,line,hex_flag,line_flag);
+        case 3: short_sto_rcl(memory,length,pc,line,hex_flag,line_flag);
                 break;
         case 4:
         case 5:
         case 6:
         case 7:
-        case 8: print_1_byte(memory,pc,line,hex_flag,line_flag,alt_flag);
+        case 8: print_1_byte(memory,length,pc,line,hex_flag,line_flag,alt_flag);
                 break;
         case 9:
-        case 0xa: print_2_byte(memory,pc,line,hex_flag,line_flag,alt_flag);
+        case 0xa: print_2_byte(memory,length,pc,line,hex_flag,line_flag,alt_flag);
                   break;
-        case 0xb: short_gto(memory,pc,line,hex_flag,line_flag);
+        case 0xb: short_gto(memory,length,pc,line,hex_flag,line_flag);
                   break;
-        case 0xc: end_flag=print_row_c(memory,pc,line,hex_flag, line_flag,alt_flag)?1:end_flag;
+        case 0xc: end_flag=print_row_c(memory,length,pc,line,hex_flag, line_flag,alt_flag)?1:end_flag;
                   break; 
         case 0xd:
-        case 0xe: print_gto_xeq(memory,pc,line,hex_flag,line_flag);
+        case 0xe: print_gto_xeq(memory,length,pc,line,hex_flag,line_flag);
                   break;
-        case 0xf: print_text(memory,pc,line,hex_flag,line_flag,alt_flag);
+        case 0xf: print_text(memory,length,pc,line,hex_flag,line_flag,alt_flag);
                   break;
       }
-      //for(i=oldpc;i<*pc;i++) printf("%2x ",memory[i]); printf("\n");
     return(end_flag); 
   }
  
@@ -475,7 +504,7 @@ void list_prog(unsigned char *memory, int length, int hex_flag, int line_flag, i
     line=1;
     while ((pc<length) && (!end_flag))
       {
-        end_flag=print_instruction(memory,&pc,&line,hex_flag,line_flag, alt_flag);
+        end_flag=print_instruction(memory,length,&pc,&line,hex_flag,line_flag, alt_flag);
       }
   }
 
