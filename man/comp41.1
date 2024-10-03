@@ -24,17 +24,20 @@ comp41 \- a filter to compile a HP41C user\-language (FOCAL) program
 .SH DESCRIPTION
 .B comp41
 is a filter which compiles a text file containing a HP-41 user program (FOCAL)
-and translates it to a binary raw file.
+and translates it to a binary raw file. The following Unicode characters are translated to the HP-41 FOCAL 
+character set: ├ (hex 0x251c) , μ (hex 0x03bc), ⊀ (hex 0x2280), ≠ (hex 0x2260), Σ (hex 0x03A3).
 .PP
-An 
+A 
 .I xrom_file
-consists of a number of lines, each consisting of 2 decimal numbers and a 
-string (containing no whitespace), in that order, separated by whitespace. 
-The string gives a name to the function specified by the first number as 
+consists of a number of lines, each consisting of 2 decimal numbers and one or two
+strings (containing no whitespace), in that order, separated by whitespace. 
+The first string gives a name to the function specified by the first number as 
 .I rr
 and the second number as
 .I nn.
-A
+The optional second string is the function name containing the Unicode characters listed above, which
+must not be used in the first string.
+The proper
 .I xrom_file
 is necessary to compile commands of module or peripheral functions.
 .SH OPTIONS

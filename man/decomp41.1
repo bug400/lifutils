@@ -34,12 +34,16 @@ see the
 .I \-x
 option below. An 
 .I xrom_file
-consists of a number of lines, each consisting of 2 decimal numbers and a 
-string (containing no whitespace), in that order, separated by whitespace. 
-The string gives a name to the function specified by the first number as 
+consists of a number of lines, each consisting of 2 decimal numbers and one or two
+strings (containing no whitespace), in that order, separated by whitespace. 
+The first string gives a name to the function specified by the first number as 
 .I rr
 and the second number as
 .I nn.
+The optional second string is the function name containing Unicode characterse, which must not be 
+used in the first string. See the
+.I \-a
+option below.
 .PP
 The Linux command 
 .B pr
@@ -54,6 +58,10 @@ immediately preceding the display of that instruction
 .TP
 .I \-l
 Enable line numbers
+.TP
+.I \-a
+Decompile the following non ASCII HP-41 FOCAL character set as Unicode characters: ├ (hex 0x7f), μ (hex 0x0c),
+⊀ (hex 0x0d), ≠ (hex 0x1d), Σ (hex 0x7e)
 .TP
 .I \-x xrom_file
 Use

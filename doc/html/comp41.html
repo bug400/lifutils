@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:20 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Thu Oct  3 08:31:29 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -67,17 +67,23 @@ reads source file from standard input)</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>comp41</b>
 is a filter which compiles a text file containing a HP-41
-user program (FOCAL) and translates it to a binary raw
-file.</p>
+user program (FOCAL) and translates it to a binary raw file.
+The following Unicode characters are translated to the HP-41
+FOCAL character set: &acirc; (hex 0x251c) , &Icirc;&frac14;
+(hex 0x03bc), &acirc; (hex 0x2280), &acirc;&nbsp; (hex
+0x2260), &Icirc;&pound; (hex 0x03A3).</p>
 
-<p style="margin-left:11%; margin-top: 1em">An
+<p style="margin-left:11%; margin-top: 1em">A
 <i>xrom_file</i> consists of a number of lines, each
-consisting of 2 decimal numbers and a string (containing no
-whitespace), in that order, separated by whitespace. The
-string gives a name to the function specified by the first
-number as <i>rr</i> and the second number as <i>nn.</i> A
-<i>xrom_file</i> is necessary to compile commands of module
-or peripheral functions.</p>
+consisting of 2 decimal numbers and one or two strings
+(containing no whitespace), in that order, separated by
+whitespace. The first string gives a name to the function
+specified by the first number as <i>rr</i> and the second
+number as <i>nn.</i> The optional second string is the
+function name containing the Unicode characters listed
+above, which must not be used in the first string. The
+proper <i>xrom_file</i> is necessary to compile commands of
+module or peripheral functions.</p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>

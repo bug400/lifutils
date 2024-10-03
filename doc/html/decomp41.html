@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:20 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Thu Oct  3 08:31:29 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -75,10 +75,14 @@ plug-in ROM and <i>nn</i> is the number of the function
 within that ROM. This can be overridden by loading
 <i>xrom_files,</i> see the <i>-x</i> option below. An
 <i>xrom_file</i> consists of a number of lines, each
-consisting of 2 decimal numbers and a string (containing no
-whitespace), in that order, separated by whitespace. The
-string gives a name to the function specified by the first
-number as <i>rr</i> and the second number as <i>nn.</i></p>
+consisting of 2 decimal numbers and one or two strings
+(containing no whitespace), in that order, separated by
+whitespace. The first string gives a name to the function
+specified by the first number as <i>rr</i> and the second
+number as <i>nn.</i> The optional second string is the
+function name containing Unicode characterse, which must not
+be used in the first string. See the <i>-a</i> option
+below.</p>
 
 <p style="margin-left:11%; margin-top: 1em">The Linux
 command <b>pr</b> may be useful for formatting the output of
@@ -115,6 +119,20 @@ immediately preceding the display of that instruction</p></td></tr>
 
 
 <p>Enable line numbers</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>-a</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Decompile the following non ASCII HP-41 FOCAL character
+set as Unicode characters: &acirc; (hex 0x7f),
+&Icirc;&frac14; (hex 0x0c), &acirc; (hex 0x0d),
+&acirc;&nbsp; (hex 0x1d), &Icirc;&pound; (hex 0x7e)</p></td></tr>
 </table>
 
 <p style="margin-left:11%;"><i>-x xrom_file</i></p>

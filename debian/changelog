@@ -1,6 +1,6 @@
 lifutils (1.7.12) bookworm; urgency=medium
 
-  * various fixes comp41, decomp41, rom41cat 
+  * various fixes to comp41, decomp41, rom41cat for a better handling of Unicode characters
 
  -- bookworm <achim@trillian>  Mon, 22 Apr 2024 07:58:13 +0200
 

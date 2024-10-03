@@ -106,41 +106,41 @@ void print_string(unsigned char *memory, int pc, int length, int alt_flag)
        printf("\"");
        if(length>1 && memory[pc]=='>' && memory[pc+1]=='-') 
        {
-          printf("\\%02x",memory[pc]);        
-          printf("\\%02x",memory[pc+1]);        
+          printf("\\x%02x",memory[pc]);        
+          printf("\\x%02x",memory[pc+1]);        
           pc+=2;
           length-=2;
        } 
        else if (length>1 && memory[pc]=='-' && memory[pc+1]=='>')
        {
-          printf("\\%02x",memory[pc]);        
-          printf("\\%02x",memory[pc+1]);        
+          printf("\\x%02x",memory[pc]);        
+          printf("\\x%02x",memory[pc+1]);        
           pc+=2;
           length-=2;
        }
        else if (length>1 && memory[pc]=='\\' && memory[pc+1]=='-')
        {
-          printf("\\%02x",memory[pc]);        
-          printf("\\%02x",memory[pc+1]);        
+          printf("\\x%02x",memory[pc]);        
+          printf("\\x%02x",memory[pc+1]);        
           pc+=2;
           length-=2;
        }
        else if (length>1 && memory[pc]=='|' && memory[pc+1]=='-')
        {
-          printf("\\%02x",memory[pc]);        
-          printf("\\%02x",memory[pc+1]);        
+          printf("\\x%02x",memory[pc]);        
+          printf("\\x%02x",memory[pc+1]);        
           pc+=2;
           length-=2;
        }
        else if (length>0 && memory[pc]=='>')
        {
-          printf("\\%02x",memory[pc]);        
+          printf("\\x%02x",memory[pc]);        
           pc++;
           length--;
        }
        else if (length>0 && memory[pc]=='~')
        {
-          printf("\\%02x",memory[pc]);        
+          printf("\\x%02x",memory[pc]);        
           pc++;
           length--;
        }
