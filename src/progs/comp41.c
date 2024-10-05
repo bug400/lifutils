@@ -642,8 +642,8 @@ int compile_arg2( char *code, char *prefix, char *postfix )
                         if( j ) {
                             f = strtol( pf, (char **) &stop, 10 );
                             if( f >= 0 && f <= 63 ) {
-                                mm = ( char )m;
-                                ff = ( char )f;
+                                mm = ( unsigned char )m;
+                                ff = ( unsigned char )f;
                                 code[ 0 ] = 0xA0 + ( mm >> 2 );
                                 code[ 1 ] = (( mm & 0x03 ) << 6 ) + ff;
                                 return( 2 );

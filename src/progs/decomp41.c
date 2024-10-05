@@ -51,11 +51,11 @@ void print_hex(unsigned char *memory, int pc, int count)
     /* Print count bytes of program memory */
     int i; /* byte counter */
     /* print the address */
-    printf("** %04x :",pc);
+    printf("** %04X :",pc);
     /* print the bytes */
     for(i=0; i<count; i++)
       {
-        printf(" %02x",memory[pc+i]);
+        printf(" %02X",memory[pc+i]);
       }
     printf("\n");
   }
@@ -106,41 +106,41 @@ void print_string(unsigned char *memory, int pc, int length, int alt_flag)
        printf("\"");
        if(length>1 && memory[pc]=='>' && memory[pc+1]=='-') 
        {
-          printf("\\x%02x",memory[pc]);        
-          printf("\\x%02x",memory[pc+1]);        
+          printf("\\x%02X",memory[pc]);        
+          printf("\\x%02X",memory[pc+1]);        
           pc+=2;
           length-=2;
        } 
        else if (length>1 && memory[pc]=='-' && memory[pc+1]=='>')
        {
-          printf("\\x%02x",memory[pc]);        
-          printf("\\x%02x",memory[pc+1]);        
+          printf("\\x%02X",memory[pc]);        
+          printf("\\x%02X",memory[pc+1]);        
           pc+=2;
           length-=2;
        }
        else if (length>1 && memory[pc]=='\\' && memory[pc+1]=='-')
        {
-          printf("\\x%02x",memory[pc]);        
-          printf("\\x%02x",memory[pc+1]);        
+          printf("\\x%02X",memory[pc]);        
+          printf("\\x%02X",memory[pc+1]);        
           pc+=2;
           length-=2;
        }
        else if (length>1 && memory[pc]=='|' && memory[pc+1]=='-')
        {
-          printf("\\x%02x",memory[pc]);        
-          printf("\\x%02x",memory[pc+1]);        
+          printf("\\x%02X",memory[pc]);        
+          printf("\\x%02X",memory[pc+1]);        
           pc+=2;
           length-=2;
        }
        else if (length>0 && memory[pc]=='>')
        {
-          printf("\\x%02x",memory[pc]);        
+          printf("\\x%02X",memory[pc]);        
           pc++;
           length--;
        }
        else if (length>0 && memory[pc]=='~')
        {
-          printf("\\x%02x",memory[pc]);        
+          printf("\\x%02X",memory[pc]);        
           pc++;
           length--;
        }
@@ -333,10 +333,10 @@ void print_digits(unsigned char *memory, int length, int *pc, int *line, int hex
     if(hex_flag)
       {
         temp_pc=(*pc);
-        printf("** %04x :",temp_pc); /* print the address */
+        printf("** %04X :",temp_pc); /* print the address */
         do
           {
-            printf(" %02x",memory[temp_pc]);
+            printf(" %02X",memory[temp_pc]);
             check_length(&temp_pc,length,1);
             temp_pc++;
           }
@@ -511,11 +511,10 @@ void list_prog(unsigned char *memory, int length, int hex_flag, int line_flag, i
 void usage(void)
   {
     fprintf(stderr,"Usage: decomp41 [-h] [-x xrom_name_file][-x...]\n");
-    fprintf(stderr,"       -h flag prints instruction bytes in hex before\n");
-    fprintf(stderr,"       each program line\n");
-    fprintf(stderr,"       -x xrom_name_file uses those names for XROM\n"); 
-    fprintf(stderr,"       functions\n");
+    fprintf(stderr,"       -h flag prints instruction bytes in hex before each program line\n");
+    fprintf(stderr,"       -x xrom_name_file uses those names for XROM functions\n");
     fprintf(stderr,"       -a flag prints function names with UTF-8 characters\n");
+    fprintf(stderr,"       -l add line numbers\n");
     exit(1);
   }
 

@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Thu Oct  3 08:31:29 2024 -->
+<!-- CreationDate: Fri Oct  4 18:46:34 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,6 +23,7 @@
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#INPUT FILE FORMAT">INPUT FILE FORMAT</a><br>
 <a href="#OPTIONS">OPTIONS</a><br>
 <a href="#FILES">FILES</a><br>
 <a href="#REFERENCES">REFERENCES</a><br>
@@ -67,11 +68,8 @@ reads source file from standard input)</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>comp41</b>
 is a filter which compiles a text file containing a HP-41
-user program (FOCAL) and translates it to a binary raw file.
-The following Unicode characters are translated to the HP-41
-FOCAL character set: &acirc; (hex 0x251c) , &Icirc;&frac14;
-(hex 0x03bc), &acirc; (hex 0x2280), &acirc;&nbsp; (hex
-0x2260), &Icirc;&pound; (hex 0x03A3).</p>
+user program (FOCAL) and translates it to a binary raw
+file.</p>
 
 <p style="margin-left:11%; margin-top: 1em">A
 <i>xrom_file</i> consists of a number of lines, each
@@ -84,6 +82,51 @@ function name containing the Unicode characters listed
 above, which must not be used in the first string. The
 proper <i>xrom_file</i> is necessary to compile commands of
 module or peripheral functions.</p>
+
+<h2>INPUT FILE FORMAT
+<a name="INPUT FILE FORMAT"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Prefixes are
+case-insensitive: &rsquo;rcl 00&rsquo; same as &rsquo;RCL
+00&rsquo;.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Postfixes are
+case-sensitive: &rsquo;lbl a&rsquo; different than
+&rsquo;lbl A&rsquo;.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Append text is
+allowed using: &rsquo;&gt;&quot;text&quot;&rsquo; , &rsquo;
+&quot;|-text&quot; &rsquo;, or
+&rsquo;&quot;\-text&quot;&rsquo;.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Double quote in
+text must be escaped by &rsquo;\&rsquo; (incompatibility to
+hp41uc).</p>
+
+<p style="margin-left:11%; margin-top: 1em">The following
+Unicode characters are translated to the HP-41 FOCAL
+character set: text append (hex 0x251c), greek small mu (hex
+0x03bc), angle (hex 0x2280), not equal to (hex 0x2260),
+greek capital sigma (hex 0x03A3). and may be used in text
+and instructions.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Synthetic
+instructions are allowed: &rsquo;rcl M&rsquo;, &rsquo;sto
+R&rsquo;</p>
+
+<p style="margin-left:11%; margin-top: 1em">Synthetic NOP
+(TEXT0) is allowed using an empty string:
+&rsquo;&quot;&quot;&rsquo;</p>
+
+<p style="margin-left:11%; margin-top: 1em">Synthetic
+strings are allowed using C-style esc-sequences:
+&rsquo;&quot;\x0D\x0A&quot;&rsquo;</p>
+
+<p style="margin-left:11%; margin-top: 1em">Comments are
+allowed if preceded by &rsquo;;&rsquo; or &rsquo;#&rsquo; :
+&rsquo;# comment&rsquo;</p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
@@ -102,9 +145,9 @@ module or peripheral functions.</p>
 <td width="78%">
 
 
-<p style="margin-top: 1em">Force global for[
-&quot;A..J&quot;, &quot;a..e&quot; ] with quotes: [ lbl
-&quot;A&quot; ]</p></td></tr>
+<p style="margin-top: 1em">Force global for
+&quot;A..J&quot;, &quot;a..e&quot; with quotes: lbl
+&quot;A&quot;</p> </td></tr>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="3%">
@@ -203,7 +246,7 @@ image file <i>hp41prog.dat</i></p>
 <p style="margin-left:11%; margin-top: 1em"><b>comp41</b>
 was written using code of the User-Code File
 Converter/Compiler/De-compiler/Bar-Code Generator Version
-1.31 Copyright (c) Leo Duran, 2000-2007 and has been placed
+1.31 Copyright (c) Leo Duran, 2000-2023 and has been placed
 under the GNU Public License version 2.0</p>
 <hr>
 </body>

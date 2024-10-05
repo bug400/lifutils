@@ -24,8 +24,7 @@ comp41 \- a filter to compile a HP41C user\-language (FOCAL) program
 .SH DESCRIPTION
 .B comp41
 is a filter which compiles a text file containing a HP-41 user program (FOCAL)
-and translates it to a binary raw file. The following Unicode characters are translated to the HP-41 FOCAL 
-character set: ├ (hex 0x251c) , μ (hex 0x03bc), ⊀ (hex 0x2280), ≠ (hex 0x2260), Σ (hex 0x03A3).
+and translates it to a binary raw file. 
 .PP
 A 
 .I xrom_file
@@ -40,10 +39,30 @@ must not be used in the first string.
 The proper
 .I xrom_file
 is necessary to compile commands of module or peripheral functions.
+.SH INPUT FILE FORMAT
+Prefixes are case-insensitive:  'rcl 00'  same as  'RCL 00'.
+.PP
+Postfixes are case-sensitive:  'lbl a'  different than 'lbl A'.
+.PP
+Append text is allowed using:  '>"text"' , ' "|-text" ', or '"\\-text"'.
+.PP
+Double quote in text must be escaped by  '\\' (incompatibility to hp41uc).
+.PP
+The following Unicode characters are translated to the HP-41 FOCAL character set: text append (hex 0x251c), 
+greek small mu (hex 0x03bc), angle (hex 0x2280), not equal to (hex 0x2260), greek capital sigma (hex 0x03A3).
+and may be used in text and instructions.
+.PP
+Synthetic instructions are allowed: 'rcl M', 'sto R'
+.PP
+Synthetic NOP (TEXT0) is allowed using an empty string: '""'
+.PP
+Synthetic strings are allowed using C-style esc-sequences: '"\\x0D\\x0A"'
+.PP
+Comments are allowed if preceded by ';' or '#' : '# comment'
 .SH OPTIONS
 .TP
 .I \-g
-Force global for[ "A..J", "a..e" ] with quotes: [ lbl "A" ]
+Force global for "A..J", "a..e"  with quotes:  lbl "A" 
 .TP
 .I \-l
 Skip line numbers
@@ -93,4 +112,4 @@ Unknown.
 .SH AUTHOR
 .B comp41
 was written using code of the User-Code File Converter/Compiler/De-compiler/Bar-Code Generator  Version 1.31
-Copyright (c) Leo Duran, 2000-2007 and has been placed under the GNU Public License version 2.0
+Copyright (c) Leo Duran, 2000-2023 and has been placed under the GNU Public License version 2.0
