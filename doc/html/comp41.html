@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Fri Oct  4 18:46:34 2024 -->
+<!-- CreationDate: Mon Oct  7 07:15:41 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -68,8 +68,8 @@ reads source file from standard input)</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>comp41</b>
 is a filter which compiles a text file containing a HP-41
-user program (FOCAL) and translates it to a binary raw
-file.</p>
+user program (FOCAL) and translates it to a LIF or binary
+raw file (default).</p>
 
 <p style="margin-left:11%; margin-top: 1em">A
 <i>xrom_file</i> consists of a number of lines, each
@@ -161,6 +161,15 @@ allowed if preceded by &rsquo;;&rsquo; or &rsquo;#&rsquo; :
 <p>Skip line numbers</p></td></tr>
 </table>
 
+<p style="margin-left:11%;"><i>-f &lt;LIF
+Filename&gt;</i></p>
+
+<p style="margin-left:22%;">Create a LIF file instead of a
+raw file on standard output. A valid lif file name must be
+provided, which must apply the rules of HP-71 file names:
+capital letters and digits, starting with a capital
+letter.</p>
+
 <p style="margin-left:11%;"><i>-x xrom_file</i></p>
 
 <p style="margin-left:22%;">Use <i>xrom_file</i> to define
@@ -173,6 +182,28 @@ LIFUTILSXROMDIR (see below).</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>-s</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Output source listing to standard error</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>-h</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Output byte code to standard error, requires -s.</p></td></tr>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="3%">

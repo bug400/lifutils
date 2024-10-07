@@ -212,7 +212,7 @@ int decode_instruction(unsigned char *memory, int *pc)
 void decode_prog(unsigned char *memory, int length, int *prog_length)
   {
     int pc; /* current program counter */
-    int end_flag=0; /* Emd of program detected */
+    int end_flag=0; /* End of program detected */
     /* Scan throguh the loaded program and determine program length */
     pc=0;
     while ((pc<length) && (!end_flag))

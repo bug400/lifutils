@@ -24,7 +24,7 @@ comp41 \- a filter to compile a HP41C user\-language (FOCAL) program
 .SH DESCRIPTION
 .B comp41
 is a filter which compiles a text file containing a HP-41 user program (FOCAL)
-and translates it to a binary raw file. 
+and translates it to a LIF or binary raw file (default). 
 .PP
 A 
 .I xrom_file
@@ -67,6 +67,9 @@ Force global for "A..J", "a..e"  with quotes:  lbl "A"
 .I \-l
 Skip line numbers
 .TP
+.I \-f <LIF Filename>
+Create a LIF file instead of a raw file on standard output. A valid lif file name must be provided, which must apply the rules of HP-71 file names: capital letters and digits, starting with a capital letter.
+.TP
 .I \-x xrom_file
 Use
 .I xrom_file
@@ -76,6 +79,12 @@ repeated to load multiple
 The file name has to be specified either as a full pathname or as
 the filename without the extension .xrom in the default location
 that is specified with the environment variable LIFUTILSXROMDIR (see below).
+.TP
+.I \-s
+Output source listing to standard error
+.TP
+.I \-h
+Output byte code to standard error, requires \-s.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.

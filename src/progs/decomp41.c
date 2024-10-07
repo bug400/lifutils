@@ -277,7 +277,7 @@ int global_end(unsigned char *memory, int length, int *pc, int *line, int hex_fl
            one */
         check_length(pc,length,2);
         if(line_flag) printf("%04d  ",*line);
-        printf("%s\n",(memory[(*pc)+2]&0x20)?".END.":"END");
+        //printf("%s\n",(memory[(*pc)+2]&0x20)?".END.":"END");
         end_flag=1;
       }
     (*line)++; /* Incrememnt line number */
@@ -497,7 +497,7 @@ int print_instruction(unsigned char *memory, int length, int *pc, int *line, int
 void list_prog(unsigned char *memory, int length, int hex_flag, int line_flag, int alt_flag)
   {
     int pc; /* current program counter */
-    int end_flag=0; /* Emd of program detected */
+    int end_flag=0; /* End of program detected */
     int line; /* line number of user program */
     /* Scan throguh the loaded program and print the instructions */
     pc=0;

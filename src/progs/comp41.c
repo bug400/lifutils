@@ -30,6 +30,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <sys/types.h>
 #include "config.h"
 #include "comp41.h"
+#include "lif_create_entry.h"
+#include "lif_dir_utils.h"
+#include "lif_const.h"
 #include "xrom.h"
 
 #define MAX_ARGS 5
@@ -43,18 +46,29 @@ int global_count = 0;
 int global_end = 0;
 int line_numbers = 0;
 int force_global = 0;
+int source_listing = 0;
+int code_listing = 0;
+int create_lif = 0;
 
 
 
 void usage(void)
   {
-    fprintf(stderr,"Usage: comp41 [-n][-g] [-x xrom_name_file][-x...] input-file\n");
+    fprintf(stderr,"Usage: comp41 [-n][-g] [-x xrom_name_file][-x...] input-file [lif-file name]\n");
     fprintf(stderr,"       -l ignore line numbers in text\n");
     fprintf(stderr,"       -g global for[ \"A..J\", \"a..e\" ] with quotes: [ lbl \"A\" ]\n");
     fprintf(stderr,"       -x xrom_name_file uses those names for XROM\n");
+    fprintf(stderr,"       -s output source listing on standard error\n");
+    fprintf(stderr,"       -h output compiled byte code, requires -s\n");
+    fprintf(stderr,"       -f create lif file, requires parameter lif-filename\n");
     fprintf(stderr,"       if input-filename is omitted, the input comes from standard input\n");
     exit(1);
   }
+
+void get_lif_filename(int optarg)
+{
+   
+}
 
 int main (int argc, char **argv)
 {
@@ -63,7 +77,7 @@ int main (int argc, char **argv)
    char * line_sav= NULL;
    size_t len = 0;
    ssize_t read;
-   int i;
+   int i,j;
 
    static int line_argc;
    static int code_count;
@@ -72,22 +86,37 @@ int main (int argc, char **argv)
    static char *line_argv[ MAX_ARGS ];
    static char code_buffer[ MAX_CODE ];
    unsigned char memory[MEMORY_SIZE]; /* compiled program */
+   unsigned char dir_entry[ENTRY_SIZE];
+   char lif_filename[NAME_LEN+1];
+   int checksum;
    static int byte_counter=0;
+   static int regs;
    int option;
  
    SETMODE_STDOUT_BINARY;
 
   optind=1;
   init_xrom();
-  while((option=getopt(argc,argv,"glx:?"))!=-1)
+  while((option=getopt(argc,argv,"f:ghlsx:?"))!=-1)
     {
       switch(option)
         {
+          case 'f' : create_lif=1;
+                     if(check_filename(optarg,0)==0) {
+                         fprintf(stderr,"illegal LIF filename\n");      
+                         exit(1);
+                     }
+                     pad_name(optarg,lif_filename);
+                     break;
           case 'g' : force_global=1;
                      break;
           case 'x' : read_xrom(optarg);
                      break;
           case 'l' : line_numbers=1;
+                     break;
+          case 's' : source_listing=1;
+                     break;
+          case 'h' : code_listing=1;
                      break;
           case '?' : usage();
          }
@@ -111,6 +140,9 @@ int main (int argc, char **argv)
       line[strlen(line)-1]='\0';
       if(line[strlen(line)-1]== '\r') line[strlen(line)-1]='\0';
       source_line++;
+      if(source_listing) {
+         fprintf(stderr," %4.4d  %s\n",source_line,line);
+      }
       if( !global_end &&
          ( line_argc = get_line_args( line_argv, &line ))) {
          if( line_argc == MAX_ARGS && strlen( line )) {
@@ -126,7 +158,18 @@ int main (int argc, char **argv)
          }
          if( code_count == 0 ) {
              errflag=1;
-             fprintf(stderr, "error on line %d.\n", source_line );
+             if(!source_listing) {
+                fprintf(stderr, "error on line %d.\n", source_line );
+             }
+         } else {
+             if(source_listing && code_listing) {
+                 fprintf(stderr,"        ");
+                 for(i=0;i<code_count;i++) {
+                     fprintf(stderr,"%2.2X ",(unsigned char) code_buffer[i]);
+                 }
+                 fprintf(stderr,"\n");
+             }
+         
          }
          for(i=0;i<code_count;i++) {
             memory[byte_counter]=code_buffer[i];
@@ -136,7 +179,7 @@ int main (int argc, char **argv)
             }
             byte_counter++;
          }
-         if( global_end ) {
+         if( global_end && source_listing) {
              fprintf(stderr, ".END. found on line %d.\n", source_line );
          }
       }
@@ -157,9 +200,41 @@ int main (int argc, char **argv)
                exit(1);
             }
          }
-         fprintf(stderr, ".END. statement appended.\n");
+         if(source_listing) fprintf(stderr, ".END. statement appended.\n");
       }
-      for (i=0;i< byte_counter;i++) putchar(memory[i]);
+      if(source_listing) {
+         regs=byte_counter /7;
+         if(regs * 7 < byte_counter) {
+            ++regs;
+         }
+         fprintf(stderr,"\nProgram size %ld bytes, registers needed %ld\n",byte_counter,regs);
+      }
+      if(create_lif) {
+         /* create and write directory entry */
+        create_entry(dir_entry,lif_filename,0xE080,0,byte_counter+1,0);
+
+        /* Implementation bytes for HP41 files */
+        dir_entry[28]=byte_counter >> 8;
+        dir_entry[29]=byte_counter & 0xff;
+        dir_entry[30]=0x00;
+        dir_entry[31]=0x20;
+        for(i=0;i< ENTRY_SIZE; i++) {
+           putchar((int) dir_entry[i]);
+        }
+      }
+      /* write byte code to file */
+      checksum=0;
+      for (i=0;i< byte_counter;i++) {
+         putchar(memory[i]);
+         checksum+= (int) memory[i];
+      }
+      /* write checksum and trailer bytes to lif file */
+      if(create_lif) {
+         checksum= checksum & 0xff;
+         putchar((int) checksum);
+         j= SECTOR_SIZE- ((byte_counter+1) % SECTOR_SIZE);
+         for (i=0; i<j;i++) putchar(0);
+      }
    }
    exit(0);
 }
@@ -609,8 +684,10 @@ int compile_arg1( char *code, char *prefix )
     }
 
     fprintf(stderr, "Error: unrecognized or imcomplete function[ %s ]\n", prefix );
+    /*
     fprintf(stderr, "If [ %s ] is an external module function, try: [ XROM mm,ff ]\n",
             prefix );
+    */
     return( 0 );
 }
 
