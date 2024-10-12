@@ -3,7 +3,7 @@
 rom41cat \- a filter to display the function names in an HP41 ROM image
 .SH SYNOPSIS
 .B rom41cat
-[\-x]
+[\-x][\-a]
 .B <
 .I rom_file
 .B > 
@@ -16,6 +16,11 @@ reads the Function Address Table (FAT) at the start of an unscrambled
 HP41 ROM image and displays the names of the functions (both Mcode and 
 user language (Focal)) contained in that ROM.
 .PP
+If a ROM consists of multiple 4K ROM files they must be concatenated before
+feeding them into
+.B rom41cat
+The maximum size of concatenated ROM files is 16K. See the example below.
+.PP
 If the 
 .B \-x
 option is not given then the XROM numbers, entry address of the function, 
@@ -25,15 +30,15 @@ If the
 .B \-x
 option is given, then the XROM numbers and function name are displayed on 
 standard output in a format that can be stored in a file and read into 
-.B prog41
+.B comp41
 as an xrom definition file. Then 
-.B prog41
+.B comp41
 can give the correct names to functions in this rom. In this case, the 
 names of user language functions are displayed in the form
 .I XROM'name'
 .PP
 Use 
-.B rom41
+.B er41rom
 to unscramble Eramco rom image files before using
 .B rom41cat
 to display the function names contained therein.
@@ -41,8 +46,21 @@ to display the function names contained therein.
 .TP
 .I \-x
 Produce a
-.B prog41
+.B comp41
 xrom definition file
+.TP
+.I \-a
+Decompile the following non ASCII HP-41 FOCAL characters as Unicode characters: text append (hex 0x251c),
+greek small mu (hex 0x03bc), measured angle (hex 0x2221), not equal to (hex 0x2260), greek capital 
+sigma (hex 0x03A3).  In a xrom file function names containing these FOCAL characters are output as two 
+text strings. The first string contains these characters as escaped hex codes, the second as Unicode characters. 
+Note: xrom files created with this option are compatible with
+.B comp41
+, 
+.B decomp41
+, 
+.B keys41
+but not with other software wich support xrom files.
 .TP 
 .I \-?
 Print a message giving program usage to standard error.
@@ -56,24 +74,28 @@ If
 .I myrom.rom
 is an Eramco rom image file then
 .PP
-.B rom41 < myrom.rom | rom41cat
+.B er41rom < myrom.rom | rom41cat
 .PP
 will display the function names, entry points and language to standard 
 output, while
 .PP
-.B rom41 < myrom.rom | rom41cat -x > myrom.xrom
+.B er41rom < myrom.rom | rom41cat -x > myrom.xrom
 .PP
 will produce an xrom definition file for
-.B prog41
+.B comp41
 containing the function names in 
 .I myrom.rom
-.SH SEE ALSO
-.B rom41(1)
+.PP
+To create a xrom file for the Advantage Pac which consists of 3 ROM image files:
+.PP
+.B cat AdvL1-1B.rom AdvU1-1B.rom AdvU2-1B.rom | rom41cat -x -a > advantage.xrom (Unix, macOS)
+or
+.B copy /b AdvL1-1B.rom+AdvU1-1B.rom+AdvU2-1B.rom | rom41cat -x -a > advantage.xrom (Windows)
 .SH BUGS
 Some commonly used HP41 characters have no ASCII equivalents and are 
-therefore displayed as \\nnn octal escape sequences. Spaces in function 
+therefore displayed as \\xnn hex escape sequences. Spaces in function 
 names are replaced by underscores since 
-.B prog41
+.B comp41
 can't handle spaces in function names in xrom definition files.  
 The 'geese' are displayed as the corresponding punctuation characters.
 .SH AUTHOR

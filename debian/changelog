@@ -1,7 +1,8 @@
 lifutils (1.7.12) bookworm; urgency=medium
 
-  * comp41, decomp41, rom41cat can now handle the following Unicode characters: 
-    text append (hex 0x251c), greek small mu (hex 0x03bc), angle (hex 0x2280), 
+  * rom41cat does not crash any more for ROM sizes > 4K
+  * comp41, decomp41, key41, rom41cat can now handle the following Unicode characters: 
+    text append (hex 0x251c), greek small mu (hex 0x03bc), measured angle (hex 0x2221), 
     not equal to (hex 0x2260), greek capital sigma (hex 0x03A3).
   * the xrom file format was extended to allow alternative instruction names 
     with unicode characters

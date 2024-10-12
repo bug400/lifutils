@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:21 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Sat Oct 12 09:17:58 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -26,7 +26,6 @@
 <a href="#OPTIONS">OPTIONS</a><br>
 <a href="#REFERENCES">REFERENCES</a><br>
 <a href="#EXAMPLES">EXAMPLES</a><br>
-<a href="#SEE ALSO">SEE ALSO</a><br>
 <a href="#BUGS">BUGS</a><br>
 <a href="#AUTHOR">AUTHOR</a><br>
 
@@ -49,7 +48,7 @@ image</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>rom41cat</b>
-[-x] <b>&lt;</b> <i>rom_file</i> <b>&gt;</b>
+[-x][-a] <b>&lt;</b> <i>rom_file</i> <b>&gt;</b>
 <i>output_file</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>rom41cat
@@ -67,6 +66,11 @@ unscrambled HP41 ROM image and displays the names of the
 functions (both Mcode and user language (Focal)) contained
 in that ROM.</p>
 
+<p style="margin-left:11%; margin-top: 1em">If a ROM
+consists of multiple 4K ROM files they must be concatenated
+before feeding them into <b>rom41cat</b> The maximum size of
+concatenated ROM files is 16K. See the example below.</p>
+
 <p style="margin-left:11%; margin-top: 1em">If the
 <b>-x</b> option is not given then the XROM numbers, entry
 address of the function, language and name are displayed on
@@ -75,14 +79,14 @@ standard output.</p>
 <p style="margin-left:11%; margin-top: 1em">If the
 <b>-x</b> option is given, then the XROM numbers and
 function name are displayed on standard output in a format
-that can be stored in a file and read into <b>prog41</b> as
-an xrom definition file. Then <b>prog41</b> can give the
+that can be stored in a file and read into <b>comp41</b> as
+an xrom definition file. Then <b>comp41</b> can give the
 correct names to functions in this rom. In this case, the
 names of user language functions are displayed in the form
 <i>XROM&rsquo;name&rsquo;</i></p>
 
 <p style="margin-left:11%; margin-top: 1em">Use
-<b>rom41</b> to unscramble Eramco rom image files before
+<b>er41rom</b> to unscramble Eramco rom image files before
 using <b>rom41cat</b> to display the function names
 contained therein.</p>
 
@@ -103,8 +107,29 @@ contained therein.</p>
 <td width="78%">
 
 
-<p style="margin-top: 1em">Produce a <b>prog41</b> xrom
+<p style="margin-top: 1em">Produce a <b>comp41</b> xrom
 definition file</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>-a</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Decompile the following non ASCII HP-41 FOCAL characters
+as Unicode characters: text append (hex 0x251c), greek small
+mu (hex 0x03bc), measured angle (hex 0x2221), not equal to
+(hex 0x2260), greek capital sigma (hex 0x03A3). In a xrom
+file function names containing these FOCAL characters are
+output as two text strings. The first string contains these
+characters as escaped hex codes, the second as Unicode
+characters. Note: xrom files created with this option are
+compatible with <b>comp41</b> , <b>decomp41</b> ,
+<b>keys41</b> but not with other software wich support xrom
+files.</p> </td></tr>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="3%">
@@ -138,27 +163,29 @@ was discovered by experiment.</p>
 <p style="margin-left:11%; margin-top: 1em">If
 <i>myrom.rom</i> is an Eramco rom image file then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>rom41 &lt;
+<p style="margin-left:11%; margin-top: 1em"><b>er41rom &lt;
 myrom.rom | rom41cat</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will display
 the function names, entry points and language to standard
 output, while</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>rom41 &lt;
+<p style="margin-left:11%; margin-top: 1em"><b>er41rom &lt;
 myrom.rom | rom41cat -x &gt; myrom.xrom</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will produce an
-xrom definition file for <b>prog41</b> containing the
+xrom definition file for <b>comp41</b> containing the
 function names in <i>myrom.rom</i></p>
 
-<h2>SEE ALSO
-<a name="SEE ALSO"></a>
-</h2>
+<p style="margin-left:11%; margin-top: 1em">To create a
+xrom file for the Advantage Pac which consists of 3 ROM
+image files:</p>
 
-
-
-<p style="margin-left:11%; margin-top: 1em"><i><b>rom41(1)</b></i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>cat
+AdvL1-1B.rom AdvU1-1B.rom AdvU2-1B.rom | rom41cat -x -a &gt;
+advantage.xrom (Unix, macOS)</b> or <b>copy /b
+AdvL1-1B.rom+AdvU1-1B.rom+AdvU2-1B.rom | rom41cat -x -a &gt;
+advantage.xrom (Windows)</b></p>
 
 <h2>BUGS
 <a name="BUGS"></a>
@@ -167,9 +194,9 @@ function names in <i>myrom.rom</i></p>
 
 <p style="margin-left:11%; margin-top: 1em">Some commonly
 used HP41 characters have no ASCII equivalents and are
-therefore displayed as \nnn octal escape sequences. Spaces
-in function names are replaced by underscores since
-<b>prog41</b> can&rsquo;t handle spaces in function names in
+therefore displayed as \xnn hex escape sequences. Spaces in
+function names are replaced by underscores since
+<b>comp41</b> can&rsquo;t handle spaces in function names in
 xrom definition files. The &rsquo;geese&rsquo; are displayed
 as the corresponding punctuation characters.</p>
 

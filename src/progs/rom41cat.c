@@ -6,6 +6,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "xrom.h"
 #include "config.h"
 
 /* Each 4K block of an HP41 ROM module starts with the FAT (Function Address
@@ -50,51 +51,8 @@ unsigned char disp2asc (unsigned char disp_char)
     return(row4[disp_char-64]); /* misc characters */
   }
 
-void print_char(unsigned char c)
-/* print a character, if not printable, display as \nnn octal escape 
-   sequence */
-  {
-    if(isprint(c))
-      {
-         /* prog41 doesn't like spaces in function names */
-         putchar((c==' ')?'_':c);
-      }
-    else
-      {
-        printf("\\%02x",c);
-      }
-  }
 
-void mcode_name(unsigned int addr)
-/* display the name of an mcode function */
-  {
-    /* Mcode function names are stored backwards before the entry point. The
-       last character has bit 7 set */
-    do
-      {
-        print_char(disp2asc(rom[--addr]&0x7f));
-      }
-    while(!(rom[addr]&0x80));
-  }
-
-void focal_name(unsigned int addr)
-/* display the name of a focal function */
-  {
-    /* Focal function entries are global lables. Extract the string
-       and print it */
-    unsigned int length; /* name length */
-    unsigned int i; /* character counter */
-
-      
-    length=rom[addr+2]-0xF1; /* get the string length nybble */
-    /* display the string */
-    for(i=0;i<length;i++)
-      {
-        print_char(rom[addr+i+4]&0x7f);
-      }
-  }
-
-void display_names(unsigned int rom_size, char xrom_flag)
+void display_names(unsigned int rom_size, int xrom_flag, int utf_flag)
 /* Go through the FAT and print out the names */
   {
     unsigned int xrom; /* XROM id for this page */
@@ -104,7 +62,12 @@ void display_names(unsigned int rom_size, char xrom_flag)
     unsigned int page; /* current page */ 
     unsigned int fat_address; /* address of FAT entry for this function */
     unsigned int start_address; /* start address of this function */
+    unsigned int addr;
     unsigned int focal_flag; /* Is this function in focal? */
+    unsigned char c;
+    int l,i;
+
+    unsigned char fname[MAX_ALPHA];
     
     n_pages = (rom_size+4095)/4096; /* number of 4K pages to look at */
     /* look at each page in turn */
@@ -118,57 +81,53 @@ void display_names(unsigned int rom_size, char xrom_flag)
         for(func=0; func<n_funcs; func++)
           {
             fat_address=page*4096 + 2*func + 2;
-            start_address=((rom[fat_address]&0x1f)<<8) 
+            start_address=((rom[fat_address]&0x7f)<<8) 
                          +(rom[fat_address+1]&0xff)
                          +page*4096;
+            // if the start address is outside the rom address space print message on stderr
+            if(start_address> rom_size) {
+                fprintf(stderr,"%d %d function addr %x outside of ROM address space\n",xrom,func,start_address);
+                continue;
+            }
             focal_flag=rom[fat_address]&0x200;
-            if(xrom_flag)
-              {
-                /* For XROM file output, just print the ID numbers */
-                printf("%d %d ",xrom,func);
-                if(start_address> rom_size) 
-                {
-                  printf("function addr %x out of range\n", start_address);
-                }
-                else
-                { 
-                  if(focal_flag)
-                    {
-                      printf("XROM'");
-                      focal_name(start_address);  
-                      printf("'\n");
-                    }
-                  else
-                  {
-                    mcode_name(start_address);
-                    putchar('\n');
-                  }
-                }
-              }
-            else
-             {
-                if(start_address> rom_size) 
-                {
-                  printf("function addr %x out of range\n", start_address);
-                }
-                else
-                {
-                 /* for user output, print the ID, language and entry point */
-                 printf("XROM %02d,%02d ",xrom,func);
-                 printf("Entry = %04x ", start_address);
-                 printf("(%s) ",focal_flag?"Focal":"Mcode");
-                 if(focal_flag)
-                   {
-                     focal_name(start_address);
-                   }
-                 else
-                   {
-                     mcode_name(start_address);
-                   }
-                 putchar('\n');
+            if(focal_flag) {
+               l=rom[start_address+2]-0xF1; /* get the string length nybble */
+               for(i=0;i<l;i++) {
+                  c= rom[start_address+i+4]&0x7f;
+                  fname[i]=((c==' ')?'_':c);
                }
-             }
-          }
+            } else {
+               l=0;
+               addr= start_address;
+               do {
+                  c=disp2asc((rom[--addr]&0x7f));
+                  fname[l]=((c==' ')?'_':c);
+                  l++;
+               }
+               while(!(rom[addr]&0x80));
+            }
+            if(xrom_flag) {
+               printf("%d %d ",xrom,func);
+               if(focal_flag) {
+                   printf("XROM'%s'",to_hp41_string(fname,l,0));
+                   if(utf_flag && has_special_characters(fname,l)) {
+                      printf(" XROM'%s'",to_hp41_string(fname,l,1));
+                   }
+               } else {
+                   printf("%s",to_hp41_string(fname,l,0));
+                   if(utf_flag && has_special_characters(fname,l)) {
+                      printf(" %s",to_hp41_string(fname,l,1));
+                   }
+               }
+               printf("\n");
+           } else {
+              printf("XROM %02d,%02d ",xrom,func);
+              /* for user output, print the ID, language and entry point */
+              printf("Entry = %04x ", start_address);
+              printf("(%s) ",focal_flag?"Focal":"Mcode");
+              printf("%s\n",to_hp41_string(fname,l,utf_flag));
+           }
+        }
       }
   }
 
@@ -182,18 +141,21 @@ void usage(void)
 int main(int argc, char **argv)
   {
     unsigned int rom_size; /* size of input image */
-    unsigned char xrom_flag=0; /* output in XROM file format? */
+    int xrom_flag=0; /* output in XROM file format? */
+    int utf_flag=0;  /* output names with utf characters */
     int option; /* current option character */
 
     SETMODE_STDIN_BINARY;
 
     /* Process command line options */
     optind=1;
-    while((option=getopt(argc,argv,"x?"))!=-1)
+    while((option=getopt(argc,argv,"ax?"))!=-1)
       {
         switch(option)
           {
             case 'x' : xrom_flag=1;
+                       break;
+            case 'a' : utf_flag=1;
                        break;
             case '?' : usage();
           }
@@ -207,7 +169,7 @@ int main(int argc, char **argv)
     /* Read in the ROM */
     rom_size=read_rom();
     /* And print the function names */
-    display_names(rom_size,xrom_flag);
+    display_names(rom_size,xrom_flag, utf_flag);
     exit(0);
   }
 

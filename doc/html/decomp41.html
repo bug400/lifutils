@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Oct  7 07:15:41 2024 -->
+<!-- CreationDate: Sat Oct 12 09:17:57 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -48,8 +48,8 @@ filter to decompile a HP-41 program raw file</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>decomp41</b>
-[-h] [-l] [-x <i>xrom_file</i> ] [-x <i>xrom_file</i> ] ...
-<b>&lt;</b> <i>Input file</i> <b>&gt;</b> <i>Output
+[-a][-h] [-l] [-x <i>xrom_file</i> ] [-x <i>xrom_file</i> ]
+... <b>&lt;</b> <i>Input file</i> <b>&gt;</b> <i>Output
 file</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>decomp41
@@ -80,7 +80,7 @@ consisting of 2 decimal numbers and one or two strings
 whitespace. The first string gives a name to the function
 specified by the first number as <i>rr</i> and the second
 number as <i>nn.</i> The optional second string is the
-function name containing Unicode characterse, which must not
+function name containing Unicode characters, which must not
 be used in the first string. See the <i>-a</i> option
 below.</p>
 
@@ -129,10 +129,10 @@ immediately preceding the display of that instruction</p></td></tr>
 <td width="78%">
 
 
-<p>Decompile the following non ASCII HP-41 FOCAL character
-set as Unicode characters: text append (hex 0x251c), greek
-small mu (hex 0x03bc), angle (hex 0x2280), not equal to (hex
-0x2260), greek capital sigma (hex 0x03A3).</p></td></tr>
+<p>Decompile the following non ASCII HP-41 FOCAL characters
+as Unicode characters: text append (hex 0x251c), greek small
+mu (hex 0x03bc), measured angle (hex 0x2221), not equal to
+(hex 0x2260), greek capital sigma (hex 0x03A3).</p></td></tr>
 </table>
 
 <p style="margin-left:11%;"><i>-x xrom_file</i></p>

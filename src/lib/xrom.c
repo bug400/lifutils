@@ -9,7 +9,7 @@
 #include "config.h"
 #include "xrom.h"
 
-static char hpstring[MAX_ALPHA*4];
+static char hpstring[MAX_ALPHA*5]; /* max string length if all chars are hex numbers */
 
 #define DEBUG 0
 #define debug_print(fmt, ...) \
@@ -27,6 +27,19 @@ static int num_xrom_ids; /* Number of entries */
 
 #define MAX_XROMNAME 21
 
+/* check, whether HP 41 text bytes contain characters that can be converted to UTF */
+
+int has_special_characters(unsigned char *str, int len)
+{
+   for(int i=0; i< len; i++) {
+      if(str[i]== 0x0c || str[i] == 0x0d || str[i] == 0x1d || str[i] == 0x7e) return(1);
+   }
+   return(0);
+}
+
+/* convert HP-41 text bytes to a printable string. Some characters are are converted to UTF if utf flag
+   is set. Non printable characters are output as escaped hex numbers. */
+
 char * to_hp41_string(unsigned char *str, int len, int utf)
 {
    int i,j,k;
@@ -41,7 +54,7 @@ char * to_hp41_string(unsigned char *str, int len, int utf)
          k=sprintf(hpstring+j,"%s","μ");
          j+=k;
       } else if(c==0x0d && utf) {
-         k=sprintf(hpstring+j,"%s","⊀");
+         k=sprintf(hpstring+j,"%s","∡");
          j+=k;
       } else if(c==0x1d && utf) {
          k=sprintf(hpstring+j,"%s","≠");

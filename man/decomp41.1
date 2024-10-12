@@ -3,7 +3,7 @@
 decomp41 \- a filter to decompile a HP-41 program raw file
 .SH SYNOPSIS
 .B decomp41
-[\-h] [\-l] [\-x
+[\-a][\-h] [\-l] [\-x
 .I xrom_file
 ] [\-x
 .I xrom_file
@@ -40,7 +40,7 @@ The first string gives a name to the function specified by the first number as
 .I rr
 and the second number as
 .I nn.
-The optional second string is the function name containing Unicode characterse, which must not be 
+The optional second string is the function name containing Unicode characters, which must not be 
 used in the first string. See the
 .I \-a
 option below.
@@ -60,8 +60,8 @@ immediately preceding the display of that instruction
 Enable line numbers
 .TP
 .I \-a
-Decompile the following non ASCII HP-41 FOCAL character set as Unicode characters: text append (hex 0x251c),
-greek small mu (hex 0x03bc), angle (hex 0x2280), not equal to (hex 0x2260), greek capital sigma (hex 0x03A3).
+Decompile the following non ASCII HP-41 FOCAL characters as Unicode characters: text append (hex 0x251c),
+greek small mu (hex 0x03bc), measured angle (hex 0x2221), not equal to (hex 0x2260), greek capital sigma (hex 0x03A3).
 .TP
 .I \-x xrom_file
 Use

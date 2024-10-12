@@ -10,3 +10,4 @@ char * get_xrom_name_by_index(int ind);
 char * get_xrom_alt_name_by_index(int ind);
 void read_xrom(char *name);
 char *to_hp41_string(unsigned char * str, int len, int utf);
+int has_special_characters(unsigned char * str, int len);

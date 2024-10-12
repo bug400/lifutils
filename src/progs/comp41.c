@@ -1107,8 +1107,8 @@ int parse_text( char *text, char *buffer, int *pcount )
                 --k;
                 ++i;
             }
-            // utf angle
-            else if(k>1 && UTFcmp(buffer+i,3,(int[] ) {0xe2,0x8a,0x80}))
+            // utf measured angle
+            else if(k>1 && UTFcmp(buffer+i,3,(int[] ) {0xe2,0x88,0xa1}))
             {
                  text[ n++ ] = 0x0d;
                  k-=2;

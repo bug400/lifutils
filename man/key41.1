@@ -3,7 +3,7 @@
 key41 \- a filter to list an HP-41 key assignment file
 .SH SYNOPSIS
 .B key41
-[\-h] [\-x
+[\-a][\-h] [\-x
 .I xrom_file
 ] [\-x
 .I xrom_file
@@ -50,6 +50,10 @@ Use
 to define names for functions in plug-in modules. This option may be 
 repeated to load multiple
 .I xrom_files.
+.TP
+.I \-a
+Display the following non ASCII HP-41 FOCAL characters as Unicode characters: text append (hex 0x251c),
+greek small mu (hex 0x03bc), measured angle (hex 0x2221), not equal to (hex 0x2260), greek capital sigma (hex 0x03A3).
 .TP
 .I \-?
 Print a message giving the program usage to standard error.
