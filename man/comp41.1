@@ -67,7 +67,7 @@ Force global for "A..J", "a..e"  with quotes:  lbl "A"
 .I \-l
 Skip line numbers
 .TP
-.I \-f <LIF Filename>
+.I \-f LIF Filename
 Create a LIF file instead of a raw file on standard output. A valid lif file name must be provided, which must apply the rules of HP-71 file names: capital letters and digits, starting with a capital letter.
 .TP
 .I \-x xrom_file
@@ -108,11 +108,11 @@ hp41prog.dat
 is a LIF image file
 then
 .PP
-.B cat prog1.txt | comp41 \-x hpil \-x time | prog41hp PROG1 | lifput hp41prog.dat 
+.B cat prog1.txt | comp41 \-x hpil \-x time \-f PROG1 | lifput hp41prog.dat 
 .PP 
 will compile the file
 .I prog1.txt
-to a raw file that is transformed to a LIF file named
+to a LIF file named
 .I PROG1
 that is stored in the LIF image file
 .I hp41prog.dat

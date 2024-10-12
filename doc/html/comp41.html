@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Sat Oct 12 09:17:57 2024 -->
+<!-- CreationDate: Sat Oct 12 11:19:16 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -161,8 +161,7 @@ allowed if preceded by &rsquo;;&rsquo; or &rsquo;#&rsquo; :
 <p>Skip line numbers</p></td></tr>
 </table>
 
-<p style="margin-left:11%;"><i>-f &lt;LIF
-Filename&gt;</i></p>
+<p style="margin-left:11%;"><i>-f LIF Filename</i></p>
 
 <p style="margin-left:22%;">Create a LIF file instead of a
 raw file on standard output. A valid lif file name must be
@@ -254,13 +253,12 @@ uses functions of the HP-IL and time module and
 <i>hp41prog.dat</i> is a LIF image file then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>cat
-prog1.txt | comp41 -x hpil -x time | prog41hp PROG1 | lifput
+prog1.txt | comp41 -x hpil -x time -f PROG1 | lifput
 hp41prog.dat</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will compile
-the file <i>prog1.txt</i> to a raw file that is transformed
-to a LIF file named <i>PROG1</i> that is stored in the LIF
-image file <i>hp41prog.dat</i></p>
+the file <i>prog1.txt</i> to a LIF file named <i>PROG1</i>
+that is stored in the LIF image file <i>hp41prog.dat</i></p>
 
 <h2>BUGS
 <a name="BUGS"></a>
