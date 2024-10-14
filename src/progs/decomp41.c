@@ -277,7 +277,7 @@ int global_end(unsigned char *memory, int length, int *pc, int *line, int hex_fl
            one */
         check_length(pc,length,2);
         if(line_flag) printf("%04d  ",*line);
-        //printf("%s\n",(memory[(*pc)+2]&0x20)?".END.":"END");
+        printf("%s\n",(memory[(*pc)+2]&0x20)?".END.":"END");
         end_flag=1;
       }
     (*line)++; /* Incrememnt line number */

@@ -54,7 +54,8 @@ char * to_hp41_string(unsigned char *str, int len, int utf)
          k=sprintf(hpstring+j,"%s","μ");
          j+=k;
       } else if(c==0x0d && utf) {
-         k=sprintf(hpstring+j,"%s","∡");
+//       k=sprintf(hpstring+j,"%s","∡");
+         k=sprintf(hpstring+j,"%s","⊀");  // because rpncomp uses that too
          j+=k;
       } else if(c==0x1d && utf) {
          k=sprintf(hpstring+j,"%s","≠");
