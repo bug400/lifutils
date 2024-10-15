@@ -2,11 +2,7 @@
 User-Code File Converter/Compiler/De-compiler/Bar-Code Generator.
 Copyright (c) Leo Duran, 2000-2007.  All rights reserved.
 
-Build environment: Microsoft Visual C++ 1.52c  16-bit compiler.
-To build, run: nmake
-*/
 
-/*
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
 as published by the Free Software Foundation; either version 2
@@ -35,10 +31,21 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "lif_const.h"
 #include "xrom.h"
 
+#define DEBUG (0)
+
+#if(DEBUG>0)
+#define DLOG(...) fprintf(__VA_ARGS__)
+#endif
+#ifndef DLOG
+#define DLOG(...)
+#endif
+
+
 #define MAX_ARGS 5
 #define MAX_CODE 1500
 #define MAX_LINE 1500
 #define MEMORY_SIZE 4096
+#define LINE_LEN 132
 
 /* global flags */
 int global_label = 0;
@@ -50,6 +57,20 @@ int source_listing = 0;
 int code_listing = 0;
 int create_lif = 0;
 
+char err_msg[LINE_LEN];
+char source_line[LINE_LEN];
+int errflag = 0;
+int source_line_counter = 0;
+char * line = NULL;
+
+void print_error(char * message)
+{
+   if(! code_listing) {
+      fprintf(stderr,"%s\n",source_line);
+   }
+   fprintf(stderr,"Error at line %d: %s\n",source_line_counter,message);
+   errflag=1;
+}
 
 
 void usage(void)
@@ -65,24 +86,15 @@ void usage(void)
     exit(1);
   }
 
-void get_lif_filename(int optarg)
-{
-   
-}
-
 int main (int argc, char **argv)
 {
    FILE * fp;
-   char * line = NULL;
-   char * line_sav= NULL;
    size_t len = 0;
    ssize_t read;
    int i,j;
 
    static int line_argc;
    static int code_count;
-   static int source_line = 0;
-   static int errflag = 0;
    static char *line_argv[ MAX_ARGS ];
    static char code_buffer[ MAX_CODE ];
    unsigned char memory[MEMORY_SIZE]; /* compiled program */
@@ -91,19 +103,22 @@ int main (int argc, char **argv)
    int checksum;
    static int byte_counter=0;
    static int regs;
+   int l;
    int option;
  
    SETMODE_STDOUT_BINARY;
 
   optind=1;
   init_xrom();
+
+  // program option processing
   while((option=getopt(argc,argv,"f:ghlsx:?"))!=-1)
     {
       switch(option)
         {
           case 'f' : create_lif=1;
                      if(check_filename(optarg,0)==0) {
-                         fprintf(stderr,"illegal LIF filename\n");      
+                         fprintf(stderr,"Error: illegal LIF filename\n");      
                          exit(1);
                      }
                      pad_name(optarg,lif_filename);
@@ -132,36 +147,47 @@ int main (int argc, char **argv)
    }
 
    if (fp == NULL) {
-      fprintf(stderr,"Cannot open input file\n");
+      fprintf(stderr,"Error: cannot open input file\n");
       exit(1);
    }
+
+   // main loop, read an process lines of input file
    while ((read = getline(&line, &len, fp)) != -1) {
-      line_sav=line;
-      line[strlen(line)-1]='\0';
-      if(line[strlen(line)-1]== '\r') line[strlen(line)-1]='\0';
-      source_line++;
-      if(source_listing) {
-         fprintf(stderr," %4.4d  %s\n",source_line,line);
+      if(line[read-2]== '\r') {
+          line[read-2]='\0';
+      } else {
+          line[read-1]='\0';
       }
+      source_line_counter++;
+      if(source_listing) {
+         fprintf(stderr," %4.4d  %s\n",source_line_counter,line);
+      }
+      // missing check source_line overflow
+      strcpy(source_line,line);
+         
       if( !global_end &&
          ( line_argc = get_line_args( line_argv, &line ))) {
+#if (DEBUG>0)
+         for(i=0;i<line_argc;i++)fprintf(stderr,"%s|",line_argv[i]);
+         fprintf(stderr,"\n");
+#endif
          if( line_argc == MAX_ARGS && strlen( line )) {
+            print_error("too many arguments");
+            /*
             fprintf(stderr, "Error: too many arguments[" );
             for( line_argc=0; line_argc<MAX_ARGS; ++line_argc )
                 fprintf(stderr, " %s", line_argv[ line_argc ] );
             fprintf(stderr, " %s ]\n", line );
+            */
             code_count = 0;
          }
          else {
             // compile next instruction
             code_count = compile_args( code_buffer, line_argc, line_argv );
          }
-         if( code_count == 0 ) {
-             errflag=1;
-             if(!source_listing) {
-                fprintf(stderr, "error on line %d.\n", source_line );
-             }
-         } else {
+
+         // list bytecode of line
+         if( code_count != 0 ) {
              if(source_listing && code_listing) {
                  fprintf(stderr,"        ");
                  for(i=0;i<code_count;i++) {
@@ -171,70 +197,81 @@ int main (int argc, char **argv)
              }
          
          }
+         // append byte code of line to code buffer
          for(i=0;i<code_count;i++) {
             memory[byte_counter]=code_buffer[i];
             if(byte_counter > MEMORY_SIZE) {
-               fprintf(stderr,"code buffer exceeded\n");
+               fprintf(stderr,"Error: code buffer size exceeded\n");
                exit(1);
             }
             byte_counter++;
          }
          if( global_end && source_listing) {
-             fprintf(stderr, ".END. found on line %d.\n", source_line );
+             fprintf(stderr, ".END. found on line %d.\n", source_line_counter );
          }
       }
-      line=line_sav;
    }
+
+   // exit on any error
    if(fp != stdin) fclose(fp);
    if( errflag) {
       fprintf(stderr,"error(s) in compilation\n");
       exit(1);
-   } else {
-      if (! global_end) { /* Append End statement */
-         compile_end(code_buffer,global_count);
-         for(i=0;i<3;i++) {
-            memory[byte_counter]=code_buffer[i];
-            byte_counter++;
-            if(byte_counter > MEMORY_SIZE) {
-               fprintf(stderr,"code buffer exceeded\n");
-               exit(1);
-            }
-         }
-         if(source_listing) fprintf(stderr, ".END. statement appended.\n");
-      }
-      if(source_listing) {
-         regs=byte_counter /7;
-         if(regs * 7 < byte_counter) {
-            ++regs;
-         }
-         fprintf(stderr,"\nProgram size %ld bytes, registers needed %ld\n",byte_counter,regs);
-      }
-      if(create_lif) {
-         /* create and write directory entry */
-        create_entry(dir_entry,lif_filename,0xE080,0,byte_counter+1,0);
+   }
 
-        /* Implementation bytes for HP41 files */
-        dir_entry[28]=byte_counter >> 8;
-        dir_entry[29]=byte_counter & 0xff;
-        dir_entry[30]=0x00;
-        dir_entry[31]=0x20;
-        for(i=0;i< ENTRY_SIZE; i++) {
-           putchar((int) dir_entry[i]);
-        }
+   // END handling
+   if (! global_end) { /* Append End statement */
+      compile_end(code_buffer,global_count);
+      for(i=0;i<3;i++) {
+         memory[byte_counter]=code_buffer[i];
+         byte_counter++;
+         if(byte_counter > MEMORY_SIZE) {
+            fprintf(stderr,"code buffer exceeded\n");
+            exit(1);
+         }
       }
-      /* write byte code to file */
-      checksum=0;
-      for (i=0;i< byte_counter;i++) {
-         putchar(memory[i]);
-         checksum+= (int) memory[i];
+      if(source_listing) fprintf(stderr, ".END. statement appended.\n");
+   }
+
+   // compute and output required number of registers
+   if(source_listing) {
+      regs=byte_counter /7;
+      if(regs * 7 < byte_counter) {
+         ++regs;
       }
-      /* write checksum and trailer bytes to lif file */
-      if(create_lif) {
-         checksum= checksum & 0xff;
-         putchar((int) checksum);
-         j= SECTOR_SIZE- ((byte_counter+1) % SECTOR_SIZE);
-         for (i=0; i<j;i++) putchar(0);
-      }
+      fprintf(stderr,"\nProgram size %ld bytes, registers needed %ld\n",byte_counter,regs);
+   }
+
+   // create lif header if requested
+   if(create_lif) {
+     // create and write directory entry 
+     create_entry(dir_entry,lif_filename,0xE080,0,byte_counter+1,0);
+
+     // Implementation bytes for HP41 files 
+     dir_entry[28]=byte_counter >> 8;
+     dir_entry[29]=byte_counter & 0xff;
+     dir_entry[30]=0x00;
+     dir_entry[31]=0x20;
+     
+     // output lif header to result file
+     for(i=0;i< ENTRY_SIZE; i++) {
+        putchar((int) dir_entry[i]);
+     }
+   }
+
+   // compute checksum and write byte code to result file 
+   checksum=0;
+   for (i=0;i< byte_counter;i++) {
+      putchar(memory[i]);
+      checksum+= (int) memory[i];
+   }
+
+   // write checksum and trailer bytes to lif file 
+   if(create_lif) {
+      checksum= checksum & 0xff;
+      putchar((int) checksum);
+      j= SECTOR_SIZE- ((byte_counter+1) % SECTOR_SIZE);
+      for (i=0; i<j;i++) putchar(0);
    }
    exit(0);
 }
@@ -442,6 +479,7 @@ int get_text_prefix( char *text, char *buffer, int *pcount )
    int error=1;
    char lbuffer[ MAX_LINE ];
 
+    DLOG(stderr,"get_text_prefix %s\n",buffer);
     // get start-quote
     j=0;
     for( i=0, k=0; i<strlen( buffer ) && k==0; ++i ) {
@@ -530,7 +568,7 @@ int compile_num( char *code, char *num )
 int compile_text( char *code, char *text, int count )
 {
     // TEXT0..15
-//  fprintf(stderr,"compile text\n");
+    DLOG(stderr,"compile text\n");
     code[ 0 ] = 0xF0 + count;
     if( count )
         memcpy( &code[ 1 ], text, count );
@@ -547,13 +585,14 @@ int compile_alpha( char *code, char *prefix, char *alpha, int count )
 
     local = is_local_label( alpha );
 
-//  fprintf(stderr,"compile alpha %s\n",prefix);
+    DLOG(stderr,"compile alpha %s\n",prefix);
 
     // LBL "alpha"
     if( strcasecmp( prefix, "LBL" ) == 0 ) {
         if( count >= MAX_ALPHA ) {
-            fprintf(stderr, "Error: alpha (global) postfix[ %s \"%s\" ] too long.\n",
+            sprintf(err_msg, "Error: alpha (global) postfix[ %s \"%s\" ] too long.\n",
                      prefix, alpha );
+            print_error(err_msg);
             return( 0 );
         }
         else if( force_global || !local ) {
@@ -630,12 +669,14 @@ int compile_alpha( char *code, char *prefix, char *alpha, int count )
            code[ 1 ] = (( mm & 0x03 ) << 6 ) + ff;
            return( 2 );
         }
-        fprintf(stderr, "Error: unrecognized alpha postfix[ %s \"%s\" ], try: [ XROM mm,ff ]\n",
+        sprintf(err_msg, "Error: unrecognized alpha postfix[ %s \"%s\" ], try: [ XROM mm,ff ]\n",
                  prefix, to_hp41_string(alpha,count,1) );
+        print_error(err_msg);
         return( 0 );
     }
 
-    fprintf(stderr, "Error: unrecognized prefix[ %s \"%s\" ]\n", prefix, alpha );
+    sprintf(err_msg, "Error: unrecognized prefix[ %s \"%s\" ]\n", prefix, alpha );
+    print_error(err_msg);
     return( 0 );
 }
 
@@ -645,7 +686,7 @@ int compile_arg1( char *code, char *prefix )
    int i, j;
    char mm, ff;
 
-//  fprintf(stderr,"compile arg1\n");
+    DLOG(stderr,"compile arg1\n");
     // .END.
     if( strcasecmp( prefix, "END" ) == 0 ||
         strcasecmp( prefix, ".END." ) == 0 ) {
@@ -683,7 +724,8 @@ int compile_arg1( char *code, char *prefix )
         }
     }
 
-    fprintf(stderr, "Error: unrecognized or imcomplete function[ %s ]\n", prefix );
+    sprintf(err_msg, "Error: unrecognized or incomplete function[ %s ]\n", prefix );
+    print_error(err_msg);
     /*
     fprintf(stderr, "If [ %s ] is an external module function, try: [ XROM mm,ff ]\n",
             prefix );
@@ -702,7 +744,7 @@ int compile_arg2( char *code, char *prefix, char *postfix )
    char num_postfix[] = "0#";
    char *ppostfix = postfix;
 
-//  fprintf(stderr,"compile arg2\n");
+    DLOG(stderr,"compile arg2\n");
     // XROM mm,ff
     if( strcasecmp( prefix, "XROM") == 0 ) {
         if(( pf = strchr( postfix, ',' ))) {
@@ -846,7 +888,8 @@ int compile_arg2( char *code, char *prefix, char *postfix )
         }
     }
 
-    fprintf(stderr, "Error: unrecognized function[ %s %s ]\n", prefix, postfix );
+    sprintf(err_msg, "Error: unrecognized function[ %s %s ]\n", prefix, postfix );
+    print_error(err_msg);
     return( 0 );
 }
 
@@ -858,7 +901,7 @@ int compile_arg3( char *code, char *prefix, char *ind, char *postfix )
    char num_postfix[] = "0#";
    char *ppostfix = postfix;
 
-//  fprintf(stderr,"compile arg3\n");
+    DLOG(stderr,"compile arg3\n");
     // add leading "0"
     if( strlen( postfix ) == 1 &&
         isdigit( postfix[ 0 ] )) {
@@ -930,8 +973,9 @@ int compile_arg3( char *code, char *prefix, char *ind, char *postfix )
         }
     }
 
-    fprintf(stderr, "Error: unrecognized function[ %s %s %s ]\n",
+    sprintf(err_msg, "Error: unrecognized function[ %s %s %s ]\n",
              prefix, ind, postfix );
+    print_error(err_msg);
     return( 0 );
 }
 
@@ -940,7 +984,7 @@ int compile_label( char *code, char *label, char *alpha, int count, char *key )
 {
    int asn;
 
-//  fprintf(stderr,"compile label\n");
+    DLOG(stderr,"compile label\n");
     asn = get_key( key );
     if( asn && count && count < MAX_ALPHA &&
         strcasecmp( label, "LBL" ) == 0 ) {
@@ -953,12 +997,13 @@ int compile_label( char *code, char *label, char *alpha, int count, char *key )
     }
 
     if( count >= MAX_ALPHA )
-        fprintf(stderr, "Error: alpha (global) postfix[ %s \"%s\" %s ] too long.\n",
+        sprintf(err_msg, "Error: alpha (global) postfix[ %s \"%s\" %s ] too long.\n",
                  label, alpha, key );
     else
-        fprintf(stderr, "Error: invalid key assignment[ %s \"%s\" %s ]\n",
+        sprintf(err_msg, "Error: invalid key assignment[ %s \"%s\" %s ]\n",
                  label, alpha, key );
 
+    print_error(err_msg);
     return( 0 );
 }
 
@@ -977,7 +1022,7 @@ void compile_end( char *buffer, int bytes )
     //
     // xx = 0D: non-private, unpacked
     //
-//  fprintf(stderr,"compile end\n");
+    DLOG(stderr,"compile end\n");
     if( bytes > 3583 ) {
         a = 0;
         bc = 0;
@@ -1061,7 +1106,8 @@ int parse_text( char *text, char *buffer, int *pcount )
 
     *pcount = 0;
     k = strlen( buffer );
-    if( k == 0 )
+    DLOG(stderr,"parse text: %s %d\n",buffer,k);
+    if( k == 0 ) 
         return( 1 );
 
     // "~text"
@@ -1138,6 +1184,7 @@ int parse_text( char *text, char *buffer, int *pcount )
                 if(( buffer[ i ] == '\"' ||
                      buffer[ i ] == '\'' ) && k &&
                      buffer[ i ] == buffer[ i+1 ] ) {
+                     DLOG(stderr,"repeat quote\n");
                      ++i;
                      --k;
                 }
@@ -1246,17 +1293,18 @@ int parse_text( char *text, char *buffer, int *pcount )
         }
 
         // overflow, underflow?
-        if(( n == MAX_ALPHA && k ) || ( k == 0 && j ))
+        if(( n == MAX_ALPHA && k ) || ( k == 0 && j )) {
+            DLOG(stderr,"parse text: over- underflow %d %d %d\n",n,k,j);
             return( 0 );
+        }
 
         ++i;
     } while( k );
 
     *pcount = n;
+    DLOG(stderr,"parse text returns %d\n",n);
     return( n );
 }
-
-
 int is_inquotes( char *buffer )
 {
    int i;
@@ -1272,20 +1320,23 @@ int is_inquotes( char *buffer )
             }
             
             if( buffer[ i ] == buffer[ 0 ] && ! esc  ) {
-              if( buffer[ i+1 ] == buffer[ 0 ] )
+              if( buffer[ i+1 ] == buffer[ 0 ] ) {
+                  DLOG(stderr,"is_inquotes: inc\n");
                   ++i;
+              }
               else if( buffer[ i+1 ] == '\0' ||
                   buffer[ i+1 ] == '\t' ||
                   buffer[ i+1 ] == 0x20 ) {
+                  DLOG(stderr,"is_inquotes: exit %x\n",buffer[i+1]);
                   return( i );
                 }
             }
             esc=0;
         }
     }
+    DLOG(stderr,"is_inquotes: exit 0\n");
     return( 0 );
 }
-
 
 int is_append( char *prefix )
 {
