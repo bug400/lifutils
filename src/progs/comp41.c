@@ -58,7 +58,7 @@ int code_listing = 0;
 int create_lif = 0;
 
 char err_msg[LINE_LEN];
-char source_line[LINE_LEN];
+char *source_line = (char *) NULL;
 int errflag = 0;
 int source_line_counter = 0;
 char * line = NULL;
@@ -89,6 +89,7 @@ void usage(void)
 int main (int argc, char **argv)
 {
    FILE * fp;
+   char * line;
    size_t len = 0;
    ssize_t read;
    int i,j;
@@ -159,8 +160,9 @@ int main (int argc, char **argv)
           line[read-1]='\0';
       }
       source_line_counter++;
+      source_line= line;
       if(source_listing) {
-         fprintf(stderr," %4.4d  %s\n",source_line_counter,line);
+         fprintf(stderr," %4.4d  %s\n",source_line_counter,source_line);
       }
       // missing check source_line overflow
       strcpy(source_line,line);
@@ -210,6 +212,7 @@ int main (int argc, char **argv)
              fprintf(stderr, ".END. found on line %d.\n", source_line_counter );
          }
       }
+      line= source_line; // needed, because line is modified in get_line_args
    }
 
    // exit on any error
