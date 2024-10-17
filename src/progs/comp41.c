@@ -61,7 +61,6 @@ char err_msg[LINE_LEN];
 char *source_line = (char *) NULL;
 int errflag = 0;
 int source_line_counter = 0;
-char * line = NULL;
 
 void print_error(char * message)
 {
@@ -89,7 +88,7 @@ void usage(void)
 int main (int argc, char **argv)
 {
    FILE * fp;
-   char * line;
+   char * line= (char *) NULL;
    size_t len = 0;
    ssize_t read;
    int i,j;
@@ -164,8 +163,6 @@ int main (int argc, char **argv)
       if(source_listing) {
          fprintf(stderr," %4.4d  %s\n",source_line_counter,source_line);
       }
-      // missing check source_line overflow
-      strcpy(source_line,line);
          
       if( !global_end &&
          ( line_argc = get_line_args( line_argv, &line ))) {
