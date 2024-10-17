@@ -71,7 +71,7 @@ Unicode true ; properly display all languages (Installer will not work on Window
         ${if} ${mode} == "AllUsers"
                 WriteRegExpandStr SHCTX "SYSTEM\CurrentControlSet\Control\Session Manager\Environment" ${variable} ${value} 
         ${else}
-                WriteRegExpandStr SHCTX "Environment" ${variable} ${mode}
+                WriteRegExpandStr SHCTX "Environment" ${variable} ${value}
         ${endif}
         SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
 !macroend

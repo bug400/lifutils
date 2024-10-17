@@ -71,6 +71,7 @@
         !insertmacro DeleteRetryAbort "$INSTDIR\xroms\printer.xrom"
         !insertmacro DeleteRetryAbort "$INSTDIR\xroms\realestate.xrom"
         !insertmacro DeleteRetryAbort "$INSTDIR\xroms\standard.xrom"
+        !insertmacro DeleteRetryAbort "$INSTDIR\xroms\statistics.xrom"
         !insertmacro DeleteRetryAbort "$INSTDIR\xroms\struct.xrom"
         !insertmacro DeleteRetryAbort "$INSTDIR\xroms\stress.xrom"
         !insertmacro DeleteRetryAbort "$INSTDIR\xroms\surveying.xrom"
