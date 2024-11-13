@@ -150,5 +150,6 @@
         !insertmacro DeleteRetryAbort "$INSTDIR\doc\GPL-2"
         !insertmacro DeleteRetryAbort "$INSTDIR\doc\readme.html"
         !insertmacro DeleteRetryAbort "$INSTDIR\doc\tutorial.html"
+        !insertmacro DeleteRetryAbort "$INSTDIR\doc\oldreleasenotes.html"
 	RMdir "$INSTDIR\doc"
 	

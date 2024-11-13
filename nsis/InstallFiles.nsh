@@ -93,6 +93,7 @@
         FILE "${SRC}\doc\GPL-2"
         FILE "${SRC}\doc\readme.html"
         FILE "${SRC}\doc\tutorial.html"
+        FILE "${SRC}\doc\oldreleasenotes.html"
 
 	createDirectory "$INSTDIR\doc\html"
 	SetOutPath "$INSTDIR\doc\html"
