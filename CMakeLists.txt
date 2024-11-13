@@ -170,7 +170,7 @@ endforeach (scriptfile ${scriptlist} )
 #
 # install documentation
 #
-install(FILES doc/copying.html doc/readme.html doc/tutorial.html doc/GPL-2 DESTINATION ${DOCPATH} )
+install(FILES doc/copying.html doc/readme.html doc/tutorial.html doc/oldreleasenotes.html doc/GPL-2 DESTINATION ${DOCPATH} )
 foreach (sourcefile ${srclist} )
    string( REPLACE ".c" "" progname ${sourcefile} )
    install(FILES doc/html/${progname}.html DESTINATION ${DOCPATH}/html)
