@@ -88,7 +88,7 @@ int utfstrcasecmp(char * str1, char * str2) {
 
    if(strlen(str1) != strlen(str2)) return 1;
 
-   for (i=0;i<strlen(str1);i++) {
+   for (i=0;i<(int) strlen(str1);i++) {
       c1= str1[i];
       c2= str2[i];
       /* UTF byte, compare byte value only */
@@ -163,6 +163,8 @@ void read_xrom(char *name)
        of 2 decimal numbers (ROM# and function#) and a name string, separated
        by whitespace. The name must not contain any whitespace */
 
+    /* TODO there should be an error handling for malloc or file open failures */
+
     FILE *xrom_file; /* XROM file name */
     char line[100]; /* Line from that file */
     int rom, fn; /* ROM and function numbers */
@@ -214,7 +216,7 @@ void read_xrom(char *name)
         if(len==3 || len == 4) 
           {
 	    buf=malloc ((strlen(this_name)+1)*sizeof(char));
-            if (buf == NULL) exit(0);
+            if (buf == NULL) return;
             strcpy(buf,this_name);
             xrom_ids[num_xrom_ids].name=buf;
             xrom_ids[num_xrom_ids].rom= rom;

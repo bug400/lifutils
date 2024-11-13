@@ -1,27 +1,39 @@
-.TH rom41lif 1 14-April-2018 "LIF Utilitites" "LIF Utilities"
+.TH rom41lif 1 01-November-2024 "LIF Utilitites" "LIF Utilities"
 .SH NAME
-rom41lif \- a filter to convert a HP-41 rom file to a LIF file of type sdata that can be used to update the HP-41 CL 
+rom41lif \- convert a HP-41 rom file to a LIF file of type sdata 
 .SH SYNOPSIS
-.B rom41lif
-.I <LIF filename>
-.B <
-.I Input file
-.B >
+.B lifutils rom41lif
+.I LIFFILENAME
+.I INPUTFILE
+> 
 .I Output file
+.PP
+.B lifutils rom41lif
+.I LIFFILENAME
+< 
+.I Input file 
+> 
+.I Output file
+.PP
+.B lifutils rom41lif \-?
 .PP
 .SH DESCRIPTION
 .B rom41lif
-is a filter which generates a LIF sdata file from an HP41 rom file.
-The filter reads the rom data from standard input and writes the LIF 
-file header and the uncompressed rom data to standard output. 
-Note: this filter updates incorrect ROM checksums.
-
+generates a LIF sdata file from an HP41 rom file.
+The program reads the rom data from standard input or the file specified by the command line paramter
+.I INPUTFILE
+and writes the LIF file header and the uncompressed rom data to standard output. 
+Note: this program updates incorrect ROM checksums.
+.SH OPTIONS
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
 .SH EXAMPLES
 If
 .I HPILDv1B.ROM 
 is the rom file of the HP-IL development module then
 .PP
-.B cat HPILDv1B.ROM | rom41lif HPILDEV | lifput lifimage.dat
+.B cat HPILDv1B.ROM | lifutils rom41lif HPILDEV | lifutils lifput lifimage.dat
 .PP
 will put the sdata rom file with the name
 .I HPILDEV

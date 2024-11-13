@@ -1,11 +1,16 @@
-.TH inp41 1 2-Oct-2000 "LIF Utilities" "LIF Utilities"
+.TH inp41 1 02-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
-inp41 \- a filter to decode an HP41 hexadecimal program
+inp41 \- a filter to decode a HP41 hexadecimal program
 .SH SYNOPSIS
-.B inp41 <
-.I input_device_or_file
-.B >
-.I output_file
+.B lifutils inp41 
+<
+.I Input device or file
+>
+.I Output_file
+.PP
+.B lifutils inp41
+\-?
+.PP
 .SH DESCRIPTION
 The HP41C Extended I/O Module contains 2 commands,
 .I INP
@@ -23,6 +28,10 @@ standard output. At the end of the transfer, the message
 or
 .B checksum bad
 is written to standard error as appropriate.
+.SH OPTIONS
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
 .SH FILES
 .I hardware/*
 : Information on linking the HP41 to a PC.

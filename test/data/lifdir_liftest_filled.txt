@@ -1,0 +1,15 @@
+Volume : TEST   , formatted : 01/01/01 00:00:00
+Tracks: 2 Surfaces: 1 Blocks/Track: 256 Total size: 512 Blocks, 131072 Bytes
+AUDI2       PGM41        1972/2048                      
+TEST1       PGM41         185/256                       
+TXTB        TEXT          256/256      01/01/01 00:00:00
+TXT75       TXT75         256/256      01/01/01 00:00:00
+VERMROM     SDATA        5120/5120     01/01/01 00:00:00
+TXTA        TEXT          256/256      01/01/01 00:00:00
+DAT1        SDATA         160/256                       
+KEY1        KEY41          25/256                       
+WALL1       ALL41        2689/2816                      
+STAT1       STAT41         81/256                       
+MEM         LEX71         959/1024     01/03/16 21:15:40
+PHYCONS     LEX75         768/768      08/01/86 23:54:54
+12 files (64 max), last block used: 62 of 512

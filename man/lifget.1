@@ -1,27 +1,31 @@
-.TH lifget 1 15-March-2018 "LIF Utilities" "LIF Utilities"
+.TH lifget 1 03-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
-lifget \- extract a file from a LIF image file
+lifget \- extract a file from a LIF diks image file
 .SH SYNOPSIS
-.B lifget 
+.B lifutils lifget 
 [\-r] [\-b] [\-l] [\-p]
-.I <LIF image file> <filename> <output file>
+.I LIFIMAGE LIFFILENAME OUTPUTFILE
 .PP
-.B lifget 
+.B lifutils lifget 
 [\-r] [\-b] [\-l] [\-p]
-.I <LIF image file> <filename>
+.I LIFIMAGE LIFFILENAME
+<
+.I Output file
 .PP
-(last form send the extracted file to standard output)
-.PP
-.B lifget \-?
+.B lifutils lifget \-?
 .SH DESCRIPTION
 .B lifget
 extracts a single file, specified by 
-.I filename
-from a LIF image file.
-.I filename
+.I LIFFILENAME
+from  the LIF image file
+.I LIFIMAGE.
+.PP
+.I LIFFILENAME
 is case\-sensitive and must be given in upper case. If 
 .B lifget
-is executed with 3 arguments after the options then the third argument is 
+is executed with 3 arguments after the options then the third argument 
+.I OUTPUTFILE
+is 
 used as the name of the file that the LIF file is copied to. If 
 only 2 arguments are given then the file is copied to standard output.
 .SH OPTIONS
@@ -51,9 +55,9 @@ is a LIF image file containing a HP-41 SDATA file called
 .I TEST1
 then 
 .PP
-.B lifget disk1.dat TEST1 lif_test_file.d41
+.B lifutils lifget disk1.dat TEST1 lif_test_file.d41
 .PP
-will copy the file TEST1 from the LIF disk image to the LIF file
+will copy the file TEST1 from the LIF image to the LIF file
 .I lif_test_file.d41.
 .SH REFERENCES
 The LIF disk directory format is documented in the

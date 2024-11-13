@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:21 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:34 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -46,11 +46,17 @@ file</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>wall41</b>
-[-k [ <i>key_file</i> ] ] [-b <i>buff#</i> [
-<i>buffer_file</i> ] ] [-r [ <i>register_file</i> ] ] [-s [
-status_file ] ] [-p <i>program_name</i> ] &lt;
-<i>writeall_file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+wall41</b> [-r] [-k [ <i>key_file</i> ] ] [-b <i>buff#</i> [
+<i>buffer_file</i> ] ] [-g [ <i>register_file</i> ] ] [-s [
+status_file ] ] [-p <i>program_name</i> ] <i>INPUTFILE</i>
+[&gt; <i>Output file</i> ]</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+wall41</b> [-r] [-k [ <i>key_file</i> ] ] [-b <i>buff#</i> [
+<i>buffer_file</i> ] ] [-g [ <i>register_file</i> ] ] [-s [
+status_file ] ] [-p <i>program_name</i> ] &lt; input file
+[&gt; <i>Output file</i> ]</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>wall41</b>
 -?</p>
@@ -63,20 +69,42 @@ status_file ] ] [-p <i>program_name</i> ] &lt;
 <p style="margin-left:11%; margin-top: 1em">An HP41 Write
 All file is a dump of the entire contents of user memory,
 including user data, user programs, buffers, key assignments
-and the status registers. <b>wall41</b> reads a raw Write
-All file from standard input and extracts one or more of
-these sections from it. The extracted data is written either
-to standard output or to the specified file. In turn this
-information can be decoded by other filters in the LIF
-Utilities package.</p>
+and the status registers. <b>wall41</b> reads a LIF or raw
+Write All file from standard input or the file specified
+with the command line parameter <i>INPUTFILE</i> and
+extracts one or more of these sections from it. The
+extracted data is written either to standard output or to
+the specified file. In turn this information can be decoded
+by other programs in the LIF Utilities package.</p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><i>-k
-[key_file]</i></p>
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>-r</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Skip an existing LIF header of
+the input file. This is mandatory, if the input file is a
+LIF instead of a raw file.</p></td></tr>
+</table>
+
+<p style="margin-left:11%;"><i>-i INPUTFILE</i></p>
+
+<p style="margin-left:22%;">Read wall file from INPUTFILE
+instead from standard input</p>
+
+<p style="margin-left:11%;"><i>-k [key_file]</i></p>
 
 <p style="margin-left:22%;">Extract the KARs (Key
 Assignment Registers) in a format suitable for decoding with
@@ -91,7 +119,7 @@ written to standard output and can be piped directly in to
 buffer area with id <i>buff#.</i> If <i>buffer_file</i> is
 not specified, the data is written to standard output.</p>
 
-<p style="margin-left:11%;"><i>-r [register_file]</i></p>
+<p style="margin-left:11%;"><i>-g [register_file]</i></p>
 
 <p style="margin-left:22%;">Extract the user data registers
 as an <b>sdata file.</b> If no output file is specified,
@@ -156,14 +184,14 @@ Quick Reference Guide (Jeremy Smith)</i></p>
 <p style="margin-left:11%; margin-top: 1em">If
 <i>all1.w41</i> is a raw HP41 write-all file, then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>wall41 -k
-&lt; all1.w41 | key41</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+wall41 -k &lt; all1.w41 | lifutils key41</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will display
 the key assignments to standard output. Similarly</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>wall41 -p
-program &lt;all1.w41</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+wall41 -p program -i all1.w41</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will extract
 user programs to files called <i>program.001, program.002,

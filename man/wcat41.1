@@ -1,12 +1,27 @@
-.TH wcat41 1 14-April-2018 "LIF Utilities" "LIF Utilities"
+.TH wcat41 1 07-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
-wcat41 \- a filter to list the contents of a raw HP41 Write All file
+wcat41 \- list the contents of a raw HP41 Write All file
 .SH SYNOPSIS
-.B wcat41 <
-.I wall_file
+.B lifutils wcat41 
+.I INPUTFILE
+[>
+.I Output file
+]
+.PP
+.B lifutils wcat41 
+<
+.I Input file
+[>
+.I Output file
+]
+.PP
+.B lifutils wcat -?
+.PP
 .SH DESCRIPTION
-.B wcat41
-is a filter which reads an HP41 Write All file from standard input. It 
+.I wcat41
+reads an HP41 Write All file from standard input or the file specified by the command line parameter
+.I INPUTFILE.
+It 
 then writes to standard output the following information : 
 .PP 
 The SIZE (number of user data registers) and the location of the first
@@ -19,6 +34,11 @@ The ID and size of any buffers.
 Global labels (and ENDs) of user programs, in a format similar to
 .I CAT 1
 on the HP41.
+.SH OPTIONS
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
+
 .SH REFERENCES
 The format of an HP41 Write All file is not well documented. However it 
 is simply a dump of all the HP41 user memory (excluding extended memory) 
@@ -29,7 +49,7 @@ Programming Quick Reference Guide by J. Smith.
 To get a catalogue of a raw HP41 Write All file called 
 .I all1.w41 ,
 type : 
-.B wcat41 < all1.w41
+.B lifutils wcat41 < all1.w41
 .SH SEE ALSO
 .B wall41(1)
 .SH AUTHOR

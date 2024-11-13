@@ -1,16 +1,19 @@
-.TH lifmod 1 14-April-2018 "LIF Utilities" "LIF Utilities"
+.TH lifmod 1 04-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
 lifmod \- reads contents and info of HP-41 module files
 .SH SYNOPSIS
-.B lifmod
+.B lifutils lifmod
 [\-v] [\-f] [\-e] [\-l] 
-.I <Module file>
+.I MODULEFILE
+[>
+.I Output file
+]
 .PP
-.B lifmod \-?
+.B lifutils lifmod \-?
 .SH DESCRIPTION
 .B lifmod
 displays and/or extracts information of a 
-.I module file.
+.I MODULEFILE.
 A module file has a special binary format defined for the HP-41  which
 is inspired how actual plug in modules look like. A mod file describes the 
 contents of a physical plug in module. Like real plug in modules, module files
@@ -48,7 +51,7 @@ If
 .I ADVANTAGE.MOD
 is a module file of the HP-41 Advantage Pac then
 .PP
-.B lifmod -e ADVANTAGE.MOD
+.B lifutils lifmod -e ADVANTAGE.MOD
 .PP
 will print detailed information of the content of the module and
 extract the three rom images of the module to corresponding .rom files.

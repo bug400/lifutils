@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:20 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:33 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,21 +38,18 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">lifput - put a
-LIF file into a LIF image file</p>
+LIF file into a LIF disk image file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifput</b>
-[-l] [-p] <i>&lt;LIF image file&gt; &lt;LIF file&gt;</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifput</b> [-l] [-p] <i>LIFIMAGE LIFFILENAME</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifput</b>
-[-l] [-p] <i>&lt;LIF image file&gt;</i></p>
-
-<p style="margin-left:11%; margin-top: 1em">(last form gets
-the LIF file from standard input)</p>
+[-l] [-p] <i>LIFIMAGE</i> &lt; <i>LIFFILENAME</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifput
 -?</b></p>
@@ -63,17 +60,20 @@ the LIF file from standard input)</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifput</b>
-put a single LIF file, specified by <i>LIF file</i> into a
-LIF image file. The <i>LIF file</i> must have a valid LIF
-header. If <b>lifput</b> is executed with 2 arguments after
-the options then the last argument is used as the name of
-the file that is copied to the LIF image file. If only 1
-arguments are given then the file is copied from standard
-input.</p>
+put a single LIF file, specified by <i>LIFFILENAME</i> into
+the LIF disk image file <i>LIFIMAGE.</i></p>
+
+
+<p style="margin-left:11%; margin-top: 1em"><i>LIFFILENAME</i>
+must have a valid LIF header. If <b>lifput</b> is executed
+with 2 arguments after the options then the last argument is
+used as the name of the file that is copied into the LIF
+disk image file. If only 1 arguments are given then the file
+is copied from standard input.</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>Note:</b>
-The import of the LIF file into the LIF image file will only
-be successful if:</p>
+The import of the LIF file into the LIF disk image file will
+only be successful if:</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
@@ -101,7 +101,7 @@ be successful if:</p>
 <p>The file name in the LIF header of the LIF file is valid
 (only capital letters and digits starting with a letter, max
 10 characters long) and does not exist in the directory of
-the LIF image file.</p></td></tr>
+the LIF disk image file.</p></td></tr>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="1%">
@@ -112,8 +112,8 @@ the LIF image file.</p></td></tr>
 <td width="78%">
 
 
-<p>The file type in the LIF header of the LIF image file is
-known by the <i>LIFUTILS.</i></p></td></tr>
+<p>The file type in the LIF header of the LIF disk image
+file is known by the <i>LIFUTILS.</i></p></td></tr>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="1%">
@@ -193,15 +193,15 @@ error.</p> </td></tr>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.dat</i> is a LIF image file and <i>test1.p41</i> is
-a HP41 LIF program file, then</p>
+<i>disk1.dat</i> is a LIF disk image file and
+<i>test1.p41</i> is a HP41 LIF program file, then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifput
-disk1.dat test1.p41</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifput disk1.dat test1.p41</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will copy the
-HP41 LIF program file test1.p41 to the LIF image file
-disk1.dat.</p>
+HP41 LIF program file <i>test1.p41 into the LIF disk image
+file disk1.dat.</i></p>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>

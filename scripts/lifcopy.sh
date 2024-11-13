@@ -19,13 +19,13 @@ then
    exit 1
 fi
 # initialize new image file
-lifinit -m ${3} ${2} ${4}
+lifutils lifinit -m ${3} ${2} ${4}
 if test $? -ne 0; then
    exit 1
 fi
 # copy content
-for i in `lifdir -n ${1}`; do 
-   lifget ${1} ${i} | lifput ${2} 
+for i in `lifutils lifdir -n ${1}`; do 
+   lifutils lifget ${1} ${i} | lifutils lifput ${2} 
    if test $? -ne 0; then
       exit 1
    fi

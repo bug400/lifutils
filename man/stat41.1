@@ -1,20 +1,31 @@
-.TH stat41 1 14-April-2018 "LIF Utilities" "LIF Utilities"
+.TH stat41 1 06-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
-stat41 \- a filter to display a raw HP41 status file
+stat41 \- display a raw HP41 status file
 .SH SYNOPSIS
-.B stat41
-[\-b] [\-f] [\-v]
-.B <
+.B lifutils stat41
+[\-b] [\-f] [\-v][\-r]
+.I INPUTFILE
+[>
+.I Output file
+]
+.PP
+.B lifutils stat41
+[\-b] [\-f] [\-v][\-r]
+<
 .I Input file
+[>
+.I Output file
+]
 .PP
 .B stat41 \-?
 .SH DESCRIPTION
 .B stat41
-is a filter which displays the information in an HP41C status file. This 
+displays the information in a LIF or raw HP41C status file. This 
 file contains the user RPN stack, the alpha register, the status of the 
 first 44 flags, the current SIZE and number of the first statistics 
-register. The status file is read from standard input and the values 
-displayed in human-readable form on standard output.
+register. The status file is read from standard input or the file specified by the command line parameter
+.I INPUTFILE
+and the values are displayed in human-readable form on standard output.
 .SH OPTIONS
 .TP
 .I \-b
@@ -26,6 +37,9 @@ Display strings in stack registers as RCLFLAG settings if appropriate.
 .I \-v
 Display user flags verbosely, rather than as a binary number.
 .TP
+.I \-r
+Skip an existing LIF header of the input file. This is mandatory, if the input file is a LIF instead of a raw file.
+.TP
 .I \-?
 Print a message giving the program usage to standard error.
 .SH EXAMPLES
@@ -35,7 +49,7 @@ is a LIF image file containing an HP41 status file called
 .I STAT
 then
 .PP
-.B lifget \-r disk1.dat STAT | stat41
+.B lifutils lifget \-r disk1.dat STAT | lifutils stat41
 .PP
 will display the contents of this status file on standard output
 .SH AUTHOR

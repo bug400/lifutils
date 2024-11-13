@@ -1,0 +1,4 @@
+Volume : 
+Tracks: 0 Surfaces: 0 Blocks/Track: 0.
+Warning the medium was not initialized properly!
+0 files (88 max), last block used: 0 of 0

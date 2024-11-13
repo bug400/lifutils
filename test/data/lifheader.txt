@@ -1,0 +1,6 @@
+File name           : MEM       
+File type           : e208 (LEX71) 
+Data length         : 959
+Number of blocks    : 4
+Creation date       : 01/03/16 21:15:40
+Implementation bytes: 80017D070000

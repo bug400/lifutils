@@ -251,16 +251,27 @@ of rom modules correctly their xrom mapping files must be specified on the comma
 
 <H4>Using the LIFUTILS from the command line</H4>
 
-<p>To use the <em>LIFUTILS</em> you must be familiar with the "command line". Either the shell on Unix or macOS or the command interpreter (CMD or PowerShell) on Windows. To get most benefit of the <em>LIFUTILS</em> you have to know the <a href="https://en.wikipedia.org/wiki/Redirection_(computing)">concept of pipelines and input/output redirection</a>.</p>
+<p>To use the <em>LIFUTILS</em> you must be familiar with the "command line". Either the shell on Unix or macOS or the command interpreter (CMD or PowerShell) on Windows.</p>
 
-<p>Both concepts are implemented in Unix, macOS and Windows. The examples below work on all three operating systems. For the begin of pipe the command "cat" is used for Unix and macOS and "type" for Windows. You may also use &lt; for input redirection which works both on Unix/macOS and Windows but tends to make examples more confusing.</p>
+<p>During the changeover to program version 2.0, the individual utility programs were combined into a single program called <a href="html/lifutils.html">lifutils</a> for technical reasons. A <em>LIFUTILS</em> utility is now invoked by calling lifutils and specifying its name as the first parameter <em>PROGNAME</em> followed by all other parameters that are required by the utility. The parameter <em>PROGNAME</em> is case-insensitive which is important under Windows. The help text of the program lifutils shows which utilities were integrated. However, shell scripts are provided for Windows, Linux and macOS which, as before, allow a single utility to be called directly.</p>
 
-<p>In most cases the <em>LIFUTILS</em> programs expect the source file on standard input and the destination file on standard output. You cannot specifiy the input or output file with command line parameters. An exception are LIF image files.</p>
+<p>Thus, the utility <em>lifget</em> can be either invoked with:</p>
+<pre>lifutils lifget hp41disk.dat VLBL vlbl.raw </pre>
+<p>or using the shell script:</p>
+<pre>lifget hp41disk.dat VLBL vlbl.raw </pre>
+
+<p>It is recommended to use the script commands when working with the command line, and to use the call via the <a href="html/lifutils.html">lifutils</a> program in batch procedures. In this documentation, the call via script commands is used throughout.</p>
+
+<p>To get most benefit of the <em>LIFUTILS</em> you have to know the <a href="https://en.wikipedia.org/wiki/Redirection_(computing)">concept of pipelines and input/output redirection</a>.</p>
+
+<p>Both concepts are implemented in Unix, macOS and Windows. The examples below work on all three operating systems.</p> 
+
+<p>In most cases the <em>LIFUTILS</em> programs expect the source file on standard input and the destination file on standard output. Most <em>LIFUTILS</em> allow for specifying an input file as command line parameter. However, the program output is usually standard output and must be redirected accordingly.</p>
 
 <p>If you would like to convert the content of a raw HP-41 program with <a href="html/decomp41.html">decomp41</a> type:</p>
 
 <pre>
-cat/type example.p41 | decomp41 &gt; example.txt
+decomp41 example.p41 &gt; example.txt
 </pre>
 
 <p>This will <b>not</b> work:</p>
@@ -268,7 +279,7 @@ cat/type example.p41 | decomp41 &gt; example.txt
 decomp41 example.p41 example.txt
 </pre>
 
-<p>The <em>LIFUTILS</em> programs are "filters". They take the standard input, do a single conversion task and write the result to standard output. The <a href="https://en.wikipedia.org/wiki/Redirection_(computing)">concept of pipelines and input/output redirection</a> allows to daisy chain different "filters" in one statement to perform complex operations. Here an example to get print the HP-41 program <em>PROG41</em> that is stored into the LIF image file <em>lifimg.dat</em>:</p>
+<p>The <em>LIFUTILS</em> programs can be used as "filters". They can take the standard input, do a single conversion task and write the result to standard output. The <a href="https://en.wikipedia.org/wiki/Redirection_(computing)">concept of pipelines and input/output redirection</a> allows to daisy-chaining different "filters" in one statement to perform complex operations. Here is an example to get print the HP-41 program <em>PROG41</em> that is stored into the LIF image file <em>lifimg.dat</em>:</p>
 <pre>
 lifget -r lifimg.dat PROG41 | prog41bar | barps | lpr
 </pre>
@@ -283,6 +294,8 @@ lifget -r lifimg.dat PROG41 | prog41bar | barps | lpr
 <li>All diagnostic information (warnings or error messages) goes to standard error.</li>
 <li>The programs return 0 on successful completion and 1 on error.</li>
 </ul>
+
+<p><b>Note:</b> Due to limitations of Windows batch processing, the script commands of the <em>LIFUTILS</em> programs cannot be used in Windows .cmd or .bat files. Here, the <em>LIFUTILS</em> programs must always be called via the <a href="html/lifutils.html">lfifutils</a> program.</p>
 
 <H3><a name="APPLICATION_EXAMPLES"></a>Application examples</H3>
 
@@ -394,7 +407,7 @@ lifget  liftest.dat DATA1 | lifraw | sdata
 
 <H4>Put files into a LIF image file</H4>
 
-<p>The <a href="html/lifput.html">lifput</a> utility puts LIF files into a LIF image file. This means that you have to convert an input file to a LIF file first. For text files, HP 41 program and rom files this is covered in detail below.
+<p>The <a href="html/lifput.html">lifput</a> utility puts LIF files into a LIF image file. This means that you have to convert an input file to a LIF file first. For text files, HP 41 program and rom files, this is covered in detail below.
 To put the LIF file <em>data2.d41</em> into the LIF image file <em>liftest.dat</em> type:</p>
 <pre>
 lifput liftest.dat data1.d41
@@ -406,7 +419,7 @@ lifput liftest.dat data1.d41
 <li>The name of the file must not exist in the directory of the LIF image file</li>
 <li>There must be at least one free entry in the directory area and sufficient contiguous space in the file area.</li>
 </ul>
-<p>The <a href="html/lifdir.html">lifdir</a> utility gives information about the allocation of the directory and file area. If <a href="html/lifput.html">lifput</a> stores a file then it uses the first contiguous free block in the file area. If there is no suitable free block available due to fragmentation of the file area you can pack the LIF image file with the <a href="html/lifpack.html">lifpack</a> command.</p>
+<p>The <a href="html/lifdir.html">lifdir</a> utility gives information about the allocation of the directory and file area. If <a href="html/lifput.html">lifput</a> stores a file, then it uses the first contiguous free block in the file area. If there is no suitable free block available due to fragmentation of the file area you can pack the LIF image file with the <a href="html/lifpack.html">lifpack</a> command.</p>
 
 <H4>Create a new LIF image file</H4>
 
@@ -462,10 +475,10 @@ cat/type tdata.txt | textlif TDATA | lifput liftest.dat
 
 <p>This example converts the ASCII file <em>tdata.txt</em> into a LIF file, prepends the LIF header with the file name <em>TDATA</em> and puts it into the LIF image file <em>liftest.dat</em>. Note: This file can only be used with the HP-71B.</p>
 
-<p>The HP-41 needs exact information how much space (in registers) shall be allocated in the HEPAX- or X-Memory. This size is specified with the <em>-r</em> parameter and stored in the implementation bytes of the LIF text file.</p>
+<p>The HP-41 needs exact information how much space (in registers) shall be allocated in the HEPAX- or X-Memory. This size is specified with the <em>-s</em> parameter and stored in the implementation bytes of the LIF text file.</p>
 
 <pre>
-cat/type tdata.txt | textlif -r 0 TDATA | lifput liftest.dat
+cat/type tdata.txt | textlif -s 0 TDATA | lifput liftest.dat
 </pre>
 
 <p>If a value of 0 is specified the  number of  register is determined from the size of the input text file. If you intend to extend the file in the HP-41 later, you must choose an appropriate number of registers. The file size in registers is:</p>
@@ -482,7 +495,7 @@ cat/type tdata.txt | textlif -r 0 TDATA | lifput liftest.dat
 lifget -r liftest.dat TDATA | liftext
 </pre>
 
-<p>Since <a href="html/liftext.html">liftext</a> expects a raw file as input the <em>-r</em> parameter is used with the <a href="html/lifget.html">lifget</a> command to strip the LIF header.</p>
+<p>Since <a href="html/liftext.html">liftext</a> expects by default a raw file as input the <em>-r</em> parameter is used with the <a href="html/lifget.html">lifget</a> command to strip the LIF header.</p>
 
 <p>The text files encoded with <a href="html/textlif.html">textlif</a> and decoded with <a href="html/liftext.html">liftext</a> are called interchange files on the HP-75. The HP-75 uses an own text file format with a different LIF file type. This format can be decoded in the following way:</p>
 
@@ -498,7 +511,7 @@ lifget -r liftest.dat TDATA75 | liftext75
 <p>If you have an ASCII file with a HP-41 FOCAL program you can compile it into a raw file with <a href="html/comp41.html">comp41</a>. The following example compiles a FOCAL program <em>p41.foc</em> into a raw file <em>p41.raw</em>. This program uses commands from the HP-IL and Extended I/O rom, so we have to specify the corresponding xrom mapping files on the command line:</p>
 
 <pre>
-cat/type p41.foc | comp41 -x hpil -x xio &gt; p41.raw
+comp41 -x hpil -x xio p41.foc &gt; p41.raw
 </pre>
 
 <p>You can use HP-41 program raw files in software emulators of this calculators.</p>
@@ -506,13 +519,13 @@ cat/type p41.foc | comp41 -x hpil -x xio &gt; p41.raw
 <p>To put the raw file <em>p41.raw</em> into the LIF image file <em>liftest.dat</em> you must first create a LIF file from the raw file:</p>
 
 <pre>
-cat/type p41.raw | rawlif PROG41 | lifput liftest.dat
+rawlif PROG41 p41.raw | lifput liftest.dat
 </pre>
 
-<p>Or put everything into one pipe:</p>
+<p>Or put everything into one pipe and use the fact that <a href="html/comp41.html">comp41</a> can also create a LIF file directly:</p>
 
 <pre>
-cat/type p41.foc | comp41 -x hpil -x xio | rawlif PROG41 | lifput liftest.dat
+comp41 -x hpil -x xio -f PROG41 p41.foc | lifput liftest.dat
 </pre>
 
 <p>Both example store the compiled program with the file name <em>PROG41</em> into the lifimage file <em>liftest.dat</em>.</p>
@@ -533,10 +546,12 @@ A compiled HP-41 focal programs references a call to a rom function with a rom n
 
 <ul>
 <li><a href="html/decomp41.html">decomp41</a> displays external functions as XROM rr,nn</li>
-<li><a href="html/comp41.html">comp41</a> throws an error if a rom function name was encountered. But it will compile XROM rr,nn calls correctly.</li>
+<li><a href="html/comp41.html">comp41</a> throws an error if an unknown rom function name was encountered. But it will compile XROM rr,nn calls correctly.</li>
 </ul>
 
-<p>The <em>LIFUTILS</em> distribution provides a number of xrom files for the most popular HP roms. They are located in the <em>xroms</em> subdirectory of the software package. If you intend to add your own xrom mapping files you have the following options:</p>
+<p>The <em>LIFUTILS</em> distribution provides a number of xrom files for the most popular HP roms. They are located in the <em>xroms</em> subdirectory of the software package. The xrom file <em>hpdevices.xrom</em> contains the definitions for the HP-41 standard peripheral devices.</p>
+
+<p>If you intend to add your own xrom mapping files you have the following options:</p>
 
 <ul>
 <li>Store the xrom file(s) in an arbitrary directory. Then you have to specify the full qualified path name for each file in that directory with the <em>-x</em> option.</li>
@@ -557,7 +572,7 @@ A compiled HP-41 focal programs references a call to a rom function with a rom n
 <p>To load the file <em>Math-1A.rom</em> as a scrambled HEPAX rom file into the LIF image file <em>liftest.dat</em> do:
 
 <pre>
-cat/type Math-1A.rom | rom41hx MATHHXROM | lifput liftest.dat
+rom41hx MATHHXROM Math-1A.rom | lifput liftest.dat
 </pre>
 
 <p>If you attach <em>liftest.dat</em> to the <a href="http://hp.giesselink.com/hpil.htm">ILPer</a> software suite (Windows) or the <a href="https://github.com/bug400/pyilper">pyILPER</a> program and a PIL-Box you can load the scrambled rom file into a HP-41 ram page with the HEPAX <em>READROM</em> command.</p>
@@ -573,7 +588,7 @@ lifget -r liftest.dat MATHHXROM | hx41rom | rom41cat
 <p>To create a xrom mapping file from an uncompressed HP-41 rom file <em>Math1A.rom</em> use the <a href="html/rom41cat.html">rom41cat</a> utility:
 
 <pre>
-cat/type Math-1A.rom | rom41cat -x &gt; math.xrom
+rom41cat -x Math-1A.rom &gt; math.xrom
 </pre>
 
 <p>Besides the rom files module files exist. They are used by software emulators and contain one or more rom images and additional information that describe properties of the module. You can not use module files in a calculator. If you have a module file you can extract the rom image(s) with the <a href="html/lifmod.html">lifmod</a> command:<p>
@@ -610,13 +625,13 @@ then
    exit 1
 fi
 # initialize new image file
-lifinit -m ${3} ${2} ${4}
+lifutils lifinit -m ${3} ${2} ${4}
 if test $? -ne 0; then
    exit 1
 fi
 # copy content
-for i in `lifdir -n ${1}`; do 
-   lifget ${1} ${i} | lifput ${2} 
+for i in `lifutils lifdir -n ${1}`; do 
+   lifutils lifget ${1} ${i} | lifutils ifput ${2} 
    if test $? -ne 0; then
       exit 1
    fi
@@ -646,13 +661,13 @@ if exist %2 (
    exit /B 1
 )
 rem initialize new image file
-lifinit -m %3 %2 %4
+lifutils lifinit -m %3 %2 %4
 if errorlevel 1 (
    exit /B 1
 )
 rem copy content
-for /F %%f in ('lifdir -n %1') do (
-   lifget %1 %%f | lifput %2
+for /F %%f in ('lifutils lifdir -n %1') do (
+   lifutils lifget %1 %%f | lifutils ifput %2
    if errorlevel 1 (
       exit /B 1
    )

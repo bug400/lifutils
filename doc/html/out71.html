@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:21 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:33 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -40,16 +40,16 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">out71 - a
-filter to send a program to an HP-71B</p>
+filter to send a program to a HP-71B</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>out71
-[-o]</b> <i>filetype</i> <b>&lt;</b> <i>input_file</i>
-<b>&gt;</b> <i>output_device</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+out71 [-o]</b> <i>FILETYPE</i> &lt; <i>Input_file</i> &gt;
+<i>Output_device</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>out71
 -?</b></p>
@@ -115,7 +115,7 @@ truncating the last nybble of the linux file.</p></td></tr>
 and exit.</p></td></tr>
 </table>
 
-<p style="margin-left:11%;"><i>filetype</i></p>
+<p style="margin-left:11%;"><i>FILETYPE</i></p>
 
 <p style="margin-left:22%;">Specify the type of the HP-71
 file to be created. A complete list of possible filetypes
@@ -142,10 +142,12 @@ connected to the linux device <i>/dev/cua0</i> via a
 suitable interface and <i>mytext</i> is an HP text format
 file, then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>out71 TEXT
-&lt; mytext &gt;/dev/cua0</b> will send the file to the
-HP-71B, which should be set to receive it, e.g. by the
-command <b>COPY :RS232 TO MYTEXT</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+out71 TEXT &lt; mytext &gt;/dev/cua0</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">will send the
+file to the HP-71B, which should be set to receive it, e.g.
+by the command <b>COPY :RS232 TO MYTEXT</b></p>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>

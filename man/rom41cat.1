@@ -1,20 +1,30 @@
-.TH rom41cat 1 14-April-2018 "LIF Utilities" "LIF Utilities"
+.TH rom41cat 1 06-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
-rom41cat \- a filter to display the function names in an HP41 ROM image
+rom41cat \- display the function names in a HP41 ROM image
 .SH SYNOPSIS
-.B rom41cat
+.B lifutils rom41cat
 [\-x][\-a]
-.B <
-.I rom_file
-.B > 
-.I output_file
+<
+.I Input file
+[>
+.I Output_file
+]
 .PP
-.B rom41cat \-?
+.B lifutils rom41cat
+[\-x][\-a]
+.I INPUTFILE
+[>
+.I Output_file
+]
+.PP
+.B futils rom41cat \-?
 .SH DESCRIPTION
 .B rom41cat
 reads the Function Address Table (FAT) at the start of an unscrambled 
 HP41 ROM image and displays the names of the functions (both Mcode and 
-user language (Focal)) contained in that ROM.
+user language (Focal)) contained in that ROM. Input is read either from standard input
+or the file specified by the command line parameter
+.I INPUTFILE.
 .PP
 If a ROM consists of multiple 4K ROM files they must be concatenated before
 feeding them into
@@ -74,12 +84,12 @@ If
 .I myrom.rom
 is an Eramco rom image file then
 .PP
-.B er41rom < myrom.rom | rom41cat
+.B lifutils er41rom < myrom.rom | lifutils rom41cat
 .PP
 will display the function names, entry points and language to standard 
 output, while
 .PP
-.B er41rom < myrom.rom | rom41cat -x > myrom.xrom
+.B lifutils er41rom < myrom.rom | lifutils rom41cat -x > myrom.xrom
 .PP
 will produce an xrom definition file for
 .B comp41
@@ -88,11 +98,11 @@ containing the function names in
 .PP
 To create a xrom file for the Advantage Pac which consists of 3 ROM image files:
 .PP
-.B cat AdvL1-1B.rom AdvU1-1B.rom AdvU2-1B.rom | rom41cat -x -a > advantage.xrom (Unix, macOS)
+.B cat AdvL1-1B.rom AdvU1-1B.rom AdvU2-1B.rom | lifutils rom41cat -x -a > advantage.xrom (Unix, macOS)
 .PP
 or
 .PP
-.B copy /b AdvL1-1B.rom+AdvU1-1B.rom+AdvU2-1B.rom | rom41cat -x -a > advantage.xrom (Windows)
+.B copy /b AdvL1-1B.rom+AdvU1-1B.rom+AdvU2-1B.rom | lifutils rom41cat -x -a > advantage.xrom (Windows)
 .SH BUGS
 Some commonly used HP41 characters have no ASCII equivalents and are 
 therefore displayed as \\xnn hex escape sequences. Spaces in function 

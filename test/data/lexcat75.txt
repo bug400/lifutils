@@ -1,0 +1,35 @@
+LEX ID: 232 (hex)
+
+Keywords:
+FNC$: UNIT$
+FNC#: VLITE
+FNC#: CHARGE
+FNC#: PLANCK
+FNC#: ELMASS
+FNC#: AVGDRO
+FNC#: MOLRGC
+FNC#: BOLTK
+FNC#: GRAVK
+FNC#: MOLVOL
+FNC#: FARADK
+FNC#: RYDBRK
+FNC#: FINSTK
+FNC#: ELRAD
+FNC#: BOHRAD
+FNC#: MAGFLX
+FNC#: ATMASS
+FNC#: PRMASS
+FNC#: NTMASS
+FNC#: ELGK
+FNC#: BOHRMG
+FNC#: NUCLMG
+FNC#: ELMAG
+FNC#: PRMAG
+FNC#: PRGYMR
+
+
+Code attributes:
+RAMable
+Position independent code
+Mergeable
+Lex identifier number independent

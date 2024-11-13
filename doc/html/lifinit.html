@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:20 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:33 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,19 +37,19 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">lifinit -
-initialize a lif image file</p>
+initialize a lif disk image file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifinit</b>
-[-z] -m Mediumtype [-p] <i>&lt;LIF image file&gt; &lt;number
-of directory entries&gt;</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+ifinit</b> [-z] -m <i>MEDIUMTYPE</i> [-p] <i>LIFIMAGE
+DIRECTORYSIZE</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifinit
--?</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+ifinit -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -57,8 +57,9 @@ of directory entries&gt;</i></p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifinit</b>
-initializes the LIF image file specified by <i>LIF image
-file</i> with <i>number of directory</i> entries</p>
+initializes the LIF disk image file specified by
+<i>LIFIMAGE</i> with <i>DIRECTORYSIZE</i> directory
+entries.</p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
@@ -77,9 +78,9 @@ file</i> with <i>number of directory</i> entries</p>
 <td width="78%">
 
 
-<p style="margin-top: 1em">This mandatory option specifies
-the medium type. The following medium types are
-supported:</p> </td></tr>
+<p style="margin-top: 1em">This mandatory option
+<i>MEDIUMTYPE</i> specifies the medium type. The following
+medium types are supported:</p></td></tr>
 </table>
 
 <p style="margin-left:22%;">cass: Initializes a medium with
@@ -137,13 +138,13 @@ program usage to standard error.</p></td></tr>
 <i>disk1.dat</i> shall be created as LIF disk image file
 then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifinit -m
-disk disk1.dat 160</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifinit -m disk disk1.dat 160</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will create the
-lif image file <i>disk1.dat</i> with a directory size of
-<i>160</i> entries. The command creates the disk header and
-an empty directory. The header is initialized with the
+lif disk image file <i>disk1.dat</i> with a directory size
+of <i>160</i> entries. The command creates the disk header
+and an empty directory. The header is initialized with the
 parameters of the HP9114B double sided disk medium.</p>
 
 <h2>REFERENCES

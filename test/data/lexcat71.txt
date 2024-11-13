@@ -1,0 +1,15 @@
+LEX ID: 5c
+Lowest token: 1
+Highest token: 9
+Poll handler present
+ Keyword Token Characterization
+    ANZ?     1 BASIC function
+     DEL     2 Legal after THEN/ELSE, Programmable
+     GET     3 Legal after THEN/ELSE, Programmable
+    MAX?     4 BASIC function
+    NEWK     5 Legal after THEN/ELSE, Programmable
+     OUT     6 Legal after THEN/ELSE, Programmable
+    PURK     7 Legal after THEN/ELSE, Programmable
+     PUT     8 Legal after THEN/ELSE, Programmable
+     UPD     9 Legal after THEN/ELSE, Programmable
+

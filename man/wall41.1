@@ -1,22 +1,44 @@
-.TH wall41 1 14-April-2018 "LIF Utilities" "LIF Utilities"
+.TH wall41 1  07-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
 wall41 \- a program to extract information from a raw HP41 Write All file
 .SH SYNOPSIS
-.B wall41
+.B lifutils wall41
+[\-r] [\-k [
+.I key_file
+] ] [\-b
+.I buff#
+[
+.I buffer_file
+] ] [\-g [
+.I register_file
+] ] [\-s [
+status_file
+] ] [\-p
+.I program_name
+]  
+.I INPUTFILE
+[> 
+.I Output file
+]
+.PP
+.B lifutils wall41
+[\-r]
 [\-k [
 .I key_file
 ] ] [\-b
 .I buff#
 [
 .I buffer_file
-] ] [\-r [
+] ] [\-g [
 .I register_file
 ] ] [\-s [
 status_file
 ] ] [\-p
 .I program_name
-] < 
-.I writeall_file
+] < input file
+[> 
+.I Output file
+]
 .PP
 .B wall41
 \-?
@@ -25,11 +47,18 @@ An HP41 Write All file is a dump of the entire contents of user memory,
 including user data, user programs, buffers, key assignments and the 
 status registers.
 .B wall41
-reads a raw Write All file from standard input and extracts one or more of 
-these sections from it. The extracted data is written either to standard 
+reads a LIF or raw Write All file from standard input or the file specified with the command line parameter
+.I INPUTFILE
+and extracts one or more of these sections from it. The extracted data is written either to standard 
 output or to the specified file. In turn this information can be decoded 
-by other filters in the LIF Utilities package.
+by other programs in the LIF Utilities package.
 .SH OPTIONS
+.TP
+.I \-r
+Skip an existing LIF header of the input file. This is mandatory, if the input file is a LIF instead of a raw file.
+.TP
+.I \-i INPUTFILE
+Read wall file from INPUTFILE instead from standard input
 .TP
 .I \-k [key_file]
 Extract the KARs (Key Assignment Registers) in a format suitable for 
@@ -46,7 +75,7 @@ If
 .I buffer_file
 is not specified, the data is written to standard output.
 .TP
-.I \-r [register_file]
+.I \-g [register_file]
 Extract the user data registers as an 
 .B sdata file.
 If no output file is specified, write the data to standard output, 
@@ -87,11 +116,11 @@ If
 .I all1.w41
 is a raw HP41 write-all file, then
 .PP
-.B wall41 -k < all1.w41 | key41
+.B lifutils wall41 -k < all1.w41 | lifutils key41
 .PP
 will display the key assignments to standard output. Similarly
 .PP
-.B wall41 -p program <all1.w41
+.B lifutils wall41 -p program -i all1.w41
 .PP
 will extract user programs to files called
 .I program.001, program.002, ...

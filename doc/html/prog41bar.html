@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:21 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:33 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,6 +23,7 @@
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
 <a href="#REFERENCES">REFERENCES</a><br>
 <a href="#EXAMPLES">EXAMPLES</a><br>
 <a href="#AUTHOR">AUTHOR</a><br>
@@ -36,7 +37,7 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">prog41bar -
-Convert a HP-41 program raw file into an intermediate
+convert a HP-41 program raw file into an intermediate
 barcode file</p>
 
 <h2>SYNOPSIS
@@ -44,9 +45,16 @@ barcode file</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>prog41bar
-&lt;</b> <i>input_file</i> <b>&gt;</b>
-<i>intermediate_barcode_file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+prog41bar</b> [-r] <i>INPUTFILE</i> <b>&gt;</b> <i>Output
+file</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+prog41bar</b> [-r] &lt; <i>Input file</i> <b>&gt;</b>
+<i>Output file</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+prog41bar -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -54,14 +62,49 @@ barcode file</p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><i><b>prog41bar</b></i>
+<p style="margin-left:11%; margin-top: 1em"><b>prog41bar</b>
 is a program that reads a HP-41 program raw file from
-standard input and writes the corresponding intermediate
+standard input or the file specified by the parameter
+<i>INPUTFILE</i> and writes the corresponding intermediate
 barcode file to standard output.</p>
 
 <p style="margin-left:11%; margin-top: 1em">The output of
 <b>prog41bar</b> can be piped to a suitable barcode printing
 program such as <b>barps</b></p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><b><i>-r</i></b></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Skip an existing LIF header of
+the input file. This is mandatory, if the input file is a
+LIF instead of a raw file.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>-?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Print a message giving the program usage to standard
+error.</p> </td></tr>
+</table>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>
@@ -85,9 +128,9 @@ in <i>barcode(5)</i></p>
 <i>prog1.raw</i> is a HP-41 program raw file and
 <i>postscript</i> is a postscript printer then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>prog41bar
-&lt; prog1.raw | barps &rsquo;Program 1&rsquo; | lpr -P
-postscript</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+prog41bar &lt; prog1.raw | lifutils barps &rsquo;Program
+1&rsquo; | lpr -P postscript</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will print that
 file as HP-41 barcode on the postscript printer.</p>

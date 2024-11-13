@@ -1,29 +1,31 @@
-.TH lifrename 1 16-March-2019 "LIF Utilities" "LIF Utilities"
+.TH lifrename 1 04-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
 lifrename \- renames a file on a LIF image file
 .SH SYNOPSIS
-.B lifrename 
+.B lifutils lifrename 
 [\-l]
 [\-p]
-.I <LIF image file> <old filename> <new filename>
+.I LIFIMAGE OLDFILENAME NEWFILENAME
 .PP
-.B lifrename \-?
+.B lifutils lifrename \-?
 .SH DESCRIPTION
 .B lifrename
 renames single file, specified by 
-.I old filename
+.I OLDFILENAME
 to
-.I new filename.
-.I old filename
+.I NEWFILENAME.
+on the LIF image file
+.I LIFIMAGE.
+.I OLDFILENAME 
 and
-.I new filename
+.I NEWFILENAME
 are case\-sensitive. 
-.I new filename
+.I NEWFILENAME
 must be given in upper case.
 .PP
 .B
 Note:
-.I old filename
+.I OLDFILENAME
 has not to comply with the 
 .I
 LIFUTILS
@@ -48,11 +50,13 @@ is a LIF image file containing a file called
 .I TEST1
 then 
 .PP
-.B lifrename disk1.dat TEST1 TEST2
+.B lifutils lifrename disk1.dat TEST1 TEST2
 .PP
 will rename the file 
 .I TEST1 
-on the LIF disk image disk1.dat to 
+on the LIF image file 
+.I disk1.dat 
+to 
 .I TEST2.
 .SH REFERENCES
 The LIF disk directory format is documented in the

@@ -1,25 +1,37 @@
-.TH liftext75 1 14-April-2018 "LIF Utilities" "LIF Utilities"
+.TH liftext75 1 05-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME 
-liftext75 \- a filter to print raw HP75 text files
+liftext75 \- translate a raw HP-75 text file into an ASCII file
 .SH SYNOPSIS
-.B liftext75
-[\-n]
-.B <
-.I Input file
-.B >
+.B lifutils liftext75
+[\-n][\-r]
+.I INPUTFILE 
+[>
 .I Output file
+]
 .PP
-.B liftext75 \-?
+.B lifutils liftext75
+[\-n][\-r]
+<
+.I Input file
+[>
+.I Output file
+]
+.PP
+.B lifutils liftext75 \-?
 .SH DESCRIPTION
 .B liftext75
-is a filter which translates a raw HP75 text file into a standard ASCII file.
+translates a LIF or raw HP75 text file into an ASCII file.
 One logical line of the input file is translated to one line of output,
-terminated by a newline.  The HP75 text file is read from standard input
+terminated by a newline.  The HP75 text file is read from standard input or the file
+.I INPUTFILE
 and the plain ASCII equivalent is written to standard output.
 .SH OPTIONS
 .TP
 .I \-n 
 Print a decimal line number at the start of each output line.
+.TP
+.I \-r
+Skip an existing LIF header of the input file. This is mandatory, if the input file is a LIF instead of a raw file.
 .TP
 .I \-?
 Print a message giving usage to standard error.
@@ -30,7 +42,7 @@ is a LIF image file containing an HP75 text file called
 .I T75
 then
 .PP
-.B lifget \-r disk1.dat T75 | liftext75
+.B lifutils lifget \-r disk1.dat T75 | lifutils liftext75
 .PP 
 will list that file to standard output.
 .SH AUTHOR

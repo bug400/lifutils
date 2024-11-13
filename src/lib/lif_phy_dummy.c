@@ -17,7 +17,7 @@ int lif_open_phy_device(devicename)
     return(device);
   }
 
-void lif_close_phy_device(descriptor)
+void lif_close_phy_device(int descriptor)
   {
   }
 

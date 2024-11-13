@@ -1,16 +1,30 @@
-.TH liftext 1 14-April-2018 "LIF Utilities" "LIF Utilities"
+.TH liftext 1 05-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
-liftext \- a filter to translate an HP LIF text file into an ASCII text file
+liftext \- translate a HP LIF text file into an ASCII text file
 .SH SYNOPSIS
-.B liftext 
-.B <
-.I Input file
-.B >
+.B lifutils liftext 
+[\-r]
+.I INPUTFILE
+[ >
 .I Output file
+]
+.PP
+.B lifutils liftext 
+[\-r]
+<
+.I input file
+[ >
+.I Output file
+]
+.PP
+.B lifutils liftext
+[\-?]
 .SH DESCRIPTION
 .B liftext
-is a filter that reads an HP LIF text file (also known as a LIF1 format file) 
-from standard input and writes the equivalent standard text file to 
+reads a LIF or raw HP LIF text file (also known as a LIF1 format file) 
+from standard input or 
+.I INPUTFILE
+and writes the equivalent standard text file to 
 standard output. Each record of the HP text file is assumed to be one 
 line of the output file. This file type is used on the HP-71 (TEXT) and
 the extended memory or HEPAX file system of the HP-41 (ASCII).
@@ -20,18 +34,24 @@ Note:
 .I
 liftext
 does not perform any character set conversions.
-
+.SH OPTIONS
+.TP
+.I \-r
+Skip an existing LIF header of the input file. This is mandatory, if the input file is a LIF instead of a raw file.
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
 .SH REFERENCES
 The HP text file format is documented in section 11.2.8.1 of the 
 .I HP-71 Software Internal Design Specifications Volume 1 (Hewlett\-Packard)
 .SH EXAMPLES
 If 
 .I disk1.dat
-is a LIF disk image containing an HP text file called 
+is a LIF image containing an HP text file called 
 .I TEXTA 
 then
 .PP
-.B lifget -r disk1.dat TEXTA | liftext
+.B lifutils lifget -r disk1.dat TEXTA | lifutils liftext
 .PP 
 will produce a listing of this file to standard output.
 .SH AUTHOR

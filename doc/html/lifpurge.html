@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:20 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:33 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,19 +37,18 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">lifpurge -
-purge a file from a LIF image file</p>
+purge a file from a LIF disk image file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifpurge</b> [-l] [-p] <i>LIFIMAGE LIFFILENAME</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifpurge</b>
-[-l] [-p] <i>&lt;LIF image file&gt; &lt;filename&gt;</i></p>
-
-<p style="margin-left:11%; margin-top: 1em"><b>lifpurge
--?</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifpurge -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -58,9 +57,9 @@ purge a file from a LIF image file</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifpurge</b>
-purges a single file, specified by <i>filename</i> from a
-LIF image file. <i>filename</i> is case-sensitive and must
-be given in upper case.</p>
+purges a single file, specified by <i>LIFFILENAME</i> from
+the LIF disk image file <i>LIFIMAGE. LIFFILENAME</i> is
+case-sensitive and must be given in upper case.</p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
@@ -115,14 +114,15 @@ error.</p> </td></tr>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.dat</i> is a LIF image file containing a file
+<i>disk1.dat</i> is a LIF disk image file containing a file
 called <i>TEST1</i> then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifpurge
-disk1.dat TEST1</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifpurge disk1.dat TEST1</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will purge the
-file TEST1 from the LIF image file.</p>
+file <i>TEST1</i> from the LIF disk image file
+<i>disk1.dat.</i></p>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>

@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:21 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:34 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,34 +37,39 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">sdata - a
-filter to interpret raw HP sdata files</p>
+<p style="margin-left:11%; margin-top: 1em">sdata -
+interpret raw HP sdata files</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>sdata</b>
-[-n] [-r] [-b] [-f] [-l] <b>&lt;</b> <i>Input file</i>
-<b>&gt;</b> <i>Output file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+sdata</b> [-n] [-h] [-b] [-f] [-l][-r] <i>INPUTFILE</i>
+[&gt; <i>Output file</i> ]</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>sdata
--?</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+sdata</b> [-n] [-h] [-b] [-f] [-l][-r] &lt; <i>Input
+file</i> [&gt; <i>Output file</i> ]</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+sdata -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>sdata</b> is
-a filter which displays the contents of an raw HP sdata file
-(also known as an HP41C data file) in a human-readable
-format. An sdata file consists of a sequence of 8-byte
-records each of which represents an HP41 storage register
-containing either a real number or a 6-character text
-string. The sdata file is read from standard input and the
-output written to standard output.</p>
+<p style="margin-left:11%; margin-top: 1em"><b>sdata</b>
+displays the contents of a LIF or raw HP sdata file (also
+known as an HP41C data file) in a human-readable format. An
+sdata file consists of a sequence of 8-byte records each of
+which represents an HP41 storage register containing either
+a real number or a 6-character text string. The sdata file
+is either read from standard input or the file specified by
+the command line parameter <i>INPUTFILE</i> and the output
+written to standard output.</p>
 
 <p style="margin-left:11%; margin-top: 1em">By default,
 <b>sdata</b> displays numbers with a 10 digit mantissa and
@@ -98,7 +103,7 @@ start of each output line.</p></td></tr>
 <td width="3%">
 
 
-<p><i>-r</i></p></td>
+<p><i>-h</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -148,6 +153,19 @@ the HP71B.</p></td></tr>
 <td width="3%">
 
 
+<p><i>-r</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Skip an existing LIF header of the input file. This is
+mandatory, if the input file is a LIF instead of a raw
+file.</p> </td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
 <p><i>-?</i></p></td>
 <td width="8%"></td>
 <td width="78%">
@@ -180,8 +198,8 @@ Volume 3 (Hewlett-Packard).</i> (Addresses given are for the
 <i>disk1.dat</i> is a LIF disk image containing an sdata
 file called DATA1 then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifget -r
-disk1.dat DATA1 | sdata -n</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifget -h disk1.dat DATA1 | lifutils sdata -n</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will produce a
 register-numbered listing of the data in that file to

@@ -204,7 +204,7 @@ word *read_bin_file(char *FullFileName,int Page)
     }
   SizeRead=fread(BIN,1,FileSize,File);
   fclose(File);
-  if (SizeRead!=FileSize)
+  if ((long)SizeRead!=FileSize)
     {
     fprintf(stderr,"Error: File Read Failed: %s\n",FullFileName);
     free(BIN);
@@ -806,7 +806,7 @@ int extract_roms(
     /* write the ROM file */
     unpack_image(ROM,pMFP->Image);
     strcat(strcpy( ROMFileName, pMFP->Name), ".rom");
-    for(j=0; j<strlen(ROMFileName)-4;j++) {
+    for(j=0; j<(int) strlen(ROMFileName)-4;j++) {
        if (strchr("[]{}.<>|,;:#'\" -~+*\\?=()/&%",ROMFileName[j]) != (char *) NULL)
           ROMFileName[j]='_';
     }

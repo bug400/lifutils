@@ -1,14 +1,14 @@
-.TH in71 1 16-March-2019 "LIF Utilities" "LIF Utilities"
+.TH in71 1 03-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
-in71 \- a filter to read a program from an HP71B
+in71 \- a filter to read a program from a HP71B
 .SH SYNOPSIS
-.B in71 
+.B lifutils in71 
 [\-b] <
-.I input_device
-.B >
-.I output_file
+.I Input device
+>
+.I Output file
 .PP
-.B in71 
+.B lifutils in71 
 \-?
 .SH DESCRIPTION
 The HP71B Handheld computer, when fitted with the HP82401A HPIL Interface
@@ -24,7 +24,7 @@ error), and (by default) truncates the last block of the file, thus
 recovering the original file data. It can thus be used for the direct 
 transfer of files from an HP71B to a Linux system using (e.g.) an HP82164 
 RS232 interface.
-.SH Options
+.SH OPTIONS
 .TP
 .I \-b
 Pass the all the bytes of the file, do not truncate the last block.
@@ -39,7 +39,7 @@ If an HP71B is connected to the Linux device
 .I /dev/cua0 
 via a suitable interface, then the command
 .PP
-.B in71 < /dev/cua0 | liftext
+.B lifutils in71 < /dev/cua0 | liftext
 .PP
 will read an HP71B text file (sent, e.g. by 
 .B COPY MYTEXT TO :RS232

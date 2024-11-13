@@ -1,24 +1,32 @@
-.TH decomp41 1 13-April-2018 "LIF Utilitites" "LIF Utilities"
+.TH decomp41 1 01-November-2024 "LIF Utilitites" "LIF Utilities"
 .SH NAME
-decomp41 \- a filter to decompile a HP-41 program raw file
+decomp41 \- decompile a HP-41 program file
 .SH SYNOPSIS
-.B decomp41
-[\-a][\-h] [\-l] [\-x
-.I xrom_file
-] [\-x
-.I xrom_file
-] ...
-.B <
-.I Input file
-.B >
+.B lifutils decomp41
+[\-h][\-a] [\-l] [\-r] [\-x
+.I XROMFILE
+] ...  
+.I INPUTFILE 
+[> 
 .I Output file
+]
 .PP
-.B decomp41 \-?
+.B lifutils decomp41
+[\-h][\-a] [\-l] [\-r] [\-x
+.I XROMFILE
+] ... < 
+.I Input file 
+[> 
+.I Output file
+]
+.PP
+.B lifutils decomp41 \-?
 .SH DESCRIPTION
 .B decomp41
-is a filter which produces a listing of an HP-41 user language program. 
-It reads the program as a series of bytes from standard input and prints 
-the listing to standard output (in a similar format to the standard HP-41 
+produces a listing of an HP-41 FOCAL bytecode program. 
+It reads the program as a series of bytes from standard input or the file specified by the command line parameter
+.I INPUTFILE
+and prints the listing to standard output (in a similar format to the standard HP-41 
 printer).
 .PP
 By default, functions contained in plug-in modules are displayed as 
@@ -29,11 +37,11 @@ is the number of the plug-in ROM and
 .I nn
 is the number of the function within that ROM. This can be overridden by 
 loading 
-.I xrom_files,
+.I XROMFILEs,
 see the 
 .I \-x
 option below. An 
-.I xrom_file
+.I XROMFILE
 consists of a number of lines, each consisting of 2 decimal numbers and one or two
 strings (containing no whitespace), in that order, separated by whitespace. 
 The first string gives a name to the function specified by the first number as 
@@ -63,15 +71,19 @@ Enable line numbers
 Decompile the following non ASCII HP-41 FOCAL characters as Unicode characters: text append (hex 0x251c),
 greek small mu (hex 0x03bc), angle (hex 0x2280), not equal to (hex 0x2260), greek capital sigma (hex 0x03A3).
 .TP
-.I \-x xrom_file
+.I \-r
+Skip an existing LIF header of the input file. This is mandatory, if the input file is a LIF instead of a raw file.
+.TP
+.I \-x XROMFILE
 Use
-.I xrom_file
-to define names for functions in plug-in modules. This option may be 
-repeated to load multiple
-.I xrom_files.
-The file name has to be specified either as a full pathname or as
-the filename without the extension .xrom in the default location
-that is specified with the environment variable LIFUTILSXROMDIR (see below).
+.I XROMFILE
+to define names for functions in plug-in modules. This option may be repeated to load multiple
+.I XROMFILEs.
+The file name has to be specified either as a full pathname or as the filename without the extension .xrom 
+in the default location that is specified with the environment variable LIFUTILSXROMDIR (see below).
+There is a special 
+.I XROMFILE hpdevices.xrom
+that contains all definitions for the standard HP peripheral ROM functions.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.
@@ -89,11 +101,11 @@ and
 .SH EXAMPLES
 If
 .I disk1.dat
-is a LIF disk image containing an HP41 program called
+is a LIF image containing an HP41 program called
 .I PROG
 then
 .PP
-.B lifget -r  disk1.dat PROG | decomp41 \-x hpil.xrom  \-x time.xrom
+.B lifutils lifget -r  disk1.dat PROG | lifutils decomp41 \-x hpil.xrom  \-x time.xrom
 .PP 
 will produce a listing of the program to standard output, with the 
 standard names for the functions in the HPIL module and time module.

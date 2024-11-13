@@ -1,19 +1,27 @@
-.TH sdatabar 1 14-April-2018 "LIF Utilities" "LIF Utilities"
+.TH sdatabar 1 06-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
-sdatabar \- Convert a raw SDATA file into an intermediate barcode file
+sdatabar \- convert a raw SDATA file into an intermediate barcode file
 .SH SYNOPSIS
-.B sdatabar
-[-e] 
-.B <
-.I input_file
-.B >
-.I intermediate_barcode_file
+.B lifutils sdatabar
+[\-e] [\-r]
+.I INPUTFILE
+>
+.I Output file
 .PP
-.B sdatabar -?
+.B lifutils sdatabar
+[\-e] [\-r]
+<
+.I Input file
+>
+.I Output file
+.PP
+.B lifutils sdatabar -?
 .SH DESCRIPTION
 .B sdatabar
-is a program that reads a raw SDATA file from standard input and writes the 
-corresponding intermediate barcode file to standard output. Records in the SDATA file containing numeric data are turned into type 6 barcode rows, while 
+is a program that reads a raw SDATA file from standard input or the file specified by the command line paramter
+.I INPUTFILE
+and writes the corresponding intermediate barcode file to standard output. 
+Records in the SDATA file containing numeric data are turned into type 6 barcode rows, while 
 those containing alpha data are turned into type 7 rows. Other SDATA 
 records cannot be represented by HP41 barcode, and are skipped, giving a 
 suitable error message.
@@ -36,6 +44,9 @@ compensate. This is not always possible, in which case, a suitable
 message is written to standard error, and the last mantissa digit is 
 omitted from the barcode.
 .TP
+.I \-r
+Skip an existing LIF header of the input file. This is mandatory, if the input file is a LIF instead of a raw file.
+.TP
 .I \-?
 Print a message giving usage to standard error and exit
 .SH REFERENCES
@@ -52,7 +63,7 @@ is a raw sdata file, and
 is a postscript printer
 then
 .PP
-.B sdatabar < data1.sda | barps 'Data File 1' | lpr -P postscript
+.B lifutils sdatabar < data1.sda | lifutils barps 'Data File 1' | lpr -P postscript
 .PP
 will print that file on the postscript printer.
 .SH BUGS

@@ -1,0 +1,128 @@
+<HTML>
+<TITLE>
+LIF Utilities v1.x Release Notes
+</TITLE>
+</HEAD>
+<BODY>
+<H2>Lifutils v1.x Revision History</H2>
+<p>
+<table border=0 cellspacing=0 cellpadding=2>
+<tr><td>v1.0</td><td>Initial Release</td></tr>
+<tr><td>v1.0.1</td><td>Bug fixes:
+ Directory length bug fixed for TEXT75 and DATA71 files; 
+ lifrmhdr made more tolerant of illegal sectors in the image</td></tr>
+<tr><td>v1.1</td><td>Directory entry types fixed for BASIC75 and added ROM75; 
+ Added text75 program; 
+ Added regs41 program;
+ Split sdata.c into several files so functions can be used elsewhere</td></tr>
+<tr><td>v1.2</td><td>Fixed makefile problems;
+         Added stat41 program;
+         Added Directory entry type for HP75 Visicalc;
+         Added inp41, outp41 programs;
+         Added key41 program;
+         Added hardware/ directory containing information on linking HPIL
+               calculators and the PC.</td></tr>
+<tr><td>v1.3</td><td>Added wall41, wcat41 programs; 
+         Added in71 program; 
+         Added out71 program.</td></tr>
+<tr><td>v1.3.1</td><td>Added information and schematics for downloading files to
+		calculators using a parallel interface
+		Fixed bug in lifrmhdr. Now handles 'extra' sectors correctly.</td></tr>
+<tr><td>v1.4</td><td>Fixed file type for secure TEXT file in lif_dir_utils and
+         lif_create_entry;
+         Added lifstat program; 
+         Another bug in lifrmhdr fixed -- now reports correct sector number
+           for missing sectors; 
+         Added sdatabar, barprt programs; 
+         Corrected typo in name of ADATE function in xroms/time.xrom; 
+         Added barps program; 
+         Added schematics and PIC source for a barcode download interface
+           to the hardware directory; 
+         Added ROM41 filetype to lif_dir_utils; 
+         Added rom41, rom41cat programs; 
+         Eliminated unwanted spaces in octal escape sequence output; 
+         Added prog41bar program.</td></tr>
+<tr><td>v1.5</td><td>
+Added lifput, texthp, lifstrip, rawlif;
+Corrected file_length of HP41 files in lif_dir_utils.c (checksum byte);
+install xroms in /usr/share/lifutils
+</td></tr>
+<tr><td>v1.5.1</td><td>
+Corrected entry in xroms/hpil.xrom (PRUGE); 
+Modified syntax of decompiled FOCAL programs to match syntax of nutstudio focal compiler:
+P-&gt;R and R-&gt;P to P-R and R-P (byte_tables.h), insert space before exponent (prog41.c);
+Introduce default path for xrom files. If they are located in /usr/share/lifutils/xroms only the file name without
+extension must be specified in the -x option. Otherwise the full pathname can be specified to preserve the old
+behaviour (prog41).
+</td></tr>
+<tr><td>v1.5.2</td><td>
+Corrected syntax of decompile FOCAL programs to match syntax of nutstudio, FocalComp and hp41uc compilers
+X!=Y to X#Y,&gt;DEC to DEC, &gt;OCT to OCT,D-&gt;R to D-R, R-&gt;D to R-D,  &gt;HMS to HMS, &gt;HR to HR;
+always output END instead of .END.; introduce -l option for optional line numbers; 
+output hex constants for non printable characters;output leading > for append strings (prog41.c)
+</td></tr>
+<tr><td>v1.6.0</td><td>
+removed files: lifaddhdr.c, lifrmhdr.c; removed pyhsical device support: lifdir.c, ifget.c, lifput.c, lifstat.c;
+new files: lifinit.c lifinit.1, lifpurge.c, lifpurge.1, lifrename.c, lifrename.1, lifpack.c lifpack.1
+rom41hx.c, rom41hx.1, liflabel.c, liflabel.1)
+</td></tr>
+<tr><td>v1.7.0</td><td>
+added Makefile.mingw (Windows), Makefile.macos (Mac OS X); changed mode of files to binary for mings32 compilation:
+(lifdir.c, lifget.c, lifput.c, lifinit.c, liflabel.c, lifpack.c, lifpurge.c, lifrename.c, lifstat.c,
+hptext.c, barprt.c, barps.c, in71.c, wall41.c, rawlif.c, sdata.c, wcat41.c, regs41.c, stat41.c,
+out71.c, rom41cat.c, lifstrip, inp41.c, outp41.c, rom41.c, text75.c, key41.c, rom41hx.c, texthp.c)
+new manpage file manpages/lifrename.1; manpages as html files;
+added output of label and medium layout in lifstat.c, lifdir.c;
+partially rewritten: lifinit.c, lifinit.1; removed -c flage: lifput.c lifput.1;
+new file: liffix.c, liffix.1; added ROM71, GRA71 file type: lif_dir_utils.c;
+correct error in lifput.c; changed behaviour of lifget.c, default is to keep the directory header;
+fixes in texthp.c; renamed prog41.c to decomp41.c; new file comp41.c, comp41.h, manfiles/comp41.1;
+renamed hptext.c to liftext.c
+</td></tr>
+<tr><td>v1.7.1</td><td>
+Moved ROM info to xrom.c and xrom.h. Fixed various compiler warnings. Code refactoring and transition to GNU Build system. New files: lifmod.c, modfile.c, lifmod.1
+</td></tr>
+<tr><td>v1.7.2</td><td>
+Reimplemented physical media access (LINUX only, experimental!), lifput fixes 
+</td></tr>
+<tr><td>v1.7.3</td><td>
+Check for already existing file name: lifrename.c , check if the name in the lif header of the input file is valid: lifget.c
+</td></tr>
+<tr><td>v1.7.4</td><td>
+Do not check if old file name is valid: lifrename. Check if directory size exceeds 1/3 of the medium size: lifinit.c, New files: lexcat71, lexcat71.1. File types renamed and added: lif_dir_utils.c
+</td></tr>
+<tr><td>v1.7.5</td><td>
+New files: lifheader.c, lifversion.c, hx41rom.c, lifheader.1, hx41rom.1
+</td></tr>
+<tr><td>v1.7.6</td><td>
+comp41 now also accepts ST+, ST-, ST/, ST* command syntax in addition to STO+, STO-, 
+STO/, STO*.  rom41hx now corrects the rom checksum. This avoids a warning message if those files are loaded into HEPAX RAM. The files plotter.xrom, timecx.xrom, xfncx.xrom were added. The plotter emulator engine for the HP7470A plotter was added. This program is used as subprocess by the pyILPER application and not intended for stand alone use.
+</td></tr>
+<tr><td>v1.7.7</td><td>
+New files: er41rom.c, er41rom.1, rom41er.c (renamed rom41.c), rom41er.1 (renamed rom41.1), rom41lif.c, rom41lif.1. New CMake build system. MSVC compatibility. Removed lifilper, in71, out71, inp41, outp41 from mac OS distribution. lifilper will be removed in the next LIFUTILS release.
+The textlif utility was enhanced to write HP-41 specific implementation bytes.
+</td></tr>
+<tr><td>v1.7.8</td><td>
+Extended output options for lifdir and lifheader. Removed lifilper. Fixes in lif_phy_linux.c. Better error diagnostics in lif_img.c. Added switch in lifinit to zero the data area. Added tutorial. inp41, outp41, in71 and out71 are now available on all platforms. All existing documentation checked and updated.
+</td></tr>
+<tr><td>v1.7.9</td><td>
+Merged pull request 3: make LIFUTILS build on non LINUX Unices, fix potential side effect in comp41.c.  Add -l option to lifget, lifput, lifpurge, lifrename, textlif to relax file name checking of lif files and allow them to have underscores. Documented the -p switch for floppy disk access (LINUX only). Renamed the text75 program to liftext75 to ensure naming consistency. Added the textlif75 and lexcat75 utilites.
+<tr><td>v1.7.10</td><td>
+The output of the program lexcat75 is now similar to the output of the HP-75 HELP lex file. The lexcat71 program does not show invalidated text table entries any more. The computation of the checksum in rom41er, rom41hx and rom41lif now strictly uses only the lower 10 bits.
+</td></tr>
+<tr><td>v1.7.11</td><td>
+Fixed the volume/header information in rom41er, rom41hx and rom41lif.
+</td></tr>
+</table>
+</p>
+<hr>
+<p>
+<TABLE width="100%" border=0>
+<tr>
+<td><address><I><font size=1><A HREF="mailto:bug400@gmx.de">Joachim Siebold</A></font></I></address></td>
+<td align=right>
+	<font size=1> Page last modified : 10-November-2024</font></td>
+</tr>
+</table>
+</BODY>
+</HTML>

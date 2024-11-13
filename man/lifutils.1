@@ -1,0 +1,75 @@
+.TH lifutils 1 07-November-2024 "LIF Utilities" "LIF Utilities"
+.SH NAME
+lifutils \- Program to invoke a LIF Utility
+.SH SYNOPSIS
+.PP
+.B lifutils 
+.I PROGNAME [PARAMETERS...]
+.PP
+.B lifutils
+\-v
+.PP
+.B lifutils
+\-?
+.SH DESCRIPTION
+Starting with version 2.0 all
+.B LIFUTILS 
+utility programs (with the exception of
+.B lifimage
+and
+.B lifdump
+which are only available on Linux) were integrated into a single executable named
+.B lifutils
+because of technical reasons. A
+.B LIFUTILS
+utility is now invoced by calling 
+.B lifutils
+and specifying its name as the first parameter
+.I PROGNAME
+followed by all other 
+.I PARAMETERS
+that are required by the utility. The parameter
+.I PROGNAME
+is case insensitive which is important under Windows. The help text of the program
+.B lifutils
+shows which utilities were integrated.
+.PP
+To maintain compatibility whith
+.B LIFUTILS
+version 1.x there are shell scripts for Linux (bash), macOS (zsh) and Windows (cmd) to invoke the integrated utilitie without calling
+.B lifutils.
+.PP
+Thus
+.I lifget
+can either be invoked with
+.PP
+.B lifutils lifget
+.PP
+or
+.PP
+.B lifget
+.
+.PP
+.B Important note:
+Because of technical limitations of Windows batch scripting it is 
+.B not
+possible to use the 
+.B LIFUTILS
+scripts in 
+.I .bat
+or
+.I .cmd
+files.
+.SH OPTIONS
+.TP
+.I \-v 
+Display 
+.B LIFUTILS
+version
+.PP 
+.SH REFERENCES
+See the man pages (Linux and macOS only) or HTML help pages for the respective utilities.
+.SH AUTHOR
+.B lifutils
+was written by Joachim Siebold and has been placed 
+under the GNU Public License version 2.0

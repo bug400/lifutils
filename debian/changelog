@@ -1,18 +1,23 @@
-lifutils (1.7.12) bookworm; urgency=medium
+lifutils (2.0.0) bookworm; urgency=medium
 
+  * The LIFUTILS utilities were combined in a single executable
+  * Most utilities can now read either from standard input or from an input file specified as command 
+    line parameter. This eliminates the need for a 'cat' or  at the beginning of a pipe.
+  * Many utilities now have a -r option to skip a LIF file header. Therefore, they now can use either a raw or 
+    a LIF file as input
   * rom41cat does not crash any more for ROM sizes > 4K
   * comp41, decomp41, key41, rom41cat can now handle the following Unicode characters: 
-    text append (hex 0x251c), greek small mu (hex 0x03bc), angle (hex 0x2280), 
-    not equal to (hex 0x2260), greek capital sigma (hex 0x03A3).
+    text append (hex 0x251c), Greek small mu (hex 0x03bc), angle (hex 0x2280), 
+    not equal to (hex 0x2260), Greek capital sigma (hex 0x03A3).
   * the xrom file format was extended to allow alternative instruction names 
-    with unicode characters
+    with Unicode characters
   * decomp41 now optinally adds line numbers to decompiled instructions
-  * comp41 can now write a source and bytecode listing on standard error
+  * comp41 can now write a source and byte code listing on standard error
   * comp41 now optionally creates a LIF file instead of a raw file
   * the xrom files for HP41 peripherals are now combined in the single xrom file hpdevices.xrom
   * xrom files were added for several HP application modules
 
- -- bookworm <achim@trillian>  Sun, 06 Oct 2024 21:28:00 +0200
+ -- bookworm <achim@trillian>  Thu, 24 Oct 2024 12:03:00 +0200
 
 lifutils (1.7.11) bookworm; urgency=medium
 

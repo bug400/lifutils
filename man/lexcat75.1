@@ -1,17 +1,28 @@
-.TH lexcat75 13-April-2018 "LIF Utilitites" "LIF Utilities"
+.TH lexcat75 1 01-November-2024 "LIF Utilitites" "LIF Utilities"
 .SH NAME
-lexcat75 \- a filter to display information about HP75 LEX files
+lexcat75 \- display information about HP75 LEX files
 .SH SYNOPSIS
-.B lexcat75
-.B <
-.I Input file
-.B >
+.B lifutils lexcat75
+[\-r]
+.I INPUTFILE
+[> 
 .I Output file
+]
 .PP
-.B lexcat75 \-?
+.B lifutils lexcat75
+[\-r]
+< 
+.I input file 
+[> 
+.I Output file
+]
+.PP
+.B lifutils lexcat75 \-?
 .SH DESCRIPTION
 .B lexcat75
-is a filter which reads a HP-75 raw lex file from standard input and displays the following information on standard output:
+reads a HP-75 LIF or raw lex file from standard input or the file specified by the command line parameter
+.I INPUTFILE
+and displays the following information on standard output:
 .PP
 .IP \- 3
 LEX file id
@@ -19,9 +30,13 @@ LEX file id
 list of keywords with their attributes and parameter types
 .IP \- 3
 code attributes
-.PP
-.B Note: the lex file header must not be present
-
+.SH OPTIONS
+.TP
+.I \-r
+Skip an existing LIF header of the input file. This is mandatory, if the input file is a LIF instead of a raw file.
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
 .SH REFERENCES
 The LEX file format is documented in the 
 .I HP\-75 Description and Entry Points Documentation pp 156
@@ -30,7 +45,7 @@ If
 .I mem.lex
 is a raw file containing an HP75 lex file, then
 .PP
-.B cat mem.lex | lexcat75
+.B cat mem.lex | lifutils lexcat75
 .PP 
 will display information about the LEX file
 .B mem.lex

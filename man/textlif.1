@@ -1,28 +1,35 @@
-.TH textlif 1 14-April-2018 "LIF Utilitites" "LIF Utilities"
+.TH textlif 1 07-November-2024 "LIF Utilitites" "LIF Utilities"
 .SH NAME
-textlif \- a filter to convert an ASCII file to a LIF text file
+textlif \- convert an ASCII file to a LIF text file
 .SH SYNOPSIS
-.B textlif
-[\-r registers]
-[\-l]
-.I <LIF filename>
-.B <
-.I Input file
-.B >
+.B lifutils textlif
+[\-s SIZE] [\-l]
+.I LIFFILENAME
+.I INPUTFILE
+>
 .I Output file
 .PP
-.B textlif \-?
+.B lifutils textlif
+[\-s SIZE] [\-l]
+.I LIFFILENAME
+<
+.I Input file
+>
+.I Output file
+.PP
+.B lifutils textlif \-?
 .SH DESCRIPTION
 .B textlif
-is a filter which generates a LIF file from a text file.
-The filter reads the text from standard
-input and writes the LIF file header and the LIF formatted text to
+generates a LIF file from a text file.
+The program reads the text from standard input or the file specified by the command line paramter 
+.I INPUTFILE
+and writes the LIF file header and the LIF formatted text to
 standard output. This file type can be used on the HP-71 (TEXT) or
 the HP-41 extended Memory or HEPAX file system (ASCII). If the file
 shall be used on a HP-41 the \-r option is mandatory.
 .SH OPTIONS
 .TP
-.I \-r
+.I \-s
 This option specifies the file size in registers which shall be allocated 
 for the resulting file in the HP-41 extended memory or the HEPAX file system. 
 If a value of 0 is specified the number of register is determined from the 
@@ -44,7 +51,7 @@ If
 is an ASCII text file 
 then
 .PP
-.B cat demo.txt | textlif DEMO | lifput lifimage.dat
+.B cat demo.txt | lifutils textlif DEMO | lifutils lifput lifimage.dat
 .PP
 will put the LIF text file with the name
 .I DEMO

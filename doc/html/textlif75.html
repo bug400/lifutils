@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:21 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:34 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,21 +36,24 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">textlif75 - a
-filter to convert an ASCII file to a HP-75 text file</p>
+<p style="margin-left:11%; margin-top: 1em">textlif75 -
+convert an ASCII file to a HP-75 text file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+textlif75</b> [-n] <i>LIFFILENAME INPUTFILE</i> &gt;
+<i>Output file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>textlif75</b>
-[-n] <i>&lt;LIF filename&gt;</i> <b>&lt;</b> <i>Input
-file</i> <b>&gt;</b> <i>Output file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+textlif75</b> [-n] <i>LIFFILENAME</i> &lt; <i>Input file</i>
+&gt; <i>Output file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>textlif75
--?</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+textlif75 -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -59,9 +62,10 @@ file</i> <b>&gt;</b> <i>Output file</i></p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>textlif75</b>
-is a filter which generates a text file for the HP-75. The
-filter reads plain text from standard input and writes the
-LIF file header followed by the converted HP-75 text file to
+generates a text file for the HP-75. The program reads plain
+text from standard input or the file specified by the
+command line parameter <i>INPUTFILE</i> and writes the LIF
+file header followed by the converted HP-75 text file to
 standard output. This file type can be used on the HP-75
 only. The maximum line length of this file type is 255
 characters excluding end of line char(s). <b>textlif75</b>
@@ -122,11 +126,12 @@ Description and Entry Points documentation.</i></p>
 <i>demo.txt</i> is an ASCII text file then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>cat demo.txt
-| textlif75 DEMO | lifput lifimage.dat</b></p>
+| lifutils textlif75 DEMO | lifutils lifput
+lifimage.dat</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will put the
-HP-75 text file with the name <i>DEMO</i> into the LIF image
-file <i>lifimage.dat</i></p>
+HP-75 text file with the name <i>DEMO</i> into the LIF disk
+image file <i>lifimage.dat</i></p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>

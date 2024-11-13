@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:21 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:33 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,6 +23,7 @@
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
 <a href="#FILES">FILES</a><br>
 <a href="#REFERENCES">REFERENCES</a><br>
 <a href="#AUTHOR">AUTHOR</a><br>
@@ -36,16 +37,19 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">outp41 - a
-filter to produce an HP41 hexadecimal program</p>
+filter to produce a HP41 hexadecimal program</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>outp41
-&lt;</b> <i>input_file</i> <b>&gt;</b>
-<i>output_device_or_file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+outp41 &lt;</b> <i>Input_file</i> <b>&gt;</b> <i>Output
+device or file</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+outp41</b> -?</p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -63,6 +67,27 @@ reads an HP41 binary program from standard input and writes
 the hexadecimal byte stream to standard output (which may be
 redirected to, for example, a serial port connected to the
 HP41 via an HP82164 RS232 interface).</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>-?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Print a message giving the
+program usage to standard error.</p></td></tr>
+</table>
 
 <h2>FILES
 <a name="FILES"></a>

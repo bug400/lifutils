@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:20 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:33 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,19 +38,20 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">lifdir - print
-a directory of a LIF image file</p>
+<p style="margin-left:11%; margin-top: 1em">lifdir -
+display the directory of a LIF disk image file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifdir</b>
-[-n] [-v l] [-p] <i>&lt;LIF image file&gt;</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifdir</b> [-c][-n] [-v l] [-p] <i>LIFIMAGE</i> [&gt;
+<i>Output file</i> ]</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifdir</b>
--?</p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifdir</b> -?</p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -58,7 +59,8 @@ a directory of a LIF image file</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifdir</b>
-reads the directory of a LIF image file and prints its
+reads the directory of a LIF disk image file specified by
+the command line parameter <i>LIFIMAGE</i> and prints its
 directory to standard output.</p>
 
 <p style="margin-left:11%; margin-top: 1em">If the volume
@@ -194,8 +196,8 @@ of the 2 file type bytes from the directory. See
 <p style="margin-left:11%; margin-top: 1em">If
 <i>disk1.dat</i> is a LIF disk image file then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifdir
-disk1.dat</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifdir disk1.dat</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will print a
 directory listing of that image file.</p>

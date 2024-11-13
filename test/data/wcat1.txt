@@ -1,0 +1,38 @@
+SIZE 020
+First statistical register = 011
+
+3 KARs found
+"0x880x86"
+END
+"AUDI2"
+"Z"
+"NCS"
+"PCS"
+"NEW"
+"PUR"
+"SAV"
+"GET"
+"?"
+"EIN"
+"AUS"
+"CLR"
+"INH"
+"AK"
+"WR"
+"CAN"
+"AN"
+"NAN"
+"CLA"
+"VPT"
+"DPT"
+"AUF"
+"AB"
+"ABL"
+"ABO"
+"TAV"
+"KLP"
+"FL"
+"FLP"
+"GS"
+END
+.END.

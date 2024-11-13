@@ -1,0 +1,2 @@
+#!/bin/zsh
+lifutils rom41hx $@

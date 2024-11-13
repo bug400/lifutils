@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:20 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:32 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,6 +23,7 @@
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
 <a href="#EXAMPLES">EXAMPLES</a><br>
 <a href="#AUTHOR">AUTHOR</a><br>
 
@@ -34,9 +35,9 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">hx41rom - a
-filter to convert a SDATA file which contains a scrambled
-(packed) ROM image written by the HEPAX WRTROM command to an
+<p style="margin-left:11%; margin-top: 1em">hx41rom
+-convert a SDATA file which contains a scrambled (packed)
+ROM image written by the HEPAX WRTROM command to an
 unscrambled (unpacked) HP-41 ROM file.</p>
 
 <h2>SYNOPSIS
@@ -44,8 +45,12 @@ unscrambled (unpacked) HP-41 ROM file.</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>hx41rom
-&lt;</b> <i>Input file</i> <b>&gt;</b> <i>Output
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+hx41rom</b> [-r] <i>INPUTFILE</i> &gt; <i>Output
+file</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+hx41rom</b> [-r] &lt; <i>Input file</i> &gt; <i>Output
 file</i></p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>hx41rom
@@ -63,11 +68,49 @@ consecutive HP-41 10 bit ROM word in 5 bytes of the file. A
 4K ROM dump is thus stored in a 5120 byte file.</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>hx41rom</b>
-unscrambles such an raw SDATA file, storing each HP-41 10
-bit word in 2 bytes of the output file, and therefore a 4K
-image takes up 8192 bytes when unscrambled. The resulting
-output file, although larger, is easier to process with
-other programs.</p>
+unscrambles such an raw or LIF SDATA file, storing each
+HP-41 10 bit word in 2 bytes of the output file, and
+therefore a 4K image takes up 8192 bytes when unscrambled.
+The resulting output file, although larger, is easier to
+process with other programs.</p>
+
+<p style="margin-left:11%; margin-top: 1em">The input is
+either read from standard input or the file specified by the
+command line parameter <i>INPUTFILE.</i></p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>-r</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Skip an existing LIF header of
+the input file. This is mandatory, if the input file is a
+LIF instead of a raw file.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>-?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Print a message giving the program usage to standard
+error.</p> </td></tr>
+</table>
 
 <h2>EXAMPLES
 <a name="EXAMPLES"></a>
@@ -79,7 +122,7 @@ other programs.</p>
 that contains the packed ROM image then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>cat myrom.hx
-| hx41rom &gt; myrom.rom</b></p>
+| lifutils hx41rom &gt; myrom.rom</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will generate a
 file <i>myrom.rom</i> with the unpacked HP-41 rom image.</p>

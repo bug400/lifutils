@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:21 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:34 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,20 +36,24 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">textlif - a
-filter to convert an ASCII file to a LIF text file</p>
+<p style="margin-left:11%; margin-top: 1em">textlif -
+convert an ASCII file to a LIF text file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>textlif</b>
-[-r registers] [-l] <i>&lt;LIF filename&gt;</i> <b>&lt;</b>
-<i>Input file</i> <b>&gt;</b> <i>Output file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+textlif</b> [-s SIZE] [-l] <i>LIFFILENAME INPUTFILE</i> &gt;
+<i>Output file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>textlif
--?</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+textlif</b> [-s SIZE] [-l] <i>LIFFILENAME</i> &lt; <i>Input
+file</i> &gt; <i>Output file</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+textlif -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -57,8 +61,9 @@ filter to convert an ASCII file to a LIF text file</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>textlif</b>
-is a filter which generates a LIF file from a text file. The
-filter reads the text from standard input and writes the LIF
+generates a LIF file from a text file. The program reads the
+text from standard input or the file specified by the
+command line paramter <i>INPUTFILE</i> and writes the LIF
 file header and the LIF formatted text to standard output.
 This file type can be used on the HP-71 (TEXT) or the HP-41
 extended Memory or HEPAX file system (ASCII). If the file
@@ -76,7 +81,7 @@ shall be used on a HP-41 the -r option is mandatory.</p>
 <td width="3%">
 
 
-<p style="margin-top: 1em"><i>-r</i></p></td>
+<p style="margin-top: 1em"><i>-s</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
@@ -133,11 +138,12 @@ Software Internal Design Specifications Volume 1
 <i>demo.txt</i> is an ASCII text file then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>cat demo.txt
-| textlif DEMO | lifput lifimage.dat</b></p>
+| lifutils textlif DEMO | lifutils lifput
+lifimage.dat</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will put the
-LIF text file with the name <i>DEMO</i> into the LIF image
-file <i>lifimage.dat</i></p>
+LIF text file with the name <i>DEMO</i> into the LIF disk
+image file <i>lifimage.dat</i></p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>

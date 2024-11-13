@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:21 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:34 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,6 +23,7 @@
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
 <a href="#REFERENCES">REFERENCES</a><br>
 <a href="#EXAMPLES">EXAMPLES</a><br>
 <a href="#SEE ALSO">SEE ALSO</a><br>
@@ -36,16 +37,23 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">wcat41 - a
-filter to list the contents of a raw HP41 Write All file</p>
+<p style="margin-left:11%; margin-top: 1em">wcat41 - list
+the contents of a raw HP41 Write All file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>wcat41
-&lt;</b> <i>wall_file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+wcat41</b> <i>INPUTFILE</i> [&gt; <i>Output file</i> ]</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+wcat41</b> &lt; <i>Input file</i> [&gt; <i>Output file</i>
+]</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+wcat -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -53,10 +61,11 @@ filter to list the contents of a raw HP41 Write All file</p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><i><b>wcat41</b></i>
-is a filter which reads an HP41 Write All file from standard
-input. It then writes to standard output the following
-information :</p>
+<p style="margin-left:11%; margin-top: 1em"><b><i>wcat41</i></b>
+reads an HP41 Write All file from standard input or the file
+specified by the command line parameter <i>INPUTFILE.</i> It
+then writes to standard output the following information
+:</p>
 
 <p style="margin-left:11%; margin-top: 1em">The SIZE
 (number of user data registers) and the location of the
@@ -71,6 +80,27 @@ of any buffers.</p>
 <p style="margin-left:11%; margin-top: 1em">Global labels
 (and ENDs) of user programs, in a format similar to <i>CAT
 1</i> on the HP41.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>-?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Print a message giving the
+program usage to standard error.</p></td></tr>
+</table>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>
@@ -92,7 +122,7 @@ Reference Guide by J. Smith.</p>
 
 <p style="margin-left:11%; margin-top: 1em">To get a
 catalogue of a raw HP41 Write All file called <i>all1.w41
-,</i> type : <b>wcat41 &lt; all1.w41</b></p>
+,</i> type : <b>lifutils wcat41 &lt; all1.w41</b></p>
 
 <h2>SEE ALSO
 <a name="SEE ALSO"></a>

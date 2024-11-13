@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Thu Oct 17 07:13:04 2024 -->
+<!-- CreationDate: Tue Nov 12 14:01:32 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -39,27 +39,26 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">comp41 - a
-filter to compile a HP41C user-language (FOCAL) program</p>
+<p style="margin-left:11%; margin-top: 1em">comp41 -
+compile a HP41C user-language (FOCAL) program</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>comp41</b>
-[-a][-g] [-l] [-x <i>xrom_file</i> ] [-x <i>xrom_file</i> ]
-... <i>&lt;input file&gt;</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+comp41</b> [-l] [-g] [-s] [-h] [-f <i>LIFFILENAME</i> ] [-x
+<i>XROMFILE</i> ] ... <i>INPUTFILE</i> &gt; <i>Output
+file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>comp41</b>
-[-g] [-l] [-x <i>xrom_file</i> ] [-x <i>xrom_file</i> ]
-...</p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+comp41</b> [-l] [-g] [-s] [-h] [-f <i>LIFFILENAME</i> ] [-x
+<i>XROMFILE</i> ] ... &lt; <i>Input file</i> &gt; <i>Output
+file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em">(last form
-reads source file from standard input)</p>
-
-<p style="margin-left:11%; margin-top: 1em"><b>comp41
--?</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+comp41 -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -67,12 +66,13 @@ reads source file from standard input)</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>comp41</b>
-is a filter which compiles a text file containing a HP-41
-user program (FOCAL) and translates it to a LIF or binary
-raw file (default).</p>
+compiles a text file containing a HP-41 user program (FOCAL)
+from standard input or the file specified by the command
+line parameter <i>INPUTFILE</i> and writes the byte code to
+a LIF or binary raw file (default).</p>
 
 <p style="margin-left:11%; margin-top: 1em">A
-<i>xrom_file</i> consists of a number of lines, each
+<i>XROMFILE</i> consists of a number of lines, each
 consisting of 2 decimal numbers and one or two strings
 (containing no whitespace), in that order, separated by
 whitespace. The first string gives a name to the function
@@ -80,7 +80,7 @@ specified by the first number as <i>rr</i> and the second
 number as <i>nn.</i> The optional second string is the
 function name containing the Unicode characters listed
 above, which must not be used in the first string. The
-proper <i>xrom_file</i> is necessary to compile commands of
+proper <i>XROMFILE</i> is necessary to compile commands of
 module or peripheral functions.</p>
 
 <h2>INPUT FILE FORMAT
@@ -141,47 +141,24 @@ allowed if preceded by &rsquo;;&rsquo; or &rsquo;#&rsquo; :
 <td width="3%">
 
 
-<p style="margin-top: 1em"><i>-g</i></p></td>
+<p style="margin-top: 1em"><i>-l</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
 
-<p style="margin-top: 1em">Force global for
-&quot;A..J&quot;, &quot;a..e&quot; with quotes: lbl
-&quot;A&quot;</p> </td></tr>
+<p style="margin-top: 1em">Skip line numbers</p></td></tr>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="3%">
 
 
-<p><i>-l</i></p></td>
+<p><i>-g</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
 
-<p>Skip line numbers</p></td></tr>
-</table>
-
-<p style="margin-left:11%;"><i>-f LIF Filename</i></p>
-
-<p style="margin-left:22%;">Create a LIF file instead of a
-raw file on standard output. A valid lif file name must be
-provided, which must apply the rules of HP-71 file names:
-capital letters and digits, starting with a capital
-letter.</p>
-
-<p style="margin-left:11%;"><i>-x xrom_file</i></p>
-
-<p style="margin-left:22%;">Use <i>xrom_file</i> to define
-names for functions in plug-in modules. This option may be
-repeated to load multiple <i>xrom_files.</i> The file name
-has to be specified either as a full pathname or as the
-filename without the extension .xrom in the default location
-that is specified with the environment variable
-LIFUTILSXROMDIR (see below).</p>
-
-<table width="100%" border="0" rules="none" frame="void"
-       cellspacing="0" cellpadding="0">
+<p>Force global for &quot;A..J&quot;, &quot;a..e&quot; with
+quotes: lbl &quot;A&quot;</p></td></tr>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="3%">
@@ -204,6 +181,30 @@ LIFUTILSXROMDIR (see below).</p>
 
 
 <p>Output byte code to standard error, requires -s.</p></td></tr>
+</table>
+
+<p style="margin-left:11%;"><i>-f LIFFILENAME</i></p>
+
+<p style="margin-left:22%;">Create a LIF file instead of a
+raw file on standard output. A valid lif file name must be
+provided, which must apply the rules of HP-71 file names:
+capital letters and digits, starting with a capital
+letter.</p>
+
+<p style="margin-left:11%;"><i>-x XROMFILE</i></p>
+
+<p style="margin-left:22%;">Use <i>XROMFILE</i> to define
+names for functions in plug-in modules. This option may be
+repeated to load multiple <i>XROMFILEs.</i> The file name
+has to be specified either as a full pathname or as the
+filename without the extension .xrom in the default location
+that is specified with the environment variable
+LIFUTILSXROMDIR (see below). There is a special <i>XROMFILE
+hpdevices.xrom</i> that contains all definitions for the
+standard HP peripheral ROM functions.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="3%">
@@ -251,15 +252,16 @@ Quick Reference Guide (Jeremy Smith)</i></p>
 <p style="margin-left:11%; margin-top: 1em">If
 <i>prog1.txt</i> is a text file with a FOCAL program that
 uses functions of the HP-IL and time module and
-<i>hp41prog.dat</i> is a LIF image file then</p>
+<i>hp41prog.dat</i> is a LIF disk image file then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>cat
-prog1.txt | comp41 -x hpil -x time -f PROG1 | lifput
-hp41prog.dat</b></p>
+prog1.txt | lifutils comp41 -x hpil -x time -f PROG1 |
+lifutils lifput hp41prog.dat</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will compile
 the file <i>prog1.txt</i> to a LIF file named <i>PROG1</i>
-that is stored in the LIF image file <i>hp41prog.dat</i></p>
+that is stored in the LIF disk image file
+<i>hp41prog.dat</i></p>
 
 <h2>BUGS
 <a name="BUGS"></a>

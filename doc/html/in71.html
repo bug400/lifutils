@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:20 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:32 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,7 +23,7 @@
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
-<a href="#Options">Options</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
 <a href="#FILES">FILES</a><br>
 <a href="#EXAMPLES">EXAMPLES</a><br>
 <a href="#REFERENCES">REFERENCES</a><br>
@@ -39,19 +39,19 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">in71 - a filter
-to read a program from an HP71B</p>
+to read a program from a HP71B</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>in71</b>
-[-b] &lt; <i>input_device</i> <b>&gt;</b>
-<i>output_file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+in71</b> [-b] &lt; <i>Input device</i> &gt; <i>Output
+file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>in71</b>
--?</p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+in71</b> -?</p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -75,8 +75,8 @@ thus be used for the direct transfer of files from an HP71B
 to a Linux system using (e.g.) an HP82164 RS232
 interface.</p>
 
-<h2>Options
-<a name="Options"></a>
+<h2>OPTIONS
+<a name="OPTIONS"></a>
 </h2>
 
 
@@ -126,8 +126,8 @@ and exit</p></td></tr>
 connected to the Linux device <i>/dev/cua0</i> via a
 suitable interface, then the command</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>in71 &lt;
-/dev/cua0 | liftext</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+in71 &lt; /dev/cua0 | liftext</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will read an
 HP71B text file (sent, e.g. by <b>COPY MYTEXT TO :RS232</b>

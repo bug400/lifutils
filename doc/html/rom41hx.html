@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:21 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:34 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,6 +23,7 @@
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
 <a href="#EXAMPLES">EXAMPLES</a><br>
 <a href="#AUTHOR">AUTHOR</a><br>
 
@@ -34,22 +35,25 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">rom41hx - a
-filter to convert a HP-41 rom file to a LIF file of type
-sdata that can be uploaded to HEPAX RAM with the READROM
-command</p>
+<p style="margin-left:11%; margin-top: 1em">rom41hx -
+convert a HP-41 rom file to a LIF file of type sdata that
+can be uploaded to HEPAX RAM with the READROM command</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>rom41hx</b>
-<i>&lt;LIF filename&gt;</i> <b>&lt;</b> <i>Input file</i>
-<b>&gt;</b> <i>Output file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+rom41hx</b> <i>LIFFILENAME INPUTFILE</i> &gt; <i>Output
+file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>rom41hx
--?</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+rom41hx</b> <i>LIFFILENAME</i> &lt; <i>Input file</i> &gt;
+<i>Output file</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+rom41hx -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -60,17 +64,36 @@ command</p>
 set can load HP41 ROM images from disk. The file format is a
 file of type <i>SDATA</i> which stores 4 10 bit HP41 words
 in 5 bytes of the file. A 4K ROM dump is thus stored in a
-5120 byte file.</p>
+5120 byte file. <i>rom41hx</i> generates a LIF data file of
+type <i>SDATA</i> from a HP41 rom file.</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>rom41hx</b>
-is a filter which generates a LIF data file of type
-<i>SDATA</i> from a HP41 rom file.</p>
-
-<p style="margin-left:11%; margin-top: 1em">The filter
-reads the rom data from standard input and writes the LIF
-file header and the rom data in scrambled HEPAX format to
-standard output. Note: this filter adjusts an incorrect ROM
+<p style="margin-left:11%; margin-top: 1em">The program
+reads the rom data from standard input or the file specified
+by the parameter <i>INPUTFILE</i> and writes the LIF file
+header and the rom data in scrambled HEPAX format to
+standard output. Note: this program adjusts an incorrect ROM
 checksum.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>-?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Print a message giving the
+program usage to standard error.</p></td></tr>
+</table>
 
 <h2>EXAMPLES
 <a name="EXAMPLES"></a>
@@ -82,11 +105,12 @@ checksum.</p>
 module then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>cat
-HPILDv1B.ROM | rom41hx HPILDEV | lifput lifimage.dat</b></p>
+HPILDv1B.ROM | lifutils rom41hx HPILDEV | lifutils lifput
+lifimage.dat</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will put the
 scrambled rom file with the name <i>HPILDEV</i> into the LIF
-image file <i>lifimage.dat</i></p>
+disk image file <i>lifimage.dat</i></p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>

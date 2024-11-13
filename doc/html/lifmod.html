@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:20 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:33 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -45,11 +45,12 @@ contents and info of HP-41 module files</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifmod</b>
-[-v] [-f] [-e] [-l] <i>&lt;Module file&gt;</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifmod</b> [-v] [-f] [-e] [-l] <i>MODULEFILE</i> [&gt;
+<i>Output file</i> ]</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifmod
--?</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifmod -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -57,11 +58,11 @@ contents and info of HP-41 module files</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifmod</b>
-displays and/or extracts information of a <i>module
-file.</i> A module file has a special binary format defined
-for the HP-41 which is inspired how actual plug in modules
-look like. A mod file describes the contents of a physical
-plug in module. Like real plug in modules, module files can
+displays and/or extracts information of a <i>MODULEFILE.</i>
+A module file has a special binary format defined for the
+HP-41 which is inspired how actual plug in modules look
+like. A mod file describes the contents of a physical plug
+in module. Like real plug in modules, module files can
 contain multiple 4K rom pages.</p>
 
 <p style="margin-left:11%; margin-top: 1em">Without any
@@ -151,8 +152,8 @@ error.</p> </td></tr>
 <i>ADVANTAGE.MOD</i> is a module file of the HP-41 Advantage
 Pac then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifmod -e
-ADVANTAGE.MOD</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifmod -e ADVANTAGE.MOD</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will print
 detailed information of the content of the module and

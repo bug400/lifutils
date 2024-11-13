@@ -1,33 +1,37 @@
-.TH comp41 1 13-April-2018 "LIF Utilitites" "LIF Utilities"
+.TH comp41 1 01-November-2018 "LIF Utilitites" "LIF Utilities"
 .SH NAME
-comp41 \- a filter to compile a HP41C user\-language (FOCAL) program
+comp41 \- compile a HP41C user\-language (FOCAL) program
 .SH SYNOPSIS
-.B comp41
-[\-a][\-g] [\-l] [\-x
-.I xrom_file
+.B lifutils comp41
+[\-l] [\-g] [\-s] [\-h] [\-f
+.I LIFFILENAME
 ] [\-x
-.I xrom_file
+.I XROMFILE
 ] ...
-.I
-<input file>
+.I INPUTFILE
+> 
+.I Output file
 .PP
-.B comp41
-[\-g] [\-l] [\-x
-.I xrom_file
+.B lifutils comp41
+[\-l] [\-g] [\-s] [\-h] [\-f
+.I LIFFILENAME
 ] [\-x
-.I xrom_file
-] ...
+.I XROMFILE
+] ... < 
+.I Input file 
+> 
+.I Output file
 .PP
-(last form reads source file from standard input)
-.PP
-.B comp41 \-?
+.B lifutils comp41 \-?
 .SH DESCRIPTION
 .B comp41
-is a filter which compiles a text file containing a HP-41 user program (FOCAL)
-and translates it to a LIF or binary raw file (default). 
+compiles a text file containing a HP-41 user program (FOCAL) from standard input or the file specified by the
+command line parameter
+.I INPUTFILE
+and  writes the byte code to a LIF or binary raw file (default). 
 .PP
 A 
-.I xrom_file
+.I XROMFILE
 consists of a number of lines, each consisting of 2 decimal numbers and one or two
 strings (containing no whitespace), in that order, separated by whitespace. 
 The first string gives a name to the function specified by the first number as 
@@ -37,7 +41,7 @@ and the second number as
 The optional second string is the function name containing the Unicode characters listed above, which
 must not be used in the first string.
 The proper
-.I xrom_file
+.I XROMFILE
 is necessary to compile commands of module or peripheral functions.
 .SH INPUT FILE FORMAT
 Prefixes are case-insensitive:  'rcl 00'  same as  'RCL 00'.
@@ -61,30 +65,32 @@ Synthetic strings are allowed using C-style esc-sequences: '"\\x0D\\x0A"'
 Comments are allowed if preceded by ';' or '#' : '# comment'
 .SH OPTIONS
 .TP
-.I \-g
-Force global for "A..J", "a..e"  with quotes:  lbl "A" 
-.TP
 .I \-l
 Skip line numbers
 .TP
-.I \-f LIF Filename
-Create a LIF file instead of a raw file on standard output. A valid lif file name must be provided, which must apply the rules of HP-71 file names: capital letters and digits, starting with a capital letter.
-.TP
-.I \-x xrom_file
-Use
-.I xrom_file
-to define names for functions in plug-in modules. This option may be 
-repeated to load multiple
-.I xrom_files.
-The file name has to be specified either as a full pathname or as
-the filename without the extension .xrom in the default location
-that is specified with the environment variable LIFUTILSXROMDIR (see below).
+.I \-g
+Force global for "A..J", "a..e"  with quotes:  lbl "A" 
 .TP
 .I \-s
 Output source listing to standard error
 .TP
 .I \-h
 Output byte code to standard error, requires \-s.
+.TP
+.I \-f LIFFILENAME
+Create a LIF file instead of a raw file on standard output. A valid lif file name must be provided, which must apply the rules of HP-71 file names: capital letters and digits, starting with a capital letter.
+.TP
+.I \-x XROMFILE
+Use
+.I XROMFILE
+to define names for functions in plug-in modules. This option may be 
+repeated to load multiple
+.I XROMFILEs.
+The file name has to be specified either as a full pathname or as the filename without the extension .xrom 
+in the default location that is specified with the environment variable LIFUTILSXROMDIR (see below).
+There is a special 
+.I XROMFILE hpdevices.xrom 
+that contains all definitions for the standard HP peripheral ROM functions.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.
@@ -108,7 +114,7 @@ hp41prog.dat
 is a LIF image file
 then
 .PP
-.B cat prog1.txt | comp41 \-x hpil \-x time \-f PROG1 | lifput hp41prog.dat 
+.B cat prog1.txt | lifutils comp41 \-x hpil \-x time \-f PROG1 | lifutils lifput hp41prog.dat 
 .PP 
 will compile the file
 .I prog1.txt

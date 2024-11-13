@@ -1,19 +1,21 @@
-.TH liffix 1 14-April-2018 "LIF Utilities" "LIF Utilities"
+.TH liffix 1 03-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
 liffix \- fixes the medium size information in the volume header of a LIF image file
 .SH SYNOPSIS
-.B liffix
-\-m Mediumtype 
+.B lifutils liffix
+\-m 
+.I MEDIUMTYPE
 [-p]
-.I <LIF image file> 
+.I LIFIMAGE
 .PP
-.B liffix \-?
+.B lifutils liffix \-?
 .SH DESCRIPTION
-The volume header of the LIF file system contains information about the size of the volume specified by the numbers of tracks per surface, number of surfaces and number of blocks per track. Some HP-IL controller do not initialize this values correctly which might worry software that works with LIF image files.  The medium size of the lif image file can be checked with the
+The volume header of the LIF file system contains information about the size of the volume specified by the numbers of tracks per surface, number of surfaces and number of blocks per track. Some HP-IL controller do not initialize this values correctly which might worry software that works with LIF image files.  The medium size of the LIF image file can be checked with the
 .I lifstat
 program.
 .B liffix
-repairs the volume header of a LIF image file.
+repairs the volume header of a LIF image file specified by the command line parameter 
+.I LIFIMAGE.
 .SH OPTIONS
 .TP
 .I \-m
@@ -49,9 +51,9 @@ Print a message giving the program usage to standard error.
 .SH EXAMPLES
 If 
 .I disk1.dat
-is a LIF disk image file with improper medium size information then
+is a LIF image file with improper medium size information then
 .PP
-.B liffix -m disk disk1.dat
+.B lifutils liffix -m disk disk1.dat
 .PP
 will fix the medium size information of
 .I disk1.dat

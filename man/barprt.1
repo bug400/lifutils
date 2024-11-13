@@ -1,9 +1,14 @@
-.TH barprt 1 1-July-2001 "LIF Utilities" "LIF Utilities"
+.TH barprt 1 03-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
 barprt \- Display an HP41 barcode file (diagnostic)
 .SH SYNOPSIS
-.B barprt
-.I < barcode_file
+.B lifutils barprt
+<
+.I Input file
+>
+.I Output file
+.PP
+.B lifutils barprt -?
 .SH DESCRIPTION
 .B barprt
 is a filter which reads an HP41 barcode file from standard input. For 
@@ -30,6 +35,11 @@ by using it to print a barcode file and then comparing the output of
 applied to that file with the result of using the HP41 command 
 .B WNDSCN
 to read the corresponding row of printed barcode.
+.SH OPTIONS
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
+
 .SH REFERENCES
 See 
 .I barcode(5)
@@ -39,7 +49,7 @@ If
 .I bar1 
 is an HP41 barcode file then the command 
 .PP
-.B barprt < bar1
+.B lifutils barprt < bar1
 .PP
 will display the contents of that file in human-readable form on the user's 
 terminal 

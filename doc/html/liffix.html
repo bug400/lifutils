@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:20 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:33 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,18 +38,18 @@
 
 <p style="margin-left:11%; margin-top: 1em">liffix - fixes
 the medium size information in the volume header of a LIF
-image file</p>
+disk image file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>liffix</b>
--m Mediumtype [-p] <i>&lt;LIF image file&gt;</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+liffix</b> -m <i>MEDIUMTYPE</i> [-p] <i>LIFIMAGE</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>liffix
--?</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+liffix -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -62,9 +62,11 @@ size of the volume specified by the numbers of tracks per
 surface, number of surfaces and number of blocks per track.
 Some HP-IL controller do not initialize this values
 correctly which might worry software that works with LIF
-image files. The medium size of the lif image file can be
-checked with the <i>lifstat</i> program. <b>liffix</b>
-repairs the volume header of a LIF image file.</p>
+disk image files. The medium size of the LIF disk image file
+can be checked with the <i>lifstat</i> program.
+<b>liffix</b> repairs the volume header of a LIF disk image
+file specified by the command line parameter
+<i>LIFIMAGE.</i></p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
@@ -142,8 +144,8 @@ error.</p> </td></tr>
 <i>disk1.dat</i> is a LIF disk image file with improper
 medium size information then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>liffix -m
-disk disk1.dat</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+liffix -m disk disk1.dat</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will fix the
 medium size information of <i>disk1.dat</i> The header is

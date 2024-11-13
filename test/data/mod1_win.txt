@@ -1,0 +1,71 @@
+FILE NAME: ..\data\VERMROM.MOD
+FILE FORMAT: MOD1
+TITLE: Vermessungsmodul
+VERSION: A
+PART NUMBER: 
+AUTHOR: Joachim Siebold
+COPYRIGHT (c) NLVERMA
+LICENSE: 
+COMMENTS: 
+CATEGORY: HP Application PAC
+HARDWARE: None
+MEMORY MODULES: 0
+EXENDED MEMORY MODULES: 0
+ORIGINAL: Yes - unaltered
+APPLICATION AUTO UPDATE: Yes - update this file when saving other data (for MLDL/RAM)
+NUMBER OF PAGES: 1
+
+ROM NAME: VERM1
+ROM ID: GT1A
+PAGE: May be in more than one location
+POSITION: Any page 8-F
+PAGE GROUP: 0 - not grouped
+BANK: 1
+BANK GROUP: 0 - not grouped
+RAM: No
+Write Protected: No or Not Applicable
+FAT: Yes
+XROM: 30
+FCNS: 31
+XROM  Addr Function    Type
+30,00 07FD VERMROM 1A  4K MCODE Programmable
+30,01 0044             USER CODE
+30,02 004D             USER CODE
+30,03 0084             USER CODE
+30,04 00A4             USER CODE
+30,05 00BE             USER CODE
+30,06 00D4             USER CODE
+30,07 00E4             USER CODE
+30,08 0105             USER CODE
+30,09 01BF             USER CODE
+30,10 023F             USER CODE
+30,11 0256             USER CODE
+30,12 026B             USER CODE
+30,13 0289             USER CODE
+30,14 02AC             USER CODE
+30,15 02E0             USER CODE
+30,16 02FA             USER CODE
+30,17 0305             USER CODE
+30,18 0329             USER CODE
+30,19 033B             USER CODE
+30,20 040A             USER CODE
+30,21 043D             USER CODE
+30,22 0537             USER CODE
+30,23 0565             USER CODE
+30,24 0613             USER CODE
+30,25 0622             USER CODE
+30,26 0665             USER CODE
+30,27 0670             USER CODE
+30,28 0727             USER CODE
+30,29 0731             USER CODE
+30,30 079A             USER CODE
+INTERRUPT VECTORS:
+Pause loop:                      000
+Main running loop:               000
+Deep sleep wake up, no key down: 000
+Off:                             000
+I/O service:                     000
+Deep sleep wake up:              000
+Cold start:                      000
+CHECKSUM: 164 (CORRECT)
+

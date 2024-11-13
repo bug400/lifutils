@@ -1,32 +1,45 @@
-.TH rom41er 1 14-April-2018 "LIF Utilitites" "LIF Utilities"
+.TH rom41er 1 06-November-2024 "LIF Utilitites" "LIF Utilities"
 .SH NAME
-rom41er \- a filter to convert an unscrambled HP-41 rom file to a LIF file that can be used by the Eramco MLDL-OS
+rom41er \- convert an unscrambled HP-41 rom file to a LIF file that can be used by the Eramco MLDL-OS
 .SH SYNOPSIS
-.B rom41er
-.I <LIF filename>
-.B <
-.I Input file
-.B >
+.B lifutils rom41er
+.I LIFFILENAME
+.I INPUTFILE
+>
 .I Output file
 .PP
-.B rom41er \-?
+.B lifutils rom41er
+.I LIFFILENAME
+<
+.I Input file
+>
+.I Output file
+.PP
+.B lifutils rom41er \-?
 .SH DESCRIPTION
 The Eramco MLDL-OS ROM set can load HP41 ROM images from disk, and the
 file format used has become a de facto standard for such images. It stores 4
 10 bit HP41 words in 5 bytes of the file. A 4K ROM dump is thus stored in
-a 5120 byte file.
+a 5120 byte file.  Input is read either from standard input or the file specified by the command line parameter
+.I INPUTFILE.
+
 .PP
 .B rom41er
-is a filter which generates a  LIF file of type X-M41 (E070).
-The filter reads the rom data from standard input and writes the LIF 
-file header and the rom data in scrambled Eramco MLDL-OS format
-to standard output. Note: This filter adjusts an incorrect ROM checksum.
+is a program which generates a  LIF file of type X-M41 (E070).
+The program reads the rom data from standard input or the file specified by the parameter 
+.I INPUTFILE 
+and writes the LIF file header and the rom data in scrambled Eramco MLDL-OS format
+to standard output. Note: This program adjusts an incorrect ROM checksum.
+.SH OPTIONS
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
 .SH EXAMPLES
 If
 .I HPILDv1B.ROM 
 is the rom file of the HP-IL development module then
 .PP
-.B cat HPILDv1B.ROM | rom41er HPILDEV | lifput lifimage.dat
+.B cat HPILDv1B.ROM | lifutils rom41er HPILDEV | lifutils lifput lifimage.dat
 .PP 
 will put the scrambled rom file with the name
 .I HPILDEV

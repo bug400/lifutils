@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:20 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:32 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,6 +23,7 @@
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
 <a href="#FILES">FILES</a><br>
 <a href="#REFERENCES">REFERENCES</a><br>
 <a href="#AUTHOR">AUTHOR</a><br>
@@ -36,16 +37,19 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">inp41 - a
-filter to decode an HP41 hexadecimal program</p>
+filter to decode a HP41 hexadecimal program</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>inp41
-&lt;</b> <i>input_device_or_file</i> <b>&gt;</b>
-<i>output_file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+inp41</b> &lt; <i>Input device or file</i> &gt;
+<i>Output_file</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+inp41</b> -?</p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -66,6 +70,27 @@ writes the binary program to standard output. At the end of
 the transfer, the message <b>checksum good</b> or
 <b>checksum bad</b> is written to standard error as
 appropriate.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>-?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Print a message giving the
+program usage to standard error.</p></td></tr>
+</table>
 
 <h2>FILES
 <a name="FILES"></a>

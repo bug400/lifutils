@@ -41,7 +41,7 @@ int hp71_length(unsigned char *entry)
     return(length);
   }
 
-int file_length(unsigned char *entry, char *file_type)
+int file_length_type_check(unsigned char *entry, char *file_type, int *known_type)
   {
     /* Figure out the file length (in bytes) as best we can
        for the file described in entry. If file_type is not NULL then
@@ -53,6 +53,7 @@ int file_length(unsigned char *entry, char *file_type)
     char hex_type[8];
  
     /* Get the file type code from the directory */
+    *known_type=1;
     file_type_code=get_lif_int(entry+10,2);
     switch(file_type_code)
       {
@@ -197,6 +198,7 @@ int file_length(unsigned char *entry, char *file_type)
           sprintf(hex_type,"?(%4X)",file_type_code);
           type_string=hex_type;
           length=get_lif_int(entry+16,4) * 256;
+          *known_type=0;
           break;
       }
     /* If there's a place to put it, copy the file type string */
@@ -205,6 +207,12 @@ int file_length(unsigned char *entry, char *file_type)
         strcpy(file_type,type_string);
       }
     return(length);
+  }
+
+int file_length(unsigned char *entry, char *file_type)
+  {
+     int dummy;
+     return(file_length_type_check(entry,file_type,&dummy));
   }
 
 int compare_names(char *entry, char *cmp_name)
@@ -280,9 +288,9 @@ int check_name(char *name, int len, int lax)
   {
       int i;
 
-      if(strlen(name) == 0 || strlen(name) > len) return (0);
+      if(strlen(name) == 0 || ((int) strlen(name) > len)) return (0);
       if(name [0] < 'A' || name [0] > 'Z') return (0);
-      for (i=1; i< strlen(name); i++) {
+      for (i=1; i< (int) strlen(name); i++) {
          if(name[i] < 'A' || name[i] > 'Z')  
             if (name[i] < '0' || name[i] > '9')
                if (name[i]== '_' && (! lax)) return(0); 
@@ -300,3 +308,18 @@ int check_labelname(char *name)
       return check_name(name,LABEL_LEN,0);
   }
 
+int skip_lif_header(FILE *fp,char *required_type)
+  {
+     unsigned char header[ENTRY_SIZE];
+     char file_type[8];
+     int known_type;
+
+     if(fread(header,sizeof(unsigned char),ENTRY_SIZE,fp)!=ENTRY_SIZE) return(1);
+     if(required_type != (char *) NULL) {
+        file_length_type_check(header,file_type,&known_type);
+        if(! known_type) return(1);
+        if(strcmp(file_type,required_type)!=0) return(1);
+     }
+     return(0);
+  }
+  

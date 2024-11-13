@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:21 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:33 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -35,21 +35,24 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">liftext75 - a
-filter to print raw HP75 text files</p>
+<p style="margin-left:11%; margin-top: 1em">liftext75 -
+translate a raw HP-75 text file into an ASCII file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+liftext75</b> [-n][-r] <i>INPUTFILE</i> [&gt; <i>Output
+file</i> ]</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>liftext75</b>
-[-n] <b>&lt;</b> <i>Input file</i> <b>&gt;</b> <i>Output
-file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+liftext75</b> [-n][-r] &lt; <i>Input file</i> [&gt;
+<i>Output file</i> ]</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>liftext75
--?</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+liftext75 -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -58,11 +61,12 @@ file</i></p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>liftext75</b>
-is a filter which translates a raw HP75 text file into a
-standard ASCII file. One logical line of the input file is
-translated to one line of output, terminated by a newline.
-The HP75 text file is read from standard input and the plain
-ASCII equivalent is written to standard output.</p>
+translates a LIF or raw HP75 text file into an ASCII file.
+One logical line of the input file is translated to one line
+of output, terminated by a newline. The HP75 text file is
+read from standard input or the file <i>INPUTFILE</i> and
+the plain ASCII equivalent is written to standard
+output.</p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
@@ -88,6 +92,19 @@ the start of each output line.</p></td></tr>
 <td width="3%">
 
 
+<p><i>-r</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Skip an existing LIF header of the input file. This is
+mandatory, if the input file is a LIF instead of a raw
+file.</p> </td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
 <p><i>-?</i></p></td>
 <td width="8%"></td>
 <td width="78%">
@@ -102,11 +119,11 @@ the start of each output line.</p></td></tr>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.dat</i> is a LIF image file containing an HP75 text
-file called <i>T75</i> then</p>
+<i>disk1.dat</i> is a LIF disk image file containing an HP75
+text file called <i>T75</i> then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifget -r
-disk1.dat T75 | liftext75</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifget -r disk1.dat T75 | lifutils liftext75</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will list that
 file to standard output.</p>

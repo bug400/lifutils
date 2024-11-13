@@ -1,23 +1,23 @@
-.TH lifstat 1 13-April-2018 "LIF Utilities" "LIF Utilities"
+.TH lifstat 1 05-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
-lifstat \- A program to display statistics for a LIF image file
+lifstat \- a program to display the properties of a LIF image file
 .SH SYNOPSIS
-.B lifstat 
+.B lifutils lifstat 
 [\-p]
-.I <LIF image file> 
+.I LIFIMAGE
 .PP 
-.B lifstat 
+.B lifutils lifstat 
 [\-p]
-.I <LIF image file> <block_number>
+.I LIFIMAGE BLOCKNUMBER
 .PP
-.B lifstat 
+.B lifutils lifstat 
 [\-p]
-.I <LIF image file> <cylinder> <head> <sector>
+.I LIFIMAGE CYLINDER HEAD SECTOR
 .PP
-.B lifstat \-?
+.B lifutils lifstat \-?
 .SH DESCRIPTION
 .B lifstat
-is a program to display the block usage of a LIF  image file. 
+is a program to display the block usage of a LIF image file. 
 If 
 .B lifstat
 is run with no arguments other than the name of the LIF image file, 
@@ -36,7 +36,7 @@ file name of the file that contains that block.
 If
 .B lifstat
 is run with 3 additional arguments, then these are taken to be the 
-cylinder, head and sector numbers (in that order) of a block on the disk. 
+cylinder, head and sector numbers (in that order) of a block on the LIF image file. 
 The program then behaves as if one argument was given.
 .PP
 If the block number is part of the volume label or directory, or if it is 
@@ -57,12 +57,12 @@ If
 .I disk.dat
 is a LIF image file, then
 .PP
-.B lifstat  disk.dat
+.B lifutils lifstat  disk.dat
 .PP
 will write a message to standard output giving the start and end blocks of
 the directory and user data. Similarly
 .PP
-.B lifstat  disk.dat 37
+.B lifutils lifstat  disk.dat 37
 .PP
 will output the file name of the file containing block 37
 .SH REFERENCES

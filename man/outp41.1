@@ -1,11 +1,14 @@
-.TH outp41 1 14-April-2018 "LIF Utilities" "LIF Utilities"
+.TH outp41 1 02-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
-outp41 \- a filter to produce an HP41 hexadecimal program
+outp41 \- a filter to produce a HP41 hexadecimal program
 .SH SYNOPSIS
-.B outp41 <
-.I input_file
+.B lifutils outp41 <
+.I Input_file
 .B >
-.I output_device_or_file
+.I Output device or file
+.PP
+.B lifutils outp41
+\-?
 .SH DESCRIPTION
 The HP41C Extended I/O Module contains 2 commands,
 .I INP
@@ -19,6 +22,10 @@ reads an HP41 binary program from standard input and writes the
 hexadecimal byte stream to standard output (which may be 
 redirected to, for example, a serial port connected to the HP41 via an 
 HP82164 RS232 interface).
+.SH OPTIONS
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
 .SH FILES
 .I hardware/*
 : Information on linking the HP41 to a PC.

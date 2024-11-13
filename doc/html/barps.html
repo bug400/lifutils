@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:19 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:32 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,6 +23,7 @@
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
 <a href="#REFERENCES">REFERENCES</a><br>
 <a href="#EXAMPLES">EXAMPLES</a><br>
 <a href="#AUTHOR">AUTHOR</a><br>
@@ -35,7 +36,7 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">barps - Print
+<p style="margin-left:11%; margin-top: 1em">barps - print
 an HP41 barcode file on a postscript printer</p>
 
 <h2>SYNOPSIS
@@ -43,27 +44,50 @@ an HP41 barcode file on a postscript printer</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>barps</b>
-<i>[title]</i> <b>&lt;</b> <i>barcode_file</i> <b>&gt;</b>
-<i>postscript_file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+barps</b> <i>[TITLE]</i> &lt; <i>Input file</i> &gt;
+<i>Output file</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+barps -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
 </h2>
 
 
-
-<p style="margin-left:11%; margin-top: 1em"><i><b>barps</b></i>
-is a filter to print HP41 barcode on a standard Postscript
+<p style="margin-left:11%; margin-top: 1em"><b>barps</b> is
+a filter to print HP41 barcode on a standard Postscript
 printer. The barcode file is read from standard input, and
 the (level 1) postscript file is written to standard output.
 The latter may be piped to <b>lpr</b> in order to directly
 print the barcode, or redirected to a file.</p>
 
 <p style="margin-left:11%; margin-top: 1em">If the optional
-argument is given to <b>barps</b> then it is used as the
-title for each page of printed output. Otherwise the title
-<b>HP41 Barcode</b> is used</p>
+argument <i>TITLE</i> is given to <b>barps</b> then it is
+used as the title for each page of printed output. Otherwise
+the title <b>HP41 Barcode</b> is used</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>-?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Print a message giving the
+program usage to standard error.</p></td></tr>
+</table>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>
@@ -86,9 +110,9 @@ Manual, Adobe Systems Inc.</i></p>
 is an raw sdata file, and <i>postscript</i> is a postscript
 printer then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>sdatabar
-&lt; data1 | barps &rsquo;Data File 1&rsquo; | lpr -P
-postscript</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+sdatabar &lt; data1 | lifutils barps &rsquo;Data File
+1&rsquo; | lpr -P postscript</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will print that
 file on the postscript printer with the page title <i>Data

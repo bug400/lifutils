@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:20 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:33 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,20 +37,19 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">lifrename -
-renames a file on a LIF image file</p>
+renames a file on a LIF disk image file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifrename</b> [-l] [-p] <i>LIFIMAGE OLDFILENAME
+NEWFILENAME</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifrename</b>
-[-l] [-p] <i>&lt;LIF image file&gt; &lt;old filename&gt;
-&lt;new filename&gt;</i></p>
-
-<p style="margin-left:11%; margin-top: 1em"><b>lifrename
--?</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifrename -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -59,13 +58,13 @@ renames a file on a LIF image file</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifrename</b>
-renames single file, specified by <i>old filename</i> to
-<i>new filename. old filename</i> and <i>new filename</i>
-are case-sensitive. <i>new filename</i> must be given in
-upper case.</p>
+renames single file, specified by <i>OLDFILENAME</i> to
+<i>NEWFILENAME.</i> on the LIF disk image file <i>LIFIMAGE.
+OLDFILENAME</i> and <i>NEWFILENAME</i> are case-sensitive.
+<i>NEWFILENAME</i> must be given in upper case.</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>Note:</b>
-<i>old filename</i> has not to comply with the
+<i>OLDFILENAME</i> has not to comply with the
 <i>LIFUTILS</i> file name conventions. Thus this command may
 be used to rename files that can not processed with the
 <i>LIFUTILS</i> otherwise.</p>
@@ -123,15 +122,15 @@ error.</p> </td></tr>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.dat</i> is a LIF image file containing a file
+<i>disk1.dat</i> is a LIF disk image file containing a file
 called <i>TEST1</i> then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifrename
-disk1.dat TEST1 TEST2</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifrename disk1.dat TEST1 TEST2</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will rename the
-file <i>TEST1</i> on the LIF disk image disk1.dat to
-<i>TEST2.</i></p>
+file <i>TEST1</i> on the LIF disk image file
+<i>disk1.dat</i> to <i>TEST2.</i></p>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>

@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Oct 14 05:37:11 2024 -->
+<!-- CreationDate: Tue Nov 12 14:01:34 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,22 +37,24 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">rom41cat - a
-filter to display the function names in an HP41 ROM
-image</p>
+<p style="margin-left:11%; margin-top: 1em">rom41cat -
+display the function names in a HP41 ROM image</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+rom41cat</b> [-x][-a] &lt; <i>Input file</i> [&gt;
+<i>Output_file</i> ]</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>rom41cat</b>
-[-x][-a] <b>&lt;</b> <i>rom_file</i> <b>&gt;</b>
-<i>output_file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+rom41cat</b> [-x][-a] <i>INPUTFILE</i> [&gt;
+<i>Output_file</i> ]</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>rom41cat
--?</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>futils
+rom41cat -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -64,7 +66,9 @@ image</p>
 reads the Function Address Table (FAT) at the start of an
 unscrambled HP41 ROM image and displays the names of the
 functions (both Mcode and user language (Focal)) contained
-in that ROM.</p>
+in that ROM. Input is read either from standard input or the
+file specified by the command line parameter
+<i>INPUTFILE.</i></p>
 
 <p style="margin-left:11%; margin-top: 1em">If a ROM
 consists of multiple 4K ROM files they must be concatenated
@@ -163,15 +167,16 @@ was discovered by experiment.</p>
 <p style="margin-left:11%; margin-top: 1em">If
 <i>myrom.rom</i> is an Eramco rom image file then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>er41rom &lt;
-myrom.rom | rom41cat</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+er41rom &lt; myrom.rom | lifutils rom41cat</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will display
 the function names, entry points and language to standard
 output, while</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>er41rom &lt;
-myrom.rom | rom41cat -x &gt; myrom.xrom</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+er41rom &lt; myrom.rom | lifutils rom41cat -x &gt;
+myrom.xrom</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will produce an
 xrom definition file for <b>comp41</b> containing the
@@ -182,14 +187,14 @@ xrom file for the Advantage Pac which consists of 3 ROM
 image files:</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>cat
-AdvL1-1B.rom AdvU1-1B.rom AdvU2-1B.rom | rom41cat -x -a &gt;
-advantage.xrom (Unix, macOS)</b></p>
+AdvL1-1B.rom AdvU1-1B.rom AdvU2-1B.rom | lifutils rom41cat
+-x -a &gt; advantage.xrom (Unix, macOS)</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">or</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>copy /b
-AdvL1-1B.rom+AdvU1-1B.rom+AdvU2-1B.rom | rom41cat -x -a &gt;
-advantage.xrom (Windows)</b></p>
+AdvL1-1B.rom+AdvU1-1B.rom+AdvU2-1B.rom | lifutils rom41cat
+-x -a &gt; advantage.xrom (Windows)</b></p>
 
 <h2>BUGS
 <a name="BUGS"></a>

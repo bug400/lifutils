@@ -1,62 +1,124 @@
+@echo off
 if exist liftest.dat del /F liftest.dat
 if exist tst.rom del /F tst.rom
-if exist sdata.ps del /F sdata.ps
-if exist prog.ps del /F prog.ps
-lifinit -m cass liftest.dat 60
-liflabel liftest.dat TEST
-comp41 -x hpil -x hepax < audi2.txt | raw41lif AUDI2 | lifput liftest.dat
-comp41 -x hpil -x hepax < prog41.txt | raw41lif TEST1 | lifput liftest.dat
-textlif TXTA < txta.txt | lifput liftest.dat
-lifrename liftest.dat TXTA TXTB
-textlif75 TXT75 < txta.txt | lifput liftest.dat
-rom41hx VERMROM < verm1.rom | lifput liftest.dat
-textlif TXTA < txta.txt | lifput liftest.dat
-lifput liftest.dat data1.lif
-lifput liftest.dat key1.lif
-lifput liftest.dat wall1.lif
-lifput liftest.dat stat1.lif
-lifstat liftest.dat
-liflabel liftest.dat
-lifdir liftest.dat
-lifpurge liftest.dat VERMROM
-lifpack liftest.dat
-lifstat liftest.dat
-lifdir liftest.dat
-echo output of liftext...
-lifget -r liftest.dat TXTA  | liftext
-echo output of liftext75...
-lifget -r liftest.dat TXT75  | liftext75 -n
-echo output of decomp41...
-lifget -r liftest.dat TEST1 |  decomp41 -x hpil -x hepax
-echo Output of sdata...
-lifget -r liftest.dat DATA1 | sdata
-echo Output of regs41...
-lifget -r liftest.dat DATA1 | regs41
-echo Output of key41...
-lifget -r liftest.dat KEY1 | key41
-echo Output of wcat41...
-lifget -r liftest.dat WALL1 | wcat41
-echo Output of stat41...
-lifget -r liftest.dat STAT1 | stat41
-echo Output of ROM dump
-rom41cat -x < verm1.rom
-lifget -r liftest.dat DATA1 | sdatabar | barps > sdata.ps
-diff sdata.ps reference/sdata.ps
-lifget -r liftest.dat TEST1 | prog41bar | barps > prog.ps 
-diff prog.ps reference/prog.ps
-lifget -r liftest.dat DATA1 | sdatabar | barprt
-lifput liftest.dat memt.lex
-lifput liftest.dat phycons.lif
-echo output of lex71
-lifget -r liftest.dat MEM | lexcat71
-echo output of lex75
-lifget -r liftest.dat PHYCONS | lexcat75
-lifheader memt.lex
-rom41hx VERMROM < verm1.rom | lifraw | hx41rom > tst.rom
-diff verm1.rom tst.rom
-rom41er VERMROM < verm1.rom | lifraw | er41rom > tst.rom
-diff verm1.rom tst.rom
+
+lifutils lifmod -v -e -f ..\data\VERMROM.MOD > test.txt
+python ..\difftool.py  --binary VERM1.rom ..\data\VERM1.ROM
+python ..\difftool.py test.txt ..\data\mod1_win.txt
+copy ..\data\hp41cass.dat liffix.dat > nul
+lifutils lifdir liffix.dat > test.txt
+python ..\difftool.py test.txt ..\data\lifdir_before_fix.txt
+
+lifutils liffix -m cass liffix.dat
+lifutils lifdir liffix.dat > test.txt
+python ..\difftool.py test.txt ..\data\lifdir_after_fix.txt
+
+lifutils lifinit -m cass liftest.dat 60
+lifutils liflabel liftest.dat TEST
+lifutils lifdir liftest.dat > test.txt
+python ..\difftool.py test.txt ..\data\lifdir_liftest_empty.txt
+
+lifutils comp41 -x hpil -x hepax < ..\data\audi2.txt | lifutils raw41lif AUDI2 | lifutils lifput liftest.dat
+lifutils comp41 -x hpil -x hepax < ..\data\prog41.txt | lifutils raw41lif TEST1 | lifutils lifput liftest.dat
+lifutils textlif TXTA < ..\data\txta.txt | lifutils lifput liftest.dat
+lifutils lifrename liftest.dat TXTA TXTB
+lifutils textlif75 TXT75 < ..\data\txta.txt | lifutils lifput liftest.dat
+type VERM1.rom | lifutils rom41hx VERMROM | lifutils lifput liftest.dat
+type ..\data\txta.txt | lifutils textlif TXTA | lifutils lifput liftest.dat
+lifutils lifput liftest.dat ..\data\dat1.lif
+lifutils lifput liftest.dat ..\data\key1.lif
+lifutils lifput liftest.dat ..\data\wall1.lif
+lifutils lifput liftest.dat ..\data\stat1.lif
+lifutils lifput liftest.dat ..\data\memt.lif
+lifutils lifput liftest.dat ..\data\phycons.lif
+lifutils lifstat liftest.dat > test.txt
+python ..\difftool.py test.txt ..\data\lifstat_before_pack.txt
+
+lifutils liflabel liftest.dat
+lifutils lifdir liftest.dat > test.txt
+python ..\difftool.py test.txt ..\data\lifdir_liftest_filled.txt
+
+lifutils lifpurge liftest.dat VERMROM
+lifutils lifpack liftest.dat
+lifutils lifstat liftest.dat > test.txt
+python ..\difftool.py test.txt ..\data\lifstat_after_pack.txt
+
+lifutils lifdir liftest.dat > test.txt
+python ..\difftool.py test.txt ..\data\lifdir_liftest_packed.txt
+
+lifutils lifget -r liftest.dat TXTA  | lifutils liftext > test.txt
+python ..\difftool.py  test.txt ..\data\txta.txt
+
+lifutils lifget -r liftest.dat TXT75  | lifutils liftext75  > test.txt
+python ..\difftool.py  test.txt ..\data\txta.txt
+
+lifutils lifget -r liftest.dat TEST1 |  lifutils decomp41 -x hpil -x hepax > test.txt
+python ..\difftool.py  test.txt ..\data\prog41.txt
+
+lifutils lifget -r liftest.dat DAT1 | lifutils sdata > test.txt
+python ..\difftool.py  test.txt ..\data\dat1.txt
+
+lifutils lifget -r liftest.dat DAT1 | lifutils regs41 > test.txt
+python ..\difftool.py  test.txt ..\data\regs1.txt
+
+lifutils lifget -r liftest.dat KEY1 | lifutils key41 > test.txt
+python ..\difftool.py  test.txt ..\data\key1.txt
+
+lifutils lifget -r liftest.dat STAT1 | lifutils stat41 > test.txt
+python ..\difftool.py  test.txt ..\data\stat1.txt
+
+lifutils lifget -r liftest.dat WALL1 | lifutils wcat41 > test.txt
+python ..\difftool.py  test.txt ..\data\wcat1.txt
+
+type VERM1.rom | lifutils rom41cat -x > test.txt
+python ..\difftool.py  test.txt ..\data\rom41cat1.txt
+
+lifutils lifget -r liftest.dat DAT1 | lifutils sdatabar | lifutils barps > test.ps
+python ..\difftool.py  test.ps ..\data\sdata.ps
+
+lifutils lifget -r liftest.dat TEST1 | lifutils prog41bar | lifutils barps > test.ps
+python ..\difftool.py  test.ps ..\data\prog.ps
+
+lifutils lifget -r liftest.dat DAT1 | lifutils sdatabar | lifutils barprt > test.txt
+python ..\difftool.py  test.txt ..\data\barprt.txt
+
+lifutils lifget -r liftest.dat MEM | lifutils lexcat71 > test.txt
+python ..\difftool.py  test.txt ..\data\lexcat71.txt
+
+lifutils lifget -r liftest.dat PHYCONS | lifutils lexcat75 > test.txt
+python ..\difftool.py  test.txt ..\data\lexcat75.txt
+
+lifutils lifheader ..\data\memt.lif > test.txt
+python ..\difftool.py  test.txt ..\data\lifheader.txt
+
+lifutils rom41hx VERMROM < VERM1.rom | lifutils lifraw | lifutils hx41rom > tst.rom
+python ..\difftool.py  --binary VERM1.rom tst.rom
+
+lifutils rom41er VERMROM < VERM1.rom | lifutils lifraw | lifutils er41rom > tst.rom
+python ..\difftool.py  --binary VERM1.rom tst.rom
+
+lifutils lifget -r liftest.dat AUDI2 | lifutils outp41 | lifutils inp41 | lifutils decomp41 -x hpil -x hepax > test.txt
+python ..\difftool.py  test.txt ..\data\audi2.txt 
+
+lifutils wall41 -r -k < ..\data\wall1.lif | key41 > test.txt
+python ..\difftool.py  test.txt ..\data\key1.txt
+lifutils wall41 -r -g < ..\data\wall1.lif | sdata > test.txt
+python ..\difftool.py  test.txt ..\data\dat1.txt
+lifutils wall41 -r -g < ..\data\wall1.lif | regs41 > test.txt
+python ..\difftool.py  test.txt ..\data\regs1.txt
+lifutils wall41 -r -s < ..\data\wall1.lif | stat41 > test.txt
+python ..\difftool.py  test.txt ..\data\stat1w.txt
+lifutils wall41 -r -p prog < ..\data\wall1.lif 
+lifutils decomp41 -x hpil -x hepax  < prog.001 > test.txt
+python ..\difftool.py  test.txt ..\data\audi2.txt
+
 if exist liftest.dat del /F liftest.dat
 if exist tst.rom del /F tst.rom
-if exist sdata.ps del /F sdata.ps
+if exist tst.ps del /F tst.ps
+if exist liffix.dat del /F liffix.dat
 if exist prog.ps del /F prog.ps
+if exist VERM1.rom del /f VERM1.rom
+if exist tst.txt del /F tst.txt
+if exist prog.000 del /F prog.000
+if exist prog.001 del /F prog.001
+if exist prog.002 del /F prog.002

@@ -1,17 +1,27 @@
 .TH lifraw 1 14-April-2018 "LIF Utilitites" "LIF Utilities"
 .SH NAME
-lifraw \- a filter to remove the LIF file header from a LIF file
+lifraw \- remove the LIF file header from a LIF file
 .SH SYNOPSIS
-.B lifraw
-.B <
-.I Input file
-.B >
+.B lifutils lifraw
+.I INPUTFILE
+>
 .I Output file
 .PP
-.B lifraw \-?
+.B lifutils lifraw
+<
+.I Input file
+>
+.I Output file
+.PP
+.B lifutils lifraw \-?
 .SH DESCRIPTION
 .B lifraw
-is a filter which removes the 32 byte LIF header from a LIF file
+removes the 32 byte LIF header from a LIF file which is either read from
+.I INPUTFILE
+or standard input.
+.SH OPTIONS
+.I \-?
+Print a message giving the program usage to standard error.
 .SH REFERENCES
 The LIF disk directory format is documented in the
 .I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
@@ -22,7 +32,7 @@ If
 .I zline.p41
 is a LIF file containing an HP41 program then
 .PP
-.B cat zline.p41 | lifraw \> zline.raw
+.B cat zline.p41 | lifutils lifraw \> zline.raw
 .PP 
 will generate a raw file 
 .B zline.raw

@@ -1,17 +1,21 @@
-.TH lifdir 1 16-March-2019 "LIF Utilities" "LIF Utilities"
+.TH lifdir 1 03-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
-lifdir \- print a directory of a LIF image file
+lifdir \- display the directory of a LIF image file
 .SH SYNOPSIS
-.B lifdir 
-[\-n] [\-v l] [\-p]
-.I <LIF image file>
+.B lifutils lifdir 
+[\-c][\-n] [\-v l] [\-p]
+.I LIFIMAGE
+[>
+.I Output file
+]
 .PP
-.B lifdir 
+.B lifutils lifdir 
 \-?
 .SH DESCRIPTION
 .B lifdir
-reads the directory of a LIF image file and prints 
-its directory to standard output.
+reads the directory of a LIF image file specified by the command line parameter
+.I LIFIMAGE
+and prints its directory to standard output.
 .PP
 If the volume label is non\-blank, then this is printed first, followed 
 by the date of formatting if this is valid. Each subsequent line contains 
@@ -89,9 +93,9 @@ for details of the file types.
 .SH EXAMPLES
 If 
 .I disk1.dat
-is a LIF disk image file then
+is a LIF image file then
 .PP
-.B lifdir  disk1.dat
+.B lifutils lifdir disk1.dat
 .PP
 will print a directory listing of that image file.
 .SH REFERENCES

@@ -1,15 +1,17 @@
-.TH lifpack 1 13-April-2018 "LIF Utilities" "LIF Utilities"
+.TH lifpack 1 04-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
 lifpack \- pack a LIF image file
 .SH SYNOPSIS
-.B lifpack 
+.B lifutils lifpack 
 [\-p]
-.I <LIF image file>
+.I LIFIMAGE
 .PP
-.B lifpack \-?
+.B lifutils lifpack \-?
 .SH DESCRIPTION
 .B lifpack
-packs the directory and the file area on a LIF image file. After packing all unused sectors of the file area are available in one contiguous block. All directory entries are allocated at the beginning of the directory area which speeds up directory searches.
+packs the directory and the file area of the LIF image file specifed by
+.I LIFIMAGE. 
+After packing all unused sectors of the file area are available in one contiguous block. All directory entries are allocated at the beginning of the directory area which speeds up directory searches.
 .SH OPTIONS
 .TP
 .I \-p
@@ -20,11 +22,11 @@ Print a message giving the program usage to standard error.
 .SH EXAMPLES
 If 
 .I disk1.dat
-is a LIF disk image file then
+is a LIF image file then
 .PP
-.B lifpack  disk1.dat
+.B lifutils lifpack  disk1.dat
 .PP
-will pack the lif image file
+will pack the lif disk image file
 .I disk1.dat.
 .B
 Note:

@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Oct 14 05:37:10 2024 -->
+<!-- CreationDate: Tue Nov 12 14:01:32 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,18 +38,23 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">key41 - a
-filter to list an HP-41 key assignment file</p>
+<p style="margin-left:11%; margin-top: 1em">key41 - list an
+HP-41 key assignment file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>key41</b>
-[-a][-h] [-x <i>xrom_file</i> ] [-x <i>xrom_file</i> ] ...
-<b>&lt;</b> <i>Input file</i> <b>&gt;</b> <i>Output
-file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+key41</b> [-h][-r][-u] [-x <i>xrom_file</i> ] [-x
+<i>xrom_file</i> ] ... <i>INPUTFILE</i> [&gt; <i>output
+file</i> ]</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+key41</b> [-h][-r][-u] [-x <i>xrom_file</i> ] [-x
+<i>xrom_file</i> ] ... &lt; <i>input file</i> [&gt;
+<i>output file</i> ]</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>key41</b>
 -?</p>
@@ -59,10 +64,12 @@ file</i></p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>key41</b> is
-a filter which produces a listing of an HP-41 key assignment
-file. The key definitions are read from standard input, and
-a human-readable listing is produced on standard output.</p>
+<p style="margin-left:11%; margin-top: 1em"><b>key41</b>
+produces a listing of a HP-41 key assignment file, which may
+be a either a LIF or a raw file. The key definitions are
+read from standard input or the file specified by the
+command line parameter <i>INPUTFILE</i> , and a
+human-readable listing is produced on standard output.</p>
 
 <p style="margin-left:11%; margin-top: 1em">In general,
 assignments are displayed based on how they behave when
@@ -97,6 +104,33 @@ within that ROM. This can be overridden by loading
 <p style="margin-top: 1em">Display the bytes (in
 hexadecimal) that comprise the key definition, rather than
 attempting to decode it.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>-r</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Skip an existing LIF header of the input file. This is
+mandatory, if the input file is a LIF instead of a raw
+file.</p> </td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>-u</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Display the following non ASCII HP-41 FOCAL characters
+as Unicode characters: text append (hex 0x251c), greek small
+mu (hex 0x03bc), angle (hex 0x2280), not equal to (hex
+0x2260), greek capital sigma (hex 0x03A3).</p></td></tr>
 </table>
 
 <p style="margin-left:11%;"><i>-x xrom_file</i></p>
@@ -107,20 +141,6 @@ repeated to load multiple <i>xrom_files.</i></p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
-<tr valign="top" align="left">
-<td width="11%"></td>
-<td width="3%">
-
-
-<p><i>-a</i></p></td>
-<td width="8%"></td>
-<td width="78%">
-
-
-<p>Display the following non ASCII HP-41 FOCAL characters
-as Unicode characters: text append (hex 0x251c), greek small
-mu (hex 0x03bc), angle (hex 0x2280), not equal to (hex
-0x2260), greek capital sigma (hex 0x03A3).</p></td></tr>
 <tr valign="top" align="left">
 <td width="11%"></td>
 <td width="3%">
@@ -171,8 +191,9 @@ Smith)</i></p>
 <i>disk1.dat</i> is a LIF disk image containing an HP41 key
 assignment file called <i>KEYS</i> then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifget -r
-disk1.dat KEYS | key41 -x hpil -x time</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifget -r disk1.dat KEYS | lifutils key41 -x hpil -x
+time</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will produce a
 listing of the keys to standard output, with the standard

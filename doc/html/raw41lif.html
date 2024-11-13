@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:21 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:33 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -24,6 +24,7 @@
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
 <a href="#REFERENCES">REFERENCES</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
 <a href="#EXAMPLES">EXAMPLES</a><br>
 <a href="#AUTHOR">AUTHOR</a><br>
 
@@ -35,21 +36,24 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">raw41lif - a
-filter to convert a HP41C program raw file to a LIF file</p>
+<p style="margin-left:11%; margin-top: 1em">raw41lif -
+convert a HP41C program raw file to a LIF file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+raw41lif</b> <i>LIFFILENAME INPUTFILE</i> &gt; <i>Output
+file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>raw41lif</b>
-<i>&lt;LIF filename&gt;</i> <b>&lt;</b> <i>Input file</i>
-<b>&gt;</b> <i>Output file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+raw41lif</b> <i>LIFFILENAME</i> &lt; <i>Input file</i> &gt;
+<i>Output file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>raw41lif
--?</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+raw41lif -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -58,10 +62,12 @@ filter to convert a HP41C program raw file to a LIF file</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>raw41lif</b>
-is a filter which generates a LIF file from a HP41 raw file
-(FOCAL bytecode). The filter reads the byte code from
-standard input and writes the LIF file header, the bytecode
-and the checksum byte to standard output.</p>
+is a program which generates a LIF file from a HP41 raw file
+(FOCAL bytecode). The program reads the byte code from
+standard input or the file specified by the command line
+parameter <i>INPUTFILE</i> and writes the LIF file header
+with the file name <i>LIFFILENAME,</i> the bytecode and the
+checksum byte to standard output.</p>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>
@@ -74,6 +80,27 @@ most useful references are <i>Extend Your HP41 (W. A. C.
 Mier-Jedrzejowicz)</i> and <i>The HP41 Synthetic Programming
 Quick Reference Guide (Jeremy Smith)</i></p>
 
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>-?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Print a message giving the
+program usage to standard error.</p></td></tr>
+</table>
+
 <h2>EXAMPLES
 <a name="EXAMPLES"></a>
 </h2>
@@ -84,7 +111,7 @@ Quick Reference Guide (Jeremy Smith)</i></p>
 then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>cat
-zline.raw | raw41lif ZLINE &gt; zline.p41</b></p>
+zline.raw | lifutils raw41lif ZLINE &gt; zline.p41</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will generate a
 LIF file <b>zline.p41</b> with the LIF filename

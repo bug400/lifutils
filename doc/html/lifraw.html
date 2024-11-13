@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:20 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:33 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,6 +23,7 @@
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
 <a href="#REFERENCES">REFERENCES</a><br>
 <a href="#EXAMPLES">EXAMPLES</a><br>
 <a href="#AUTHOR">AUTHOR</a><br>
@@ -35,20 +36,23 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">lifraw - a
-filter to remove the LIF file header from a LIF file</p>
+<p style="margin-left:11%; margin-top: 1em">lifraw - remove
+the LIF file header from a LIF file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifraw
-&lt;</b> <i>Input file</i> <b>&gt;</b> <i>Output
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifraw</b> <i>INPUTFILE</i> &gt; <i>Output file</i></p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifraw</b> &lt; <i>Input file</i> &gt; <i>Output
 file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifraw
--?</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifraw -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -56,8 +60,16 @@ file</i></p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifraw</b>
-is a filter which removes the 32 byte LIF header from a LIF
-file</p>
+removes the 32 byte LIF header from a LIF file which is
+either read from <i>INPUTFILE</i> or standard input.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><i>-?</i> Print
+a message giving the program usage to standard error.</p>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>
@@ -81,7 +93,7 @@ Smith)</i></p>
 then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>cat
-zline.p41 | lifraw &gt; zline.raw</b></p>
+zline.p41 | lifutils lifraw &gt; zline.raw</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will generate a
 raw file <b>zline.raw</b></p>

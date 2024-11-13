@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:20 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:33 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,6 +23,7 @@
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
 <a href="#REFERENCES">REFERENCES</a><br>
 <a href="#EXAMPLES">EXAMPLES</a><br>
 <a href="#AUTHOR">AUTHOR</a><br>
@@ -36,25 +37,23 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">lifheader -
-show the LIF file header information of a LIF file</p>
+show the header information of a LIF file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifheader</b> <i>LIFFILENAME</i> [&gt; <i>Output file</i>
+]</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifheader</b>
-<i>&lt;filename&gt;</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifheader</b> &lt; <i>Input file</i> [&gt; <i>Output
+file</i> ]</p>
 
-
-<p style="margin-left:11%; margin-top: 1em"><b>lifheader</b></p>
-
-<p style="margin-left:11%; margin-top: 1em">(last form gets
-the file from standard input)</p>
-
-<p style="margin-left:11%; margin-top: 1em"><b>lifheader
--?</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifheader -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -65,7 +64,30 @@ the file from standard input)</p>
 <p style="margin-left:11%; margin-top: 1em"><b>lifheader</b>
 is a program which shows the header information of a LIF
 file: file name, file type, file size, time and date of file
-creation and the implementation bytes.</p>
+creation and the implementation bytes. The LIF file is
+either read from standard input or a file specified by the
+command line parameter <i>LIFFILENAME.</i></p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>-?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Print a message giving the
+program usage to standard error.</p></td></tr>
+</table>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>
@@ -88,8 +110,8 @@ Smith)</i></p>
 <i>zline.p41</i> is a lif file containing a HP41 program
 then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifheader
-zline.p41</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifheader zline.p41</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will show the
 header information of <b>zline.p41</b></p>

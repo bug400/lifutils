@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:21 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:34 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -35,16 +35,21 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">stat41 - a
-filter to display a raw HP41 status file</p>
+<p style="margin-left:11%; margin-top: 1em">stat41 -
+display a raw HP41 status file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>stat41</b>
-[-b] [-f] [-v] <b>&lt;</b> <i>Input file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+stat41</b> [-b] [-f] [-v][-r] <i>INPUTFILE</i> [&gt;
+<i>Output file</i> ]</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+stat41</b> [-b] [-f] [-v][-r] &lt; <i>Input file</i> [&gt;
+<i>Output file</i> ]</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>stat41
 -?</b></p>
@@ -55,11 +60,12 @@ filter to display a raw HP41 status file</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>stat41</b>
-is a filter which displays the information in an HP41C
-status file. This file contains the user RPN stack, the
-alpha register, the status of the first 44 flags, the
-current SIZE and number of the first statistics register.
-The status file is read from standard input and the values
+displays the information in a LIF or raw HP41C status file.
+This file contains the user RPN stack, the alpha register,
+the status of the first 44 flags, the current SIZE and
+number of the first statistics register. The status file is
+read from standard input or the file specified by the
+command line parameter <i>INPUTFILE</i> and the values are
 displayed in human-readable form on standard output.</p>
 
 <h2>OPTIONS
@@ -110,6 +116,19 @@ number.</p> </td></tr>
 <td width="3%">
 
 
+<p><i>-r</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Skip an existing LIF header of the input file. This is
+mandatory, if the input file is a LIF instead of a raw
+file.</p> </td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
 <p><i>-?</i></p></td>
 <td width="8%"></td>
 <td width="78%">
@@ -125,11 +144,11 @@ error.</p> </td></tr>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.dat</i> is a LIF image file containing an HP41
+<i>disk1.dat</i> is a LIF disk image file containing an HP41
 status file called <i>STAT</i> then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifget -r
-disk1.dat STAT | stat41</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifget -r disk1.dat STAT | lifutils stat41</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will display
 the contents of this status file on standard output</p>

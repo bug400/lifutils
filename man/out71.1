@@ -1,13 +1,13 @@
-.TH out71 1 14-April-2018 "LIF Utilities" "LIF Utilities"
+.TH out71 1 05-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
-out71 \- a filter to send a program to an HP-71B
+out71 \- a filter to send a program to a HP-71B
 .SH SYNOPSIS
-.B out71 [\-o] 
-.I filetype
-.B <
-.I input_file
-.B > 
-.I output_device
+.B lifutils out71 [\-o] 
+.I FILETYPE
+<
+.I Input_file
+> 
+.I Output_device
 .PP
 .B out71 \-?
 .SH DESCRIPTION
@@ -44,7 +44,7 @@ truncating the last nybble of the linux file.
 .I \-?
 Print a message giving program usage to standard error and exit.
 .TP 
-.I filetype
+.I FILETYPE
 Specify the type of the HP-71 file to be created. A complete list of 
 possible filetypes can be found in 
 .B lif_create_entry.c,
@@ -63,7 +63,8 @@ via a suitable interface and
 .I mytext
 is an HP text format file, then 
 .PP
-.B out71 TEXT < mytext >/dev/cua0
+.B lifutils out71 TEXT < mytext >/dev/cua0
+.PP
 will send the file to the HP-71B, which should be set to receive it, e.g. 
 by the command
 .B COPY :RS232 TO MYTEXT

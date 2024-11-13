@@ -18,13 +18,13 @@ if exist %2 (
    exit /B 1
 )
 rem initialize new image file
-lifinit -m %3 %2 %4
+lifutils lifinit -m %3 %2 %4
 if errorlevel 1 (
    exit /B 1
 )
 rem copy content
-for /F %%f in ('lifdir -n %1') do (
-   lifget %1 %%f | lifput %2
+for /F %%f in ('lifutils lifdir -n %1') do (
+   lifutils lifget %1 %%f | lifutils lifput %2
    if errorlevel 1 (
       exit /B 1
    )

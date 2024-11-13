@@ -1,13 +1,15 @@
-.TH barps 1 13-April-2018 "LIF Utilities" "LIF Utilities"
+.TH barps 1 03-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
-barps \- Print an HP41 barcode file on a postscript printer
+barps \- print an HP41 barcode file on a postscript printer
 .SH SYNOPSIS
-.B barps
-.I [title] 
-.B < 
-.I barcode_file 
-.B > 
-.I postscript_file
+.B lifutils barps
+.I [TITLE] 
+<
+.I Input file
+> 
+.I Output file
+.PP
+.B lifutils barps -?
 .SH DESCRIPTION
 .B barps
 is a filter to print HP41 barcode on a standard Postscript printer. The 
@@ -16,12 +18,19 @@ file is written to standard output. The latter may be piped to
 .B lpr
 in order to directly print the barcode, or redirected to a file.
 .PP
-If the optional argument is given to 
+If the optional argument 
+.I TITLE
+is given to 
 .B barps
 then it is used as the title for each page of printed output. Otherwise 
 the title 
 .B HP41 Barcode
 is used
+.SH OPTIONS
+.TP
+.I \-?
+Print a message giving the program usage to standard error.
+
 .SH REFERENCES
 The format of the HP41 barcode file is given in 
 .I barcode(5)
@@ -36,7 +45,7 @@ is an raw sdata file, and
 is a postscript printer
 then
 .PP
-.B sdatabar < data1 | barps 'Data File 1' | lpr -P postscript
+.B lifutils sdatabar < data1 | lifutils barps 'Data File 1' | lpr -P postscript
 .PP
 will print that file on the postscript printer with the page title 
 .I Data File 1

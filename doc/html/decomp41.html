@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Oct 14 05:37:09 2024 -->
+<!-- CreationDate: Tue Nov 12 14:01:32 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,22 +38,24 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">decomp41 - a
-filter to decompile a HP-41 program raw file</p>
+<p style="margin-left:11%; margin-top: 1em">decomp41 -
+decompile a HP-41 program file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+decomp41</b> [-h][-a] [-l] [-r] [-x <i>XROMFILE</i> ] ...
+<i>INPUTFILE</i> [&gt; <i>Output file</i> ]</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>decomp41</b>
-[-a][-h] [-l] [-x <i>xrom_file</i> ] [-x <i>xrom_file</i> ]
-... <b>&lt;</b> <i>Input file</i> <b>&gt;</b> <i>Output
-file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+decomp41</b> [-h][-a] [-l] [-r] [-x <i>XROMFILE</i> ] ...
+&lt; <i>Input file</i> [&gt; <i>Output file</i> ]</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>decomp41
--?</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+decomp41 -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -62,19 +64,19 @@ file</i></p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>decomp41</b>
-is a filter which produces a listing of an HP-41 user
-language program. It reads the program as a series of bytes
-from standard input and prints the listing to standard
-output (in a similar format to the standard HP-41
-printer).</p>
+produces a listing of an HP-41 FOCAL bytecode program. It
+reads the program as a series of bytes from standard input
+or the file specified by the command line parameter
+<i>INPUTFILE</i> and prints the listing to standard output
+(in a similar format to the standard HP-41 printer).</p>
 
 <p style="margin-left:11%; margin-top: 1em">By default,
 functions contained in plug-in modules are displayed as
 <i>XROM rr,nn</i> where <i>rr</i> is the number of the
 plug-in ROM and <i>nn</i> is the number of the function
 within that ROM. This can be overridden by loading
-<i>xrom_files,</i> see the <i>-x</i> option below. An
-<i>xrom_file</i> consists of a number of lines, each
+<i>XROMFILEs,</i> see the <i>-x</i> option below. An
+<i>XROMFILE</i> consists of a number of lines, each
 consisting of 2 decimal numbers and one or two strings
 (containing no whitespace), in that order, separated by
 whitespace. The first string gives a name to the function
@@ -133,17 +135,32 @@ immediately preceding the display of that instruction</p></td></tr>
 as Unicode characters: text append (hex 0x251c), greek small
 mu (hex 0x03bc), angle (hex 0x2280), not equal to (hex
 0x2260), greek capital sigma (hex 0x03A3).</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>-r</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Skip an existing LIF header of the input file. This is
+mandatory, if the input file is a LIF instead of a raw
+file.</p> </td></tr>
 </table>
 
-<p style="margin-left:11%;"><i>-x xrom_file</i></p>
+<p style="margin-left:11%;"><i>-x XROMFILE</i></p>
 
-<p style="margin-left:22%;">Use <i>xrom_file</i> to define
+<p style="margin-left:22%;">Use <i>XROMFILE</i> to define
 names for functions in plug-in modules. This option may be
-repeated to load multiple <i>xrom_files.</i> The file name
+repeated to load multiple <i>XROMFILEs.</i> The file name
 has to be specified either as a full pathname or as the
 filename without the extension .xrom in the default location
 that is specified with the environment variable
-LIFUTILSXROMDIR (see below).</p>
+LIFUTILSXROMDIR (see below). There is a special <i>XROMFILE
+hpdevices.xrom</i> that contains all definitions for the
+standard HP peripheral ROM functions.</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
@@ -195,8 +212,9 @@ Quick Reference Guide (Jeremy Smith)</i></p>
 <i>disk1.dat</i> is a LIF disk image containing an HP41
 program called <i>PROG</i> then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifget -r
-disk1.dat PROG | decomp41 -x hpil.xrom -x time.xrom</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lifget -r disk1.dat PROG | lifutils decomp41 -x hpil.xrom -x
+time.xrom</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will produce a
 listing of the program to standard output, with the standard

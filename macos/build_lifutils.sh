@@ -14,7 +14,9 @@ mkdir ../cmake-tmp
 pushd ../cmake-tmp > /dev/null
 cmake .. 
 make DESTDIR=../macos/lifutils.dst install
-make test
+if [ "${1}" == "test" ] ; then
+   make test
+fi
 make clean
 popd > /dev/null
 rm -rf lifutils.resources

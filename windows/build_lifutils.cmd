@@ -9,8 +9,8 @@ cmake .. -G"NMake Makefiles"  -DCMAKE_INSTALL_PREFIX=%THIS_DIR%\install32
 cmake .. -G"NMake Makefiles"  -DCMAKE_INSTALL_PREFIX=%THIS_DIR%\install64
 )
 nmake
+if [%1] NEQ [] nmake test
 nmake install
-nmake test
 popd
 call run_nsis
 call cleanup

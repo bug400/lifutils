@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:20 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:32 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,6 +23,7 @@
 <a href="#NAME">NAME</a><br>
 <a href="#SYNOPSIS">SYNOPSIS</a><br>
 <a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
 <a href="#REFERENCES">REFERENCES</a><br>
 <a href="#EXAMPLES">EXAMPLES</a><br>
 <a href="#AUTHOR">AUTHOR</a><br>
@@ -35,20 +36,24 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">lexcat71 - a
-filter to display information about HP71 LEX files</p>
+<p style="margin-left:11%; margin-top: 1em">lexcat71 -
+display information about HP71 LEX files</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lexcat71
-&lt;</b> <i>Input file</i> <b>&gt;</b> <i>Output
-file</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lexcat71</b> [-r] <i>INPUTFILE</i> [&gt; <i>Output file</i>
+]</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lexcat71
--?</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lexcat71</b> [-r] &lt; <i>Input file</i> [&gt; <i>Output
+file</i> ]</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+lexcat71 -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -57,9 +62,10 @@ file</i></p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lexcat71</b>
-is a filter which reads a HP-71 raw lex file from standard
-input and displays the following information on standard
-output: <br>
+reads a HP-71 LIF or raw lex file from standard input or the
+file specified by the command line parameter
+<i>INPUTFILE</i> and displays the following information on
+standard output: <br>
 LEX file id <br>
 for each of existing lex tables:</p>
 
@@ -134,8 +140,39 @@ for each of existing lex tables:</p>
 nibble</p> </td></tr>
 </table>
 
-<p style="margin-left:11%; margin-top: 1em"><b>Note: the
-lex file header must not be present</b></p>
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em"><i>-r</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Skip an existing LIF header of
+the input file. This is mandatory, if the input file is a
+LIF instead of a raw file.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>-?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Print a message giving the program usage to standard
+error.</p> </td></tr>
+</table>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>
@@ -156,7 +193,7 @@ format is documented in the <i>HP-71 IDS Volume 1, chapter
 then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>cat mem.lex
-| lexcat71</b></p>
+| lifutils lexcat71</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will display
 information about the LEX file <b>mem.lex</b></p>

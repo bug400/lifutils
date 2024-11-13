@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Sun Feb  2 19:17:20 2020 -->
+<!-- Creator     : groff version 1.22.4 -->
+<!-- CreationDate: Tue Nov 12 14:01:33 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,20 +37,21 @@
 
 
 <p style="margin-left:11%; margin-top: 1em">liflabel -
-label a LIF image file</p>
+label a LIF disk image file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+liflabel</b> [-p] <i>LIFIMAGE LABELNAME</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>liflabel</b>
-[-c] [-p] <i>&lt;LIF image file&gt; &lt;Label
-name&gt;</i></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+liflabel</b> [-c] [-p] <i>LIFIMAGE</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>liflabel
--?</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+liflabel -?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -59,9 +60,10 @@ name&gt;</i></p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>liflabel</b>
-sets the label in the volume header of the file specified by
-<i>LIF image file</i> to the label specified by <i>Label
-name</i></p>
+sets the label in the volume header of the LIF disk
+imagefile specified by <i>LIFIMAGE</i> to the label
+specified by <i>LABELNAME.</i> If LABELNAME is omitted, the
+existing label is displayed.</p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
@@ -115,20 +117,21 @@ error.</p> </td></tr>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.dat</i> is a LIF image file then</p>
+<i>disk1.dat</i> is a LIF disk image file then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>liflabel
-disk1.dat TEST1</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+liflabel disk1.dat TEST1</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will set the
-label of the LIF image file <i>disk1.dat</i> to
+label of the LIF disk image file <i>disk1.dat</i> to
 <i>TEST1</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>liflabel -c
-disk1.dat</b></p>
+<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+liflabel -c disk1.dat</b></p>
 
 <p style="margin-left:11%; margin-top: 1em">will clear an
-existing label on the LIF image file <i>disk1.dat</i></p>
+existing label on the LIF disk image file
+<i>disk1.dat</i></p>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>
