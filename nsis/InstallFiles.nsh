@@ -163,4 +163,5 @@
         FileOpen $4 "$INSTDIR\activate_${PRODUCT_NAME}.bat" w 
         FileWrite $4 "@PATH=$INSTDIR;%PATH%$\r$\n"
         FileWrite $4 "@SET LIFUTILSXROMDIR=$INSTDIR\xroms$\r$\n"
+        FileWrite $4 "@CHDIR /D %USERPROFILE%"
         FileClose $4
