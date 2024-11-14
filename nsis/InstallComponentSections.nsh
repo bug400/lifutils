@@ -6,7 +6,7 @@ Section /o "Modify Path variable" SectionModifyPath
 
         !insertmacro ADD_PATH $INSTDIR $MultiUser.InstallMode
         StrCpy $PathModified "1"
-        !insertmacro DeleteRetryAbort "$SMPROGRAMS\$StartMenuFolder\${PRODUCT_NAME} Prompt.lnk"
+;       !insertmacro DeleteRetryAbort "$SMPROGRAMS\$StartMenuFolder\${PRODUCT_NAME} Prompt.lnk"
 SectionEnd
 
 Section /o "Add LIFUTILSXROMDIR to environment" SectionAddEnvironmentVar

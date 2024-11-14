@@ -19,7 +19,7 @@ Unicode true ; properly display all languages (Installer will not work on Window
 !include "..\nsis\Configuration.nsh"
 ;
 ; Installer defines -- not product related
-!define MIN_WIN_VER "XP"
+!define MIN_WIN_VER "10"
 !define SINGLE_INSTANCE_ID "${PRODUCT_UUID}" ; do not change this between program versions!
 !define COMPANY_NAME "bug400" ; company, used for registry tree hierarchy
 !define CONTACT "" ; stored as the contact information in the uninstall info of the registry
@@ -286,11 +286,11 @@ Section "Program Group" SectionProgramGroup
 
 		CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Documentation.lnk" "$INSTDIR\doc\${PROGHTML}"
 
-		${if} $MultiUser.InstallMode == "AllUsers"
-			CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\${UNINSTALL_FILENAME}" "/allusers"
-		${else}
-			CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\${UNINSTALL_FILENAME}" "/currentuser"
-		${endif}
+;	${if} $MultiUser.InstallMode == "AllUsers"
+;		CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\${UNINSTALL_FILENAME}" "/allusers"
+;	${else}
+;		CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\${UNINSTALL_FILENAME}" "/currentuser"
+;	${endif}
 
 	!insertmacro MUI_STARTMENU_WRITE_END
 SectionEnd
