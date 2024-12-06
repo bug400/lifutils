@@ -29,6 +29,10 @@ lifutils lifput liftest.dat ../data/key1.lif
 lifutils lifput liftest.dat ../data/wall1.lif
 lifutils lifput liftest.dat ../data/stat1.lif
 lifutils lifput liftest.dat ../data/memt.lif
+lifutils lifput liftest.dat ../data/wall1_long.lif 2> err_long.txt
+python3 ../difftool.py err_long.txt ../data/err_long.txt
+lifutils lifput liftest.dat ../data/wall1_short.lif 2> err_short.txt
+python3 ../difftool.py err_short.txt ../data/err_short.txt
 lifutils lifput liftest.dat ../data/phycons.lif
 lifutils lifstat liftest.dat > test.txt
 python3 ../difftool.py test.txt ../data/lifstat_before_pack.txt
@@ -122,6 +126,8 @@ python3 ../difftool.py  test.txt ../data/stat1w.txt
 lifutils wall41 -r -p prog -i ../data/wall1.lif 
 lifutils decomp41 -x hpil -x hepax  prog.001 > test.txt
 python3 ../difftool.py  test.txt ../data/audi2.txt
+rm -f err_long.txt 
+rm -f err_short.txt
 rm -f temp.lif
 rm -f temp.raw
 rm -f liftest.dat

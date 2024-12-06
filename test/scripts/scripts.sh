@@ -28,6 +28,11 @@ lifput liftest.dat ../data/key1.lif
 lifput liftest.dat ../data/wall1.lif
 lifput liftest.dat ../data/stat1.lif
 lifput liftest.dat ../data/memt.lif
+lifput liftest.dat ../data/wall1_long.lif 2> err_long.txt
+python3 ../difftool.py err_long.txt ../data/err_long.txt
+lifput liftest.dat ../data/wall1_short.lif 2> err_short.txt
+python3 ../difftool.py err_short.txt ../data/err_short.txt
+
 lifput liftest.dat ../data/phycons.lif
 lifstat liftest.dat > test.txt
 python3 ../difftool.py test.txt ../data/lifstat_before_pack.txt
@@ -109,6 +114,8 @@ python3 ../difftool.py  test.txt ../data/stat1w.txt
 wall41 -r -p prog < ../data/wall1.lif 
 decomp41 -x hpil -x hepax  < prog.001 > test.txt
 python3 ../difftool.py  test.txt ../data/audi2.txt
+rm -f err_long.txt 
+rm -f err_short.txt
 rm -rf liftest.dat
 rm -f tst.rom
 rm -f test.ps

@@ -18,6 +18,6 @@ if exist %testfile%.out del /F %testfile%.out
 call %testfile%.cmd > %testfile%.out
 python ..\difftool.py %testfile%.out reference\%testfile%.out
 set ret=%errorlevel%
-rem if exist %testfile%.out del /F %testfile%.out
+if exist %testfile%.out del /F %testfile%.out
 popd
 exit /B %ret%
