@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Tue Nov 12 14:01:34 2024 -->
+<!-- CreationDate: Mon Dec  9 12:27:50 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -46,11 +46,12 @@ the contents of a raw HP41 Write All file</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifutils
-wcat41</b> <i>INPUTFILE</i> [&gt; <i>Output file</i> ]</p>
+wcat41</b> [-r] <i>INPUTFILE</i> [&gt; <i>Output file</i>
+]</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifutils
-wcat41</b> &lt; <i>Input file</i> [&gt; <i>Output file</i>
-]</p>
+wcat41</b> [-r] &lt; <i>Input file</i> [&gt; <i>Output
+file</i> ]</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifutils
 wcat -?</b></p>
@@ -93,13 +94,26 @@ of any buffers.</p>
 <td width="3%">
 
 
-<p style="margin-top: 1em"><i>-?</i></p></td>
+<p style="margin-top: 1em"><i>-r</i></p></td>
 <td width="8%"></td>
 <td width="78%">
 
 
-<p style="margin-top: 1em">Print a message giving the
-program usage to standard error.</p></td></tr>
+<p style="margin-top: 1em">Skip an existing LIF header of
+the input file. This is mandatory, if the input file is a
+LIF instead of a raw file.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p><i>-?</i></p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Print a message giving the program usage to standard
+error.</p> </td></tr>
 </table>
 
 <h2>REFERENCES

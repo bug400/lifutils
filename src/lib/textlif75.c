@@ -119,11 +119,11 @@ int textlif75(int argc, char**argv)
             case '?' : textlif75_usage();
                        return(RETURN_OK);
             case 'n' : scan_linenumbers=TRUE;
-            break;
+                       break;
           }
       }
 
-    if(argc!=2 && argc!=3) {
+    if((optind!=argc-1) && (optind!=argc-2)) {
        textlif75_usage();
        return(RETURN_ERROR);
     }

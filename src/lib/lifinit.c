@@ -41,6 +41,7 @@ int lifinit(int argc, char **argv)
     char *medium= (char *) NULL;
     int dirsize;    /* number of directory entries */
     int dirsize_blocks; /* number of blocks for directory */
+    int first_data_block; /* first block of data area */
     int totalblocks; /* total number of disk blocks */
     int tracks, heads, sectors; /* medium geometry */
     int i, temp;
@@ -146,11 +147,13 @@ int lifinit(int argc, char **argv)
        fprintf(stderr,"directory size too large\n");
        return(RETURN_ERROR);
     }
+    first_data_block= dirsize_blocks+2;
     debug_print("Dir size %d\n",dirsize);
     debug_print("Dir size (blocks) %d\n",dirsize_blocks);
     debug_print("Tracks %d\n",tracks);
     debug_print("Heads %d\n",heads);
     debug_print("Sectors %d\n",sectors);
+    debug_print("First data block %d\n",first_data_block);
     debug_print("Total blocks %d\n",totalblocks);
 
     /* Open lif device */
@@ -189,22 +192,30 @@ int lifinit(int argc, char **argv)
 
     /* Now write block 0  */
     lif_write_block(lif_device,0,sector_data);
+
     /* Now write block 1 , all zeros */
     for(i=0;i<SECTOR_SIZE;i++) sector_data[i]=0x0;
     lif_write_block(lif_device,1,sector_data);
+
     /* Now write empty directory, all 0xFF */
     for(i=0;i<SECTOR_SIZE;i++) sector_data[i]=0xFF;
-    for(i=2;i<dirsize_blocks+2;i++)
+    for(i=2;i<first_data_block;i++) {
+       debug_print("init directory area block %d\n",i);
        lif_write_block(lif_device,i,sector_data);
+    }
+
     /* now write one sector of disk data, all 0xFF */
-    lif_write_block(lif_device,dirsize_blocks+3,sector_data);
+    debug_print("init one disk block %d\n",first_data_block);
+    lif_write_block(lif_device,first_data_block,sector_data);
+
     /* zero data area if requested */
     if (zero_data)
        {
        for(i=0;i<SECTOR_SIZE;i++) sector_data[i]=0x0;
-       i=dirsize_blocks+2; /* first data block */
+       i=first_data_block+1; /* first data after already initialized block */
        while(i< totalblocks)
           {
+          debug_print("zero disk data block %d\n",i);
           lif_write_block(lif_device,i,sector_data);
           i+=1;
           }

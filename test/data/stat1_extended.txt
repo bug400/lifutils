@@ -1,0 +1,58 @@
+RPN Stack : 
+
+ T : +5.052238410E-14
+ Z : -1.174074378E+1
+ Y : +0.000000000E+0
+ X : +2.000000000E+1
+ L : +1.054092568E+2
+
+Alpha : "STAT1"
+
+SIZE = 020
+Statistics start = 011
+
+ User Flags : 
+ Flag 00 : Clear
+ Flag 01 : Clear
+ Flag 02 : Clear
+ Flag 03 : Clear
+ Flag 04 : Clear
+ Flag 05 : Clear
+ Flag 06 : Clear
+ Flag 07 : Clear
+ Flag 08 : Clear
+ Flag 09 : Clear
+ Flag 10 : Clear
+ Flag 11 : Clear
+ Flag 12 : Clear
+ Flag 13 : Clear
+ Flag 14 : Clear
+ Flag 15 : Clear
+ Flag 16 : Clear
+ Flag 17 : Clear
+ Flag 18 : Clear
+ Flag 19 : Clear
+ Flag 20 : Clear
+ Flag 21 : Set
+ Flag 22 : Clear
+ Flag 23 : Clear
+ Flag 24 : Clear
+ Flag 25 : Clear
+ Flag 26 : Set
+ Flag 27 : Clear
+ Flag 28 : Set
+ Flag 29 : Clear
+ Flag 30 : Clear
+ Flag 31 : Clear
+ Flag 32 : Clear
+ Flag 33 : Clear
+ Flag 34 : Clear
+ Flag 35 : Clear
+ Flag 36 : Clear
+ Flag 37 : Set
+ Flag 38 : Clear
+ Flag 39 : Clear
+ Flag 40 : Set
+ Flag 41 : Clear
+ Flag 42 : Set
+ Flag 43 : Clear

@@ -317,7 +317,11 @@ int lifdir(int argc, char **argv)
     lif_close(input_device);
     if(verbosity > 0) {
        printf("%d files (%d max), ",num_files,dir_length*8);
-       printf("last block used: %d of %d\n",last_block,totalsize);
+       if(last_block > 0) {
+          printf("last block used: %d (%d max)\n",last_block,totalsize);
+       } else {
+          printf("last block used: none (%d max)\n",totalsize);
+       }
     }
     return(RETURN_ERROR);
   }

@@ -17,11 +17,16 @@ lifutils lifdir liftest.dat > test.txt
 python3 ../difftool.py test.txt ../data/lifdir_liftest_empty.txt
 
 lifutils comp41 -x hpil -x hepax < ../data/audi2.txt | lifutils raw41lif AUDI2 | lifutils lifput liftest.dat
-lifutils comp41 -x hpil -x hepax < ../data/prog41.txt | lifutils raw41lif TEST1 | lifutils lifput liftest.dat
+lifutils comp41 -x hpil -x hepax -f TEST1 < ../data/prog41.txt | lifutils lifput liftest.dat
 lifutils textlif TXTA < ../data/txta.txt | lifutils lifput liftest.dat
+lifutils textlif -s 0 TXT41 < ../data/txta.txt | lifutils lifput liftest.dat
+lifutils textlif -s 42 TXT412 < ../data/txta.txt | lifutils lifput liftest.dat
 lifutils lifrename liftest.dat TXTA TXTB
 lifutils textlif75 TXT75 < ../data/txta.txt | lifutils lifput liftest.dat
+lifutils textlif75 -n TXT75L < ../data/txta75.txt | lifutils lifput liftest.dat
 cat VERM1.rom | lifutils rom41hx VERMROM | lifutils lifput liftest.dat
+cat VERM1.rom | lifutils rom41lif VERMROML | lifutils lifput liftest.dat
+cat VERM1.rom | lifutils rom41lif VERMROME | lifutils lifput liftest.dat
 cat ../data/txta.txt | lifutils textlif TXTA | lifutils lifput liftest.dat
 lifutils lifput liftest.dat ../data/dat1.lif
 lifutils lifput liftest.dat ../data/key1.lif
@@ -42,32 +47,61 @@ python3 ../difftool.py test.txt ../data/lifdir_liftest_filled.txt
 
 lifutils lifpurge liftest.dat VERMROM
 lifutils lifpack liftest.dat
+lifutils liflabel -c liftest.dat
 lifutils lifstat liftest.dat > test.txt
 python3 ../difftool.py test.txt ../data/lifstat_after_pack.txt
 
+lifutils lifstat liftest.dat 110 > test.txt
+python3 ../difftool.py test.txt ../data/lifstat_memt.txt
+lifutils lifstat liftest.dat 3 0 15 > test.txt
+python3 ../difftool.py test.txt ../data/lifstat_memt.txt
+
+lifutils lifget -b liftest.dat MEM > temp.lif
+lifutils lifpurge liftest.dat MEM
+lifutils lifput liftest.dat temp.lif
+
 lifutils lifdir liftest.dat > test.txt
 python3 ../difftool.py test.txt ../data/lifdir_liftest_packed.txt
+lifutils lifdir -n liftest.dat > test.txt
+python3 ../difftool.py test.txt ../data/lifdir_liftest_packed_names.txt
+lifutils lifdir -v 2 liftest.dat > test.txt
+python3 ../difftool.py test.txt ../data/lifdir_liftest_packed_verbose.txt
+lifutils lifdir -c liftest.dat > test.txt
+python3 ../difftool.py test.txt ../data/lifdir_liftest_packed_csv.txt
 
-lifutils lifget -r liftest.dat TXTA  | lifutils liftext > test.txt
+lifutils lifget liftest.dat TXTA | lifutils lifraw | lifutils liftext > test.txt
 python3 ../difftool.py  test.txt ../data/txta.txt
 
-lifutils lifget -r liftest.dat TXT75  | lifutils liftext75  > test.txt
+lifutils lifget liftest.dat TXT75  | lifutils lifraw | lifutils liftext75  > test.txt
 python3 ../difftool.py  test.txt ../data/txta.txt
+
+lifutils lifget liftest.dat TXT75L | lifutils lifraw | lifutils liftext75 > test.txt
+python3 ../difftool.py  test.txt ../data/txta.txt
+lifutils lifget liftest.dat TXT75L | lifutils lifraw | lifutils liftext75 -n > test.txt
+python3 ../difftool.py  test.txt ../data/txta75.txt
 
 lifutils lifget -r liftest.dat TEST1 |  lifutils decomp41 -x hpil -x hepax > test.txt
 python3 ../difftool.py  test.txt ../data/prog41.txt
 
 lifutils lifget -r liftest.dat DAT1 | lifutils sdata > test.txt
 python3 ../difftool.py  test.txt ../data/dat1.txt
+lifutils lifget -r liftest.dat DAT1 | lifutils sdata -h > test.txt
+python3 ../difftool.py  test.txt ../data/dat1_hex.txt
+lifutils lifget -r liftest.dat DAT1 | lifutils sdata -n -b -l > test.txt
+python3 ../difftool.py  test.txt ../data/dat1_extended.txt
 
 lifutils lifget -r liftest.dat DAT1 | lifutils regs41 > test.txt
 python3 ../difftool.py  test.txt ../data/regs1.txt
 
-lifutils lifget -r liftest.dat KEY1 | lifutils key41 > test.txt
+lifutils lifget -r liftest.dat KEY1 | lifutils key41 -x hpdevices > test.txt
 python3 ../difftool.py  test.txt ../data/key1.txt
+lifutils lifget -r liftest.dat KEY1 | lifutils key41 -h > test.txt
+python3 ../difftool.py  test.txt ../data/key1_hex.txt
 
 lifutils lifget -r liftest.dat STAT1 | lifutils stat41 > test.txt
 python3 ../difftool.py  test.txt ../data/stat1.txt
+lifutils lifget -r liftest.dat STAT1 | lifutils stat41 -b -f -v > test.txt
+python3 ../difftool.py  test.txt ../data/stat1_extended.txt
 
 lifutils lifget -r liftest.dat WALL1 | lifutils wcat41 > test.txt
 python3 ../difftool.py  test.txt ../data/wcat1.txt
@@ -102,7 +136,7 @@ python3 ../difftool.py  --binary VERM1.rom tst.rom
 lifutils lifget -r liftest.dat AUDI2 | lifutils outp41 | lifutils inp41 | lifutils decomp41 -x hpil -x hepax > test.txt
 python3 ../difftool.py  test.txt ../data/audi2.txt 
 
-lifutils wall41 -r -k < ../data/wall1.lif | key41 > test.txt
+lifutils wall41 -r -k < ../data/wall1.lif | key41 -x hpdevices > test.txt
 python3 ../difftool.py  test.txt ../data/key1.txt
 lifutils wall41 -r -g < ../data/wall1.lif | sdata > test.txt
 python3 ../difftool.py  test.txt ../data/dat1.txt
@@ -118,6 +152,7 @@ rm -f err_short.txt
 rm -f liftest.dat
 rm -f tst.rom
 rm -f test.ps
+rm -f temp.lif
 rm -f VERM1.rom
 rm -f liffix.dat
 rm -f test.txt

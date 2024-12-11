@@ -42,6 +42,7 @@ int lifput_read_input(FILE *fp, unsigned char **input_buffer,int num_blocks)
     unsigned char record[SECTOR_SIZE];
 
     padded_size=num_blocks*SECTOR_SIZE;
+    debug_print("padded size %d\n",padded_size);
 
     /* buffer in input file */
     *input_buffer= (unsigned char *) malloc(padded_size);
@@ -52,6 +53,7 @@ int lifput_read_input(FILE *fp, unsigned char **input_buffer,int num_blocks)
     bytes_read=0;
     while(1) {
        l=fread(record,sizeof(unsigned char),SECTOR_SIZE,fp);
+       debug_print("bytes read %d l %d\n",bytes_read,l);
        if((bytes_read+l) > padded_size) {
            fprintf(stderr,"input file too large\n");
            free(*input_buffer);

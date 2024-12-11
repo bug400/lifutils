@@ -3,12 +3,14 @@
 wcat41 \- list the contents of a raw HP41 Write All file
 .SH SYNOPSIS
 .B lifutils wcat41 
+[\-r]
 .I INPUTFILE
 [>
 .I Output file
 ]
 .PP
 .B lifutils wcat41 
+[\-r]
 <
 .I Input file
 [>
@@ -35,6 +37,9 @@ Global labels (and ENDs) of user programs, in a format similar to
 .I CAT 1
 on the HP41.
 .SH OPTIONS
+.TP
+.I \-r
+Skip an existing LIF header of the input file. This is mandatory, if the input file is a LIF instead of a raw file.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.

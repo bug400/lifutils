@@ -78,9 +78,8 @@ void textlif_output_line(unsigned char * line, int l)
 
 int textlif(int argc, char**argv)
 {
-    int length;  /* length of file in bytes without length fields including 
-                    pad bytes */
-    int lines;   /* numver of lines in file */
+    int num_characters_with_pad_bytes;  /* length of file in bytes without length fields including pad bytes */
+    int lines;   /* number of lines in file */
     int num_characters; /* number of characters in file */
     int file_length; /* length of LIF text file */
     int leftover_bytes; /* to fill entire block */
@@ -99,7 +98,7 @@ int textlif(int argc, char**argv)
     FILE *fp;
 
 
-    lines= length= num_characters=0;
+    lines= num_characters_with_pad_bytes= num_characters=0;
     lax=0;
 
     /* command line options */
@@ -116,7 +115,7 @@ int textlif(int argc, char**argv)
           }
       }
 
-    if(argc!=2 && argc!=3)
+    if((optind != argc-2) && (optind != argc-1))
        {
          textlif_usage();
          return(RETURN_ERROR);
@@ -159,44 +158,46 @@ int textlif(int argc, char**argv)
 
     SETMODE_STDOUT_BINARY;
     /* copy from stdin to file buffer, count length and lines */
+    buflen=0;
     lastchar= (char) 0x0;
-    i=0;j=0;k=0;
-    while (i < MAX_LENGTH) {
+    /* number of characters without pad byte in line excluding "\n" */
+    k=0;
+    while (1) {
       c=getc(fp);
       if (c == EOF) break;
-      j++;
-      k++;
-      filebuffer[i]= (unsigned char) c;
-      i++;
+      /* this is valid because LIF1 records are always longer than "\n" terminated records */
+      if(buflen>= MAX_LENGTH) {
+         fprintf(stderr,"input file exceeds buffer length\n");
+         return(RETURN_ERROR);
+      }
+      lastchar=c;
+      filebuffer[buflen]= (unsigned char) c;
+      buflen+=1;
       if (c== (int) '\n') {
          lines++;
-         j--;
-         k--;
-         if(j & 1) {  /* odd length, add pad byte */
-            j++;
-         }
-         length+=j; 
-         j=0;
          num_characters+=k;
+         num_characters_with_pad_bytes+=k;
+         if(k & 1) num_characters_with_pad_bytes++;
          k=0;
+      } else {
+         k++;
       }
-      lastchar= (unsigned char) c;
-    }
-    buflen=i;
+   }         
 
     /* last line without nl */
     if(lastchar != (int) '\n') {
-       length+=j;
-    } else {
        num_characters+=k;
+       num_characters_with_pad_bytes+=k;
+       if(k & 1) num_characters_with_pad_bytes++;
+       lines++;
     }
     debug_print("number of lines in input file %d\n",lines);
     debug_print("number of characters in input file %d\n",num_characters);
-    debug_print("number of characters including pad bytes %d\n",length);
+    debug_print("number of characters including pad bytes %d\n",num_characters_with_pad_bytes);
 
     /* file length is length of all records + size field of all records
        + end of file mark */
-    file_length= (length+lines*2)+2;
+    file_length= (num_characters_with_pad_bytes+lines*2)+2;
     /* register length is number of characters+number of records+1 
        see HEPAX doc */
     min_reg=((num_characters+lines+1)+6)/7;
@@ -221,7 +222,7 @@ int textlif(int argc, char**argv)
     }
     /* check total length */
     if (file_length > MAX_LENGTH) {
-       fprintf(stderr,"File too large\n");
+       fprintf(stderr,"input file too large\n");
        if(fp!=stdin) fclose(fp);
        return(RETURN_ERROR);
     }
@@ -266,6 +267,7 @@ int textlif(int argc, char**argv)
     /* fill up to block lenght */
     if((leftover_bytes=file_length%SECTOR_SIZE))
     {
+        debug_print("fill leftover bytes, start at %d\n",leftover_bytes);
         for(j=leftover_bytes;j<SECTOR_SIZE;j++) putchar((int) 0);
     }
     if(fp!=stdin)fclose(fp);

@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Tue Nov 12 14:01:33 2024 -->
+<!-- CreationDate: Mon Dec  9 12:27:48 2024 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,7 +38,7 @@
 
 <p style="margin-left:11%; margin-top: 1em">liffix - fixes
 the medium size information in the volume header of a LIF
-disk image file</p>
+image file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
@@ -62,11 +62,10 @@ size of the volume specified by the numbers of tracks per
 surface, number of surfaces and number of blocks per track.
 Some HP-IL controller do not initialize this values
 correctly which might worry software that works with LIF
-disk image files. The medium size of the LIF disk image file
-can be checked with the <i>lifstat</i> program.
-<b>liffix</b> repairs the volume header of a LIF disk image
-file specified by the command line parameter
-<i>LIFIMAGE.</i></p>
+image files. The medium size of the LIF image file can be
+checked with the <i>lifstat</i> program. <b>liffix</b>
+repairs the volume header of a LIF image file specified by
+the command line parameter <i>LIFIMAGE.</i></p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
@@ -141,8 +140,8 @@ error.</p> </td></tr>
 
 
 <p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.dat</i> is a LIF disk image file with improper
-medium size information then</p>
+<i>disk1.dat</i> is a LIF image file with improper medium
+size information then</p>
 
 <p style="margin-left:11%; margin-top: 1em"><b>lifutils
 liffix -m disk disk1.dat</b></p>
