@@ -25,8 +25,20 @@ The program reads the text from standard input or the file specified by the comm
 .I INPUTFILE
 and writes the LIF file header and the LIF formatted text to
 standard output. This file type can be used on the HP-71 (TEXT) or
-the HP-41 extended Memory or HEPAX file system (ASCII). If the file
-shall be used on a HP-41 the \-r option is mandatory.
+the HP-41 extended Memory or HEPAX file system (ASCII).
+.PP
+If the text file is to be used on the HP-41, the 
+.I \-s
+option is mandatory. The file can be directly copied from a mass storage device to HEPAX memory with the
+.I
+HREADFL
+command. However, it must be preallocated with an appropriate size with the
+.I
+CRFLAS
+command, before being copied to extended memory with the
+.I
+READFL
+command.
 .SH OPTIONS
 .TP
 .I \-s
@@ -34,7 +46,8 @@ This option specifies the file size in registers which shall be allocated
 for the resulting file in the HP-41 extended memory or the HEPAX file system. 
 If a value of 0 is specified the number of register is determined from the 
 size of the input text file.  According to the HEPAX documentation the 
-maximum file size is 577 registers.
+maximum file size is 577 registers. The minimun and allocated number of registers
+is printed to standard error.
 .TP
 .I \-l
 Relax file name checking, allow underscores in LIF filename.

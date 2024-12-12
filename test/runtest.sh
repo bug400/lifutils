@@ -27,7 +27,7 @@ export LIFUTILSREGRESSIONTEST=1
 cd ${testfile}
 rm -f ${testfile}.out
 ./${testfile}.sh > ${testfile}.out
-diff ${testfile}.out reference/${testfile}.out
+python3 ../difftool.py ${testfile}.out reference/${testfile}.out
 ret=$?
 rm -f ${testfile}.out
 exit $ret

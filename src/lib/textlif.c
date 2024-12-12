@@ -237,6 +237,7 @@ int textlif(int argc, char**argv)
        dir_entry[30]=0x00;
        dir_entry[31]=0x20;
        debug_print("file size of HP-41 registers written %d\n",num_reg);
+       fprintf(stderr,"HP-41 register size minimum: %d, allocated %d\n",min_reg,num_reg);
     }
 
     for(i=0;i< ENTRY_SIZE; i++) {
