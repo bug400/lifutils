@@ -9,7 +9,7 @@ TXT75       TXT75         512/512      01/01/01 00:00:00
 TXT75L      TXT75         512/512      01/01/01 00:00:00
 VERMROM     SDATA        5120/5120     01/01/01 00:00:00
 VERMROML    SDATA        8192/8192     01/01/01 00:00:00
-VERMROME    SDATA        8192/8192     01/01/01 00:00:00
+VERMROME    X-M41        5121/5120                      
 TXTA        TEXT          512/512      01/01/01 00:00:00
 DAT1        SDATA         160/256                       
 KEY1        KEY41          25/256                       
@@ -17,4 +17,4 @@ WALL1       ALL41        2689/2816
 STAT1       STAT41         81/256                       
 MEM         LEX71         959/1024     01/03/16 21:15:40
 PHYCONS     LEX75         768/768      08/01/86 23:54:54
-17 files (64 max), last block used: 135 (512 max)
+17 files (64 max), last block used: 124 (512 max)

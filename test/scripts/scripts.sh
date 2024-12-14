@@ -26,7 +26,7 @@ textlif75 TXT75 < ../data/txta.txt | lifput liftest.dat
 textlif75 -n TXT75L < ../data/txta75.txt | lifput liftest.dat
 cat VERM1.rom | rom41hx VERMROM | lifput liftest.dat
 cat VERM1.rom | lifutils rom41lif VERMROML | lifutils lifput liftest.dat
-cat VERM1.rom | lifutils rom41lif VERMROME | lifutils lifput liftest.dat
+cat VERM1.rom | lifutils rom41er VERMROME | lifutils lifput liftest.dat
 cat ../data/txta.txt | textlif TXTA | lifput liftest.dat
 lifput liftest.dat ../data/dat1.lif
 lifput liftest.dat ../data/key1.lif
@@ -52,9 +52,9 @@ liflabel -c liftest.dat
 lifstat liftest.dat > test.txt
 python3 ../difftool.py test.txt ../data/lifstat_after_pack.txt
 
-lifstat liftest.dat 110 > test.txt
+lifstat liftest.dat 97 > test.txt
 python3 ../difftool.py test.txt ../data/lifstat_memt.txt
-lifstat liftest.dat 3 0 15 > test.txt
+lifstat liftest.dat 3 0 2 > test.txt
 python3 ../difftool.py test.txt ../data/lifstat_memt.txt
 
 lifget -b liftest.dat MEM > temp.lif

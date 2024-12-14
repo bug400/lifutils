@@ -1,3 +1,3 @@
 ( formatted : 01/01/01 00:00:00 )
 Tracks: 2 Surfaces: 1 Blocks per Track: 256 Total size: 512 Blocks, 131072 Bytes
-110 (3/0/15) : MEM
+97 (3/0/2) : MEM

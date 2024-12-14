@@ -33,7 +33,7 @@ lifutils rom41hx VERMROM VERM1.rom > temp.lif
 lifutils lifput liftest.dat temp.lif
 lifutils rom41lif VERMROML VERM1.rom > temp.lif
 lifutils lifput liftest.dat temp.lif
-lifutils rom41lif VERMROME VERM1.rom > temp.lif
+lifutils rom41er VERMROME VERM1.rom > temp.lif
 lifutils lifput liftest.dat temp.lif
 
 lifutils textlif TXTA ../data/txta.txt | lifutils lifput liftest.dat
@@ -60,9 +60,9 @@ lifutils liflabel -c liftest.dat
 lifutils lifstat liftest.dat > test.txt
 python3 ../difftool.py test.txt ../data/lifstat_after_pack.txt
 
-lifutils lifstat liftest.dat 110 > test.txt
+lifutils lifstat liftest.dat 97 > test.txt
 python3 ../difftool.py test.txt ../data/lifstat_memt.txt
-lifutils lifstat liftest.dat 3 0 15 > test.txt
+lifutils lifstat liftest.dat 3 0 2  > test.txt
 python3 ../difftool.py test.txt ../data/lifstat_memt.txt
 
 lifutils lifget -b liftest.dat MEM temp.lif

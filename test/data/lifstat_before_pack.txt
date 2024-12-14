@@ -1,4 +1,4 @@
 Volume : TEST   ( formatted : 01/01/01 00:00:00 )
 Tracks: 2 Surfaces: 1 Blocks per Track: 256 Total size: 512 Blocks, 131072 Bytes
 Directory start : 2 (0/0/3) end : 9 (0/0/10)
-User data start : 10 (0/0/11) end : 135 (4/0/8)
+User data start : 10 (0/0/11) end : 124 (3/1/13)
