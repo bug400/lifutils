@@ -242,9 +242,7 @@ int lexcat71_lex_table(unsigned char *lexfile, unsigned int lex_file_size, int n
   }
 
 
-int lexcat71(argc,argv)
-int argc;
-char **argv;
+int lexcat71(int argc, char **argv)
   {
     int table_address; /* address of lex table */
     /* lex file nibble array */

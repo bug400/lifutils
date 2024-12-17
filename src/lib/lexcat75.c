@@ -246,9 +246,7 @@ int lexcat75_lex_table(unsigned char * lexfile, unsigned int lex_file_size, int 
   }
 
 
-int lexcat75(argc,argv)
-int argc;
-char **argv;
+int lexcat75(int argc,char **argv)
   {
 
     /* lex file byte array */
