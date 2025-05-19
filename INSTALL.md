@@ -13,11 +13,10 @@ Installation of the precompiled binaries
 
 LINUX:
 
-There are DEBIAN packages available for download (32-bit and 64-bit).
-Install the package as root.
+The releases section provides installers (.deb files) for Debian Linux and compatible distributions. See 
+the release comments, which Debian version is currently supported. To install the .deb file, issue the following command as root in the directory containing the installer file:
 
-     dpkg -i <package-file-name>
-
+     apt install ./lifutils_X.Y.Z_<architecture>.deb 
 
 Windows:
 
