@@ -133,6 +133,9 @@ python3 ../difftool.py  --binary VERM1.rom tst.rom
 lifutils rom41er VERMROM < VERM1.rom | lifutils lifraw | lifutils er41rom > tst.rom
 python3 ../difftool.py  --binary VERM1.rom tst.rom
 
+lifutils lifget -r liftest.dat AUDI2 | lifutils outp41 > test.txt
+python3 ../difftool.py test.txt ../data/audi2.hex
+
 lifutils lifget -r liftest.dat AUDI2 | lifutils outp41 | lifutils inp41 | lifutils decomp41 -x hpil -x hepax > test.txt
 python3 ../difftool.py  test.txt ../data/audi2.txt 
 

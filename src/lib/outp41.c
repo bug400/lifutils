@@ -83,15 +83,15 @@ int outp41 (int argc, char **argv)
 
     length=outp41_read_prog(memory);
     print_byte_hex(length>>8); /* Send high byte of length */
-    add_to_checksum(&checksum,length>>8);
+    add_to_checksum(&checksum,length>>8, FALSE);
     print_byte_hex(length&0xff); /* Send low byte of length */
-    add_to_checksum(&checksum,length&0xff);
+    add_to_checksum(&checksum,length&0xff,FALSE);
 
     /* Send the program bytes */
     for(byte_counter=0; byte_counter<length; byte_counter++)
       {
         print_byte_hex(memory[byte_counter]);
-        add_to_checksum(&checksum,memory[byte_counter]);
+        add_to_checksum(&checksum,memory[byte_counter],FALSE);
       }
 
     print_byte_hex(checksum); /* send checksum */

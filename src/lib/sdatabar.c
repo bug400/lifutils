@@ -193,7 +193,7 @@ void sdatabar_numeric_barcode(unsigned char *reg, int row, int kludge_flag)
     /* calculate the checksum */
     for(i=0; i<(nybble_counter>>1); i++)
       {
-        add_to_checksum(&checksum,barcode[i]);
+        add_to_checksum(&checksum,barcode[i],TRUE);
       }
 
     /* output the barcode bytes */
@@ -236,10 +236,10 @@ void sdatabar_alpha_barcode(unsigned char *reg,int row)
     header_byte=0x70+(7-first_valid); /* barcode type and length */
 
     /* calculate checksum */    
-    add_to_checksum(&checksum,header_byte);
+    add_to_checksum(&checksum,header_byte,TRUE);
     for(i=first_valid; i<7; i++)
       {
-        add_to_checksum(&checksum,reg[i]);
+        add_to_checksum(&checksum,reg[i],TRUE);
       }
 
     /* output barcode */

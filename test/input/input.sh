@@ -168,7 +168,11 @@ lifutils rom41er VERMROM VERM1.rom > temp.lif
 lifutils er41rom -r temp.lif > tst.rom
 python3 ../difftool.py  --binary VERM1.rom tst.rom
 
-lifutils lifget -r liftest.dat AUDI2 | lifutils outp41 | lifutils inp41 | lifutils decomp41 -x hpil -x hepax > test.txt
+lifutils lifget -r liftest.dat AUDI2 temp.raw
+lifutils outp41 < temp.raw > test.hex
+python3 ../difftool.py test.hex ../data/audi2.hex
+
+lifutils inp41 < test.hex | lifutils decomp41 -x hpil -x hepax > test.txt
 python3 ../difftool.py  test.txt ../data/audi2.txt 
 
 lifutils wall41 -r -k -i ../data/wall1.lif | key41 -x hpdevices > test.txt
@@ -186,6 +190,7 @@ rm -f err_long.txt
 rm -f err_short.txt
 rm -f temp.lif
 rm -f temp.raw
+rm -f test.hex
 rm -f liftest.dat
 rm -f tst.rom
 rm -f test.ps

@@ -71,11 +71,11 @@ void prog41bar_output_row(int row, unsigned char n_start, unsigned char n_end, i
     overflow = ((n_start&0xF)<<4) + (n_end&0xF); /* Number of extra bytes at
                                                     start and end */
     /* Calculate checksum for this row */
-    add_to_checksum(checksum,type_byte);
-    add_to_checksum(checksum,overflow);
+    add_to_checksum(checksum,type_byte,TRUE);
+    add_to_checksum(checksum,overflow,TRUE);
     for(i=0;i<length;i++)
       {
-        add_to_checksum(checksum,memory[pc+i]);
+        add_to_checksum(checksum,memory[pc+i],TRUE);
       }
     /* Now output the barcode data */
     putchar(length+2); /* Total # bytes = length + 3, but length

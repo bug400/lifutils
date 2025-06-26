@@ -1,3 +1,9 @@
+lifutils (2.0.1) bookworm; urgency=medium
+
+  * fixed incorrect checksum in inp41, outp41 
+
+ -- bookworm <achim@trillian>  Thu, 26 Jun 2025 15:34:20 +0200
+
 lifutils (2.0.0) bookworm; urgency=medium
 
   * The LIFUTILS utilities were combined in a single executable

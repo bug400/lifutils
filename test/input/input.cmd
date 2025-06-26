@@ -155,7 +155,11 @@ python ..\difftool.py  --binary VERM1.rom tst.rom
 lifutils rom41er VERMROM  VERM1.rom | lifutils lifraw | lifutils er41rom > tst.rom
 python ..\difftool.py  --binary VERM1.rom tst.rom
 
-lifutils lifget -r liftest.dat AUDI2 | lifutils outp41 | lifutils inp41 | lifutils decomp41 -x hpil -x hepax > test.txt
+lifutils lifget -r liftest.dat AUDI2 temp.raw
+lifutils outp41 < temp.raw > test.hex
+python ..\difftool.py test.hex ..\data\audi2.hex
+
+lifutils inp41 < test.hex | lifutils decomp41 -x hpil -x hepax > test.txt
 python ..\difftool.py  test.txt ..\data\audi2.txt 
 
 lifutils wall41 -r -k -i ..\data\wall1.lif | key41 -x hpdevices > test.txt
@@ -174,6 +178,7 @@ if exist err_long.txt del /F err_long.txt
 if exist err_short.txt del /F err_short.txt
 if exist test.ps del /F test.ps
 if exist test.txt del /F test.txt
+if exist test.hex del /F test.txt
 if exist temp.lif del /F temp.lif
 if exist temp.raw del /F temp.raw
 if exist liftest.dat del /F liftest.dat

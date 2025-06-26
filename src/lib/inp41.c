@@ -96,10 +96,10 @@ int inp41(int argc, char **argv)
     checksum=0;
     hi_length=inp41_read_byte(); /* get high byte of length */
     return_if_error(hi_length);
-    add_to_checksum(&checksum,hi_length);
+    add_to_checksum(&checksum,hi_length, FALSE);
     lo_length=inp41_read_byte(); /* get low byte of length */
     return_if_error(lo_length);
-    add_to_checksum(&checksum,lo_length);
+    add_to_checksum(&checksum,lo_length, FALSE);
     /* calculate length */
     length=(hi_length<<8)+lo_length;
 
@@ -108,7 +108,7 @@ int inp41(int argc, char **argv)
       {
         byte=inp41_read_byte(); 
         return_if_error(byte);
-        add_to_checksum(&checksum,byte);
+        add_to_checksum(&checksum,byte,FALSE);
         putchar(byte);
       }
 

@@ -91,7 +91,7 @@ int textlif75(int argc, char **argv);
 int wall41(int argc, char **argv);
 int wcat41(int argc, char **argv);
 
-void add_to_checksum(int *checksum, unsigned char data);
+void add_to_checksum(int *checksum, unsigned char data, unsigned char use_checksum);
 int read_prog(FILE *fp,unsigned char *memory);
 void print_char_hex(unsigned char c);
 void print_byte_hex(unsigned char byte);

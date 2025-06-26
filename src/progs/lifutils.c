@@ -72,11 +72,11 @@ func functions[]= {
    common subroutines
 
 */
-void add_to_checksum(int *checksum, unsigned char data)
+void add_to_checksum(int *checksum, unsigned char data, unsigned char use_carry)
 /* Add data to checksum using the end-around-carry algorithm */
   {
     (*checksum) += data; /* add the new data */
-    if((*checksum)>255)
+    if((*checksum)>255 && use_carry)
       {
         /* There is a carry */
         (*checksum)++; /* add it end-around */
