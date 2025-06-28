@@ -53,8 +53,7 @@ Issues
 ------
 
 Known issues of version 2.0 are:
-* _inp41_ and _outp41_ calculate a wrong checksum. Uploading programs to the HP-41 works, because the calculator
-does not verify the checksum. On download, _inp41_ displays erroneously the message "checksum bad". The converted raw file should be OK unless a transmission error has occurred (which cannot be detected). Thus decompile the raw file to see if the output is reasonable.
+* _inp41_ and _outp41_ calculate a wrong checksum. See [this post](https://www.hpmuseum.org/forum/thread-23742.html) for details and many thanks to the author.
 
 
 License
