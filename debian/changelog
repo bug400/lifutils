@@ -1,6 +1,7 @@
 lifutils (2.0.1) bookworm; urgency=medium
 
   * fixed incorrect checksum in inp41, outp41 
+  * improved END handling in comp41 (messages and listing)
 
  -- bookworm <achim@trillian>  Thu, 26 Jun 2025 15:34:20 +0200
 

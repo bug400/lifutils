@@ -229,9 +229,6 @@ int comp41 (int argc, char **argv)
             }
             byte_counter++;
          }
-         if( comp41glo.global_end && comp41glo.source_listing) {
-             fprintf(stderr, ".END. found on line %d.\n", comp41glo.source_line_counter );
-         }
       }
       line= comp41glo.source_line; // needed, because line is modified in get_line_args
    }
@@ -255,7 +252,16 @@ int comp41 (int argc, char **argv)
             return(RETURN_ERROR);
          }
       }
-      if(comp41glo.source_listing) fprintf(stderr, ".END. statement appended.\n");
+      if(comp41glo.source_listing) {
+         fprintf(stderr, "END statement appended.\n");
+         if(comp41glo.code_listing) {
+             fprintf(stderr,"        ");
+             for(i=0;i<3;i++) {
+                 fprintf(stderr,"%2.2X ",(unsigned char) code_buffer[i]);
+             }
+             fprintf(stderr,"\n");
+         }
+      }
    }
 
    // compute and output required number of registers
@@ -712,12 +718,12 @@ int comp41_compile_arg1(unsigned char *code, char *prefix )
    char mm, ff;
 
     DLOG(stderr,"compile arg1\n");
-    // .END.
+    // .END. or END
     if( strcasecmp( prefix, "END" ) == 0 ||
         strcasecmp( prefix, ".END." ) == 0 ) {
         comp41_compile_end( code, comp41glo.global_count );
 
-        // set .END. flag
+        // set END flag
         comp41glo.global_end = 1;
         return( 3 );
     }
