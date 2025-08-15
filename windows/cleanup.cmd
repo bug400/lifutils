@@ -1,3 +1,6 @@
 if exist ..\build RD /S /Q ..\build
-if exist .\install32 RD /s /q .\install32
-if exist .\install64 RD /s /q .\install64
+if "%Platform%" EQU "x86" (
+   if exist .\install32 RD /S /Q .\install32
+) else (
+   if exist .\install64 RD /S /Q .\install64
+)
