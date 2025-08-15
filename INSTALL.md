@@ -20,19 +20,18 @@ the release comments, which Debian version is currently supported. To install th
 
 Windows:
 
-There are installer exe file to safely install the LIFUTILS. Download 
-the appropriate 32 or 64 bit version of the installer file follow the
-instructions below.
+There is an MSI installer file to safely install the LIFUTILS on Windows 10/11. There is no 32bit version any more. The installer only allows an installation for the current user and modifies/sets the PATH and LIFUTILSXROMDIR environment variables. The package can be removed in the "Apps and Features" section in the Windows Settings. The changes to the environment variables are then reset.
 
-* Uninstall any previous installed version of the lifutils before installing
-a new version.
-* A 32 bit version of the lifutils will not install on a 64 bit windows
-* you may choose a system-wide installation or an installation only for
-the current user. A system-wide installation requires administrator privileges.
-* You may choose to modify the PATH variable and set the
-LIFUTILSXROMDIR environment variable. This is not needed if you call the
-lifutils from the "lifutils prompt" in the start menu.
-* It is recommended to uninstall lifutils from the legacy "programs and features" control panel. Uninstalling from the "apps and features " control panel (Windows 10) requires to enter administrator credentials even for a local installation.
+Since there is no longer a Start Menu entry for lifutils, it is recommended that you create a link to the file
+
+
+     C:\Users\<your username>\AppData\Local\Programs\lifutils\doc\readme.html
+
+on the desktop in order to access the documentation.
+
+**WARNING**
+
+Version 2.0.1 had to switch to the Microsoft msiexec installer to ensure that lifutils can continue to be installed securely. This means that an automatic upgrade from version 2.0.0 and earlier is not possible. You must therefore manually uninstall all existing installations (both system-wide and local) before version 2.0.1 can be installed.
 
 
 
@@ -70,4 +69,4 @@ build directories:
 * linux: Linux (Debian package tools)
 * macos: mac OS (XCode command line tools)
 * mingw (mingw cross compile under Linux and nsis 3.0 package builder)
-* windows (MSVC 2017 or MSVC 2019 and nsis 3.0 package builder)
+* windows (MSVC 2022 and wix 6 package builder)
