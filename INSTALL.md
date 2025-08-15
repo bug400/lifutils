@@ -68,5 +68,4 @@ build directories:
 
 * linux: Linux (Debian package tools)
 * macos: mac OS (XCode command line tools)
-* mingw (mingw cross compile under Linux and nsis 3.0 package builder)
 * windows (MSVC 2022 and wix 6 package builder)
