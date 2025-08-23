@@ -7,7 +7,6 @@ Index
 * [Description](#description)
 * [Compatibility](#compatibility)
 * [Installation](#installation)
-* [Issues](#issues)
 * [License](#license)
 * [Acknowledgments](#acknowledgments)
 
@@ -48,12 +47,6 @@ INSTALLATION
 The [release](https://github.com/bug400/lifutils/releases) section provides precompiled binaries for LINUX (32 and 64bit), Windows (32 bit and 64 bit) and mac OS.
 
 See the [Installation Instructions](https://github.com/bug400/lifutils/blob/master/INSTALL.md) how to install.
-
-Issues
-------
-
-Known issues of version 2.0 are:
-* _inp41_ and _outp41_ calculate a wrong checksum. See [this post](https://www.hpmuseum.org/forum/thread-23742.html) for details and many thanks to the author.
 
 
 License
