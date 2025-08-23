@@ -1,7 +1,7 @@
 #
 # build file for lifutils
 #
-cmake_minimum_required (VERSION 3.5.0)
+cmake_minimum_required (VERSION 3.10.0)
 if (CMAKE_HOST_SYSTEM_NAME STREQUAL "Darwin")
   set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE STRING "" FORCE)
 endif()
