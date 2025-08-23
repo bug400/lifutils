@@ -14,5 +14,5 @@ nmake
 if [%1] NEQ [] nmake test
 nmake install
 popd
-call build_msi
+call ..\msi\build_msi lifutils %CD%
 call cleanup

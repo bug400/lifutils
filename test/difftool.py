@@ -48,10 +48,18 @@ def main():
        old_file = Path(args.old_file)
        new_file = Path(args.new_file)
 
-       fd_old_file=open(old_file)
-       fd_new_file=open(new_file)
-       file_1 = fd_old_file.readlines()
-       file_2 = fd_new_file.readlines()
+       fd_old_file=open(old_file,encoding="utf-8")
+       fd_new_file=open(new_file,encoding="utf-8")
+       try:
+          file_1 = fd_old_file.readlines()
+       except UnicodeDecodeError:
+          print(args.old_file," old file charmap decode error")
+          sys.exit(1)
+       try:
+          file_2 = fd_new_file.readlines()
+       except UnicodeDecodeError:
+          print(args.new_file, "old file charmap decode error")
+          sys.exit(1)
 
        delta = difflib.unified_diff(file_1, file_2, old_file.name, new_file.name)
        fd_old_file.close()

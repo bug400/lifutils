@@ -1,18 +1,22 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
  <?define InstallName = "lifutils" ?>
  <?define Manufacturer = "bug400" ?>
  <?define UpgradeCode = "{0C786F40-D1C6-4681-9B1D-AFC920428198}" ?>
  <?define NSISGuid = "{0C786F40-D1C6-4681-9B1D-AFC920428192}" ?>
- <?define Description = "lifutils 2.0.1 installer" ?>
  <?define Version = "$(env.Version)" ?>
+ <?define Icon = "..\res\$(var.InstallName).ico" ?>
  <?if $(env.Platform) = "x64" ?>
    <?define Win64 = "yes" ?>
    <?define Staging = "install64" ?>
    <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+   <?define EnvGlobalGuid = "{f010a225-6e44-4edf-ae7d-8994be8c8819}"?>
+   <?define EnvLocalGuid = "{29bb7b5d-1490-4192-ac6c-d6e6afa6e816}"?>
  <?else ?>
    <?define Win64 = "no" ?>
    <?define Staging = "install32" ?>
    <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+   <?define EnvGlobalGuid = "{80ec94ba-080a-4ee7-83a0-63140608ca86}"?>
+   <?define EnvLocalGuid = "{f2fb186a-1150-4fe1-92e2-4142ac112253}"?>
  <?endif ?>
 </Include>

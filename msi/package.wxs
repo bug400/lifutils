@@ -2,10 +2,10 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
 <!--
 
-Wix 6 sources to generate MSI installer files for the lifutils.
+Wix 6 sources to generate MSI installer files.
 
 Features:
-Generates msi for 32 and 64bit versions (32bit lifutils are not supported any more).
+Generates msi for 32 and 64bit versions (32bit packages are not supported any more).
 Installable on Windows 10/11 only
 No 32 bit install on 64 bit Windows
 Allows per machine or per user installations. Default is a "per user" installation. The "per machine"
@@ -14,10 +14,10 @@ Automatic adjustmend/definition of the PATH and LIFUTILSXROMDIR environment vari
 No patch ore repair possible.
 
 
-Incompatibilities with NSIS-lifutils installations:
-NSIS lifutils installations must be uninstalled manually before doing an MSI lifutils install
-There is no way to deselect the adjustment/definition of the PATH and LIFUTILSXROMDIR variable.
-There is no entry in the start menu any more, because the lifutils command prompt entry is obsolete
+Incompatibilities with NSIS installations:
+NSIS installations must be uninstalled manually before doing an MSI package install
+There is no way to deselect the adjustment/definition of the PATH and other package environment variables.
+There is no entry in the start menu any more, because the command prompt entry is obsolete
 and Windows does not show start menu entries which only contain a link to documentation and the uninstaller.
 
 Notes:
@@ -26,7 +26,7 @@ install was a "per user" or "per machine" install. The [Installed] property depe
 on [ProductName], [UpgradeCode] or ProductVersion.
 
 -->
- <?include lifutils.wxi ?>
+ <?include package.wxi ?>
  <Package Name="$(var.InstallName)" Manufacturer="$(var.Manufacturer)" ProductCode="*" UpgradeCode="$(var.UpgradeCode)" Language="1033" Codepage="1252" Version="$(var.Version)" Scope="perUserOrMachine">
 
   <!--
@@ -44,14 +44,14 @@ on [ProductName], [UpgradeCode] or ProductVersion.
 
   <!--
      Check the registry if we have an old NSIS local machine installation. We need the property NSIS_ALLUSERS
-     in the UI to terminate the attempt to do a local machine installation with this installer
+     to terminate the attempt to do a local machine installation with this installer
   -->
   <Property Id="NSIS_ALLUSERS">
      <RegistrySearch Id="NSISSearchLM" Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\$(var.NSISGuid)" Name="UninstallString" Type="raw" />
   </Property>
   <!--
      Check the registry if we have an old NSIS current user installation. We need the property NSIS_CURRENTUSERS
-     in the UI to terminate the attempt to do a current machine installation with this installer
+     to terminate the attempt to do a current machine installation with this installer
   -->
   <Property Id="NSIS_CURRENTUSERS">
      <RegistrySearch Id="NSISSearchCU" Root="HKCU" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\$(var.NSISGuid)" Name="UninstallString" Type="raw" />
@@ -73,51 +73,18 @@ on [ProductName], [UpgradeCode] or ProductVersion.
   <!--
      Other package settings
   -->
-  <SummaryInformation Keywords="Installer" Description="$(var.Description)" Manufacturer="$(var.Manufacturer)"/>
-  <MajorUpgrade DowngradeErrorMessage="A newer version of $(var.InstallName) is already installed."/>
+  <SummaryInformation Keywords="Installer" Description="$(var.InstallName) $(var.Version)" Manufacturer="$(var.Manufacturer)"/>
+  <MajorUpgrade DowngradeErrorMessage="A newer version of $(var.InstallName) is already installed. Deinstall it manually first." AllowSameVersionUpgrades="yes" />
   <Media Id="1" Cabinet="$(var.InstallName).cab" EmbedCab="yes"/>
-  <Icon Id="icon.ico" SourceFile="..\res\$(var.InstallName).ico" />
-  <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+
+  <?if $(var.Icon)  ?>
+     <Icon Id="icon.ico" SourceFile="$(var.Icon)" />
+     <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+  <?endif ?>
+
   <StandardDirectory Id="$(var.PlatformProgramFilesFolder)">
     <Directory Id="INSTALLDIR" Name="$(var.InstallName)"/>
   </StandardDirectory>
-
-  <!-- 
-     All components of this installer are combinet in the component group "Components". You cannot select
-     or deselect single components
-  -->
-  <ComponentGroup Id="Components" Directory="INSTALLDIR">
-
-    <!--
-       This is the most important innovation in wix: simply harvest a directory to include all files
-    -->
-    <Files Include="$(env.Staging)/**" />
-
-    <!--
-       This is the registry location of the old NSIS installer, we put here the Key/Value of the
-       installation directory so that pyILPER can find the lifutils software. HKMU is used by 
-       the Windows installer to put the registry entry into the correct location depending on the
-       installation scope.
-    <Component Id="RegistryEntries" Guid="1CFD5A9D-2AE8-4084-BB5D-F892885C688C">
-        <RegistryKey Root="HKMU" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\$(var.UpgradeCode)">
-            <RegistryValue Type="string" Name="InstallLocation" Value="[INSTALLDIR]"/>
-        </RegistryKey>
-    </Component>
-    -->
-
-    <!--
-       Modify the Path Variable and set the environment variable LIFUTILSXROMDIR. We have to
-       check the ALLUSERS property here to determine if we set a system or a local user environment variable.
-    -->
-    <Component Id="EnvGlobal" Condition="ALLUSERS" Guid="1CFD5A9D-2AE8-4084-BB5D-F892885C688E">
-        <Environment Id="Environment0" Name="PATH" Part="last" System="yes" Action="set" Value="[INSTALLDIR]"/>
-        <Environment Id="Environment2" Name="LIFUTILSXROMDIR" System="yes" Action="set" Permanent="no" Value="[INSTALLDIR]xroms"/> 
-    </Component>
-    <Component Id="EnvLocal" Condition="NOT ALLUSERS" Guid="1CFD5A9D-2AE8-4084-BB5D-F892885C688F">
-        <Environment Id="Environment1" Name="PATH" Part="last" System="no" Action="set" Value="[INSTALLDIR]"/>
-        <Environment Id="Environment3" Name="LIFUTILSXROMDIR" System="no" Action="set" Permanent="no" Value="[INSTALLDIR]xroms"/> 
-    </Component>
-  </ComponentGroup>
 
   <!--
      Do not launch a 32 bit package on a 54 bit Windows. We use the existence of the VersionNT64 property here
@@ -132,16 +99,22 @@ on [ProductName], [UpgradeCode] or ProductVersion.
   <Launch Condition="OSMAJORVERSION &gt;&lt; &quot;#10&quot;" Message="[ProductName] requires Windows10/11." />
 
   <!--
+     Do not launch, if any NSIS Installer version of this product is installed
+  -->
+  <Launch Condition="(NSIS_CURRENTUSERS = &quot;&quot;) AND (NSIS_ALLUSERS = &quot;&quot;)" Message="A $(var.InstallName) installation with an incompatible installer was found. Please deinstall all instances of this version first." />
+
+  <!--
      Use customized InstallDir UI. The whole component group is installed.
      - WixUI_InstallDirSelectScope: allows select of "per user" or "per machine" install in a dialog
-     - WidUI_InstallDirMod: does "per user" installation. "per machine" install must be enforced with a command
+     - WidUI_InstallDirMod: does "per user" installation. "per machine" install must be enforced with a command, disables repair
        line parameter
 
   <ui:WixUI Id="WixUI_InstallDirSelectScope" InstallDirectory="INSTALLDIR"/>
-  -->
   <ui:WixUI Id="WixUI_InstallDirMod" InstallDirectory="INSTALLDIR"/>
+  -->
+  <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLDIR"/>
 
-  <Feature Id="Complete" Title="$(var.Description)" Description="The complete package" Display="expand" Level="1" ConfigurableDirectory="INSTALLDIR" AllowAbsent="no">
+  <Feature Id="Complete" Title="$(var.InstallName) $(var.Version)" Description="The complete package" Display="expand" Level="1" ConfigurableDirectory="INSTALLDIR" AllowAbsent="no">
     <ComponentGroupRef Id="Components"/>
   </Feature>
  </Package>

@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+<?include package.wxi ?>
+
+  <Fragment>
+  <!-- 
+      All components of this installer are combinet in the component group "Components". You cannot select
+      or deselect single components
+   -->
+   <ComponentGroup Id="Components" Directory="INSTALLDIR">
+ 
+     <!--
+        This is the most important innovation in wix: simply harvest a directory to include all files
+     -->
+     <Files Include="$(env.Staging)/**" />
+
+        <!--
+           Modify the Path Variable and set the environment variable LIFUTILSXROMDIR. We have to
+           check the ALLUSERS property here to determine if we set a system or a local user environment variable.
+        -->
+        <Component Id="EnvGlobal" Condition="ALLUSERS" Guid="$(var.EnvGlobalGuid)">
+           <Environment Id="Environment0" Name="PATH" Part="last" System="yes" Action="set" Value="[INSTALLDIR]"/>
+           <Environment Id="Environment2" Name="LIFUTILSXROMDIR" System="yes" Action="set" Permanent="no" Value="[INSTALLDIR]xroms"/> 
+        </Component>
+        <Component Id="EnvLocal" Condition="NOT ALLUSERS" Guid="$(var.EnvLocalGuid)">
+           <Environment Id="Environment1" Name="PATH" Part="last" System="no" Action="set" Value="[INSTALLDIR]"/>
+           <Environment Id="Environment3" Name="LIFUTILSXROMDIR" System="no" Action="set" Permanent="no" Value="[INSTALLDIR]xroms"/> 
+        </Component>
+     </ComponentGroup>
+   </Fragment>
+</Wix>

@@ -10,8 +10,10 @@ REM 3: path to scripts directory
 REM 4: path to xroms directory
 REM
 set LIFUTILSREGRESSIONTEST=1
+if [%2] == [] GOTO Standalone
 set PATH=%~2;%~3;%PATH%
 set LIFUTILSXROMDIR=%~4
+:Standalone
 set testfile=%~1
 pushd %testfile%
 if exist %testfile%.out del /F %testfile%.out

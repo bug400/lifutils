@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="en-US" xmlns="http://wixtoolset.org/schemas/v4/wxl">.
+  <!--
+     Change the texts in the Accept License dialog
+  -->
+<String Id="LicenseAgreementDlgDescription" Overridable="yes" Value="Please read the following terms and conditions carefully" />
+<String Id="LicenseAgreementDlgLicenseAcceptedCheckBox" Overridable="yes" Value="I &amp;read and understood the terms and conditions" />
+<String Id="LicenseAgreementDlgTitle" Overridable="yes" Value="{\WixUI_Font_Title}GNU General Public License" />
+</WixLocalization>
