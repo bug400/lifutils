@@ -1,32 +1,23 @@
 <?xml version="1.0" ?>
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+
 <!--
+This is the generic part of Wix 6 sources to generate MSI installer files.
 
-Wix 6 sources to generate MSI installer files.
+The product specific parts: 
+- package.wxi: product specific definitions
+- components.wxs. installable components
 
-Features:
-Generates msi for 32 and 64bit versions (32bit packages are not supported any more).
-Installable on Windows 10/11 only
-No 32 bit install on 64 bit Windows
-Allows per machine or per user installations. Default is a "per user" installation. The "per machine"
-installation can be enforced by calling the msi file with the command line parameter "ALLUSERS=1".
-Automatic adjustmend/definition of the PATH and LIFUTILSXROMDIR environment variables.
-No patch ore repair possible.
+are in the windows directory
 
-
-Incompatibilities with NSIS installations:
-NSIS installations must be uninstalled manually before doing an MSI package install
-There is no way to deselect the adjustment/definition of the PATH and other package environment variables.
-There is no entry in the start menu any more, because the command prompt entry is obsolete
-and Windows does not show start menu entries which only contain a link to documentation and the uninstaller.
-
-Notes:
-The [Installed] property is set if an installer file already installed its product. It does not matter, if the
-install was a "per user" or "per machine" install. The [Installed] property depends on the MSI file and not
-on [ProductName], [UpgradeCode] or ProductVersion.
+The WixUI_InstallDir user interface is utilized, which has a configurable install directory but does not
+provide selectable features. A system wide installation is possible by setting the command line parameter
+ALLUSER=1.
 
 -->
+
  <?include package.wxi ?>
+
  <Package Name="$(var.InstallName)" Manufacturer="$(var.Manufacturer)" ProductCode="*" UpgradeCode="$(var.UpgradeCode)" Language="1033" Codepage="1252" Version="$(var.Version)" Scope="perUserOrMachine">
 
   <!--
@@ -37,21 +28,16 @@ on [ProductName], [UpgradeCode] or ProductVersion.
   </Property>
   
   <!--
-     Disable the repair/modify option from Add or Remove Program
-  <SetProperty Id="ARPNOMODIFY" Value="1" After="InstallValidate" Sequence="execute"/>
-  <SetProperty Id="ARPNOREPAIR" Value="1" After="InstallValidate" Sequence="execute"/>
-  -->
-
-  <!--
      Check the registry if we have an old NSIS local machine installation. We need the property NSIS_ALLUSERS
      to terminate the attempt to do a local machine installation with this installer
   -->
   <Property Id="NSIS_ALLUSERS">
      <RegistrySearch Id="NSISSearchLM" Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\$(var.NSISGuid)" Name="UninstallString" Type="raw" />
   </Property>
+
   <!--
-     Check the registry if we have an old NSIS current user installation. We need the property NSIS_CURRENTUSERS
-     to terminate the attempt to do a current machine installation with this installer
+     Check the registry if we have an old NSIS current user installation. We need the property 
+     NSIS_CURRENTUSERS to terminate the attempt to do a current machine installation with this installer
   -->
   <Property Id="NSIS_CURRENTUSERS">
      <RegistrySearch Id="NSISSearchCU" Root="HKCU" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\$(var.NSISGuid)" Name="UninstallString" Type="raw" />
@@ -59,9 +45,9 @@ on [ProductName], [UpgradeCode] or ProductVersion.
 
   <!-- 
      Initialize the property ASSISTANCE_USERS which sets the installation scope later in the UI. Only used
-     in WixUI_InstallDirSelectScope
-  -->
+     if WixUI_InstallDirSelectScope is used
   <Property Id="ASSISTANCE_USERS" Value= "cur"/>
+  -->
 
   <!--
      Set productname according to installation scope
@@ -103,15 +89,6 @@ on [ProductName], [UpgradeCode] or ProductVersion.
   -->
   <Launch Condition="(NSIS_CURRENTUSERS = &quot;&quot;) AND (NSIS_ALLUSERS = &quot;&quot;)" Message="A $(var.InstallName) installation with an incompatible installer was found. Please deinstall all instances of this version first." />
 
-  <!--
-     Use customized InstallDir UI. The whole component group is installed.
-     - WixUI_InstallDirSelectScope: allows select of "per user" or "per machine" install in a dialog
-     - WidUI_InstallDirMod: does "per user" installation. "per machine" install must be enforced with a command, disables repair
-       line parameter
-
-  <ui:WixUI Id="WixUI_InstallDirSelectScope" InstallDirectory="INSTALLDIR"/>
-  <ui:WixUI Id="WixUI_InstallDirMod" InstallDirectory="INSTALLDIR"/>
-  -->
   <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLDIR"/>
 
   <Feature Id="Complete" Title="$(var.InstallName) $(var.Version)" Description="The complete package" Display="expand" Level="1" ConfigurableDirectory="INSTALLDIR" AllowAbsent="no">
