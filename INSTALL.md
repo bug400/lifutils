@@ -18,6 +18,8 @@ the release comments, which Debian version is currently supported. To install th
 
      apt install ./lifutils_X.Y.Z_<architecture>.deb 
 
+**Note:**: This command installs the software package from a downloaded file, not from a repository. To obtain a new version of the software, you must download the corresponding deb package and install it using the command above. The previous program version will then be overwritten.
+
 Windows:
 
 There is an MSI installer file to safely install the LIFUTILS on Windows 10/11. There is no 32bit version any more. The installer only allows an installation for the current user and modifies/sets the PATH and LIFUTILSXROMDIR environment variables. The package can be removed in the "Apps and Features" section in the Windows Settings. The changes to the environment variables are then reset.
