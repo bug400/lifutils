@@ -18,7 +18,7 @@ the release comments, which Debian version is currently supported. To install th
 
      apt install ./lifutils_X.Y.Z_<architecture>.deb 
 
-**Note:**: This command installs the software package from a downloaded file, not from a repository. To obtain a new version of the software, you must download the corresponding deb package and install it using the command above. The previous program version will then be overwritten.
+**Note:** This command installs the software package from a downloaded file, not from a repository. To obtain a new version of the software, you must download the corresponding deb package and install it using the command above. The previous program version will then be overwritten.
 
 Windows:
 
