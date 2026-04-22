@@ -1,4 +1,4 @@
-LIFUTILS Installation instructions
+LIFUTILS Installation Instructions
 ==================================
 
 Index
@@ -14,7 +14,7 @@ Installation of the precompiled binaries
 LINUX:
 
 The releases section provides installers (.deb files) for Debian Linux and compatible distributions. See 
-the release comments, which Debian version is currently supported. To install the .deb file, issue the following command as root in the directory containing the installer file:
+the release comments which Debian version is currently supported. To install the .deb file, issue the following command as root in the directory containing the installer file:
 
      apt install ./lifutils_X.Y.Z_<architecture>.deb 
 
@@ -22,7 +22,7 @@ the release comments, which Debian version is currently supported. To install th
 
 Windows:
 
-There is an MSI installer file to safely install the LIFUTILS on Windows 10/11. There is no 32bit version any more. The installer only allows an installation for the current user and modifies/sets the PATH and LIFUTILSXROMDIR environment variables. The package can be removed in the "Apps and Features" section in the Windows Settings. The changes to the environment variables are then reset.
+There is an MSI installer file to safely install the LIFUTILS on Windows 10/11. There is no 32-bit version anymore. The installer only allows an installation for the current user and modifies/sets the PATH and LIFUTILSXROMDIR environment variables. The package can be removed in the "Apps and Features" section in the Windows Settings. The changes to the environment variables are then reset.
 
 Since there is no longer a Start Menu entry for lifutils, it is recommended that you create a link to the file
 
@@ -37,13 +37,13 @@ Version 2.0.1 had to switch to the Microsoft msiexec installer to ensure that li
 
 
 
-Mac OS:
+macOS:
 
 There is a package that installs the package under /usr/local. There is no
 need to set the LIFUTILSXROMDIR environment variable as long as the
 install location is not changed.
 
-Note: you get a message that the package cannot be opened because it is from
+Note: You get a message that the package cannot be opened because it is from
 an unidentified developer. Click on the "?" button in the message window to
 learn how to proceed.
 
@@ -52,11 +52,11 @@ create an uninstall script:
 
      bash /usr/local/share/lifutils/create_lifutils_removescript.sh > uninstall.sh
 
-The run the script uninstall.sh as administrator:
+Then run the script uninstall.sh as administrator:
 
      sudo bash ./uninstall.sh
 
-Due to security reasons each delete operation requires confirmation.
+Due to security reasons, each delete operation requires confirmation.
 
 
 
@@ -65,7 +65,7 @@ Build from scratch
 
 The LIFUTILS were migrated to the CMake build system. 
 
-Download the lifutils source package and follow the instruction in the
+Download the lifutils source package and follow the instructions in the
 build directories:
 
 * linux: Linux (Debian package tools)

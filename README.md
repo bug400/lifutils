@@ -14,39 +14,39 @@ Index
 Description
 -----------
 
-LIFUTILS are command line utilities to handle various LIF
+LIFUTILS are command-line utilities to handle various LIF
 (Hewlett Packard Logical Interchange Format) files and media images.
 
 Main features are:
 * Import or export files from a LIF image file to the local file system
-* Pack, label, initialize a LIF image file
-* Purge, rename files from a LIF image file
+* Pack, label, or initialize a LIF image file
+* Purge or rename files from a LIF image file
 * List directory if a LIF image file
 * Convert ASCII files to LIF text files and vice versa
 * Compile/decompile HP-41 program files
-* add LIF headers to certain raw file types (compiled HP-41 files, HP-41 ROM files)
-* output HP-41 SDATA-, KEY-, status- WALL-files as text
+* Add LIF headers to certain raw file types (compiled HP-41 files, HP-41 ROM files)
+* Output HP-41 SDATA-, KEY-, status- or WALL-files as text
 
 
 See the doc/readme.html file for more information about features and usage.
 
-Note: there is experimental support for the access of floppy devices to
-read and write HP9114 floppy disks under LINUX. Floppy disk support will 
+Note: There is experimental support for the access of floppy devices to
+read and write HP9114 floppy disks under Linux. Floppy disk support will 
 n o t work with USB floppy devices.
 
 
 Compatibility
 -------------
 
-The LIFUTILS were tested on LINUX, Windows 10 and mac OS.
+The LIFUTILS were tested on Linux, Windows 11 and mac OS.
 
 
 INSTALLATION
 ------------
 
-The [release](https://github.com/bug400/lifutils/releases) section provides precompiled binaries for LINUX (32 and 64bit), Windows (32 bit and 64 bit) and mac OS.
+The [release](https://github.com/bug400/lifutils/releases) section provides precompiled binaries for LINUX, Windows and mac OS (universal binary).
 
-See the [Installation Instructions](https://github.com/bug400/lifutils/blob/master/INSTALL.md) how to install.
+See the [installation instructions](https://github.com/bug400/lifutils/blob/master/INSTALL.md) how to install.
 
 
 License
