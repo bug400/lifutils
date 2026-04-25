@@ -17,9 +17,9 @@ LIF Utilities v2.0.0 Readme
 
 <H3><a name="LIFUTILS_OVERVIEW"></a>LIFUTILS Overview</H3>
 
-<p>The <em>LIFUTILS</em> are command line utilities to handle LIF files and LIF image files. LIF, the Logical Interchange Format was developed by Hewlett Packard as a standard mass storage format that can be used for interchange of files among various HP computer systems. Although the scope of application was much broader, the <em>LIFUTILS</em> are limited to LIF files and image files for the HP calculators HP-41, HP-71 and HP-75.</p>
+<p>The <em>LIFUTILS</em> are command line utilities to handle LIF files and LIF image files. LIF, the Logical Interchange Format was developed by Hewlett Packard as a standard mass storage format that can be used for interchange of files among various HP computer systems. Although the scope of application was much broader, the <em>LIFUTILS</em> are limited to LIF files and image files for the HP calculators HP-41, HP-71, and HP-75.</p>
 
-<p>During the changeover to program version 2.0, the individual utility programs were combined into a single program called <a href="html/lifutils.html">lifutils</a> for technical reasons. A <em>LIFUTILS</em> utility is now invoked by calling lifutils and specifying its name as the first parameter <em>PROGNAME</em> followed by all other parameters that are required by the utility. The parameter <em>PROGNAME</em> is case-insensitive which is important under Windows. The help text of the program lifutils shows which utilities were integrated. However, shell scripts are provided for Windows, Linux and macOS which, as before, allow a single utility to be called directly. Because of limitations of the Windows batch system it is not possible to use this scripts in Windows .bat or .cmd files.</p>
+<p>During the changeover to program version 2.0, the individual utility programs were combined into a single program called <a href="html/lifutils.html">lifutils</a> for technical reasons. An <em>LIFUTILS</em> utility is now invoked by calling lifutils and specifying its name as the first parameter <em>PROGNAME</em>, followed by all other parameters that are required by the utility. The parameter <em>PROGNAME</em> is case-insensitive which is important under Windows. The help text of the program lifutils shows which utilities were integrated. However, shell scripts are provided for Windows, Linux, and macOS which, as before, allow a single utility to be called directly. Because of limitations of the Windows batch system, it is not possible to use this scripts in Windows .bat or .cmd files.</p>
 
 <p>Thus, the utility <em>lifget</em> can bei either invoked with:</p>
 <pre>lifutils lifget hp41disk.dat VLBL vlbl.raw </pre>
@@ -30,27 +30,27 @@ LIF Utilities v2.0.0 Readme
 
 <p>The <a href="tutorial.html">tutorial</a> contains all the basic information you need to work with the <em>LIFUTILS</em>. You should read this document first!</p>
 
-<p>On Linux and mac OS you can use the <em>man</em> command to get the command reference document for each utility. HTML-documents of the man pages are linked to the command reference table below.</p>
+<p>On Linux and macOS you can use the <em>man</em> command to get the command reference document for each utility. HTML documents of the man pages are linked to the command reference table below.</p>
 
 <p>HP calculator enthusiasts may find interesting information in the comments at the start of some source code files.</p>
 
 <H3><a name="COMMAND_REFERENCE"></a>Command reference</H3>
 
-<p>The following table lists the available command line utilities in alphabetical order:</p>
+<p>The following table lists the available command-line utilities in alphabetical order:</p>
 
 <table border=0 cellspacing=0 cellpadding=2>
 <tr><th>Program</th><th>Description</th></tr>
-<tr><td><a href="html/barprt.html">barprt</a></td> <td>Diagnostic dump of a HP-41 intermediate barcode file</td></tr>
+<tr><td><a href="html/barprt.html">barprt</a></td> <td>Diagnostic dump of an HP-41 intermediate barcode file</td></tr>
 <tr><td><a href="html/barps.html">barps</a></td> <td>Convert an intermediate barcode file to PostScript</td></tr>
-<tr><td><a href="html/comp41.html">comp41</a></td><td>Compile a HP-41 program</td></tr>
-<tr><td><a href="html/decomp41.html">decomp41</a></td><td>Decompile a HP-41 program raw file</td></tr>
-<tr><td><a href="html/er41rom.html">er41rom</a></td ><td>convert a scrambled Eramco MLDL-OS rom file to an unpacked HP-41 rom file</td></tr>
-<tr><td><a href="html/hx41rom.html">hx41rom</a></td ><td>convert a packed HEPAX rom SDATA file to an unpacked HP-41 rom file</td></tr>
-<tr><td><a href="html/inp41.html">inp41</a></td><td>Translate a HP-41 hex program into a raw file</td></tr>
-<tr><td><a href="html/in71.html">in71</a></td><td>Read a file from a HP-71 via (e.g.) a RS232 interface</td></tr>
-<tr><td><a href="html/key41.html">key41</a></td><td>Display a HP-41 key definition file</td></tr>
-<tr><td><a href="html/lexcat71.html">lexcat71</a></td><td>Display main and text table information of a HP-71 lex file</td></tr>
-<tr><td><a href="html/lexcat75.html">lexcat75</a></td><td>Display information of a HP-75 lex file</td></tr>
+<tr><td><a href="html/comp41.html">comp41</a></td><td>Compile an HP-41 program</td></tr>
+<tr><td><a href="html/decomp41.html">decomp41</a></td><td>Decompile an HP-41 program raw file</td></tr>
+<tr><td><a href="html/er41rom.html">er41rom</a></td ><td>Convert a scrambled Eramco MLDL-OS ROM file to an unpacked HP-41 rom file</td></tr>
+<tr><td><a href="html/hx41rom.html">hx41rom</a></td ><td>Convert a packed HEPAX ROM SDATA file to an unpacked HP-41 rom file</td></tr>
+<tr><td><a href="html/inp41.html">inp41</a></td><td>Translate an HP-41 hex program into a raw file</td></tr>
+<tr><td><a href="html/in71.html">in71</a></td><td>Read a file from an HP-71 via (e.g.) an RS232 interface</td></tr>
+<tr><td><a href="html/key41.html">key41</a></td><td>Display an HP-41 key definition file</td></tr>
+<tr><td><a href="html/lexcat71.html">lexcat71</a></td><td>Display main and text table information of an HP-71 lex file</td></tr>
+<tr><td><a href="html/lexcat75.html">lexcat75</a></td><td>Display information of an HP-75 lex file</td></tr>
 <tr><td><a href="html/lifdir.html">lifdir</a></td><td>Print a directory of a LIF image file</td></tr>
 <tr><td><a href="html/liffix.html">liffix</a> </td><td>Fixes the header information of a LIF image file</td></tr>
 <tr><td><a href="html/lifget.html">lifget</a></td><td>Extract a single file from a LIF image file</td></tr>
@@ -63,28 +63,28 @@ LIF Utilities v2.0.0 Readme
 <tr><td><a href="html/lifput.html">lifput</a></td><td>Store a single file into a LIF image file</td></tr>
 <tr><td><a href="html/lifraw.html">lifraw</a> </td><td>Remove the LIF header from a LIF file</td></tr>
 <tr><td><a href="html/lifrename.html">lifrename</a> </td><td>Rename a file in a LIF image file</td></tr>
-<tr><td><a href="html/lifstat.html">lifstat</a> </td><td>Display LIF image file statstics, show which file contains a certain block</td></tr>
-<tr><td><a href="html/liftext.html">liftext</a></td><td>Decode a LIF file of type TEXt (LIF1) to an ASCII file</td></tr>
+<tr><td><a href="html/lifstat.html">lifstat</a> </td><td>Display LIF image file statistics and show which file contains a certain block</td></tr>
+<tr><td><a href="html/liftext.html">liftext</a></td><td>Decode a LIF file of type TEXT (LIF1) to an ASCII file</td></tr>
 <tr><td><a href="html/liftext75.html">liftext75</a></td><td>Decode a raw file of type HP-75 text into an ASCII file</td></tr>
-<tr><td><a href="html/outp41.html">outp41</a></td><td>Translate a HP-41 program raw file into hex</td></tr>
-<tr><td><a href="html/out71.html">out71</a></td><td>Send a file to a HP-71 via (e.g.) a RS232 interface</td></tr>
-<tr><td><a href="html/prog41bar.html">prog41bar</a> </td><td>Produce an intermediate barcode file from a HP-41 program raw file</td></tr>
-<tr><td><a href="html/raw41lif.html">raw41lif</a></td><td>convert a HP-41 program raw file into a lif file</td></tr>
-<tr><td><a href="html/regs41.html">regs41</a></td><td>Display a HP-41 raw file as 'registers' (for analysis of unknown files)</td></tr>
-<tr><td><a href="html/rom41cat.html">rom41cat</a></td><td>Display list of function names in an unscrambled HP-41 rom file</td></tr>
-<tr><td><a href="html/rom41er.html">rom41er</a></td ><td>convert an unscrambled HP-41 rom file to a scrambled Eramco MLDL-OS rom file</td></tr>
-<tr><td><a href="html/rom41hx.html">rom41hx</a></td ><td>convert an unscrambled HP-41 rom file to a packed HEPAX rom SDATA file </td></tr>
-<tr><td><a href="html/rom41lif.html">rom41lif</a></td ><td>convert an unscrambled HP-41 rom file to an SDATA file that can be used to update the HP-41 CL</td></tr>
+<tr><td><a href="html/outp41.html">outp41</a></td><td>Translate an HP-41 program raw file into hex</td></tr>
+<tr><td><a href="html/out71.html">out71</a></td><td>Send a file to an HP-71 via (e.g.) a RS232 interface</td></tr>
+<tr><td><a href="html/prog41bar.html">prog41bar</a> </td><td>Produce an intermediate barcode file from an HP-41 program raw file</td></tr>
+<tr><td><a href="html/raw41lif.html">raw41lif</a></td><td>Convert an HP-41 program raw file into a LIF file</td></tr>
+<tr><td><a href="html/regs41.html">regs41</a></td><td>Display an HP-41 raw file as 'registers' (for analysis of unknown files)</td></tr>
+<tr><td><a href="html/rom41cat.html">rom41cat</a></td><td>Display a list of function names in an unscrambled HP-41 ROM file</td></tr>
+<tr><td><a href="html/rom41er.html">rom41er</a></td ><td>Convert an unscrambled HP-41 ROM file to a scrambled Eramco MLDL-OS ROM file</td></tr>
+<tr><td><a href="html/rom41hx.html">rom41hx</a></td ><td>Convert an unscrambled HP-41 ROM file to a packed HEPAX rom SDATA file </td></tr>
+<tr><td><a href="html/rom41lif.html">rom41lif</a></td ><td>Convert an unscrambled HP-41 ROM file to an SDATA file that can be used to update the HP-41 CL</td></tr>
 <tr><td><a href="html/sdata.html">sdata</a></td><td>Interpret a raw SDATA file</td></tr>
 <tr><td><a href="html/sdatabar.html">sdatabar</a> </td><td>Convert a raw SDATA file into an intermediate barcode file</td></tr>
 <tr><td><a href="html/textlif.html">textlif</a></td><td>Convert an ASCII file to a LIF file</td></tr>
-<tr><td><a href="html/textlif75.html">textlif75</a></td><td>Convert an ASCII file to a HP-75 text file</td></tr>
+<tr><td><a href="html/textlif75.html">textlif75</a></td><td>Convert an ASCII file to an HP-75 text file</td></tr>
 <tr><td><a href="html/stat41.html">stat41</a></td><td>Display a raw HP-41 'status' file</td></tr>
 <tr><td><a href="html/wall41.html">wall41</a></td><td>Extract information from a raw HP-41 Write-All file</td></tr>
 <tr><td><a href="html/wcat41.html">wcat41</a></td><td>Display a catalogue of the contents of a raw HP-41 Write-All file</td></tr>
 </table>
 </p>
-<p>Note: <a href="html/lifdump.html">lifdump</a> and <a href="html/lifimage.html">lifimage</a> are still stand-alone programs. The are only available for Linux.</p>
+<p>Note: <a href="html/lifdump.html">lifdump</a> and <a href="html/lifimage.html">lifimage</a> are still stand-alone programs. They are only available for Linux.</p>
 
 <H3><a name="INCOMPATIBILITIES"></a>Incompatibilities with version 1.x</H3>
 
