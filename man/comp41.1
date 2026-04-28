@@ -1,6 +1,6 @@
 .TH comp41 1 01-November-2018 "LIF Utilitites" "LIF Utilities"
 .SH NAME
-comp41 \- compile a HP41C user\-language (FOCAL) program
+comp41 \- compile an HP41C user\-language (FOCAL) program
 .SH SYNOPSIS
 .B lifutils comp41
 [\-l] [\-g] [\-s] [\-h] [\-f
@@ -25,12 +25,12 @@ comp41 \- compile a HP41C user\-language (FOCAL) program
 .B lifutils comp41 \-?
 .SH DESCRIPTION
 .B comp41
-compiles a text file containing a HP-41 user program (FOCAL) from standard input or the file specified by the
+compiles a text file containing an HP-41 user program (FOCAL) from standard input or the file specified by the
 command line parameter
 .I INPUTFILE
 and  writes the byte code to a LIF or binary raw file (default). 
 .PP
-A 
+An 
 .I XROMFILE
 consists of a number of lines, each consisting of 2 decimal numbers and one or two
 strings (containing no whitespace), in that order, separated by whitespace. 
@@ -46,15 +46,15 @@ is necessary to compile commands of module or peripheral functions.
 .SH INPUT FILE FORMAT
 Prefixes are case-insensitive:  'rcl 00'  same as  'RCL 00'.
 .PP
-Postfixes are case-sensitive:  'lbl a'  different than 'lbl A'.
+Postfixes are case-sensitive:  'lbl a'  differs from 'lbl A'.
 .PP
 Append text is allowed using:  '>"text"' , ' "|-text" ', or '"\\-text"'.
 .PP
-Text must be either encosed in '"' or "'". If the text contains an enclosing character, it must be escaped with  '\\'.
+Text must be either enclosed in '"' or "'". If the text contains an enclosing character, it must be escaped with  '\\'.
 .PP
 The following Unicode characters are translated to the HP-41 FOCAL character set: text append (hex 0x251c), 
-greek small mu (hex 0x03bc), angle (hex 0x2280), not equal to (hex 0x2260), greek capital sigma (hex 0x03A3).
-and may be used in text and instructions.
+Greek small mu (hex 0x03bc), angle (hex 0x2280), not equal to (hex 0x2260), Greek capital sigma (hex 0x03A3).
+They can be used in text and instructions.
 .PP
 Synthetic instructions are allowed: 'rcl M', 'sto R'
 .PP
@@ -78,7 +78,7 @@ Output source listing to standard error
 Output byte code to standard error, requires \-s.
 .TP
 .I \-f LIFFILENAME
-Create a LIF file instead of a raw file on standard output. A valid lif file name must be provided, which must apply the rules of HP-71 file names: capital letters and digits, starting with a capital letter.
+Create a LIF file instead of a raw file on standard output. A valid LIF file name must be provided, which must apply the rules of HP-71 file names: capital letters and digits, starting with a capital letter.
 .TP
 .I \-x XROMFILE
 Use
@@ -98,9 +98,9 @@ Print a message giving the program usage to standard error.
 .TP
 .I xroms/*
 xrom function definition files. Use the environment variable LIFUTILSXROMDIR to point to the location of this
-directory. On Linux the default location is /usr/share/lifutils/xroms, if the variable is not specified.
+directory. On Linux the default location is /usr/share/lifutils/xroms if the variable is not specified.
 .SH REFERENCES
-The format of an HP41C program is documented in many books. Amongst the 
+The format of an HP41C program is documented in many books. Among the 
 most useful references are
 .I Extend Your HP41 (W. A. C. Mier-Jedrzejowicz)
 and
@@ -111,7 +111,7 @@ If
 is a text file with a FOCAL program that uses functions of the HP-IL and time module and
 .I
 hp41prog.dat
-is a LIF image file
+is a LIF image file,
 then
 .PP
 .B cat prog1.txt | lifutils comp41 \-x hpil \-x time \-f PROG1 | lifutils lifput hp41prog.dat 
@@ -127,4 +127,4 @@ Unknown.
 .SH AUTHOR
 .B comp41
 was written using code of the User-Code File Converter/Compiler/De-compiler/Bar-Code Generator  Version 1.31
-Copyright (c) Leo Duran, 2000-2023 and has been placed under the GNU Public License version 2.0
+Copyright (c) Leo Duran, 2000-2023 and has been placed under the GNU Public License version 2.0.

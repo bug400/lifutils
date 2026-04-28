@@ -39,25 +39,27 @@ on the HP41.
 .SH OPTIONS
 .TP
 .I \-r
-Skip an existing LIF header of the input file. This is mandatory, if the input file is a LIF instead of a raw file.
+Skip an existing LIF header of the input file. This is mandatory if the input file is a LIF instead of a raw file.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.
 
 .SH REFERENCES
-The format of an HP41 Write All file is not well documented. However it 
+The format of an HP41 Write All file is not well documented. However, it 
 is simply a dump of all the HP41 user memory (excluding extended memory) 
 in the logical order. The data stored in HP41 User Memory is documented 
-in most books on synthetic programming, for example the  Synthetic 
+in most books on synthetic programming, for example, the  Synthetic 
 Programming Quick Reference Guide by J. Smith.
 .SH EXAMPLES
 To get a catalogue of a raw HP41 Write All file called 
 .I all1.w41 ,
 type : 
+.PP
 .B lifutils wcat41 < all1.w41
+.PP
 .SH SEE ALSO
 .B wall41(1)
 .SH AUTHOR
 .B wcat41
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
-under the GNU Public License version 2.0
+under the GNU Public License version 2.0.

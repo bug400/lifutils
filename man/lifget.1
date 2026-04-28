@@ -1,6 +1,6 @@
 .TH lifget 1 03-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
-lifget \- extract a file from a LIF diks image file
+lifget \- extract a file from a LIF disk image file
 .SH SYNOPSIS
 .B lifutils lifget 
 [\-r] [\-b] [\-l] [\-p]
@@ -21,13 +21,13 @@ from  the LIF image file
 .I LIFIMAGE.
 .PP
 .I LIFFILENAME
-is case\-sensitive and must be given in upper case. If 
+is case\-sensitive and must be given in uppercase. If 
 .B lifget
-is executed with 3 arguments after the options then the third argument 
+is executed with 3 arguments after the options, then the third argument 
 .I OUTPUTFILE
 is 
 used as the name of the file that the LIF file is copied to. If 
-only 2 arguments are given then the file is copied to standard output.
+only 2 arguments are given, then the file is copied to standard output.
 .SH OPTIONS
 .TP
 .I \-r
@@ -36,22 +36,22 @@ record from the LIF disk directory from the beginning of the output file.
 .TP
 .I \-b
 Copy the blocks occupied by the file (including the entire last block) 
-rather then the number of bytes given by the file length. This option has 
+rather than the number of bytes given by the file length. This option has 
 no meaning for file types where the file is always assumed to occupy 
 complete blocks.
 .TP
 .I \-l
-Relax file name checking, allow underscores in filenames.
+Relax file name checking. Allow underscores in filenames.
 .TP
 .I \-p
-Read file from a floppy disk with a LIF file system. Note: this option is only supported on LINUX. Specify the floppy device instead of the lif-image-filename. See the LIFUTILS tutorial for details.
+Read the file from a floppy disk with a LIF file system. Note: this option is only supported on LINUX. Specify the floppy device instead of the lif-image-filename. See the LIFUTILS tutorial for details.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.
 .SH EXAMPLES
 If 
 .I disk1.dat
-is a LIF image file containing a HP-41 SDATA file called 
+is a LIF image file containing an HP-41 SDATA file called 
 .I TEST1
 then 
 .PP
@@ -61,7 +61,7 @@ will copy the file TEST1 from the LIF image to the LIF file
 .I lif_test_file.d41.
 .SH REFERENCES
 The LIF disk directory format is documented in the
-.I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
+.I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard),
 with further details (particularly HP41 and HP75 file types) in the 
 .I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith)
 .SH BUGS
@@ -69,4 +69,4 @@ Not all file types have been tested.
 .SH AUTHOR
 .B lifget
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
-under the GNU Public License version 2.0
+under the GNU Public License version 2.0.

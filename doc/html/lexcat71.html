@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Dec  9 12:27:48 2024 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Tue Apr 28 21:55:20 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,7 +36,7 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">lexcat71 -
+<p style="margin-left:9%; margin-top: 1em">lexcat71 -
 display information about HP71 LEX files</p>
 
 <h2>SYNOPSIS
@@ -44,15 +44,15 @@ display information about HP71 LEX files</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 lexcat71</b> [-r] <i>INPUTFILE</i> [&gt; <i>Output file</i>
 ]</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 lexcat71</b> [-r] &lt; <i>Input file</i> [&gt; <i>Output
 file</i> ]</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 lexcat71 -?</b></p>
 
 <h2>DESCRIPTION
@@ -60,84 +60,95 @@ lexcat71 -?</b></p>
 </h2>
 
 
-
-<p style="margin-left:11%; margin-top: 1em"><b>lexcat71</b>
-reads a HP-71 LIF or raw lex file from standard input or the
-file specified by the command line parameter
+<p style="margin-left:9%; margin-top: 1em"><b>lexcat71</b>
+reads an HP-71 LIF or raw lex file from standard input or
+the file specified by the command line parameter
 <i>INPUTFILE</i> and displays the following information on
 standard output: <br>
 LEX file id <br>
-for each of existing lex tables:</p>
+for each of the existing lex tables:</p>
 
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="1%">
 
 
 <p>-</p></td>
 <td width="3%"></td>
-<td width="85%">
+<td width="79%">
 
 
-<p>lowest token ID</p></td></tr>
+<p>lowest token ID</p></td>
+<td width="8%">
+</td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="1%">
 
 
 <p>-</p></td>
 <td width="3%"></td>
-<td width="85%">
+<td width="79%">
 
 
-<p>highest token ID</p></td></tr>
+<p>highest token ID</p></td>
+<td width="8%">
+</td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="1%">
 
 
 <p>-</p></td>
 <td width="3%"></td>
-<td width="85%">
+<td width="79%">
 
 
-<p>existence of speed table</p></td></tr>
+<p>existence of speed table</p></td>
+<td width="8%">
+</td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="1%">
 
 
 <p>-</p></td>
 <td width="3%"></td>
-<td width="85%">
+<td width="79%">
 
 
-<p>existence of message table</p></td></tr>
+<p>existence of message table</p></td>
+<td width="8%">
+</td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="1%">
 
 
 <p>-</p></td>
 <td width="3%"></td>
-<td width="85%">
+<td width="79%">
 
 
-<p>existence of poll handler</p></td></tr>
+<p>existence of poll handler</p></td>
+<td width="8%">
+</td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="1%">
 
 
 <p>-</p></td>
 <td width="3%"></td>
-<td width="85%">
+<td width="79%">
 
 
 <p>list of keywords with token number and characterization
-nibble</p> </td></tr>
+nibble</p> </td>
+<td width="8%">
+</td></tr>
 </table>
 
 <h2>OPTIONS
@@ -148,26 +159,26 @@ nibble</p> </td></tr>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p style="margin-top: 1em"><i>-r</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p style="margin-top: 1em">Skip an existing LIF header of
-the input file. This is mandatory, if the input file is a
-LIF instead of a raw file.</p></td></tr>
+the input file. This is mandatory if the input file is a LIF
+instead of a raw file.</p></td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-?</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p>Print a message giving the program usage to standard
@@ -179,7 +190,7 @@ error.</p> </td></tr>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The LEX file
+<p style="margin-left:9%; margin-top: 1em">The LEX file
 format is documented in the <i>HP-71 IDS Volume 1, chapter
 6.</i></p>
 
@@ -188,14 +199,14 @@ format is documented in the <i>HP-71 IDS Volume 1, chapter
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">If
+<p style="margin-left:9%; margin-top: 1em">If
 <i>mem.lex</i> is a raw file containing an HP71 lex file,
 then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>cat mem.lex
-| lifutils lexcat71</b></p>
+<p style="margin-left:9%; margin-top: 1em"><b>cat mem.lex |
+lifutils lexcat71</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will display
+<p style="margin-left:9%; margin-top: 1em">will display
 information about the LEX file <b>mem.lex</b></p>
 
 <h2>AUTHOR
@@ -203,11 +214,10 @@ information about the LEX file <b>mem.lex</b></p>
 </h2>
 
 
-
-<p style="margin-left:11%; margin-top: 1em"><b>lexcat71</b>
+<p style="margin-left:9%; margin-top: 1em"><b>lexcat71</b>
 was written by Joachim Siebold, bug400@gmx.de using code
 from Tony Duell, ard@p850ug1.demon.co.uk and has been placed
-under the GNU Public License version 2.0</p>
+under the GNU Public License version 2.0.</p>
 <hr>
 </body>
 </html>

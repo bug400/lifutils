@@ -21,7 +21,7 @@ textlif \- convert an ASCII file to a LIF text file
 .SH DESCRIPTION
 .B textlif
 generates a LIF file from a text file.
-The program reads the text from standard input or the file specified by the command line paramter 
+The program reads the text from standard input or the file specified by the command\-line parameter 
 .I INPUTFILE
 and writes the LIF file header and the LIF formatted text to
 standard output. This file type can be used on the HP-71 (TEXT) or
@@ -40,15 +40,15 @@ command, before being copied to extended memory with the
 READFL
 command.
 .PP
-Note: empty (zero length) lines are ignored when transferring from a mass storage device to the HP-41.
+Note: Empty (zero length) lines are ignored when transferring from a mass storage device to the HP-41.
 .SH OPTIONS
 .TP
 .I \-s
-This option specifies the file size in registers which shall be allocated 
+This option specifies the file size in registers thath shall be allocated 
 for the resulting file in the HP-41 extended memory or the HEPAX file system. 
-If a value of 0 is specified the number of register is determined from the 
-size of the input text file.  According to the HEPAX documentation the 
-maximum file size is 577 registers. The minimun and allocated number of registers
+If a value of 0 is specified, the number of registers is determined from the 
+size of the input text file.  According to the HEPAX documentation, the 
+maximum file size is 577 registers. The minimum and allocated number of registers
 is printed to standard error.
 .TP
 .I \-l
@@ -63,7 +63,7 @@ HP71 Software Internal Design Specifications Volume 1 (Hewlett-Packard)
 .SH EXAMPLES
 If
 .I demo.txt
-is an ASCII text file 
+is an ASCII text file, 
 then
 .PP
 .B cat demo.txt | lifutils textlif DEMO | lifutils lifput lifimage.dat
@@ -76,4 +76,4 @@ into the LIF image file
 .B textlif
 was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, 
 ard@p850ug1.demon.co.uk and has been placed 
-under the GNU Public License version 2.0
+under the GNU Public License version 2.0.

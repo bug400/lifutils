@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Dec  9 12:27:49 2024 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Tue Apr 28 21:55:21 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,7 +36,7 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">lifstat - a
+<p style="margin-left:9%; margin-top: 1em">lifstat - a
 program to display the properties of a LIF image file</p>
 
 <h2>SYNOPSIS
@@ -44,16 +44,16 @@ program to display the properties of a LIF image file</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 lifstat</b> [-p] <i>LIFIMAGE</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 lifstat</b> [-p] <i>LIFIMAGE BLOCKNUMBER</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 lifstat</b> [-p] <i>LIFIMAGE CYLINDER HEAD SECTOR</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 lifstat -?</b></p>
 
 <h2>DESCRIPTION
@@ -61,7 +61,7 @@ lifstat -?</b></p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifstat</b>
+<p style="margin-left:9%; margin-top: 1em"><b>lifstat</b>
 is a program to display the block usage of a LIF image file.
 If <b>lifstat</b> is run with no arguments other than the
 name of the LIF image file, then 2 lines are printed to
@@ -70,24 +70,24 @@ directory and the user file data. The blocks are specified
 both by their block number and by their cylinder/head/sector
 address.</p>
 
-<p style="margin-left:11%; margin-top: 1em">If
+<p style="margin-left:9%; margin-top: 1em">If
 <b>lifstat</b> is run with one additional argument, then
 that argument is taken as a logical block number. A single
 line is written to standard output giving that block number,
-the equivalent cylinder/head/sector address and the file
+the equivalent cylinder/head/sector address, and the file
 name of the file that contains that block.</p>
 
-<p style="margin-left:11%; margin-top: 1em">If
+<p style="margin-left:9%; margin-top: 1em">If
 <b>lifstat</b> is run with 3 additional arguments, then
-these are taken to be the cylinder, head and sector numbers
+these are taken to be the cylinder, head, and sector numbers
 (in that order) of a block on the LIF image file. The
 program then behaves as if one argument was given.</p>
 
-<p style="margin-left:11%; margin-top: 1em">If the block
+<p style="margin-left:9%; margin-top: 1em">If the block
 number is part of the volume label or directory, or if it is
-not currently in use, then the &rsquo;file name&rsquo; is
-reported as <i>Volume Label, System 3000 block,
-directory</i> or <i>unused</i> as appropriate.</p>
+not currently in use, then the file name is reported as
+<i>Volume Label, System 3000 block, directory</i> or
+<i>unused</i> , as appropriate.</p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
@@ -97,28 +97,28 @@ directory</i> or <i>unused</i> as appropriate.</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p style="margin-top: 1em"><i>-p</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
-<p style="margin-top: 1em">Print summary of LIF file system
-stats on a floppy disk. Note: this option is only supported
-on LINUX. Specify the floppy device instead of the
+<p style="margin-top: 1em">Print a summary of LIF file
+system stats on a floppy disk. Note: this option is only
+supported on LINUX. Specify the floppy device instead of the
 lif-image-filename. See the LIFUTILS tutorial for
 details.</p> </td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-?</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p>Print a message giving program usage to standard error
@@ -130,20 +130,20 @@ and exit.</p></td></tr>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">If
+<p style="margin-left:9%; margin-top: 1em">If
 <i>disk.dat</i> is a LIF image file, then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 lifstat disk.dat</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will write a
+<p style="margin-left:9%; margin-top: 1em">will write a
 message to standard output giving the start and end blocks
 of the directory and user data. Similarly</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 lifstat disk.dat 37</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will output the
+<p style="margin-left:9%; margin-top: 1em">will output the
 file name of the file containing block 37</p>
 
 <h2>REFERENCES
@@ -151,9 +151,9 @@ file name of the file containing block 37</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The format of a
-LIF disk directory is given in the <i>HP-IL Interface Owners
-Manual for the HP-71 (Hewlett Packard)</i></p>
+<p style="margin-left:9%; margin-top: 1em">The format of a
+LIF disk directory is given in the <i>HP-IL Interface
+Owner&rsquo;s Manual for the HP-71 (Hewlett Packard)</i></p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>
@@ -161,9 +161,9 @@ Manual for the HP-71 (Hewlett Packard)</i></p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><i><b>lifstat</b></i>
+<p style="margin-left:9%; margin-top: 1em"><i><b>lifstat</b></i>
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has
-been placed under the GNU Public License version 2.0</p>
+been placed under the GNU Public License version 2.0.</p>
 <hr>
 </body>
 </html>

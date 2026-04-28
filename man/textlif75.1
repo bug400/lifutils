@@ -1,6 +1,6 @@
 .TH textlif75 1 07-November-2024 "LIF Utilitites" "LIF Utilities"
 .SH NAME
-textlif75 \- convert an ASCII file to a HP-75 text file
+textlif75 \- convert an ASCII file to an HP-75 text file
 .SH SYNOPSIS
 .B lifutils textlif75
 [\-n]
@@ -24,24 +24,24 @@ generates a text file for the HP-75.
 The program reads plain text from standard input or the file specified by the command line parameter
 .I INPUTFILE
 and writes the LIF file header followed by the converted HP-75 text file to standard output. 
-This file type can be used on the HP-75 only. The maximum line length of this file type is 255 characters excluding end of line char(s). 
+This file type can be used on the HP-75 only. The maximum line length of this file type is 255 characters, excluding end-of-line char(s). 
 .B textlif75 
 adds a line numbering starting with zero with an increment of one.
 .SH OPTIONS
 .TP
 .I \-n
-Get the linenumbering from the input file. The line numbers must be the first token in each line of the input file. They must be in the range 0-9999 and in consecutive order. Exactly one space seperates the line number from the following text of the line.
+Get the line numbering from the input file. The line numbers must be the first token in each line of the input file. They must be in the range 0-9999 and in consecutive order. Exactly one space separates the line number from the following text of the line.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.
 .SH REFERENCES
-The HP text file format is documented in page 107 and 111 of the
+The HP text file format is documented on pages 107 and 111 of the
 .I
 HP75 Description and Entry Points documentation.
 .SH EXAMPLES
 If
 .I demo.txt
-is an ASCII text file 
+is an ASCII text file,
 then
 .PP
 .B cat demo.txt | lifutils textlif75 DEMO | lifutils lifput lifimage.dat
@@ -54,4 +54,4 @@ into the LIF image file
 .B textlif
 was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, 
 ard@p850ug1.demon.co.uk and has been placed 
-under the GNU Public License version 2.0
+under the GNU Public License version 2.0.

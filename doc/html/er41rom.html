@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Dec  9 12:27:48 2024 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Tue Apr 28 21:55:20 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,7 +36,7 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">er41rom -
+<p style="margin-left:9%; margin-top: 1em">er41rom -
 unscramble an Eramco ROM file</p>
 
 <h2>SYNOPSIS
@@ -44,15 +44,15 @@ unscramble an Eramco ROM file</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 er41rom</b> [-r] <i>INPUTFILE</i> &gt; <i>Output
 file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 er41rom</b> [-r] &lt; <i>Input file</i> &gt; <i>Output
 file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 er41rom -?</b></p>
 
 <h2>DESCRIPTION
@@ -60,20 +60,20 @@ er41rom -?</b></p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The Eramco
+<p style="margin-left:9%; margin-top: 1em">The Eramco
 MLDL-OS ROM set can save HP41 ROM images to disk, and the
 file format used has become a de facto standard for such
-images. It stores 4 10 bit HP41 words in 5 bytes of the
-file. A 4K ROM dump is thus stored in a 5120 byte file.</p>
+images. It stores 4 10-bit HP41 words in 5 bytes of the
+file. A 4K ROM dump is thus stored in a 5120-byte file.</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>er41rom</b>
-unscrambles such a raw or LIF rom file, storing each HP41 10
-bit word in 2 bytes of the output file, and therefore a 4K
-image takes up 8192 bytes when unscrambled. The resulting
+<p style="margin-left:9%; margin-top: 1em"><b>er41rom</b>
+unscrambles such a raw or LIF ROM file, storing each HP41
+10-bit word in 2 bytes of the output file, and therefore a
+4K image takes up 8192 bytes when unscrambled. The resulting
 output file, although larger, is easier to process with
 other programs.</p>
 
-<p style="margin-left:11%; margin-top: 1em">The input is
+<p style="margin-left:9%; margin-top: 1em">The input is
 either read from standard input or the file specified by the
 command line parameter <i>INPUTFILE.</i></p>
 
@@ -85,26 +85,26 @@ command line parameter <i>INPUTFILE.</i></p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p style="margin-top: 1em"><i>-r</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p style="margin-top: 1em">Skip an existing LIF header of
-the input file. This is mandatory, if the input file is a
-LIF instead of a raw file.</p></td></tr>
+the input file. This is mandatory if the input file is a LIF
+instead of a raw file.</p></td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-?</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p>Print a message giving the program usage to standard
@@ -116,14 +116,14 @@ error.</p> </td></tr>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">If
-<i>myrom.xm41</i> is an HP41 rom image, produced by the
+<p style="margin-left:9%; margin-top: 1em">If
+<i>myrom.xm41</i> is an HP41 ROM image, produced by the
 Eramco MLDL-OS and stored in a file, then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 er41rom &lt; myrom.xm41 &gt; myrom.rom</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will unscramble
+<p style="margin-left:9%; margin-top: 1em">will unscramble
 the image and store the result in <i>myrom.rom</i></p>
 
 <h2>SEE ALSO
@@ -132,7 +132,7 @@ the image and store the result in <i>myrom.rom</i></p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><i><b>rom41cat(1)</b></i></p>
+<p style="margin-left:9%; margin-top: 1em"><i><b>rom41cat(1)</b></i></p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>
@@ -140,7 +140,7 @@ the image and store the result in <i>myrom.rom</i></p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><i><b>er41rom</b></i>
+<p style="margin-left:9%; margin-top: 1em"><i><b>er41rom</b></i>
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has
 been placed under the GNU Public License version 2.0</p>
 <hr>

@@ -20,13 +20,13 @@ lexcat71 \- display information about HP71 LEX files
 .B lifutils lexcat71 \-?
 .SH DESCRIPTION
 .B lexcat71
-reads a HP-71 LIF or raw lex file from standard input or the file specified by the command line parameter
+reads an HP-71 LIF or raw lex file from standard input or the file specified by the command line parameter
 .I INPUTFILE
 and displays the following information on standard output:
 .TP  4 
 LEX file id
 .TP  4 
-for each of existing lex tables:
+for each of the existing lex tables:
 .PP
 .IP \- 3  
 lowest token ID
@@ -43,7 +43,7 @@ list of keywords with token number and characterization nibble
 .SH OPTIONS
 .TP
 .I \-r
-Skip an existing LIF header of the input file. This is mandatory, if the input file is a LIF instead of a raw file.
+Skip an existing LIF header of the input file. This is mandatory if the input file is a LIF instead of a raw file.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.
@@ -63,4 +63,4 @@ will display information about the LEX file
 .B lexcat71
 was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, 
 ard@p850ug1.demon.co.uk and has been placed 
-under the GNU Public License version 2.0
+under the GNU Public License version 2.0.

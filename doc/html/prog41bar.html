@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Dec  9 12:27:49 2024 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Tue Apr 28 21:55:21 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,8 +36,8 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">prog41bar -
-convert a HP-41 program raw file into an intermediate
+<p style="margin-left:9%; margin-top: 1em">prog41bar -
+convert an HP-41 program raw file into an intermediate
 barcode file</p>
 
 <h2>SYNOPSIS
@@ -45,15 +45,15 @@ barcode file</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 prog41bar</b> [-r] <i>INPUTFILE</i> <b>&gt;</b> <i>Output
 file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 prog41bar</b> [-r] &lt; <i>Input file</i> <b>&gt;</b>
 <i>Output file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 prog41bar -?</b></p>
 
 <h2>DESCRIPTION
@@ -62,13 +62,13 @@ prog41bar -?</b></p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>prog41bar</b>
+<p style="margin-left:9%; margin-top: 1em"><b>prog41bar</b>
 is a program that reads a HP-41 program raw file from
 standard input or the file specified by the parameter
 <i>INPUTFILE</i> and writes the corresponding intermediate
 barcode file to standard output.</p>
 
-<p style="margin-left:11%; margin-top: 1em">The output of
+<p style="margin-left:9%; margin-top: 1em">The output of
 <b>prog41bar</b> can be piped to a suitable barcode printing
 program such as <b>barps</b></p>
 
@@ -80,26 +80,26 @@ program such as <b>barps</b></p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p style="margin-top: 1em"><b><i>-r</i></b></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p style="margin-top: 1em">Skip an existing LIF header of
-the input file. This is mandatory, if the input file is a
-LIF instead of a raw file.</p></td></tr>
+the input file. This is mandatory if the input file is a LIF
+instead of a raw file.</p></td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-?</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p>Print a message giving the program usage to standard
@@ -111,11 +111,11 @@ error.</p> </td></tr>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The format of
-HP41 barcode is given in the book <i>Creating your own HP41
-Barcode (Hewlett-Packard)</i></p>
+<p style="margin-left:9%; margin-top: 1em">The format of
+the HP41 barcode is given in the book <i>Creating your own
+HP41 Barcode (Hewlett-Packard)</i></p>
 
-<p style="margin-left:11%; margin-top: 1em">The format of
+<p style="margin-left:9%; margin-top: 1em">The format of
 the intermediate barcode file written by sdatabar is given
 in <i>barcode(5)</i></p>
 
@@ -124,16 +124,16 @@ in <i>barcode(5)</i></p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">If
-<i>prog1.raw</i> is a HP-41 program raw file and
-<i>postscript</i> is a postscript printer then</p>
+<p style="margin-left:9%; margin-top: 1em">If
+<i>prog1.raw</i> is an HP-41 program raw file and
+<i>postscript</i> is a PostScript printer then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 prog41bar &lt; prog1.raw | lifutils barps &rsquo;Program
 1&rsquo; | lpr -P postscript</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will print that
-file as HP-41 barcode on the postscript printer.</p>
+<p style="margin-left:9%; margin-top: 1em">will print that
+file as HP-41 barcode on the PostScript printer.</p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>
@@ -141,9 +141,9 @@ file as HP-41 barcode on the postscript printer.</p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>prog41bar</b>
+<p style="margin-left:9%; margin-top: 1em"><b>prog41bar</b>
 was written by Tony Duell, ard@p850ug1.demon.co.uk, and has
-been placed under the GNU Public License version 2.0</p>
+been placed under the GNU Public License version 2.0.</p>
 <hr>
 </body>
 </html>

@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Dec  9 12:27:50 2024 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Tue Apr 28 21:55:22 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,7 +37,7 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">wcat41 - list
+<p style="margin-left:9%; margin-top: 1em">wcat41 - list
 the contents of a raw HP41 Write All file</p>
 
 <h2>SYNOPSIS
@@ -45,16 +45,16 @@ the contents of a raw HP41 Write All file</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 wcat41</b> [-r] <i>INPUTFILE</i> [&gt; <i>Output file</i>
 ]</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 wcat41</b> [-r] &lt; <i>Input file</i> [&gt; <i>Output
 file</i> ]</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
-wcat -?</b></p>
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils wcat
+-?</b></p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -62,23 +62,23 @@ wcat -?</b></p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b><i>wcat41</i></b>
+<p style="margin-left:9%; margin-top: 1em"><b><i>wcat41</i></b>
 reads an HP41 Write All file from standard input or the file
 specified by the command line parameter <i>INPUTFILE.</i> It
 then writes to standard output the following information
 :</p>
 
-<p style="margin-left:11%; margin-top: 1em">The SIZE
-(number of user data registers) and the location of the
-first statistical register.</p>
+<p style="margin-left:9%; margin-top: 1em">The SIZE (number
+of user data registers) and the location of the first
+statistical register.</p>
 
-<p style="margin-left:11%; margin-top: 1em">The number of
+<p style="margin-left:9%; margin-top: 1em">The number of
 KARs (Key Assignment Registers) found.</p>
 
-<p style="margin-left:11%; margin-top: 1em">The ID and size
+<p style="margin-left:9%; margin-top: 1em">The ID and size
 of any buffers.</p>
 
-<p style="margin-left:11%; margin-top: 1em">Global labels
+<p style="margin-left:9%; margin-top: 1em">Global labels
 (and ENDs) of user programs, in a format similar to <i>CAT
 1</i> on the HP41.</p>
 
@@ -90,26 +90,26 @@ of any buffers.</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p style="margin-top: 1em"><i>-r</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p style="margin-top: 1em">Skip an existing LIF header of
-the input file. This is mandatory, if the input file is a
-LIF instead of a raw file.</p></td></tr>
+the input file. This is mandatory if the input file is a LIF
+instead of a raw file.</p></td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-?</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p>Print a message giving the program usage to standard
@@ -121,12 +121,12 @@ error.</p> </td></tr>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The format of
-an HP41 Write All file is not well documented. However it is
+<p style="margin-left:9%; margin-top: 1em">The format of an
+HP41 Write All file is not well documented. However, it is
 simply a dump of all the HP41 user memory (excluding
 extended memory) in the logical order. The data stored in
 HP41 User Memory is documented in most books on synthetic
-programming, for example the Synthetic Programming Quick
+programming, for example, the Synthetic Programming Quick
 Reference Guide by J. Smith.</p>
 
 <h2>EXAMPLES
@@ -134,9 +134,12 @@ Reference Guide by J. Smith.</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">To get a
+<p style="margin-left:9%; margin-top: 1em">To get a
 catalogue of a raw HP41 Write All file called <i>all1.w41
-,</i> type : <b>lifutils wcat41 &lt; all1.w41</b></p>
+,</i> type :</p>
+
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
+wcat41 &lt; all1.w41</b></p>
 
 <h2>SEE ALSO
 <a name="SEE ALSO"></a>
@@ -144,16 +147,16 @@ catalogue of a raw HP41 Write All file called <i>all1.w41
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>wall41(1)</b></p>
+<p style="margin-left:9%; margin-top: 1em"><b>wall41(1)</b></p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>wcat41</b>
+<p style="margin-left:9%; margin-top: 1em"><b>wcat41</b>
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has
-been placed under the GNU Public License version 2.0</p>
+been placed under the GNU Public License version 2.0.</p>
 <hr>
 </body>
 </html>

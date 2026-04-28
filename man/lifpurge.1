@@ -12,14 +12,14 @@ lifpurge \- purge a file from a LIF image file
 .B lifpurge
 purges a single file, specified by 
 .I LIFFILENAME
-from the LIF image file
+, from the LIF image file
 .I LIFIMAGE.
 .I LIFFILENAME
 is case\-sensitive and must be given in upper case. 
 .SH OPTIONS
 .TP
 .I \-l
-Relax file name checking, allow underscores in filenames.
+Relax file name checking. Allow underscores in filenames.
 .TP
 .I \-p
 Purge file on a floppy disk with a LIF file system. Note: this option is only supported on LINUX. Specify the floppy device instead of the lif-image-filename. See the LIFUTILS tutorial for details.
@@ -42,9 +42,9 @@ from the LIF image file
 .SH REFERENCES
 The LIF disk directory format is documented in the
 .I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
-with further details (particularly HP41 and HP75 file types) in the 
+, with further details (particularly HP41 and HP75 file types) in the 
 .I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith)
 .SH AUTHOR
 .B lifpurge
 was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
-under the GNU Public License version 2.0
+under the GNU Public License version 2.0.

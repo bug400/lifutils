@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Dec  9 12:27:49 2024 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Tue Apr 28 21:55:21 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -35,8 +35,8 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">rom41er -
-convert an unscrambled HP-41 rom file to a LIF file that can
+<p style="margin-left:9%; margin-top: 1em">rom41er -
+convert an unscrambled HP-41 ROM file to a LIF file that can
 be used by the Eramco MLDL-OS</p>
 
 <h2>SYNOPSIS
@@ -44,15 +44,15 @@ be used by the Eramco MLDL-OS</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 rom41er</b> <i>LIFFILENAME INPUTFILE</i> &gt; <i>Output
 file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 rom41er</b> <i>LIFFILENAME</i> &lt; <i>Input file</i> &gt;
 <i>Output file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 rom41er -?</b></p>
 
 <h2>DESCRIPTION
@@ -60,21 +60,21 @@ rom41er -?</b></p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The Eramco
+<p style="margin-left:9%; margin-top: 1em">The Eramco
 MLDL-OS ROM set can load HP41 ROM images from disk, and the
 file format used has become a de facto standard for such
-images. It stores 4 10 bit HP41 words in 5 bytes of the
-file. A 4K ROM dump is thus stored in a 5120 byte file.
+images. It stores 4 10-bit HP41 words in 5 bytes of the
+file. A 4K ROM dump is thus stored in a 5120-byte file.
 Input is read either from standard input or the file
 specified by the command line parameter
 <i>INPUTFILE.</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>rom41er</b>
-is a program which generates a LIF file of type X-M41
-(E070). The program reads the rom data from standard input
-or the file specified by the parameter <i>INPUTFILE</i> and
-writes the LIF file header and the rom data in scrambled
-Eramco MLDL-OS format to standard output. Note: This program
+<p style="margin-left:9%; margin-top: 1em"><b>rom41er</b>
+is a program that generates a LIF file of type X-M41 (E070).
+The program reads the ROM data from standard input or the
+file specified by the parameter <i>INPUTFILE</i> and writes
+the LIF file header and the ROM data in scrambled Eramco
+MLDL-OS format to standard output. Note: This program
 adjusts an incorrect ROM checksum.</p>
 
 <h2>OPTIONS
@@ -85,17 +85,19 @@ adjusts an incorrect ROM checksum.</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p style="margin-top: 1em"><i>-?</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="76%">
 
 
 <p style="margin-top: 1em">Print a message giving the
-program usage to standard error.</p></td></tr>
+program usage to standard error.</p></td>
+<td width="6%">
+</td></tr>
 </table>
 
 <h2>EXAMPLES
@@ -103,16 +105,16 @@ program usage to standard error.</p></td></tr>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">If
-<i>HPILDv1B.ROM</i> is the rom file of the HP-IL development
-module then</p>
+<p style="margin-left:9%; margin-top: 1em">If
+<i>HPILDv1B.ROM</i> is the ROM file of the HP-IL development
+module, then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>cat
+<p style="margin-left:9%; margin-top: 1em"><b>cat
 HPILDv1B.ROM | lifutils rom41er HPILDEV | lifutils lifput
 lifimage.dat</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will put the
-scrambled rom file with the name <i>HPILDEV</i> into the LIF
+<p style="margin-left:9%; margin-top: 1em">will put the
+scrambled ROM file with the name <i>HPILDEV</i> into the LIF
 image file <i>lifimage.dat</i></p>
 
 <h2>AUTHOR
@@ -121,7 +123,7 @@ image file <i>lifimage.dat</i></p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><i><b>rom41er</b></i>
+<p style="margin-left:9%; margin-top: 1em"><i><b>rom41er</b></i>
 was written by Joachim Siebold, bug400@gmx.de using code
 from Tony Duell, ard@p850ug1.demon.co.uk and has been placed
 under the GNU Public License version 2.0.</p>

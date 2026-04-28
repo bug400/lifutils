@@ -1,6 +1,6 @@
 .TH prog41bar 1 05-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
-prog41bar \- convert a HP-41 program raw file into an intermediate barcode file
+prog41bar \- convert an HP-41 program raw file into an intermediate barcode file
 .SH SYNOPSIS
 .B lifutils prog41bar 
 [\-r]
@@ -29,12 +29,12 @@ can be piped to a suitable barcode printing program such as
 .SH OPTIONS
 .TP
 .I \-r
-Skip an existing LIF header of the input file. This is mandatory, if the input file is a LIF instead of a raw file.
+Skip an existing LIF header of the input file. This is mandatory if the input file is a LIF instead of a raw file.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.
 .SH REFERENCES
-The format of HP41 barcode is given in the book
+The format of the HP41 barcode is given in the book
 .I Creating your own HP41 Barcode (Hewlett\-Packard)
 .PP
 The format of the intermediate barcode file written by sdatabar is given in 
@@ -42,15 +42,15 @@ The format of the intermediate barcode file written by sdatabar is given in
 .SH EXAMPLES
 If
 .I prog1.raw
-is a HP-41 program raw file and 
+is an HP-41 program raw file and 
 .I postscript
-is a postscript printer
+is a PostScript printer
 then
 .PP
 .B lifutils prog41bar < prog1.raw | lifutils barps 'Program 1' | lpr -P postscript
 .PP
-will print that file as HP-41 barcode on the postscript printer.
+will print that file as HP-41 barcode on the PostScript printer.
 .SH AUTHOR
 .B prog41bar
 was written by Tony Duell, ard@p850ug1.demon.co.uk, and has been placed 
-under the GNU Public License version 2.0
+under the GNU Public License version 2.0.

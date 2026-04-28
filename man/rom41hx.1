@@ -1,6 +1,6 @@
 .TH rom41hx 1 06-November-2024 "LIF Utilitites" "LIF Utilities"
 .SH NAME
-rom41hx \- convert a HP-41 rom file to a LIF file of type sdata that can be uploaded to HEPAX RAM with the READROM command
+rom41hx \- convert an HP-41 ROM file to a LIF file of type sdata that can be uploaded to HEPAX RAM with the READROM command
 .SH SYNOPSIS
 .B lifutils rom41hx
 .I LIFFILENAME
@@ -20,16 +20,16 @@ rom41hx \- convert a HP-41 rom file to a LIF file of type sdata that can be uplo
 The HEPAX ROM set can load HP41 ROM images from disk. The file format is
 a file of type
 .I SDATA
-which stores 4 10 bit HP41 words in 5 bytes of the file. A 4K ROM dump is thus stored in a 5120 byte file.
+which stores 4 10-bit HP41 words in 5 bytes of the file. A 4K ROM dump is thus stored in a 5120 byte-file.
 .I rom41hx
 generates a  LIF data file of type 
 .I SDATA
-from a HP41 rom file.
+from an HP41 ROM file.
 .PP
-The program reads the rom data from standard input or the file specified by the parameter 
+The program reads the ROM data from standard input or the file specified by the parameter 
 .I INPUTFILE 
 and writes the 
-LIF file header and the rom data in scrambled HEPAX format 
+LIF file header and the ROM data in scrambled HEPAX format 
 to standard output. Note: this program adjusts an incorrect ROM checksum.
 .SH OPTIONS
 .TP
@@ -38,11 +38,11 @@ Print a message giving the program usage to standard error.
 .SH EXAMPLES
 If
 .I HPILDv1B.ROM 
-is the rom file of the HP-IL development module then
+is the ROM file of the HP-IL development module, then
 .PP
 .B cat HPILDv1B.ROM | lifutils rom41hx HPILDEV | lifutils lifput lifimage.dat
 .PP 
-will put the scrambled rom file with the name
+will put the scrambled ROM file with the name
 .I HPILDEV
 into the LIF image file
 .I lifimage.dat

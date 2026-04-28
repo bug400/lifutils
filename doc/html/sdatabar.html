@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Dec  9 12:27:50 2024 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Tue Apr 28 21:55:21 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,7 +37,7 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">sdatabar -
+<p style="margin-left:9%; margin-top: 1em">sdatabar -
 convert a raw SDATA file into an intermediate barcode
 file</p>
 
@@ -46,15 +46,15 @@ file</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 sdatabar</b> [-e] [-r] <i>INPUTFILE</i> &gt; <i>Output
 file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 sdatabar</b> [-e] [-r] &lt; <i>Input file</i> &gt; <i>Output
 file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 sdatabar -?</b></p>
 
 <h2>DESCRIPTION
@@ -62,8 +62,7 @@ sdatabar -?</b></p>
 </h2>
 
 
-
-<p style="margin-left:11%; margin-top: 1em"><b>sdatabar</b>
+<p style="margin-left:9%; margin-top: 1em"><b>sdatabar</b>
 is a program that reads a raw SDATA file from standard input
 or the file specified by the command line paramter
 <i>INPUTFILE</i> and writes the corresponding intermediate
@@ -74,7 +73,7 @@ rows. Other SDATA records cannot be represented by HP41
 barcode, and are skipped, giving a suitable error
 message.</p>
 
-<p style="margin-left:11%; margin-top: 1em">The output of
+<p style="margin-left:9%; margin-top: 1em">The output of
 <b>sdatabar</b> can be piped to a suitable barcode printing
 program such as <b>barps</b></p>
 
@@ -86,13 +85,13 @@ program such as <b>barps</b></p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p style="margin-top: 1em"><b><i>-e</i></b></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p style="margin-top: 1em">HP82153 barcode wands with the
@@ -106,26 +105,26 @@ the exponent to compensate. This is not always possible, in
 which case, a suitable message is written to standard error,
 and the last mantissa digit is omitted from the barcode.</p></td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-r</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p>Skip an existing LIF header of the input file. This is
 mandatory, if the input file is a LIF instead of a raw
 file.</p> </td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-?</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p>Print a message giving usage to standard error and
@@ -137,11 +136,11 @@ exit</p> </td></tr>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The format of
+<p style="margin-left:9%; margin-top: 1em">The format of
 HP41 barcode is given in the book <i>Creating your own HP41
 Barcode (Hewlett-Packard)</i></p>
 
-<p style="margin-left:11%; margin-top: 1em">The format of
+<p style="margin-left:9%; margin-top: 1em">The format of
 the barcode file written by sdatabar is given in
 <i>barcode(5)</i></p>
 
@@ -150,15 +149,15 @@ the barcode file written by sdatabar is given in
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">If
+<p style="margin-left:9%; margin-top: 1em">If
 <i>data1.sda</i> is a raw sdata file, and <i>postscript</i>
 is a postscript printer then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 sdatabar &lt; data1.sda | lifutils barps &rsquo;Data File
 1&rsquo; | lpr -P postscript</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will print that
+<p style="margin-left:9%; margin-top: 1em">will print that
 file on the postscript printer.</p>
 
 <h2>BUGS
@@ -166,19 +165,18 @@ file on the postscript printer.</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The HP82153
-wand can&rsquo;t accept data other than standard numeric or
-alpha data, so some sdata files cannot be translated
-correctly. Version 1E wands cannot read some numeric data
-barcode, as described above.</p>
+<p style="margin-left:9%; margin-top: 1em">The HP82153 wand
+can&rsquo;t accept data other than standard numeric or alpha
+data, so some sdata files cannot be translated correctly.
+Version 1E wands cannot read some numeric data barcode, as
+described above.</p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>
 </h2>
 
 
-
-<p style="margin-left:11%; margin-top: 1em"><b>sdatabar</b>
+<p style="margin-left:9%; margin-top: 1em"><b>sdatabar</b>
 was written by Tony Duell, ard@p850ug1.demon.co.uk, and has
 been placed under the GNU Public License version 2.0</p>
 <hr>

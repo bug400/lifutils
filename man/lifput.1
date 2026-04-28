@@ -17,9 +17,9 @@ lifput \- put a LIF file into a LIF image file
 .B lifput \-?
 .SH DESCRIPTION
 .B lifput
-put a single LIF file, specified by 
+puts a single LIF file, specified by 
 .I LIFFILENAME
-into the LIF image file
+, into the LIF image file
 .I LIFIMAGE.
 .PP
 .I LIFFILENAME
@@ -27,14 +27,14 @@ must have a valid LIF header. If
 .B lifput
 is executed with 2 arguments after the options then the last argument is 
 used as the name of the file that is copied into the LIF image 
-file. If only 1 arguments are given then the file is copied from standard
+file. If only 1 argument is given, then the file is copied from standard
 input.
 .PP
 .B
 Note:
 The import of the LIF file into the LIF image file will only be successful if:
 .IP \-
-LIF file has a valid LIF header.
+The LIF file has a valid LIF header.
 .IP \-
 The file name in the LIF header of the LIF file is valid (only capital letters and digits starting with a letter, max 10 characters long) and does not exist in the directory of the LIF image file.
 .IP \-
@@ -49,10 +49,10 @@ There is a sufficient number of contiguous blocks in the file area available to 
 .SH OPTIONS
 .TP
 .I \-l
-Relax file name checking, allow underscores in filenames.
+Relax file name checking. Allow underscores in filenames.
 .TP 
 .I \-p
-Write file to a floppy disk with a LIF file system. Note: this option is only supported on LINUX. Specify the floppy device instead of the lif-image-filename. See the LIFUTILS tutorial for details.
+Write the file to a floppy disk with a LIF file system. Note: this option is only supported on LINUX. Specify the floppy device instead of the lif-image-filename. See the LIFUTILS tutorial for details.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.
@@ -61,7 +61,7 @@ If
 .I disk1.dat
 is a LIF image file and 
 .I test1.p41
-is a HP41 LIF program file, then 
+is an HP41 LIF program file, then 
 .PP
 .B lifutils lifput disk1.dat test1.p41
 .PP
@@ -72,10 +72,10 @@ will copy the  HP41 LIF program file
 .SH REFERENCES
 The LIF disk directory format is documented in the
 .I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
-with further details (particularly HP41 and HP75 file types) in the 
+, with further details (particularly HP41 and HP75 file types) in the 
 .I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith)
 .SH BUGS
 Not all file types have been tested.
 .SH AUTHOR
 .B lifput
-was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, ard@p850ug1.demon.co.uk and has been placed under the GNU Public License version 2.0
+was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, ard@p850ug1.demon.co.uk and has been placed under the GNU Public License version 2.0.

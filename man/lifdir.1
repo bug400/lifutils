@@ -39,11 +39,11 @@ Verbosity level:
 1: default directory listing
 .RE
 .RS
-2: extended directory listing including start sector, number of sectors occupied and implementation bytes
+2: extended directory listing including start sector, number of sectors occupied, and implementation bytes
 .RE
 .TP
 .I \-c
-output all directory information as csv (comma is delimiter):
+output all directory information as CSV (comma is delimiter):
 .RS
 File name
 .RE
@@ -73,7 +73,7 @@ Implementation bytes
 .RE
 .PP
 .RS
-Note: verbosity level and csv output options are mutually exclusive.
+Note: Verbosity level and CSV output options are mutually exclusive.
 All numeric information is decimal.
 .RE
 .TP
@@ -84,7 +84,7 @@ Show directory info of a floppy disk with a LIF file system. Note: this option i
 Print a message giving the program usage to standard error.
 .SH FILE TYPES
 .B lifdir 
-should recognise all file types of the Online LIF Disk project.
+should recognize all file types of the Online LIF Disk project.
 .PP
 Unknown file types are printed as a 4\-digit hex number giving the value 
 of the 2 file type bytes from the directory. See
@@ -93,7 +93,7 @@ for details of the file types.
 .SH EXAMPLES
 If 
 .I disk1.dat
-is a LIF image file then
+is a LIF image file, then
 .PP
 .B lifutils lifdir disk1.dat
 .PP
@@ -102,10 +102,10 @@ will print a directory listing of that image file.
 The LIF disk directory format is documented in the
 .I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
 with further details (particularly HP\-41 and HP\-75 file types) in the 
-.I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith)
+.I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith).
 .SH BUGS
 Not all file types have been tested.
 .SH AUTHOR
 .B lifdir
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
-under the GNU Public License version 2.0
+under the GNU Public License version 2.0.

@@ -4,9 +4,9 @@ key41 \- list an HP-41 key assignment file
 .SH SYNOPSIS
 .B lifutils key41
 [\-h][\-r][\-u] [\-x
-.I xrom_file
+.I xrom file
 ] [\-x
-.I xrom_file
+.I xrom file
 ] ...
 .I INPUTFILE
 [>
@@ -29,7 +29,7 @@ key41 \- list an HP-41 key assignment file
 \-?
 .SH DESCRIPTION
 .B key41
-produces a listing of a HP-41 key assignment file, which may be a either a LIF or a raw file. 
+produces a listing of an HP-41 key assignment file, which may be either a LIF or a raw file. 
 The key definitions are read from standard input or the file specified by the command line parameter
 .I INPUTFILE
 , and a human-readable listing is produced on standard output. 
@@ -41,13 +41,13 @@ display.
 .PP
 By default, functions contained in plug-in modules are displayed as 
 .I XROM rr,nn
-where 
+, where 
 .I rr
 is the number of the plug-in ROM and 
 .I nn
 is the number of the function within that ROM. This can be overridden by 
 loading 
-.I xrom_files,
+.I XROM files,
 see the 
 .I \-x
 option below.
@@ -58,18 +58,18 @@ Display the bytes (in hexadecimal) that comprise the key definition,
 rather than attempting to decode it.
 .TP
 .I \-r
-Skip an existing LIF header of the input file. This is mandatory, if the input file is a LIF instead of a raw file.
+Skip an existing LIF header of the input file. This is mandatory if the input file is a LIF instead of a raw file.
 .TP
 .I \-u
-Display the following non ASCII HP-41 FOCAL characters as Unicode characters: text append (hex 0x251c),
-greek small mu (hex 0x03bc), angle (hex 0x2280), not equal to (hex 0x2260), greek capital sigma (hex 0x03A3).
+Display the following non-ASCII HP-41 FOCAL characters as Unicode characters: text append (hex 0x251c),
+GREEK small mu (hex 0x03bc), angle (hex 0x2280), not equal to (hex 0x2260), GREEK capital sigma (hex 0x03A3).
 .TP
-.I \-x xrom_file
+.I \-x xrom file
 Use
-.I xrom_file
+.I xrom file
 to define names for functions in plug-in modules. This option may be 
 repeated to load multiple
-.I xrom_files.
+.I XROM files.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.
@@ -79,7 +79,7 @@ Print a message giving the program usage to standard error.
 xrom function definition files. The format of these files is given in the
 prog41(1) manpage. Use  the  environment  variable
 LIFUTILSXROMDIR  to point to the location of this directory. On
-Linux the default location is /usr/share/lifutils/xroms, if the
+Linux the default location is /usr/share/lifutils/xroms if the
 variable is not specified.
 .SH REFERENCES
 The format of an HP41C key assignment register is documented in many books. 
@@ -104,10 +104,10 @@ correctly, although an attempt has been made to handle synthetic programming.
 The common synthetic assignments, such as 2-byte standard functions, byte 
 grabbers and 
 .I eG0BEEP
-should be correctly displayed. If in doubt, use the 
+, should be correctly displayed. If in doubt, use the 
 .I \-h
 option to display the assignments in hexadecimal.
 .SH AUTHOR
 .B key41
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
-under the GNU Public License version 2.0
+under the GNU Public License version 2.0.

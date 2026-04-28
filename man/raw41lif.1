@@ -1,6 +1,6 @@
 .TH raw41lif 1 06-November-2024 "LIF Utilitites" "LIF Utilities"
 .SH NAME
-raw41lif \- convert a HP41C program raw file to a LIF file
+raw41lif \- convert an HP41C program raw file to a LIF file
 .SH SYNOPSIS
 .B lifutils raw41lif
 .I LIFFILENAME
@@ -18,15 +18,15 @@ raw41lif \- convert a HP41C program raw file to a LIF file
 .B lifutils raw41lif \-?
 .SH DESCRIPTION
 .B raw41lif
-is a program which generates a LIF file from a HP41 raw file
+is a program that generates a LIF file from an HP41 raw file
 (FOCAL bytecode). The program reads the byte code from standard
 input or the file specified by the command line parameter
 .I INPUTFILE
 and writes the LIF file header with the file name
-.I LIFFILENAME,
-the bytecode and the checksum byte to standard output.
+.I LIFFILENAME
+, the bytecode, and the checksum byte to standard output.
 .SH REFERENCES
-The format of an HP41C program is documented in many books. Amongst the 
+The format of an HP41C program is documented in many books. Among the 
 most useful references are
 .I Extend Your HP41 (W. A. C. Mier-Jedrzejowicz)
 and
@@ -38,7 +38,7 @@ Print a message giving the program usage to standard error.
 .SH EXAMPLES
 If
 .I zline.raw
-is a raw file containing an HP41 program then
+is a raw file containing an HP41 program, then
 .PP
 .B cat zline.raw | lifutils raw41lif ZLINE \> zline.p41
 .PP 
@@ -50,4 +50,4 @@ with the LIF filename
 .B raw41lif
 was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, 
 ard@p850ug1.demon.co.uk and has been placed 
-under the GNU Public License version 2.0
+under the GNU Public License version 2.0.

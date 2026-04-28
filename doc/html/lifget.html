@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Dec  9 12:27:48 2024 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Tue Apr 28 21:55:20 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,23 +37,23 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">lifget -
-extract a file from a LIF diks image file</p>
+<p style="margin-left:9%; margin-top: 1em">lifget - extract
+a file from a LIF disk image file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 lifget</b> [-r] [-b] [-l] [-p] <i>LIFIMAGE LIFFILENAME
 OUTPUTFILE</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 lifget</b> [-r] [-b] [-l] [-p] <i>LIFIMAGE LIFFILENAME</i>
 &lt; <i>Output file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 lifget -?</b></p>
 
 <h2>DESCRIPTION
@@ -61,18 +61,18 @@ lifget -?</b></p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifget</b>
+<p style="margin-left:9%; margin-top: 1em"><b>lifget</b>
 extracts a single file, specified by <i>LIFFILENAME</i> from
 the LIF image file <i>LIFIMAGE.</i></p>
 
 
-<p style="margin-left:11%; margin-top: 1em"><i>LIFFILENAME</i>
-is case-sensitive and must be given in upper case. If
-<b>lifget</b> is executed with 3 arguments after the options
-then the third argument <i>OUTPUTFILE</i> is used as the
-name of the file that the LIF file is copied to. If only 2
-arguments are given then the file is copied to standard
-output.</p>
+<p style="margin-left:9%; margin-top: 1em"><i>LIFFILENAME</i>
+is case-sensitive and must be given in uppercase. If
+<b>lifget</b> is executed with 3 arguments after the
+options, then the third argument <i>OUTPUTFILE</i> is used
+as the name of the file that the LIF file is copied to. If
+only 2 arguments are given, then the file is copied to
+standard output.</p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
@@ -82,67 +82,67 @@ output.</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p style="margin-top: 1em"><i>-r</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p style="margin-top: 1em">Remove the 32-byte header
 consisting of the directory record from the LIF disk
 directory from the beginning of the output file.</p></td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-b</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p>Copy the blocks occupied by the file (including the
-entire last block) rather then the number of bytes given by
+entire last block) rather than the number of bytes given by
 the file length. This option has no meaning for file types
 where the file is always assumed to occupy complete
 blocks.</p> </td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-l</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
-<p>Relax file name checking, allow underscores in
+<p>Relax file name checking. Allow underscores in
 filenames.</p> </td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-p</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
-<p>Read file from a floppy disk with a LIF file system.
+<p>Read the file from a floppy disk with a LIF file system.
 Note: this option is only supported on LINUX. Specify the
 floppy device instead of the lif-image-filename. See the
 LIFUTILS tutorial for details.</p></td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-?</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p>Print a message giving the program usage to standard
@@ -154,14 +154,14 @@ error.</p> </td></tr>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.dat</i> is a LIF image file containing a HP-41
+<p style="margin-left:9%; margin-top: 1em">If
+<i>disk1.dat</i> is a LIF image file containing an HP-41
 SDATA file called <i>TEST1</i> then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 lifget disk1.dat TEST1 lif_test_file.d41</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will copy the
+<p style="margin-left:9%; margin-top: 1em">will copy the
 file TEST1 from the LIF image to the LIF file
 <i>lif_test_file.d41.</i></p>
 
@@ -170,9 +170,9 @@ file TEST1 from the LIF image to the LIF file
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The LIF disk
+<p style="margin-left:9%; margin-top: 1em">The LIF disk
 directory format is documented in the <i>HP-IL Interface
-Owners Manual for the HP-71 (Hewlett-Packard)</i> with
+Owners Manual for the HP-71 (Hewlett-Packard),</i> with
 further details (particularly HP41 and HP75 file types) in
 the <i>HP-41 Synthetic Quick Reference Guide (Jeremy
 Smith)</i></p>
@@ -182,7 +182,7 @@ Smith)</i></p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">Not all file
+<p style="margin-left:9%; margin-top: 1em">Not all file
 types have been tested.</p>
 
 <h2>AUTHOR
@@ -190,9 +190,9 @@ types have been tested.</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifget</b>
+<p style="margin-left:9%; margin-top: 1em"><b>lifget</b>
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has
-been placed under the GNU Public License version 2.0</p>
+been placed under the GNU Public License version 2.0.</p>
 <hr>
 </body>
 </html>

@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Dec  9 12:27:48 2024 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Tue Apr 28 21:55:20 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -39,25 +39,25 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">comp41 -
-compile a HP41C user-language (FOCAL) program</p>
+<p style="margin-left:9%; margin-top: 1em">comp41 - compile
+an HP41C user-language (FOCAL) program</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 comp41</b> [-l] [-g] [-s] [-h] [-f <i>LIFFILENAME</i> ] [-x
 <i>XROMFILE</i> ] ... <i>INPUTFILE</i> &gt; <i>Output
 file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 comp41</b> [-l] [-g] [-s] [-h] [-f <i>LIFFILENAME</i> ] [-x
 <i>XROMFILE</i> ] ... &lt; <i>Input file</i> &gt; <i>Output
 file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 comp41 -?</b></p>
 
 <h2>DESCRIPTION
@@ -65,13 +65,13 @@ comp41 -?</b></p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>comp41</b>
-compiles a text file containing a HP-41 user program (FOCAL)
-from standard input or the file specified by the command
-line parameter <i>INPUTFILE</i> and writes the byte code to
-a LIF or binary raw file (default).</p>
+<p style="margin-left:9%; margin-top: 1em"><b>comp41</b>
+compiles a text file containing an HP-41 user program
+(FOCAL) from standard input or the file specified by the
+command line parameter <i>INPUTFILE</i> and writes the byte
+code to a LIF or binary raw file (default).</p>
 
-<p style="margin-left:11%; margin-top: 1em">A
+<p style="margin-left:9%; margin-top: 1em">An
 <i>XROMFILE</i> consists of a number of lines, each
 consisting of 2 decimal numbers and one or two strings
 (containing no whitespace), in that order, separated by
@@ -88,44 +88,44 @@ module or peripheral functions.</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">Prefixes are
+<p style="margin-left:9%; margin-top: 1em">Prefixes are
 case-insensitive: &rsquo;rcl 00&rsquo; same as &rsquo;RCL
 00&rsquo;.</p>
 
-<p style="margin-left:11%; margin-top: 1em">Postfixes are
-case-sensitive: &rsquo;lbl a&rsquo; different than
-&rsquo;lbl A&rsquo;.</p>
+<p style="margin-left:9%; margin-top: 1em">Postfixes are
+case-sensitive: &rsquo;lbl a&rsquo; differs from &rsquo;lbl
+A&rsquo;.</p>
 
-<p style="margin-left:11%; margin-top: 1em">Append text is
+<p style="margin-left:9%; margin-top: 1em">Append text is
 allowed using: &rsquo;&gt;&quot;text&quot;&rsquo; , &rsquo;
 &quot;|-text&quot; &rsquo;, or
 &rsquo;&quot;\-text&quot;&rsquo;.</p>
 
-<p style="margin-left:11%; margin-top: 1em">Text must be
-either encosed in &rsquo;&quot;&rsquo; or
+<p style="margin-left:9%; margin-top: 1em">Text must be
+either enclosed in &rsquo;&quot;&rsquo; or
 &quot;&rsquo;&quot;. If the text contains an enclosing
 character, it must be escaped with &rsquo;\&rsquo;.</p>
 
-<p style="margin-left:11%; margin-top: 1em">The following
+<p style="margin-left:9%; margin-top: 1em">The following
 Unicode characters are translated to the HP-41 FOCAL
-character set: text append (hex 0x251c), greek small mu (hex
+character set: text append (hex 0x251c), Greek small mu (hex
 0x03bc), angle (hex 0x2280), not equal to (hex 0x2260),
-greek capital sigma (hex 0x03A3). and may be used in text
+Greek capital sigma (hex 0x03A3). They can be used in text
 and instructions.</p>
 
-<p style="margin-left:11%; margin-top: 1em">Synthetic
+<p style="margin-left:9%; margin-top: 1em">Synthetic
 instructions are allowed: &rsquo;rcl M&rsquo;, &rsquo;sto
 R&rsquo;</p>
 
-<p style="margin-left:11%; margin-top: 1em">Synthetic NOP
+<p style="margin-left:9%; margin-top: 1em">Synthetic NOP
 (TEXT0) is allowed using an empty string:
 &rsquo;&quot;&quot;&rsquo;</p>
 
-<p style="margin-left:11%; margin-top: 1em">Synthetic
+<p style="margin-left:9%; margin-top: 1em">Synthetic
 strings are allowed using C-style esc-sequences:
 &rsquo;&quot;\x0D\x0A&quot;&rsquo;</p>
 
-<p style="margin-left:11%; margin-top: 1em">Comments are
+<p style="margin-left:9%; margin-top: 1em">Comments are
 allowed if preceded by &rsquo;;&rsquo; or &rsquo;#&rsquo; :
 &rsquo;# comment&rsquo;</p>
 
@@ -137,63 +137,71 @@ allowed if preceded by &rsquo;;&rsquo; or &rsquo;#&rsquo; :
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p style="margin-top: 1em"><i>-l</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="69%">
 
 
-<p style="margin-top: 1em">Skip line numbers</p></td></tr>
+<p style="margin-top: 1em">Skip line numbers</p></td>
+<td width="13%">
+</td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-g</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="69%">
 
 
 <p>Force global for &quot;A..J&quot;, &quot;a..e&quot; with
-quotes: lbl &quot;A&quot;</p></td></tr>
+quotes: lbl &quot;A&quot;</p></td>
+<td width="13%">
+</td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-s</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="69%">
 
 
-<p>Output source listing to standard error</p></td></tr>
+<p>Output source listing to standard error</p></td>
+<td width="13%">
+</td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-h</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="69%">
 
 
-<p>Output byte code to standard error, requires -s.</p></td></tr>
+<p>Output byte code to standard error, requires -s.</p></td>
+<td width="13%">
+</td></tr>
 </table>
 
-<p style="margin-left:11%;"><i>-f LIFFILENAME</i></p>
+<p style="margin-left:9%;"><i>-f LIFFILENAME</i></p>
 
-<p style="margin-left:22%;">Create a LIF file instead of a
-raw file on standard output. A valid lif file name must be
+<p style="margin-left:18%;">Create a LIF file instead of a
+raw file on standard output. A valid LIF file name must be
 provided, which must apply the rules of HP-71 file names:
 capital letters and digits, starting with a capital
 letter.</p>
 
-<p style="margin-left:11%;"><i>-x XROMFILE</i></p>
+<p style="margin-left:9%;"><i>-x XROMFILE</i></p>
 
-<p style="margin-left:22%;">Use <i>XROMFILE</i> to define
+<p style="margin-left:18%;">Use <i>XROMFILE</i> to define
 names for functions in plug-in modules. This option may be
 repeated to load multiple <i>XROMFILEs.</i> The file name
 has to be specified either as a full pathname or as the
@@ -206,17 +214,19 @@ standard HP peripheral ROM functions.</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-?</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="76%">
 
 
 <p>Print a message giving the program usage to standard
-error.</p> </td></tr>
+error.</p> </td>
+<td width="6%">
+</td></tr>
 </table>
 
 <h2>FILES
@@ -225,12 +235,12 @@ error.</p> </td></tr>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><i>xroms/*</i></p>
+<p style="margin-left:9%; margin-top: 1em"><i>xroms/*</i></p>
 
-<p style="margin-left:22%;">xrom function definition files.
+<p style="margin-left:18%;">xrom function definition files.
 Use the environment variable LIFUTILSXROMDIR to point to the
 location of this directory. On Linux the default location is
-/usr/share/lifutils/xroms, if the variable is not
+/usr/share/lifutils/xroms if the variable is not
 specified.</p>
 
 <h2>REFERENCES
@@ -238,9 +248,9 @@ specified.</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The format of
-an HP41C program is documented in many books. Amongst the
-most useful references are <i>Extend Your HP41 (W. A. C.
+<p style="margin-left:9%; margin-top: 1em">The format of an
+HP41C program is documented in many books. Among the most
+useful references are <i>Extend Your HP41 (W. A. C.
 Mier-Jedrzejowicz)</i> and <i>The HP41 Synthetic Programming
 Quick Reference Guide (Jeremy Smith)</i></p>
 
@@ -249,36 +259,36 @@ Quick Reference Guide (Jeremy Smith)</i></p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">If
+<p style="margin-left:9%; margin-top: 1em">If
 <i>prog1.txt</i> is a text file with a FOCAL program that
 uses functions of the HP-IL and time module and
-<i>hp41prog.dat</i> is a LIF image file then</p>
+<i>hp41prog.dat</i> is a LIF image file, then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>cat
-prog1.txt | lifutils comp41 -x hpil -x time -f PROG1 |
-lifutils lifput hp41prog.dat</b></p>
+<p style="margin-left:9%; margin-top: 1em"><b>cat prog1.txt
+| lifutils comp41 -x hpil -x time -f PROG1 | lifutils lifput
+hp41prog.dat</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will compile
-the file <i>prog1.txt</i> to a LIF file named <i>PROG1</i>
-that is stored in the LIF image file <i>hp41prog.dat</i></p>
+<p style="margin-left:9%; margin-top: 1em">will compile the
+file <i>prog1.txt</i> to a LIF file named <i>PROG1</i> that
+is stored in the LIF image file <i>hp41prog.dat</i></p>
 
 <h2>BUGS
 <a name="BUGS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">Unknown.</p>
+<p style="margin-left:9%; margin-top: 1em">Unknown.</p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>comp41</b>
+<p style="margin-left:9%; margin-top: 1em"><b>comp41</b>
 was written using code of the User-Code File
 Converter/Compiler/De-compiler/Bar-Code Generator Version
 1.31 Copyright (c) Leo Duran, 2000-2023 and has been placed
-under the GNU Public License version 2.0</p>
+under the GNU Public License version 2.0.</p>
 <hr>
 </body>
 </html>

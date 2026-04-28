@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Dec  9 12:27:49 2024 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Tue Apr 28 21:55:20 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,19 +36,19 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">lifinit -
-initialize a lif disk image file</p>
+<p style="margin-left:9%; margin-top: 1em">lifinit -
+initialize a LIF disk image file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 ifinit</b> [-z] -m <i>MEDIUMTYPE</i> [-p] <i>LIFIMAGE
 DIRECTORYSIZE</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 ifinit -?</b></p>
 
 <h2>DESCRIPTION
@@ -56,7 +56,7 @@ ifinit -?</b></p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifinit</b>
+<p style="margin-left:9%; margin-top: 1em"><b>lifinit</b>
 initializes the LIF image file specified by <i>LIFIMAGE</i>
 with <i>DIRECTORYSIZE</i> directory entries.</p>
 
@@ -68,31 +68,31 @@ with <i>DIRECTORYSIZE</i> directory entries.</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p style="margin-top: 1em"><i>-m</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p style="margin-top: 1em">This mandatory option
-<i>MEDIUMTYPE</i> specifies the medium type. The following
+<i>MEDIUMTYPE</i> , specifies the medium type. The following
 medium types are supported:</p></td></tr>
 </table>
 
-<p style="margin-left:22%;">cass: Initializes a medium with
-the size of a HP82161A cassette <br>
-disk: Initializes a medium with the size of a HP9114B double
-sided disk <br>
+<p style="margin-left:18%;">cass: Initializes a medium with
+the size of an HP82161A cassette <br>
+disk: Initializes a medium with the size of an HP9114B
+double sided disk <br>
 hdrive1: Initializes a medium with the size of a 640 KB disk
 <br>
 hdrive2: Initializes a medium with the size of a 2 MB disk
 <br>
 hdrive4: Initializes a medium with the size of a 4 MB disk
 <br>
-hdrive8: Initializes a medium with the size of a 8 MB disk
+hdrive8: Initializes a medium with the size of an 8 MB disk
 <br>
 hdrive16: Initializes a medium with the size of a 16 MB
 disk</p>
@@ -100,25 +100,25 @@ disk</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p style="margin-top: 1em"><i>-z</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p style="margin-top: 1em">Initialize the data area of the
 image with zeros.</p></td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-p</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p>Initialize a LIF file system on a floppy disk. Note:
@@ -133,26 +133,27 @@ program usage to standard error.</p></td></tr>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">If
-<i>disk1.dat</i> shall be created as LIF image file then</p>
+<p style="margin-left:9%; margin-top: 1em">If
+<i>disk1.dat</i> shall be created as a LIF image file,
+then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 lifinit -m disk disk1.dat 160</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will create the
-lif disk image file <i>disk1.dat</i> with a directory size
+<p style="margin-left:9%; margin-top: 1em">will create the
+LIF disk image file <i>disk1.dat</i> with a directory size
 of <i>160</i> entries. The command creates the disk header
 and an empty directory. The header is initialized with the
-parameters of the HP9114B double sided disk medium.</p>
+parameters of the HP9114B double-sided disk medium.</p>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The LIF disk
+<p style="margin-left:9%; margin-top: 1em">The LIF disk
 format is documented in the <i>HP-IL Interface Owners Manual
-for the HP-71 (Hewlett-Packard)</i> with further details
+for the HP-71 (Hewlett-Packard)</i> , with further details
 (particularly HP41 and HP75 file types) in the <i>HP-41
 Synthetic Quick Reference Guide (Jeremy Smith)</i></p>
 
@@ -162,10 +163,10 @@ Synthetic Quick Reference Guide (Jeremy Smith)</i></p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><i><b>lifinit</b></i>
+<p style="margin-left:9%; margin-top: 1em"><i><b>lifinit</b></i>
 was written by Joachim Siebold, bug400@gmx.de using code
 from Tony Duell, ard@p850ug1.demon.co.uk and has been placed
-under the GNU Public License version 2.0</p>
+under the GNU Public License version 2.0.</p>
 <hr>
 </body>
 </html>

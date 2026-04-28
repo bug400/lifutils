@@ -24,14 +24,14 @@ translates a LIF or raw HP75 text file into an ASCII file.
 One logical line of the input file is translated to one line of output,
 terminated by a newline.  The HP75 text file is read from standard input or the file
 .I INPUTFILE
-and the plain ASCII equivalent is written to standard output.
+, and the plain ASCII equivalent is written to standard output.
 .SH OPTIONS
 .TP
 .I \-n 
 Print a decimal line number at the start of each output line.
 .TP
 .I \-r
-Skip an existing LIF header of the input file. This is mandatory, if the input file is a LIF instead of a raw file.
+Skip an existing LIF header of the input file. This is mandatory if the input file is a LIF instead of a raw file.
 .TP
 .I \-?
 Print a message giving usage to standard error.
@@ -48,4 +48,4 @@ will list that file to standard output.
 .SH AUTHOR
 .B liftext75
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
-under the GNU Public License version 2.0
+under the GNU Public License version 2.0.

@@ -1,6 +1,6 @@
 .TH regs41 1 06-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
-regs41 \- display a HP41 raw file as 'registers'
+regs41 \- display an HP41 raw file as 'registers'
 .SH SYNOPSIS
 .B lifutils regs41 
 [\-r]
@@ -21,20 +21,20 @@ regs41 \- display a HP41 raw file as 'registers'
 .PP
 .SH DESCRIPTION
 The memory of an HP41 calculator is divided into 14 nybble (7 byte)
-registers. Many HP41 mass\-storage files use an 8 byte record to store
+registers. Many HP41 mass\-storage files use an 8-byte record to store
 each register, with the nybbles in a scrambled order
 .PP
 .B regs41
 undoes this scrambling and displays the 7 bytes of each register in 
 hexadecimal, one register to each line of output. It is primarily 
-designed as a tool for analysing unknown HP41 files, which may be either LIF
+designed as a tool for analyzing unknown HP41 files, which may be either LIF
 or raw files. The HP41 data is read from standard input or
-.I INPUTFILE,
-and the hexadecimal dump of the registers is written to standard output.
+.I INPUTFILE
+, and the hexadecimal dump of the registers is written to standard output.
 .SH OPTIONS
 .TP
 .I \-r
-Skip an existing LIF header of the input file. This is mandatory, if the input file is a LIF instead of a raw file.
+Skip an existing LIF header of the input file. This is mandatory if the input file is a LIF instead of a raw file.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.
@@ -61,4 +61,4 @@ assist in understanding the format of the file
 .SH AUTHOR
 .B regs41
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
-under the GNU Public License version 2.0
+under the GNU Public License version 2.0.

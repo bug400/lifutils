@@ -1,6 +1,6 @@
 .TH decomp41 1 01-November-2024 "LIF Utilitites" "LIF Utilities"
 .SH NAME
-decomp41 \- decompile a HP-41 program file
+decomp41 \- decompile an HP-41 program file
 .SH SYNOPSIS
 .B lifutils decomp41
 [\-h][\-a] [\-l] [\-r] [\-x
@@ -31,14 +31,14 @@ printer).
 .PP
 By default, functions contained in plug-in modules are displayed as 
 .I XROM rr,nn
-where 
+, where 
 .I rr
 is the number of the plug-in ROM and 
 .I nn
 is the number of the function within that ROM. This can be overridden by 
 loading 
 .I XROMFILEs,
-see the 
+, see the 
 .I \-x
 option below. An 
 .I XROMFILE
@@ -68,11 +68,11 @@ immediately preceding the display of that instruction
 Enable line numbers
 .TP
 .I \-a
-Decompile the following non ASCII HP-41 FOCAL characters as Unicode characters: text append (hex 0x251c),
-greek small mu (hex 0x03bc), angle (hex 0x2280), not equal to (hex 0x2260), greek capital sigma (hex 0x03A3).
+Decompile the following non-ASCII HP-41 FOCAL characters as Unicode characters: text append (hex 0x251c),
+GREEK small mu (hex 0x03bc), angle (hex 0x2280), not equal to (hex 0x2260), GREEK capital sigma (hex 0x03A3).
 .TP
 .I \-r
-Skip an existing LIF header of the input file. This is mandatory, if the input file is a LIF instead of a raw file.
+Skip an existing LIF header of the input file. This is mandatory if the input file is a LIF instead of a raw file.
 .TP
 .I \-x XROMFILE
 Use
@@ -90,10 +90,10 @@ Print a message giving the program usage to standard error.
 .SH FILES
 .TP
 .I xroms/*
-xrom function definition files. Use the environment variable LIFUTILSXROMDIR to point to the location of this
-directory. On Linux the default location is /usr/share/lifutils/xroms, if the variable is not specified.
+XROM function definition files. Use the environment variable LIFUTILSXROMDIR to point to the location of this
+directory. On Linux the default location is /usr/share/lifutils/xroms if the variable is not specified.
 .SH REFERENCES
-The format of an HP-41 program is documented in many books. Amongst the 
+The format of an HP-41 program is documented in many books. Among the 
 most useful references are
 .I Extend Your HP41 (W. A. C. Mier-Jedrzejowicz)
 and
@@ -113,7 +113,7 @@ standard names for the functions in the HPIL module and time module.
 Some synthetic functions may not be displayed correctly, although an 
 attempt has been made to handle synthetic programming. Some common HP41C 
 characters are not printable in ASCII (and are displayed as \\nnn octal 
-display sequences) so the display of strings in programs may be somewhat 
+display sequences), so the display of strings in programs may be somewhat 
 messy.
 .SH AUTHOR
 .B decomp41

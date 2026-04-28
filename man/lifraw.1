@@ -16,7 +16,7 @@ lifraw \- remove the LIF file header from a LIF file
 .B lifutils lifraw \-?
 .SH DESCRIPTION
 .B lifraw
-removes the 32 byte LIF header from a LIF file which is either read from
+removes the 32-byte LIF header from a LIF file, which is either read from
 .I INPUTFILE
 or standard input.
 .SH OPTIONS
@@ -30,7 +30,7 @@ with further details (particularly HP41 and HP75 file types) in the
 .SH EXAMPLES
 If
 .I zline.p41
-is a LIF file containing an HP41 program then
+is a LIF file containing an HP41 program, then
 .PP
 .B cat zline.p41 | lifutils lifraw \> zline.raw
 .PP 
@@ -40,4 +40,4 @@ will generate a raw file
 .B lifraw
 was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, 
 ard@p850ug1.demon.co.uk and has been placed 
-under the GNU Public License version 2.0
+under the GNU Public License version 2.0.

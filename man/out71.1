@@ -1,6 +1,6 @@
 .TH out71 1 05-November-2024 "LIF Utilities" "LIF Utilities"
 .SH NAME
-out71 \- a filter to send a program to a HP-71B
+out71 \- a filter to send a program to an HP-71B
 .SH SYNOPSIS
 .B lifutils out71 [\-o] 
 .I FILETYPE
@@ -14,7 +14,7 @@ out71 \- a filter to send a program to a HP-71B
 The HP-71B Handheld Computer fitted with the HP82401A HPIL Interface 
 module can read files not only from a mass storage device but also from 
 any other HPIL device. In the latter case, the HP-71B expects to receive a 
-32 byte header which is identical to the file's directory entry on a LIF 
+32-byte header, which is identical to the file's directory entry on a LIF 
 volume, followed by the file data padded (by NULLs in the case of 
 .B out71
 ) to a multiple of 256 bytes. This program always sends a file called
@@ -22,8 +22,8 @@ volume, followed by the file data padded (by NULLs in the case of
 of the user-specified file type.
 .PP
 .B out71
-adds the header and padding, and can therefore be used to translate a 
-linux file for direct sending to an HP-71B, for example via an HP82164 RS232
+adds the header and padding and can therefore be used to translate a 
+Linux file for direct sending to an HP-71B, for example, via an HP82164 RS232
 interface. 
 .SH OPTIONS
 .TP
@@ -31,33 +31,33 @@ interface.
 Some HP-71 files have their length (in their directory entry, and thus in 
 the header added by 
 .B out71
-) given in nybbles. 
+ given in nibbles. 
 .B out71
-assumes that all the nybbles in a linux file are part of the HP-71B file, 
-and thus always sets this nybble length to an even number. This can 
-cause problems if the original HP-71B file had an odd length in nybbles.
+assumes that all the nibbles in a Linux file are part of the HP-71B file 
+and thus always sets this nibble length to an even number. This can 
+cause problems if the original HP-71B file had an odd length in nibbles.
 The 
 .I \-o
-option decreases the nybble count in the header by one, effectively 
-truncating the last nybble of the linux file.
+option decreases the nibble count in the header by one, effectively 
+truncating the last nibble of the Linux file.
 .TP
 .I \-?
 Print a message giving program usage to standard error and exit.
 .TP 
 .I FILETYPE
 Specify the type of the HP-71 file to be created. A complete list of 
-possible filetypes can be found in 
+possible file types can be found in 
 .B lif_create_entry.c,
 but the useful ones for this program include
 .I TEXT, BASIC71, LEX71 
-and 
+, and 
 .I SDATA.
 This parameter is case-insensitive.
 .SH FILES
 .I hardware/*
 : Information on connecting an HP-71B to a PC
 .SH EXAMPLES
-If an HP-71B is connected to the linux device
+If an HP-71B is connected to the Linux device
 .I /dev/cua0
 via a suitable interface and 
 .I mytext
@@ -76,10 +76,10 @@ Volume 1.
 The
 .I \-o
 option is not elegant, but there is no automatic way to decide when an HP-71
-file has an odd length in nybbles.
+file has an odd length in nibbles.
 .SH SEE ALSO
 .B in71(1)
 .SH AUTHOR
 .B out71
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
-under the GNU Public License version 2.0
+under the GNU Public License version 2.0.

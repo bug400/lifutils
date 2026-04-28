@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Dec  9 12:27:48 2024 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Tue Apr 28 21:55:19 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,19 +36,19 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">barps - print
-an HP41 barcode file on a postscript printer</p>
+<p style="margin-left:9%; margin-top: 1em">barps - print an
+HP41 barcode file on a PostScript printer</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 barps</b> <i>[TITLE]</i> &lt; <i>Input file</i> &gt;
 <i>Output file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 barps -?</b></p>
 
 <h2>DESCRIPTION
@@ -56,15 +56,15 @@ barps -?</b></p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>barps</b> is
-a filter to print HP41 barcode on a standard Postscript
+<p style="margin-left:9%; margin-top: 1em"><b>barps</b> is
+a filter to print HP41 barcodes on a standard Postscript
 printer. The barcode file is read from standard input, and
-the (level 1) postscript file is written to standard output.
+the (level 1) PostScript file is written to standard output.
 The latter may be piped to <b>lpr</b> in order to directly
-print the barcode, or redirected to a file.</p>
+print the barcode or redirected to a file.</p>
 
-<p style="margin-left:11%; margin-top: 1em">If the optional
-argument <i>TITLE</i> is given to <b>barps</b> then it is
+<p style="margin-left:9%; margin-top: 1em">If the optional
+argument <i>TITLE</i> is given to <b>barps</b> , then it is
 used as the title for each page of printed output. Otherwise
 the title <b>HP41 Barcode</b> is used</p>
 
@@ -76,17 +76,19 @@ the title <b>HP41 Barcode</b> is used</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p style="margin-top: 1em"><i>-?</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="76%">
 
 
 <p style="margin-top: 1em">Print a message giving the
-program usage to standard error.</p></td></tr>
+program usage to standard error.</p></td>
+<td width="6%">
+</td></tr>
 </table>
 
 <h2>REFERENCES
@@ -94,10 +96,10 @@ program usage to standard error.</p></td></tr>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The format of
+<p style="margin-left:9%; margin-top: 1em">The format of
 the HP41 barcode file is given in <i>barcode(5)</i></p>
 
-<p style="margin-left:11%; margin-top: 1em">The Postscript
+<p style="margin-left:9%; margin-top: 1em">The Postscript
 language is described in <i>PostScript Language Reference
 Manual, Adobe Systems Inc.</i></p>
 
@@ -106,15 +108,15 @@ Manual, Adobe Systems Inc.</i></p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">If <i>data1</i>
-is an raw sdata file, and <i>postscript</i> is a postscript
-printer then</p>
+<p style="margin-left:9%; margin-top: 1em">If <i>data1</i>
+is a raw sdata file, and <i>postscript</i> is a PostScript
+printer , then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 sdatabar &lt; data1 | lifutils barps &rsquo;Data File
 1&rsquo; | lpr -P postscript</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will print that
+<p style="margin-left:9%; margin-top: 1em">will print that
 file on the postscript printer with the page title <i>Data
 File 1</i></p>
 
@@ -124,9 +126,9 @@ File 1</i></p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><i><b>barps</b></i>
+<p style="margin-left:9%; margin-top: 1em"><i><b>barps</b></i>
 was written by Tony Duell, ard@p850ug1.demon.co.uk, and has
-been placed under the GNU Public License version 2.0</p>
+been placed under the GNU Public License version 2.0.</p>
 <hr>
 </body>
 </html>

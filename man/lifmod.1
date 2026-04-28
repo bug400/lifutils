@@ -14,32 +14,32 @@ lifmod \- reads contents and info of HP-41 module files
 .B lifmod
 displays and/or extracts information of a 
 .I MODULEFILE.
-A module file has a special binary format defined for the HP-41  which
-is inspired how actual plug in modules look like. A mod file describes the 
-contents of a physical plug in module. Like real plug in modules, module files
-can contain multiple 4K rom pages.
+A module file has a special binary format defined for the HP-41, which
+is inspired by how actual plug-in modules look. A mod file describes the 
+contents of a physical plug in module. Like real plug-in modules, module files
+can contain multiple 4K ROM pages.
 .PP
 Without any options specified, lifmod displays the title and the author of
 the module.
 .SH OPTIONS
 .TP
 .I \-v
-Verbose mode. Display detailed information of the content and organisation
+Verbose mode. Display detailed information of the content and organization
 of the module.
 .TP
 .I \-f
-Decode the function address table (if any) of the rom(s) contained in the module
+Decode the function address table (if any) of the ROM(s) contained in the module
 files. Implies the 
 .I \-f 
 option.
 .TP
 .I \-e
 Extract the rom images (if any) of the modules as .rom files. Note: the
-page name of the image is used as the file name. Characters which are
+page name of the image is used as the file name. Characters that are
 not allowed in file names are converted to underscores.
 .TP
 .I \-l
-If specified in addition to the 
+If specified, in addition to the 
 .I \-e
 option  dump(s) of the rom image(s) are created as .lst files for usage with
 the NSIM program.
@@ -49,12 +49,12 @@ Print a message giving the program usage to standard error.
 .SH EXAMPLES
 If 
 .I ADVANTAGE.MOD
-is a module file of the HP-41 Advantage Pac then
+is a module file of the HP-41 Advantage Pac, then
 .PP
 .B lifutils lifmod -e ADVANTAGE.MOD
 .PP
 will print detailed information of the content of the module and
-extract the three rom images of the module to corresponding .rom files.
+extract the three ROM images of the module to corresponding .rom files.
 .SH REFERENCES
 Some information can be found in the comments of the modfile.c source file
 (see below).

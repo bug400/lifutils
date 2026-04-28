@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Thu Dec 12 15:23:05 2024 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Tue Apr 28 21:55:21 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,7 +36,7 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">textlif -
+<p style="margin-left:9%; margin-top: 1em">textlif -
 convert an ASCII file to a LIF text file</p>
 
 <h2>SYNOPSIS
@@ -44,15 +44,15 @@ convert an ASCII file to a LIF text file</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 textlif</b> [-s SIZE] [-l] <i>LIFFILENAME INPUTFILE</i> &gt;
 <i>Output file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 textlif</b> [-s SIZE] [-l] <i>LIFFILENAME</i> &lt; <i>Input
 file</i> &gt; <i>Output file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 textlif -?</b></p>
 
 <h2>DESCRIPTION
@@ -60,16 +60,16 @@ textlif -?</b></p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>textlif</b>
+<p style="margin-left:9%; margin-top: 1em"><b>textlif</b>
 generates a LIF file from a text file. The program reads the
 text from standard input or the file specified by the
-command line paramter <i>INPUTFILE</i> and writes the LIF
+command-line parameter <i>INPUTFILE</i> and writes the LIF
 file header and the LIF formatted text to standard output.
 This file type can be used on the HP-71 (TEXT) or the HP-41
 extended Memory or HEPAX file system (ASCII).</p>
 
-<p style="margin-left:11%; margin-top: 1em">If the text
-file is to be used on the HP-41, the <i>-s</i> option is
+<p style="margin-left:9%; margin-top: 1em">If the text file
+is to be used on the HP-41, the <i>-s</i> option is
 mandatory. The file can be directly copied from a mass
 storage device to HEPAX memory with the <i>HREADFL</i>
 command. However, it must be preallocated with an
@@ -77,7 +77,7 @@ appropriate size with the <i>CRFLAS</i> command, before
 being copied to extended memory with the <i>READFL</i>
 command.</p>
 
-<p style="margin-left:11%; margin-top: 1em">Note: empty
+<p style="margin-left:9%; margin-top: 1em">Note: Empty
 (zero length) lines are ignored when transferring from a
 mass storage device to the HP-41.</p>
 
@@ -89,43 +89,43 @@ mass storage device to the HP-41.</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p style="margin-top: 1em"><i>-s</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p style="margin-top: 1em">This option specifies the file
-size in registers which shall be allocated for the resulting
+size in registers thath shall be allocated for the resulting
 file in the HP-41 extended memory or the HEPAX file system.
-If a value of 0 is specified the number of register is
+If a value of 0 is specified, the number of registers is
 determined from the size of the input text file. According
-to the HEPAX documentation the maximum file size is 577
-registers. The minimun and allocated number of registers is
+to the HEPAX documentation, the maximum file size is 577
+registers. The minimum and allocated number of registers is
 printed to standard error.</p></td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-l</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p>Relax file name checking, allow underscores in LIF
 filename.</p> </td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-?</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p>Print a message giving the program usage to standard
@@ -137,8 +137,8 @@ error.</p> </td></tr>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The HP text
-file format is documented in section 11.2.8.1 of the <i>HP71
+<p style="margin-left:9%; margin-top: 1em">The HP text file
+format is documented in section 11.2.8.1 of the <i>HP71
 Software Internal Design Specifications Volume 1
 (Hewlett-Packard)</i></p>
 
@@ -147,16 +147,16 @@ Software Internal Design Specifications Volume 1
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">If
-<i>demo.txt</i> is an ASCII text file then</p>
+<p style="margin-left:9%; margin-top: 1em">If
+<i>demo.txt</i> is an ASCII text file, then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>cat demo.txt
+<p style="margin-left:9%; margin-top: 1em"><b>cat demo.txt
 | lifutils textlif DEMO | lifutils lifput
 lifimage.dat</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will put the
-LIF text file with the name <i>DEMO</i> into the LIF image
-file <i>lifimage.dat</i></p>
+<p style="margin-left:9%; margin-top: 1em">will put the LIF
+text file with the name <i>DEMO</i> into the LIF image file
+<i>lifimage.dat</i></p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>
@@ -164,10 +164,10 @@ file <i>lifimage.dat</i></p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><i><b>textlif</b></i>
+<p style="margin-left:9%; margin-top: 1em"><i><b>textlif</b></i>
 was written by Joachim Siebold, bug400@gmx.de using code
 from Tony Duell, ard@p850ug1.demon.co.uk and has been placed
-under the GNU Public License version 2.0</p>
+under the GNU Public License version 2.0.</p>
 <hr>
 </body>
 </html>

@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Dec  9 12:27:49 2024 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Tue Apr 28 21:55:21 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -39,19 +39,19 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">out71 - a
-filter to send a program to a HP-71B</p>
+<p style="margin-left:9%; margin-top: 1em">out71 - a filter
+to send a program to an HP-71B</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 out71 [-o]</b> <i>FILETYPE</i> &lt; <i>Input_file</i> &gt;
 <i>Output_device</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>out71
+<p style="margin-left:9%; margin-top: 1em"><b>out71
 -?</b></p>
 
 <h2>DESCRIPTION
@@ -59,21 +59,21 @@ out71 [-o]</b> <i>FILETYPE</i> &lt; <i>Input_file</i> &gt;
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The HP-71B
+<p style="margin-left:9%; margin-top: 1em">The HP-71B
 Handheld Computer fitted with the HP82401A HPIL Interface
 module can read files not only from a mass storage device
 but also from any other HPIL device. In the latter case, the
-HP-71B expects to receive a 32 byte header which is
+HP-71B expects to receive a 32-byte header, which is
 identical to the file&rsquo;s directory entry on a LIF
 volume, followed by the file data padded (by NULLs in the
 case of <b>out71</b> ) to a multiple of 256 bytes. This
 program always sends a file called <i>PCFILE</i> of the
 user-specified file type.</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>out71</b>
-adds the header and padding, and can therefore be used to
-translate a linux file for direct sending to an HP-71B, for
-example via an HP82164 RS232 interface.</p>
+<p style="margin-left:9%; margin-top: 1em"><b>out71</b>
+adds the header and padding and can therefore be used to
+translate a Linux file for direct sending to an HP-71B, for
+example, via an HP82164 RS232 interface.</p>
 
 <h2>OPTIONS
 <a name="OPTIONS"></a>
@@ -83,44 +83,50 @@ example via an HP82164 RS232 interface.</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p style="margin-top: 1em"><i>-o</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p style="margin-top: 1em">Some HP-71 files have their
 length (in their directory entry, and thus in the header
-added by <b>out71</b> ) given in nybbles. <b>out71</b>
-assumes that all the nybbles in a linux file are part of the
-HP-71B file, and thus always sets this nybble length to an
+added by <b>out71</b></p></td></tr>
+</table>
+
+<p style="margin-left:18%;">given in nibbles. <b>out71</b>
+assumes that all the nibbles in a Linux file are part of the
+HP-71B file and thus always sets this nibble length to an
 even number. This can cause problems if the original HP-71B
-file had an odd length in nybbles. The <i>-o</i> option
-decreases the nybble count in the header by one, effectively
-truncating the last nybble of the linux file.</p></td></tr>
+file had an odd length in nibbles. The <i>-o</i> option
+decreases the nibble count in the header by one, effectively
+truncating the last nibble of the Linux file.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
-<p><i>-?</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<p style="margin-top: 1em"><i>-?</i></p></td>
+<td width="6%"></td>
+<td width="82%">
 
 
-<p>Print a message giving program usage to standard error
-and exit.</p></td></tr>
+<p style="margin-top: 1em">Print a message giving program
+usage to standard error and exit.</p></td></tr>
 </table>
 
-<p style="margin-left:11%;"><i>FILETYPE</i></p>
+<p style="margin-left:9%;"><i>FILETYPE</i></p>
 
-<p style="margin-left:22%;">Specify the type of the HP-71
-file to be created. A complete list of possible filetypes
+<p style="margin-left:18%;">Specify the type of the HP-71
+file to be created. A complete list of possible file types
 can be found in <b>lif_create_entry.c,</b> but the useful
-ones for this program include <i>TEXT, BASIC71, LEX71</i>
+ones for this program include <i>TEXT, BASIC71, LEX71</i> ,
 and <i>SDATA.</i> This parameter is case-insensitive.</p>
 
 <h2>FILES
@@ -129,7 +135,7 @@ and <i>SDATA.</i> This parameter is case-insensitive.</p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><i>hardware/*</i>
+<p style="margin-left:9%; margin-top: 1em"><i>hardware/*</i>
 : Information on connecting an HP-71B to a PC</p>
 
 <h2>EXAMPLES
@@ -137,15 +143,15 @@ and <i>SDATA.</i> This parameter is case-insensitive.</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">If an HP-71B is
-connected to the linux device <i>/dev/cua0</i> via a
+<p style="margin-left:9%; margin-top: 1em">If an HP-71B is
+connected to the Linux device <i>/dev/cua0</i> via a
 suitable interface and <i>mytext</i> is an HP text format
 file, then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 out71 TEXT &lt; mytext &gt;/dev/cua0</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will send the
+<p style="margin-left:9%; margin-top: 1em">will send the
 file to the HP-71B, which should be set to receive it, e.g.
 by the command <b>COPY :RS232 TO MYTEXT</b></p>
 
@@ -154,7 +160,7 @@ by the command <b>COPY :RS232 TO MYTEXT</b></p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The data
+<p style="margin-left:9%; margin-top: 1em">The data
 expected by an HP-71 when reading a file from a
 non-mass-storage device is documented in the HP-71 HPIL
 Internal Design Specifications Volume 1.</p>
@@ -164,9 +170,9 @@ Internal Design Specifications Volume 1.</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The <i>-o</i>
+<p style="margin-left:9%; margin-top: 1em">The <i>-o</i>
 option is not elegant, but there is no automatic way to
-decide when an HP-71 file has an odd length in nybbles.</p>
+decide when an HP-71 file has an odd length in nibbles.</p>
 
 <h2>SEE ALSO
 <a name="SEE ALSO"></a>
@@ -174,16 +180,16 @@ decide when an HP-71 file has an odd length in nybbles.</p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>in71(1)</b></p>
+<p style="margin-left:9%; margin-top: 1em"><b>in71(1)</b></p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>out71</b>
-was written by Tony Duell, ard@p850ug1.demon.co.uk and has
-been placed under the GNU Public License version 2.0</p>
+<p style="margin-left:9%; margin-top: 1em"><b>out71</b> was
+written by Tony Duell, ard@p850ug1.demon.co.uk and has been
+placed under the GNU Public License version 2.0.</p>
 <hr>
 </body>
 </html>

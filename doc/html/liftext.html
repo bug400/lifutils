@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Dec  9 12:27:49 2024 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Tue Apr 28 21:55:21 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,7 +36,7 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">liftext -
+<p style="margin-left:9%; margin-top: 1em">liftext -
 translate a HP LIF text file into an ASCII text file</p>
 
 <h2>SYNOPSIS
@@ -44,15 +44,15 @@ translate a HP LIF text file into an ASCII text file</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 liftext</b> [-r] <i>INPUTFILE</i> [ &gt; <i>Output file</i>
 ]</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 liftext</b> [-r] &lt; <i>input file</i> [ &gt; <i>Output
 file</i> ]</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 liftext</b> [-?]</p>
 
 <h2>DESCRIPTION
@@ -60,7 +60,7 @@ liftext</b> [-?]</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>liftext</b>
+<p style="margin-left:9%; margin-top: 1em"><b>liftext</b>
 reads a LIF or raw HP LIF text file (also known as a LIF1
 format file) from standard input or <i>INPUTFILE</i> and
 writes the equivalent standard text file to standard output.
@@ -69,7 +69,7 @@ the output file. This file type is used on the HP-71 (TEXT)
 and the extended memory or HEPAX file system of the HP-41
 (ASCII).</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>Note:</b>
+<p style="margin-left:9%; margin-top: 1em"><b>Note:</b>
 <i>liftext</i> does not perform any character set
 conversions.</p>
 
@@ -81,26 +81,26 @@ conversions.</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p style="margin-top: 1em"><i>-r</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p style="margin-top: 1em">Skip an existing LIF header of
-the input file. This is mandatory, if the input file is a
-LIF instead of a raw file.</p></td></tr>
+the input file. This is mandatory if the input file is a LIF
+instead of a raw file.</p></td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-?</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p>Print a message giving the program usage to standard
@@ -112,9 +112,9 @@ error.</p> </td></tr>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The HP text
-file format is documented in section 11.2.8.1 of the
-<i>HP-71 Software Internal Design Specifications Volume 1
+<p style="margin-left:9%; margin-top: 1em">The HP text file
+format is documented in section 11.2.8.1 of the <i>HP-71
+Software Internal Design Specifications Volume 1
 (Hewlett-Packard)</i></p>
 
 <h2>EXAMPLES
@@ -122,14 +122,14 @@ file format is documented in section 11.2.8.1 of the
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">If
+<p style="margin-left:9%; margin-top: 1em">If
 <i>disk1.dat</i> is a LIF image containing an HP text file
 called <i>TEXTA</i> then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 lifget -r disk1.dat TEXTA | lifutils liftext</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will produce a
+<p style="margin-left:9%; margin-top: 1em">will produce a
 listing of this file to standard output.</p>
 
 <h2>AUTHOR
@@ -137,7 +137,7 @@ listing of this file to standard output.</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>liftext</b>
+<p style="margin-left:9%; margin-top: 1em"><b>liftext</b>
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has
 been placed under the GNU Public License version 2.0</p>
 <hr>

@@ -1,6 +1,6 @@
 .TH rom41lif 1 01-November-2024 "LIF Utilitites" "LIF Utilities"
 .SH NAME
-rom41lif \- convert a HP-41 rom file to a LIF file of type sdata 
+rom41lif \- convert an HP-41 ROM file to a LIF file of type sdata 
 .SH SYNOPSIS
 .B lifutils rom41lif
 .I LIFFILENAME
@@ -20,7 +20,7 @@ rom41lif \- convert a HP-41 rom file to a LIF file of type sdata
 .SH DESCRIPTION
 .B rom41lif
 generates a LIF sdata file from an HP41 rom file.
-The program reads the rom data from standard input or the file specified by the command line paramter
+The program reads the ROM data from standard input or the file specified by the command line paramter
 .I INPUTFILE
 and writes the LIF file header and the uncompressed rom data to standard output. 
 Note: this program updates incorrect ROM checksums.
@@ -31,11 +31,11 @@ Print a message giving the program usage to standard error.
 .SH EXAMPLES
 If
 .I HPILDv1B.ROM 
-is the rom file of the HP-IL development module then
+is the ROM file of the HP-IL development module, then
 .PP
 .B cat HPILDv1B.ROM | lifutils rom41lif HPILDEV | lifutils lifput lifimage.dat
 .PP
-will put the sdata rom file with the name
+will put the sdata ROM file with the name
 .I HPILDEV
 into the LIF image file
 .I lifimage.dat

@@ -9,9 +9,9 @@ lifpack \- pack a LIF image file
 .B lifutils lifpack \-?
 .SH DESCRIPTION
 .B lifpack
-packs the directory and the file area of the LIF image file specifed by
+packs the directory and the file area of the LIF image file specified by
 .I LIFIMAGE. 
-After packing all unused sectors of the file area are available in one contiguous block. All directory entries are allocated at the beginning of the directory area which speeds up directory searches.
+After packing, all unused sectors of the file area are available in one contiguous block. All directory entries are allocated at the beginning of the directory area, which speeds up directory searches.
 .SH OPTIONS
 .TP
 .I \-p
@@ -22,7 +22,7 @@ Print a message giving the program usage to standard error.
 .SH EXAMPLES
 If 
 .I disk1.dat
-is a LIF image file then
+is a LIF image file, then
 .PP
 .B lifutils lifpack  disk1.dat
 .PP
@@ -35,10 +35,10 @@ last sector that is used by the packed file area.
 .SH REFERENCES
 The LIF disk format is documented in the
 .I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
-with further details (particularly HP41 and HP75 file types) in the 
+, with further details (particularly HP41 and HP75 file types) in the 
 .I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith)
 .SH AUTHOR
 .B lifpack
 was written by Joachim Siebold, bug400@gmx.de  using code from Tony Duell, 
 ard@p850ug1.demon.co.uk and has been placed under the GNU Public 
-License version 2.0
+License version 2.0.

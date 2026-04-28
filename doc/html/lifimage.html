@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Dec  9 12:27:49 2024 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Tue Apr 28 21:55:20 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -34,23 +34,21 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">lifimage - make
-an LIF image file of a HP LIF floppy disk</p>
+<p style="margin-left:9%; margin-top: 1em">lifimage - make
+an LIF image file of an HP LIF floppy disk</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-
-<p style="margin-left:11%; margin-top: 1em"><b>lifimage</b>
+<p style="margin-left:9%; margin-top: 1em"><b>lifimage</b>
 <i>&lt;input device&gt; &lt;output file&gt;</i></p>
 
-
-<p style="margin-left:11%; margin-top: 1em"><b>lifimage</b>
+<p style="margin-left:9%; margin-top: 1em"><b>lifimage</b>
 <i>&lt;input device&gt;</i></p>
 
-<p style="margin-left:11%; margin-top: 1em">(Writes output
+<p style="margin-left:9%; margin-top: 1em">(Writes output
 to standard output)</p>
 
 <h2>DESCRIPTION
@@ -58,22 +56,21 @@ to standard output)</p>
 </h2>
 
 
-
-<p style="margin-left:11%; margin-top: 1em"><b>lifimage</b>
-reads an HP LIF format 3.5 inch floppy disk and produces an
+<p style="margin-left:9%; margin-top: 1em"><b>lifimage</b>
+reads an HP LIF format 3.5-inch floppy disk and produces an
 LIF image file. This file can be processed by other <i>LIF
 utilities</i> or written back to a physical disk using
-<b>lifdump</b> If <b>lifimage</b> is executed with 2
-arguments, then the second argument is used as the filename
-of the LIF image file. If it is executed with one argument
-then the file is written to standard output.</p>
+<b>lifdump lifimage</b> is executed with 2 arguments, then
+the second argument is used as the filename of the LIF image
+file. If it is executed with one argument, then the file is
+written to standard output.</p>
 
-<p style="margin-left:11%; margin-top: 1em">See comments in
+<p style="margin-left:9%; margin-top: 1em">See comments in
 the source code for details of the image file format.</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>Note:</b>
-you need read <b>and</b> write access to the floppy disk
-drive. Thus shelter your data with the write protect
+<p style="margin-left:9%; margin-top: 1em"><b>Note:</b>
+Yyou need read <b>and</b> write access to the floppy disk
+drive. Thus, shelter your data with the write protect
 switch.</p>
 
 <h2>EXAMPLES
@@ -81,13 +78,13 @@ switch.</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">If device
-<i>/dev/fd1</i> contains an HP LIF disk then</p>
+<p style="margin-left:9%; margin-top: 1em">If device
+<i>/dev/fd1</i> contains an HP LIF disk, then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifimage
+<p style="margin-left:9%; margin-top: 1em"><b>lifimage
 /dev/fd1 disk1.dat</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will make an
+<p style="margin-left:9%; margin-top: 1em">will make an
 image of that disk in the file <i>disk1.dat</i></p>
 
 <h2>AUTHOR
@@ -96,9 +93,9 @@ image of that disk in the file <i>disk1.dat</i></p>
 
 
 
-<p style="margin-left:11%; margin-top: 1em"><i><b>lifimage</b></i>
+<p style="margin-left:9%; margin-top: 1em"><i><b>lifimage</b></i>
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has
-been placed under the GNU Public License version 2.0</p>
+been placed under the GNU Public License version 2.0.</p>
 <hr>
 </body>
 </html>

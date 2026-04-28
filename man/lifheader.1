@@ -18,7 +18,7 @@ lifheader \- show the header information of a LIF file
 .B lifutils lifheader \-?
 .SH DESCRIPTION
 .B lifheader
-is a program which shows the header information of a LIF file: file name, file type, file size, time and date of file creation and the implementation bytes. The LIF file is either read from standard input or a file specified by the command line parameter
+is a program that shows the header information of a LIF file: file name, file type, file size, time and date of file creation, and the implementation bytes. The LIF file is either read from standard input or a file specified by the command line parameter
 .I LIFFILENAME.
 .SH OPTIONS
 .TP
@@ -27,12 +27,12 @@ Print a message giving the program usage to standard error.
 .SH REFERENCES
 The LIF disk directory format is documented in the
 .I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
-with further details (particularly HP41 and HP75 file types) in the 
+, with further details (particularly HP41 and HP75 file types) in the 
 .I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith)
 .SH EXAMPLES
 If
 .I zline.p41
-is a lif file containing a HP41 program then
+is a lif file containing an HP41 program, then
 .PP
 .B lifutils lifheader zline.p41
 .PP 
@@ -42,4 +42,4 @@ will show the header information of
 .B lifheader
 was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, 
 ard@p850ug1.demon.co.uk and has been placed 
-under the GNU Public License version 2.0
+under the GNU Public License version 2.0.

@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Dec  9 12:27:49 2024 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Tue Apr 28 21:55:21 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,23 +36,23 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">raw41lif -
-convert a HP41C program raw file to a LIF file</p>
+<p style="margin-left:9%; margin-top: 1em">raw41lif -
+convert an HP41C program raw file to a LIF file</p>
 
 <h2>SYNOPSIS
 <a name="SYNOPSIS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 raw41lif</b> <i>LIFFILENAME INPUTFILE</i> &gt; <i>Output
 file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 raw41lif</b> <i>LIFFILENAME</i> &lt; <i>Input file</i> &gt;
 <i>Output file</i></p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 raw41lif -?</b></p>
 
 <h2>DESCRIPTION
@@ -60,23 +60,22 @@ raw41lif -?</b></p>
 </h2>
 
 
-
-<p style="margin-left:11%; margin-top: 1em"><b>raw41lif</b>
-is a program which generates a LIF file from a HP41 raw file
+<p style="margin-left:9%; margin-top: 1em"><b>raw41lif</b>
+is a program that generates a LIF file from an HP41 raw file
 (FOCAL bytecode). The program reads the byte code from
 standard input or the file specified by the command line
 parameter <i>INPUTFILE</i> and writes the LIF file header
-with the file name <i>LIFFILENAME,</i> the bytecode and the
-checksum byte to standard output.</p>
+with the file name <i>LIFFILENAME</i> , the bytecode, and
+the checksum byte to standard output.</p>
 
 <h2>REFERENCES
 <a name="REFERENCES"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">The format of
-an HP41C program is documented in many books. Amongst the
-most useful references are <i>Extend Your HP41 (W. A. C.
+<p style="margin-left:9%; margin-top: 1em">The format of an
+HP41C program is documented in many books. Among the most
+useful references are <i>Extend Your HP41 (W. A. C.
 Mier-Jedrzejowicz)</i> and <i>The HP41 Synthetic Programming
 Quick Reference Guide (Jeremy Smith)</i></p>
 
@@ -88,17 +87,19 @@ Quick Reference Guide (Jeremy Smith)</i></p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p style="margin-top: 1em"><i>-?</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="76%">
 
 
 <p style="margin-top: 1em">Print a message giving the
-program usage to standard error.</p></td></tr>
+program usage to standard error.</p></td>
+<td width="6%">
+</td></tr>
 </table>
 
 <h2>EXAMPLES
@@ -106,14 +107,14 @@ program usage to standard error.</p></td></tr>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">If
-<i>zline.raw</i> is a raw file containing an HP41 program
+<p style="margin-left:9%; margin-top: 1em">If
+<i>zline.raw</i> is a raw file containing an HP41 program,
 then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>cat
-zline.raw | lifutils raw41lif ZLINE &gt; zline.p41</b></p>
+<p style="margin-left:9%; margin-top: 1em"><b>cat zline.raw
+| lifutils raw41lif ZLINE &gt; zline.p41</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will generate a
+<p style="margin-left:9%; margin-top: 1em">will generate a
 LIF file <b>zline.p41</b> with the LIF filename
 <b>ZLINE</b></p>
 
@@ -122,11 +123,10 @@ LIF file <b>zline.p41</b> with the LIF filename
 </h2>
 
 
-
-<p style="margin-left:11%; margin-top: 1em"><b>raw41lif</b>
+<p style="margin-left:9%; margin-top: 1em"><b>raw41lif</b>
 was written by Joachim Siebold, bug400@gmx.de using code
 from Tony Duell, ard@p850ug1.demon.co.uk and has been placed
-under the GNU Public License version 2.0</p>
+under the GNU Public License version 2.0.</p>
 <hr>
 </body>
 </html>

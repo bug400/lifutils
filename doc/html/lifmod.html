@@ -1,5 +1,5 @@
-<!-- Creator     : groff version 1.22.4 -->
-<!-- CreationDate: Mon Dec  9 12:27:49 2024 -->
+<!-- Creator     : groff version 1.23.0 -->
+<!-- CreationDate: Tue Apr 28 21:55:20 2026 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,7 +37,7 @@
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">lifmod - reads
+<p style="margin-left:9%; margin-top: 1em">lifmod - reads
 contents and info of HP-41 module files</p>
 
 <h2>SYNOPSIS
@@ -45,11 +45,11 @@ contents and info of HP-41 module files</p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 lifmod</b> [-v] [-f] [-e] [-l] <i>MODULEFILE</i> [&gt;
 <i>Output file</i> ]</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 lifmod -?</b></p>
 
 <h2>DESCRIPTION
@@ -57,15 +57,15 @@ lifmod -?</b></p>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifmod</b>
+<p style="margin-left:9%; margin-top: 1em"><b>lifmod</b>
 displays and/or extracts information of a <i>MODULEFILE.</i>
 A module file has a special binary format defined for the
-HP-41 which is inspired how actual plug in modules look
-like. A mod file describes the contents of a physical plug
-in module. Like real plug in modules, module files can
-contain multiple 4K rom pages.</p>
+HP-41, which is inspired by how actual plug-in modules look.
+A mod file describes the contents of a physical plug in
+module. Like real plug-in modules, module files can contain
+multiple 4K ROM pages.</p>
 
-<p style="margin-left:11%; margin-top: 1em">Without any
+<p style="margin-left:9%; margin-top: 1em">Without any
 options specified, lifmod displays the title and the author
 of the module.</p>
 
@@ -77,66 +77,66 @@ of the module.</p>
 <table width="100%" border="0" rules="none" frame="void"
        cellspacing="0" cellpadding="0">
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p style="margin-top: 1em"><i>-v</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p style="margin-top: 1em">Verbose mode. Display detailed
-information of the content and organisation of the
+information of the content and organization of the
 module.</p> </td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-f</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
-<p>Decode the function address table (if any) of the rom(s)
+<p>Decode the function address table (if any) of the ROM(s)
 contained in the module files. Implies the <i>-f</i>
 option.</p> </td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-e</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p>Extract the rom images (if any) of the modules as .rom
 files. Note: the page name of the image is used as the file
-name. Characters which are not allowed in file names are
+name. Characters that are not allowed in file names are
 converted to underscores.</p></td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-l</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
-<p>If specified in addition to the <i>-e</i> option dump(s)
-of the rom image(s) are created as .lst files for usage with
-the NSIM program.</p></td></tr>
+<p>If specified, in addition to the <i>-e</i> option
+dump(s) of the rom image(s) are created as .lst files for
+usage with the NSIM program.</p></td></tr>
 <tr valign="top" align="left">
-<td width="11%"></td>
+<td width="9%"></td>
 <td width="3%">
 
 
 <p><i>-?</i></p></td>
-<td width="8%"></td>
-<td width="78%">
+<td width="6%"></td>
+<td width="82%">
 
 
 <p>Print a message giving the program usage to standard
@@ -148,16 +148,16 @@ error.</p> </td></tr>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">If
+<p style="margin-left:9%; margin-top: 1em">If
 <i>ADVANTAGE.MOD</i> is a module file of the HP-41 Advantage
-Pac then</p>
+Pac, then</p>
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifutils
+<p style="margin-left:9%; margin-top: 1em"><b>lifutils
 lifmod -e ADVANTAGE.MOD</b></p>
 
-<p style="margin-left:11%; margin-top: 1em">will print
+<p style="margin-left:9%; margin-top: 1em">will print
 detailed information of the content of the module and
-extract the three rom images of the module to corresponding
+extract the three ROM images of the module to corresponding
 .rom files.</p>
 
 <h2>REFERENCES
@@ -165,23 +165,23 @@ extract the three rom images of the module to corresponding
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">Some
-information can be found in the comments of the modfile.c
-source file (see below).</p>
+<p style="margin-left:9%; margin-top: 1em">Some information
+can be found in the comments of the modfile.c source file
+(see below).</p>
 
 <h2>BUGS
 <a name="BUGS"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em">Unknown</p>
+<p style="margin-left:9%; margin-top: 1em">Unknown</p>
 
 <h2>AUTHOR
 <a name="AUTHOR"></a>
 </h2>
 
 
-<p style="margin-left:11%; margin-top: 1em"><b>lifmod</b>
+<p style="margin-left:9%; margin-top: 1em"><b>lifmod</b>
 was nearly entirely created with the help of the modfile.c
 subroutines written by Warren Furlow, warren@furlow.org as
 public domain software.</p>

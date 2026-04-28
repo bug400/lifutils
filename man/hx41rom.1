@@ -1,6 +1,6 @@
 .TH hx41rom 1  03-November-2024 "LIF Utilitites" "LIF Utilities"
 .SH NAME
-hx41rom \-convert a SDATA file which contains a scrambled (packed) ROM image written by the HEPAX WRTROM command to an unscrambled (unpacked) HP-41 ROM file.
+hx41rom \-convert a SDATA file, which contains a scrambled (packed) ROM image written by the HEPAX WRTROM command, to an unscrambled (unpacked) HP-41 ROM file.
 .SH SYNOPSIS
 .B lifutils hx41rom
 [\-r]
@@ -18,12 +18,12 @@ hx41rom \-convert a SDATA file which contains a scrambled (packed) ROM image wri
 .B hx41rom \-?
 .SH DESCRIPTION
 .B hx41rom
-The HEPAX ROM can save HP-41 ROM images to a HP-IL mass storage. It creates
-a SDATA file which contains 4 consecutive HP-41 10 bit ROM word in 5 bytes
-of the file. A 4K ROM dump is thus stored in a 5120 byte file.
+The HEPAX ROM can save HP-41 ROM images to an HP-IL mass storage. It creates
+a SDATA file that contains 4 consecutive HP-41 10-bit ROM words in 5 bytes
+of the file. A 4K ROM dump is thus stored in a 5120-byte file.
 .PP
 .B hx41rom
-unscrambles such an raw or LIF SDATA file, storing each HP-41 10 bit word in 2 bytes of
+unscrambles such a raw or LIF SDATA file, storing each HP-41 10-bit word in 2 bytes of
 the output file, and therefore a 4K image takes up 8192 bytes when
 unscrambled. The resulting output file, although larger, is easier to
 process with other programs.
@@ -33,7 +33,7 @@ The input is either read from standard input or the file specified by the comman
 .SH OPTIONS
 .TP
 .I \-r
-Skip an existing LIF header of the input file. This is mandatory, if the input file is a LIF instead of a raw file.
+Skip an existing LIF header of the input file. This is mandatory if the input file is a LIF instead of a raw file.
 .TP
 .I \-?
 Print a message giving the program usage to standard error.
@@ -41,15 +41,15 @@ Print a message giving the program usage to standard error.
 If
 .I myrom.hx
 is an SDATA file with the LIF header removed that contains the packed 
-ROM image then
+ROM image, then
 .PP
 .B cat myrom.hx | lifutils hx41rom > myrom.rom
 .PP 
 will generate a file
 .I myrom.rom
-with the unpacked HP-41 rom image.
+with the unpacked HP-41 ROM image.
 .SH AUTHOR
 .B hx41rom
 was written by Joachim Siebold, bug400@gmx.de using code from Tony Duell, 
 ard@p850ug1.demon.co.uk and Christophe Gottheimer, cgh750@gmail.com and 
-has been placed under the GNU Public License version 2.0
+has been placed under the GNU Public License version 2.0.

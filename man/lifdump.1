@@ -13,7 +13,7 @@ lifdump \- dump a LIF image file to a physical LIF disk
 .B lifdump
 reads a LIF image file, as produced by 
 .B lifimage
-and writes it to a pre-formatted LIF disk. The original contents of the 
+, and writes it to a pre-formatted LIF disk. The original contents of the 
 disk (and the directory) are overwritten by this command and are thus 
 lost. If 
 .B lifdump
@@ -22,28 +22,28 @@ first argument are written to the device specified by the second
 argument. If it is executed with one argument, then the standard input 
 stream is written to the device specified by that argument.
 .PP
-The disk must have already been formatted as an HP LIF disk, for example 
-using a series 40 or series 70 machine and an HP9114 disk drive.
+The disk must have already been formatted as an HP LIF disk, for example, 
+using a Series 40 or Series 70 machine and an HP9114 disk drive.
 .PP
 See comments in the 
 .B lifimage
 source code for details of the image file format.
 .PP
 .B Note:
-you need read
+You need read
 .B
 and
 write access to the floppy disk device.
 .SH EXAMPLES
 If the file
 .I disk1.dat
-contains a LIF image then
+contains a LIF image, then
 .PP
 .B lifdump disk1.dat /dev/fd1
 .PP
-will dump that file to a preformatted disk in device
+will dump that file to a pre-formatted disk in device
 .I /dev/fd1
 .SH AUTHOR
 .B lifdump
 was written by Tony Duell, ard@p850ug1.demon.co.uk and has been placed 
-under the GNU Public License version 2.0
+under the GNU Public License version 2.0.

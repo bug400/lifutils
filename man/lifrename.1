@@ -10,10 +10,10 @@ lifrename \- renames a file on a LIF image file
 .B lifutils lifrename \-?
 .SH DESCRIPTION
 .B lifrename
-renames single file, specified by 
+renames a single file, specified by 
 .I OLDFILENAME
-to
-.I NEWFILENAME.
+, to
+.I NEWFILENAME
 on the LIF image file
 .I LIFIMAGE.
 .I OLDFILENAME 
@@ -29,14 +29,14 @@ Note:
 has not to comply with the 
 .I
 LIFUTILS
-file name conventions. Thus this command may be used to rename files that can not processed with the 
+file name conventions. Thus, this command may be used to rename files that can not processed with the 
 .I
 LIFUTILS
 otherwise.
 .SH OPTIONS
 .TP
 .I \-l
-Relax file name checking, allow underscores in new file name.
+Relax file name checking. Allow underscores in new file name.
 .TP
 .I \-p
 Rename a file on a floppy disk with a LIF file system. Note: this option is only supported on LINUX. Specify the floppy device instead of the lif-image-filename. See the LIFUTILS tutorial for details.
@@ -61,10 +61,10 @@ to
 .SH REFERENCES
 The LIF disk directory format is documented in the
 .I HP\-IL Interface Owners Manual for the HP\-71 (Hewlett\-Packard)
-with further details (particularly HP-41 and HP-75 file types) in the 
+, with further details (particularly HP-41 and HP-75 file types) in the 
 .I HP\-41 Synthetic Quick Reference Guide (Jeremy Smith)
 .SH AUTHOR
 .B lifrename
-was written by Joachim Siebold <bug400@gmx.de> using code from  by Tony Duell, 
+was written by Joachim Siebold <bug400@gmx.de> using code from Tony Duell, 
 ard@p850ug1.demon.co.uk and has been placed under the GNU Public License 
-version 2.0
+version 2.0.
