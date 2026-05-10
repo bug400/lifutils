@@ -1,3 +1,9 @@
+lifutils (2.0.2) trixie; urgency=medium
+
+  * updated documentation 
+
+ -- trixie <achim@trillian>  Sat, 09 May 2026 12:21:40 +0200
+
 lifutils (2.0.1) bookworm; urgency=medium
 
   * fixed incorrect checksum in inp41, outp41 
