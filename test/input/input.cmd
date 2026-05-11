@@ -178,7 +178,7 @@ if exist err_long.txt del /F err_long.txt
 if exist err_short.txt del /F err_short.txt
 if exist test.ps del /F test.ps
 if exist test.txt del /F test.txt
-if exist test.hex del /F test.txt
+if exist test.hex del /F test.hex
 if exist temp.lif del /F temp.lif
 if exist temp.raw del /F temp.raw
 if exist liftest.dat del /F liftest.dat
