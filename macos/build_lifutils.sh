@@ -41,7 +41,8 @@ cp create_lifutils_removescript.sh lifutils.dst/usr/local/share/lifutils
 rm -rf build_products
 mkdir build_products
 pkgbuild --identifier org.bug400.lifutils --version=$version --install-location="/" --root lifutils.dst --component-plist lifutils.plist build_products/lifutils.pkg 
-productbuild --distribution lifutils.xml --package-path=build_products/ --resources=lifutils.resources lifutils.pkg
-rm build_products/lifutils.pkg
-rm -rf lifutils.dst/*
+productbuild --distribution lifutils.xml --package-path=build_products/ --resources=lifutils.resources lifutils-${version}.pkg
+rm -rf lifutils.resources
+rm -rf build_products
+rm -rf lifutils.dst
 rm -rf ../cmake-tmp
